@@ -39,6 +39,7 @@
 		09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC07012B4447B5008A44FD /* RealTimeDataView.swift */; };
 		09BD521B2B44F45500EC347E /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521A2B44F45500EC347E /* MatchController.swift */; };
 		09BD521D2B44FEE400EC347E /* SelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */; };
+		09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521E2B45166100EC347E /* PointBtnArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		09BC07012B4447B5008A44FD /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
 		09BD521A2B44F45500EC347E /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
 		09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionArea.swift; sourceTree = "<group>"; };
+		09BD521E2B45166100EC347E /* PointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBtnArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +322,7 @@
 				09BC06F82B43A389008A44FD /* PointInputView.swift */,
 				09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */,
 				09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */,
+				09BD521E2B45166100EC347E /* PointBtnArea.swift */,
 			);
 			path = PointInputView;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				0927E1032B41A7F10069BEF1 /* DataAnalysisView.swift in Sources */,
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
 				09BD521B2B44F45500EC347E /* MatchController.swift in Sources */,
+				09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
 				0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */,
