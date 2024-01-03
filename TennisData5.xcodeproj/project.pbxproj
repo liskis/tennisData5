@@ -40,6 +40,7 @@
 		09BD521B2B44F45500EC347E /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521A2B44F45500EC347E /* MatchController.swift */; };
 		09BD521D2B44FEE400EC347E /* SelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */; };
 		09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521E2B45166100EC347E /* PointBtnArea.swift */; };
+		09BD52212B45926000EC347E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52202B45926000EC347E /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		09BD521A2B44F45500EC347E /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
 		09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionArea.swift; sourceTree = "<group>"; };
 		09BD521E2B45166100EC347E /* PointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBtnArea.swift; sourceTree = "<group>"; };
+		09BD52202B45926000EC347E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,7 +302,6 @@
 				0927E1042B41A8140069BEF1 /* HomeHeaderBar.swift */,
 				0927E10A2B41A88B0069BEF1 /* HomeView.swift */,
 				0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */,
-				0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */,
 				09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */,
 			);
 			path = HomeView;
@@ -309,8 +310,8 @@
 		0927E1122B41AA760069BEF1 /* HomeGraphArea */ = {
 			isa = PBXGroup;
 			children = (
-				0927E1102B41A8F40069BEF1 /* HomeGraphData.swift */,
 				0927E1082B41A8680069BEF1 /* DateArrayArea.swift */,
+				0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */,
 				0927E1062B41A8430069BEF1 /* HomeGraphArea.swift */,
 			);
 			path = HomeGraphArea;
@@ -350,6 +351,7 @@
 			children = (
 				09BC06FA2B443655008A44FD /* PointInputController.swift */,
 				09BD521A2B44F45500EC347E /* MatchController.swift */,
+				09BD52202B45926000EC347E /* HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -357,6 +359,7 @@
 		09BC07052B447BD9008A44FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0927E1102B41A8F40069BEF1 /* HomeGraphData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 			files = (
 				0927E1072B41A8430069BEF1 /* HomeGraphArea.swift in Sources */,
 				0927E0A52B41A6A00069BEF1 /* ContentView.swift in Sources */,
+				09BD52212B45926000EC347E /* HomeController.swift in Sources */,
 				09BC07002B444657008A44FD /* MatchView.swift in Sources */,
 				0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */,
 				09BC06FB2B443655008A44FD /* PointInputController.swift in Sources */,

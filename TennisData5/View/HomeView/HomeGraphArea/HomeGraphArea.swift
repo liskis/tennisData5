@@ -2,19 +2,20 @@ import SwiftUI
 import Charts
 
 struct HomeGraphArea: View {
+    let homeCtl = HomeController()
     func minAxis() -> Int{
         var minData: Int = 100
-        for data in HomeGraphData.firstServIn {
+        for data in homeCtl.firstServIn {
             minData = data.stats < minData ? data.stats : minData
         }
-        for data in HomeGraphData.secondServeIn {
+        for data in homeCtl.secondServeIn {
             minData = data.stats < minData ? data.stats : minData
         }
         return minData - 10
     }
     var body: some View {
         Chart {
-            ForEach(HomeGraphData.firstServIn){ dataRow in
+            ForEach(homeCtl.firstServIn){ dataRow in
                 LineMark(
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
@@ -36,7 +37,7 @@ struct HomeGraphArea: View {
                 .symbol(by: .value("Category", dataRow.category))
                 .symbolSize(100)
             }
-            ForEach(HomeGraphData.secondServeIn){ dataRow in
+            ForEach(homeCtl.secondServeIn){ dataRow in
                 LineMark(
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
