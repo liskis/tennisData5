@@ -1,12 +1,18 @@
 import SwiftUI
-struct NameAndScoreArea: View {
-
+struct DoublesNameAndScore: View {
     var body: some View {
         HStack{
             Spacer()
-            Text(PointInputController.userName)
-                .font(.custom("Verdana",size:14))
-                .bold()
+            VStack{
+                Spacer()
+                Text(PointInputController.userName)
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                Text(PointInputController.partnerName)
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                Spacer()
+            }
             Spacer()
             VStack{
                 HStack{
@@ -35,11 +41,10 @@ struct NameAndScoreArea: View {
                 }
             }
             Spacer()
-            Text(PointInputController.opponentName)
+            Text(PointInputController.opponentsName)
                 .font(.custom("Verdana",size:14))
                 .bold()
             Spacer()
         }
     }
 }
-

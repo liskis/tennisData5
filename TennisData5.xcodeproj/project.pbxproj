@@ -41,6 +41,9 @@
 		09BD521D2B44FEE400EC347E /* SelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */; };
 		09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521E2B45166100EC347E /* PointBtnArea.swift */; };
 		09BD52212B45926000EC347E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52202B45926000EC347E /* HomeController.swift */; };
+		09BD52232B45987500EC347E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52222B45987500EC347E /* Buttons.swift */; };
+		09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52242B463FE500EC347E /* NextBtnArea.swift */; };
+		09BD52272B46456D00EC347E /* DoublesNameAndScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52262B46456C00EC347E /* DoublesNameAndScore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionArea.swift; sourceTree = "<group>"; };
 		09BD521E2B45166100EC347E /* PointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBtnArea.swift; sourceTree = "<group>"; };
 		09BD52202B45926000EC347E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		09BD52222B45987500EC347E /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		09BD52242B463FE500EC347E /* NextBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBtnArea.swift; sourceTree = "<group>"; };
+		09BD52262B46456C00EC347E /* DoublesNameAndScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublesNameAndScore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,10 +326,13 @@
 		09BC06F72B43A36D008A44FD /* PointInputView */ = {
 			isa = PBXGroup;
 			children = (
+				09BD52222B45987500EC347E /* Buttons.swift */,
 				09BC06F82B43A389008A44FD /* PointInputView.swift */,
 				09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */,
 				09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */,
 				09BD521E2B45166100EC347E /* PointBtnArea.swift */,
+				09BD52242B463FE500EC347E /* NextBtnArea.swift */,
+				09BD52262B46456C00EC347E /* DoublesNameAndScore.swift */,
 			);
 			path = PointInputView;
 			sourceTree = "<group>";
@@ -596,6 +605,8 @@
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
 				09BD521B2B44F45500EC347E /* MatchController.swift in Sources */,
 				09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */,
+				09BD52272B46456D00EC347E /* DoublesNameAndScore.swift in Sources */,
+				09BD52232B45987500EC347E /* Buttons.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
 				0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */,
@@ -604,6 +615,7 @@
 				0927E10F2B41A8CC0069BEF1 /* WinLoseArrayArea.swift in Sources */,
 				0927E1112B41A8F40069BEF1 /* HomeGraphData.swift in Sources */,
 				0927E1052B41A8140069BEF1 /* HomeHeaderBar.swift in Sources */,
+				09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */,
 				09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */,
 				09BC06F92B43A389008A44FD /* PointInputView.swift in Sources */,
 				09BC06FD2B443736008A44FD /* NameAndScoreArea.swift in Sources */,

@@ -8,14 +8,16 @@
 import Foundation
 
 class PointInputController {
-    let userName:String = "わたなべ"
-    let opponentName:String = "対戦相手"
-    let winCount:Int = 3
-    let loseCount:Int = 2
-    let myPoint:Int = 2
-    let opponentPoint:Int = 1
-    let inputModeText:String = "アドバンスモード"
-    func naviTitle(gameType: String) -> String{
+    static let userName:String = "わたなべ"
+    static let partnerName:String = "partner"
+    static let opponentName:String = "対戦相手"
+    static let opponentsName:String = "対戦チーム"
+    static let winCount:Int = 3
+    static let loseCount:Int = 2
+    static let myPoint:Int = 2
+    static let opponentPoint:Int = 1
+    static let inputModeText:String = "アドバンスモード"
+    static func naviTitle(gameType: String) -> String{
         switch gameType {
         case "singlesPointGame":
             return "シングルスポイントゲーム"

@@ -11,77 +11,169 @@ struct PointInputView: View {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-    let pointInputCtl = PointInputController()
     var body: some View {
         NavigationStack {
             ZStack{
                 Color.gray.ignoresSafeArea()
-                VStack(spacing:0){
-                    Spacer().frame(height: 10)
-                    NameAndScoreArea()
-                    HStack{
-                        Spacer()
-                        Text(pointInputCtl.inputModeText)
-                            .padding(10)
-                            .background(.white)
-                            .font(.custom("Verdana",size:10))
-                    }
-                    ZStack{
-                        Color.white.ignoresSafeArea()
-                        VStack{
+                if gameType == "singlesPointGame" {
+                    VStack(spacing:0){
+                        Spacer().frame(height: 10)
+                        NameAndScoreArea()
+                        HStack{
                             Spacer()
-                            SelectPositionArea()
-                            Spacer().frame(height: 10)
-                            PointBtnArea()
-                            Spacer().frame(height: 10)
-                            NextBtnArea()
+                            Text(PointInputController.inputModeText)
+                                .padding(10)
+                                .background(.white)
+                                .font(.custom("Verdana",size:10))
+                        }
+                        ZStack{
+                            Color.white.ignoresSafeArea()
+                            VStack{
+                                SelectPositionArea()
+                                Spacer().frame(height: 10)
+                                PointBtnArea()
+                                Spacer().frame(height: 10)
+                                NextBtnArea()
+                            }
                         }
                     }
-                    
-
-                    
+                } else if gameType == "doublesPointGame" {
+                    VStack(spacing:0){
+                        Spacer().frame(height: 10)
+                        NameAndScoreArea()
+                        HStack{
+                            Spacer()
+                            Text(PointInputController.inputModeText)
+                                .padding(10)
+                                .background(.white)
+                                .font(.custom("Verdana",size:10))
+                        }
+                        ZStack{
+                            Color.white.ignoresSafeArea()
+                            VStack{
+                                Spacer().frame(height: 10)
+                                DoublesSelectPositionArea()
+                                Spacer().frame(height: 10)
+                                PointBtnArea()
+                                Spacer().frame(height: 10)
+                                NextBtnArea()
+                            }
+                        }
+                    }
                 }
+                
+                
+                
+                
+                
             }
             .navigationBarTitle(
-                pointInputCtl.naviTitle(gameType: gameType),
+                PointInputController.naviTitle(gameType: gameType),
                 displayMode: .inline
             )
         }
     } // body
 } // PointInputView
 
-struct NextBtnArea: View {
-    @Environment(\.dismiss) var dismiss
-    var body: some View {
-        VStack(spacing:1){
-            Button(action: {
-                
-            }) {
-                Text("次のゲームへ")
-                .frame(maxWidth: .infinity, minHeight: 30)
+
+
+    struct DoublesSelectPositionArea: View {
+        var body: some View {
+            VStack(spacing:1){
+                HStack(spacing:1){
+                    Button(action: {
+                        // action
+                    }) {
+                        Text("左のサーバー")
+                            .frame(maxWidth: .infinity, maxHeight: 15)
+                    }
+                    .padding(.leading, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                    Button(action: {
+                        // action
+                    }) {
+                        Text("右のサーバー")
+                        .frame(maxWidth: .infinity, maxHeight: 15)
+                    }
+                    .padding(.trailing, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                }
+                HStack(spacing:1){
+                    Button(action: {
+                        // action
+                    }) {
+                        VStack(spacing:10){
+                            Text("サービスゲームの")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                            Text("左ボレーヤー")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                        }
+                    }
+                    .padding(.leading, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                    Button(action: {
+                        // action
+                    }) {
+                        VStack(spacing:10){
+                            Text("サービスゲームの")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                            Text("右ボレーヤー")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                        }
+                    }
+                    .padding(.trailing, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                }
+                HStack(spacing:1){
+                    Button(action: {
+                        // action
+                    }) {
+                        VStack(spacing:10){
+                            Text("リターンゲームの")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                            Text("左ボレーヤー")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                        }
+                    }
+                    .padding(.leading, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                    Button(action: {
+                        // action
+                    }) {
+                        VStack(spacing:10){
+                            Text("リターンゲームの")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                            Text("右ボレーヤー")
+                                .frame(maxWidth: .infinity, maxHeight: 5)
+                        }
+                    }
+                    .padding(.trailing, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                }
+                HStack(spacing:1){
+                    Button(action: {
+                        // action
+                    }) {
+                        Text("左のリターン")
+                        .frame(maxWidth: .infinity, maxHeight: 15)
+                    }
+                    .padding(.leading, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                    Button(action: {
+                        // action
+                    }) {
+                        Text("右のリターン")
+                        .frame(maxWidth: .infinity, maxHeight: 15)
+                    }
+                    .padding(.trailing, 10)
+                    .buttonStyle(SelectPositionBtnStyle())
+                }
             }
-            .padding(.horizontal, 10)
-            .buttonStyle(NextBtnStyle())
-            Button(action: {
-                dismiss()
-            }) {
-                Text("ポイントゲームを終了する")
-                .frame(maxWidth: .infinity, minHeight: 30)
-            }
-            .padding(.horizontal, 10)
-            .buttonStyle(NextBtnStyle())
         }
     }
-}
-struct NextBtnStyle: ButtonStyle {
-  func makeBody(configuration: Self.Configuration) -> some View {
-    configuration.label
-        .padding()
-        .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
-        .background(configuration.isPressed ? Color.primary : Color.brown)
-        .cornerRadius(5)
-    }
-}
+
+
+
 
 #Preview {
     ContentView()

@@ -24,33 +24,7 @@ struct MatchView: View {
             .accentColor(.white)
     }
 }
-//class Person: ObservableObject {
-//    @Published var firstName: String = ""
-//    @Published var lastName: String = ""
-//
-//    var name : String {
-//        get {
-//            firstName + " " + lastName
-//        }
-//    }
-//}
-//struct PersonView: View {
-//    @EnvironmentObject private var person: Person
-//    
-//    var body: some View {
-//        VStack {
-//            Text(person.name)
-//        }
-//    }
-//}
-//struct parentView: View {
-//    @ObservedObject var person = Person()
-//    person.firstName = "渡辺"
-//
-//    var body: some View {
-//        PersonView().environmentObject(person)
-//    }
-//}
+
 
 #Preview {
     ContentView()
