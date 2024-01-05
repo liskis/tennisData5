@@ -1,5 +1,6 @@
 import SwiftUI
 struct PointInputView: View {
+    let ctl = PointInputController()
     @Binding var gameType: String
     init(gameType: Binding<String>) {
         self._gameType = gameType
@@ -18,10 +19,10 @@ struct PointInputView: View {
                 if gameType == "singlesPointGame" {
                     VStack(spacing:0){
                         Spacer().frame(height: 10)
-                        NameAndScoreArea()
+                        MyNameAndScoreArea()
                         HStack{
                             Spacer()
-                            Text(PointInputController.inputModeText)
+                            Text(ctl.inputModeText)
                                 .padding(10)
                                 .background(.white)
                                 .font(.custom("Verdana",size:10))
@@ -29,7 +30,7 @@ struct PointInputView: View {
                         ZStack{
                             Color.white.ignoresSafeArea()
                             VStack{
-                                SelectPositionArea()
+                                SnglsSelectPositionArea()
                                 Spacer().frame(height: 10)
                                 PointBtnArea()
                                 Spacer().frame(height: 10)
@@ -40,10 +41,10 @@ struct PointInputView: View {
                 } else if gameType == "doublesPointGame" {
                     VStack(spacing:0){
                         Spacer().frame(height: 10)
-                        NameAndScoreArea()
+                        MyNameAndScoreArea()
                         HStack{
                             Spacer()
-                            Text(PointInputController.inputModeText)
+                            Text(ctl.inputModeText)
                                 .padding(10)
                                 .background(.white)
                                 .font(.custom("Verdana",size:10))
@@ -52,7 +53,7 @@ struct PointInputView: View {
                             Color.white.ignoresSafeArea()
                             VStack{
                                 Spacer().frame(height: 10)
-                                DoublesSelectPositionArea()
+                                DblsSelectPositionArea()
                                 Spacer().frame(height: 10)
                                 PointBtnArea()
                                 Spacer().frame(height: 10)
@@ -61,14 +62,9 @@ struct PointInputView: View {
                         }
                     }
                 }
-                
-                
-                
-                
-                
             }
             .navigationBarTitle(
-                PointInputController.naviTitle(gameType: gameType),
+                ctl.naviTitle(gameType: gameType),
                 displayMode: .inline
             )
         }
@@ -77,101 +73,7 @@ struct PointInputView: View {
 
 
 
-    struct DoublesSelectPositionArea: View {
-        var body: some View {
-            VStack(spacing:1){
-                HStack(spacing:1){
-                    Button(action: {
-                        // action
-                    }) {
-                        Text("左のサーバー")
-                            .frame(maxWidth: .infinity, maxHeight: 15)
-                    }
-                    .padding(.leading, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                    Button(action: {
-                        // action
-                    }) {
-                        Text("右のサーバー")
-                        .frame(maxWidth: .infinity, maxHeight: 15)
-                    }
-                    .padding(.trailing, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                }
-                HStack(spacing:1){
-                    Button(action: {
-                        // action
-                    }) {
-                        VStack(spacing:10){
-                            Text("サービスゲームの")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                            Text("左ボレーヤー")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                        }
-                    }
-                    .padding(.leading, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                    Button(action: {
-                        // action
-                    }) {
-                        VStack(spacing:10){
-                            Text("サービスゲームの")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                            Text("右ボレーヤー")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                        }
-                    }
-                    .padding(.trailing, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                }
-                HStack(spacing:1){
-                    Button(action: {
-                        // action
-                    }) {
-                        VStack(spacing:10){
-                            Text("リターンゲームの")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                            Text("左ボレーヤー")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                        }
-                    }
-                    .padding(.leading, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                    Button(action: {
-                        // action
-                    }) {
-                        VStack(spacing:10){
-                            Text("リターンゲームの")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                            Text("右ボレーヤー")
-                                .frame(maxWidth: .infinity, maxHeight: 5)
-                        }
-                    }
-                    .padding(.trailing, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                }
-                HStack(spacing:1){
-                    Button(action: {
-                        // action
-                    }) {
-                        Text("左のリターン")
-                        .frame(maxWidth: .infinity, maxHeight: 15)
-                    }
-                    .padding(.leading, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                    Button(action: {
-                        // action
-                    }) {
-                        Text("右のリターン")
-                        .frame(maxWidth: .infinity, maxHeight: 15)
-                    }
-                    .padding(.trailing, 10)
-                    .buttonStyle(SelectPositionBtnStyle())
-                }
-            }
-        }
-    }
-
+    
 
 
 

@@ -1,41 +1,41 @@
 import SwiftUI
-struct NameAndScoreArea: View {
-
+struct MyNameAndScoreArea: View {
+    let ctl = PointInputController()
     var body: some View {
         HStack{
             Spacer()
-            Text(PointInputController.userName)
+            Text(ctl.userName)
                 .font(.custom("Verdana",size:14))
                 .bold()
             Spacer()
             VStack{
                 HStack{
-                    Text(String(PointInputController.winCount))
+                    Text(String(ctl.winCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("勝")
                     Text("-")
                         .font(.custom("Verdana",size:20))
                         .bold()
-                    Text(String(PointInputController.loseCount))
+                    Text(String(ctl.loseCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("負")
                 }
                 HStack{
-                    Text(String(PointInputController.myPoint))
+                    Text(String(ctl.myPoint))
                         .font(.custom("Verdana",size:40))
                         .bold()
                     Text("-")
                         .font(.custom("Verdana",size:40))
                         .bold()
-                    Text(String(PointInputController.opponentPoint))
+                    Text(String(ctl.opponentPoint))
                         .font(.custom("Verdana",size:40))
                         .bold()
                 }
             }
             Spacer()
-            Text(PointInputController.opponentName)
+            Text(ctl.opponentName)
                 .font(.custom("Verdana",size:14))
                 .bold()
             Spacer()

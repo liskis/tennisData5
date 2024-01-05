@@ -14,17 +14,17 @@ struct HomeView: View {
                         Spacer()
                     }
                     VStack{
-                        Text("").frame(height: 10)
+                        Spacer().frame(height: 10)
                         StatsDataArea()
-                        Text("").frame(height: 10)
+                        Spacer().frame(height: 20)
                         HomeGraphArea()
                         WinLoseArrayArea()
                         DateArrayArea()
-                        Text("").frame(height: 10)
+                        Spacer().frame(height: 10)
                         ZStack{
                             Color.white.ignoresSafeArea()
                             VStack{
-                                Text("").frame(height: 5)
+                                Spacer().frame(height: 5)
                                 GameStartBtnsArea()
                                 Spacer()
                             }

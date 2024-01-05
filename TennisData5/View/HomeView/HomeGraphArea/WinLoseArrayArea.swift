@@ -3,37 +3,35 @@ struct WinLoseArrayArea: View {
     var body: some View {
         HStack{
             Spacer()
-            Text("Win")
-                .font(.custom("Verdana",size:23))
-                .bold()
-                .foregroundColor(.red)
-                .shadow(color: .black, radius: 2)
+            WinText()
             Spacer()
-            Text("Win")
-                .font(.custom("Verdana",size:23))
-                .bold()
-                .foregroundColor(.red)
-                .shadow(color: .black, radius: 2)
+            WinText()
             Spacer()
-            Text("Lose")
-                .font(.custom("Verdana",size:23))
-                .bold()
-                .foregroundColor(.blue)
-                .shadow(color: .black, radius: 2)
+            LoseText()
             Spacer()
-            Text("Lose")
-                .font(.custom("Verdana",size:23))
-                .bold()
-                .foregroundColor(.blue)
-                .shadow(color: .black, radius: 2)
+            LoseText()
             Spacer()
-            Text("Win")
-                .font(.custom("Verdana",size:23))
-                .bold()
-                .foregroundColor(.red)
-                .shadow(color: .black, radius: 2)
+            WinText()
             Spacer()
         }
+    }
+}
+struct WinText:View {
+    var body: some View {
+        Text("Win")
+            .font(.custom("Verdana",size:23))
+            .bold()
+            .foregroundColor(.red)
+            .shadow(color: .black, radius: 2)
+    }
+}
+struct LoseText:View {
+    var body: some View {
+        Text("Lose")
+            .font(.custom("Verdana",size:23))
+            .bold()
+            .foregroundColor(.blue)
+            .shadow(color: .black, radius: 2)
     }
 }
 #Preview {

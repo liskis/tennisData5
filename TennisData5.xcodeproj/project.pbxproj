@@ -35,15 +35,17 @@
 		09BC06F92B43A389008A44FD /* PointInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F82B43A389008A44FD /* PointInputView.swift */; };
 		09BC06FB2B443655008A44FD /* PointInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FA2B443655008A44FD /* PointInputController.swift */; };
 		09BC06FD2B443736008A44FD /* NameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */; };
-		09BC07002B444657008A44FD /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchView.swift */; };
+		09BC07002B444657008A44FD /* MatchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchTabView.swift */; };
 		09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC07012B4447B5008A44FD /* RealTimeDataView.swift */; };
 		09BD521B2B44F45500EC347E /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521A2B44F45500EC347E /* MatchController.swift */; };
-		09BD521D2B44FEE400EC347E /* SelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */; };
+		09BD521D2B44FEE400EC347E /* SnglsSelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521C2B44FEE400EC347E /* SnglsSelectPositionArea.swift */; };
 		09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521E2B45166100EC347E /* PointBtnArea.swift */; };
 		09BD52212B45926000EC347E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52202B45926000EC347E /* HomeController.swift */; };
-		09BD52232B45987500EC347E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52222B45987500EC347E /* Buttons.swift */; };
+		09BD52232B45987500EC347E /* PointinputBtns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52222B45987500EC347E /* PointinputBtns.swift */; };
 		09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52242B463FE500EC347E /* NextBtnArea.swift */; };
-		09BD52272B46456D00EC347E /* DoublesNameAndScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52262B46456C00EC347E /* DoublesNameAndScore.swift */; };
+		09BD52272B46456D00EC347E /* AllNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */; };
+		09BD52292B46C4D600EC347E /* DblsSelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */; };
+		09BD522B2B478ACB00EC347E /* SelectPositionBtns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,15 +134,17 @@
 		09BC06F82B43A389008A44FD /* PointInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputView.swift; sourceTree = "<group>"; };
 		09BC06FA2B443655008A44FD /* PointInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputController.swift; sourceTree = "<group>"; };
 		09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScoreArea.swift; sourceTree = "<group>"; };
-		09BC06FF2B444657008A44FD /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		09BC06FF2B444657008A44FD /* MatchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTabView.swift; sourceTree = "<group>"; };
 		09BC07012B4447B5008A44FD /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
 		09BD521A2B44F45500EC347E /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
-		09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionArea.swift; sourceTree = "<group>"; };
+		09BD521C2B44FEE400EC347E /* SnglsSelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsSelectPositionArea.swift; sourceTree = "<group>"; };
 		09BD521E2B45166100EC347E /* PointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBtnArea.swift; sourceTree = "<group>"; };
 		09BD52202B45926000EC347E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		09BD52222B45987500EC347E /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		09BD52222B45987500EC347E /* PointinputBtns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointinputBtns.swift; sourceTree = "<group>"; };
 		09BD52242B463FE500EC347E /* NextBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBtnArea.swift; sourceTree = "<group>"; };
-		09BD52262B46456C00EC347E /* DoublesNameAndScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublesNameAndScore.swift; sourceTree = "<group>"; };
+		09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNameAndScoreArea.swift; sourceTree = "<group>"; };
+		09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DblsSelectPositionArea.swift; sourceTree = "<group>"; };
+		09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionBtns.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,13 +330,15 @@
 		09BC06F72B43A36D008A44FD /* PointInputView */ = {
 			isa = PBXGroup;
 			children = (
-				09BD52222B45987500EC347E /* Buttons.swift */,
+				09BD52222B45987500EC347E /* PointinputBtns.swift */,
 				09BC06F82B43A389008A44FD /* PointInputView.swift */,
 				09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */,
-				09BD521C2B44FEE400EC347E /* SelectPositionArea.swift */,
+				09BD521C2B44FEE400EC347E /* SnglsSelectPositionArea.swift */,
 				09BD521E2B45166100EC347E /* PointBtnArea.swift */,
 				09BD52242B463FE500EC347E /* NextBtnArea.swift */,
-				09BD52262B46456C00EC347E /* DoublesNameAndScore.swift */,
+				09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */,
+				09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */,
+				09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */,
 			);
 			path = PointInputView;
 			sourceTree = "<group>";
@@ -342,7 +348,7 @@
 			children = (
 				09BC07032B444897008A44FD /* RealTimeDataView */,
 				09BC06F72B43A36D008A44FD /* PointInputView */,
-				09BC06FF2B444657008A44FD /* MatchView.swift */,
+				09BC06FF2B444657008A44FD /* MatchTabView.swift */,
 			);
 			path = MatchView;
 			sourceTree = "<group>";
@@ -598,19 +604,20 @@
 				0927E1072B41A8430069BEF1 /* HomeGraphArea.swift in Sources */,
 				0927E0A52B41A6A00069BEF1 /* ContentView.swift in Sources */,
 				09BD52212B45926000EC347E /* HomeController.swift in Sources */,
-				09BC07002B444657008A44FD /* MatchView.swift in Sources */,
+				09BD522B2B478ACB00EC347E /* SelectPositionBtns.swift in Sources */,
+				09BC07002B444657008A44FD /* MatchTabView.swift in Sources */,
 				0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */,
 				09BC06FB2B443655008A44FD /* PointInputController.swift in Sources */,
 				0927E1032B41A7F10069BEF1 /* DataAnalysisView.swift in Sources */,
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
 				09BD521B2B44F45500EC347E /* MatchController.swift in Sources */,
 				09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */,
-				09BD52272B46456D00EC347E /* DoublesNameAndScore.swift in Sources */,
-				09BD52232B45987500EC347E /* Buttons.swift in Sources */,
+				09BD52272B46456D00EC347E /* AllNameAndScoreArea.swift in Sources */,
+				09BD52232B45987500EC347E /* PointinputBtns.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
 				0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */,
-				09BD521D2B44FEE400EC347E /* SelectPositionArea.swift in Sources */,
+				09BD521D2B44FEE400EC347E /* SnglsSelectPositionArea.swift in Sources */,
 				0927E1092B41A8680069BEF1 /* DateArrayArea.swift in Sources */,
 				0927E10F2B41A8CC0069BEF1 /* WinLoseArrayArea.swift in Sources */,
 				0927E1112B41A8F40069BEF1 /* HomeGraphData.swift in Sources */,
@@ -619,6 +626,7 @@
 				09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */,
 				09BC06F92B43A389008A44FD /* PointInputView.swift in Sources */,
 				09BC06FD2B443736008A44FD /* NameAndScoreArea.swift in Sources */,
+				09BD52292B46C4D600EC347E /* DblsSelectPositionArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 import SwiftUI
-struct MatchView: View {
+struct MatchTabView: View {
     @Binding var gameType: String
     init(gameType: Binding<String>) {
         self._gameType = gameType
@@ -11,17 +11,17 @@ struct MatchView: View {
     }
 
     var body: some View {
-            TabView {
-                PointInputView(gameType:$gameType).tabItem {
-                    Text("ポイント入力")
-                    Image(systemName: "hand.point.up")
-                }
-                RealTimeDataView().tabItem {
-                    Text("リアルタイムデータ")
-                    Image(systemName: "gauge.with.dots.needle.67percent")
-                }
+        TabView {
+            PointInputView(gameType:$gameType).tabItem {
+                Text("ポイント入力")
+                Image(systemName: "hand.point.up")
             }
-            .accentColor(.white)
+            RealTimeDataView().tabItem {
+                Text("リアルタイムデータ")
+                Image(systemName: "gauge.with.dots.needle.67percent")
+            }
+        }
+        .accentColor(.white)
     }
 }
 

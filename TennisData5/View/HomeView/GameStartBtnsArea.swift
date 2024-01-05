@@ -14,7 +14,6 @@ struct GameStartBtnsArea: View {
             HStack(spacing:1){
                 PointGameFromCoach()
                 SetMatchFromCoach()
-                
             }
         }
     }
@@ -37,7 +36,7 @@ struct SinglesPointGameBtn: View {
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchView(gameType: $gameType)
+            MatchTabView(gameType: $gameType)
         }
     }
 }
@@ -58,7 +57,7 @@ struct DoublesPointgameBtn: View {
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchView(gameType: $gameType)
+            MatchTabView(gameType: $gameType)
         }
     }
 }

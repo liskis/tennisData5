@@ -10,7 +10,7 @@ struct PointBtnArea:View {
                     LostPointBtn()
                 }
                 HStack(spacing:40){
-                    MyWinnerBtn()
+                    MyTeamWinnerBtn()
                     OpponentWinerBtn()
                 }
                 HStack(spacing:40){

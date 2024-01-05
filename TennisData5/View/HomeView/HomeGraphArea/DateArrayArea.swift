@@ -1,9 +1,10 @@
 import Foundation
 import SwiftUI
 struct DateArrayArea: View {
+    let ctl = HomeController()
     var body: some View {
         HStack{
-            ForEach(HomeController.firstServIn){ dataRow in
+            ForEach(ctl.firstServIn){ dataRow in
                 Spacer()
                 Text("\(dataRow.dateString)")
                     .font(.custom("Verdana",size:10))

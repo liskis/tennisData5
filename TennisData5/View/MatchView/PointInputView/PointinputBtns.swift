@@ -63,12 +63,12 @@ struct LostPointBtnStyle: ButtonStyle {
           .cornerRadius(5)
     }
 }
-struct MyWinnerBtn: View {
+struct MyTeamWinnerBtn: View {
     var body: some View {
         Button(action: {
             // action
         }) {
-            Text("自分が決めた")
+            Text("自分たちが決めた")
             .frame(maxWidth: .infinity, maxHeight: 15)
         }
         .padding(.leading, 10)
