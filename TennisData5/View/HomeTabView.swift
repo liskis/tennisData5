@@ -1,5 +1,5 @@
 import SwiftUI
-struct ContentView: View {
+struct HomeTabView: View {
     init() {
         let contentViewAp: UITabBarAppearance = UITabBarAppearance()
         contentViewAp.backgroundColor = .black
@@ -27,5 +27,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }

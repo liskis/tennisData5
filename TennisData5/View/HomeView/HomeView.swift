@@ -1,5 +1,6 @@
 import SwiftUI
 struct HomeView: View {
+    let ctl = HomeController()
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -17,7 +18,7 @@ struct HomeView: View {
                         Spacer().frame(height: 10)
                         StatsDataArea()
                         Spacer().frame(height: 20)
-                        HomeGraphArea()
+                        HomeGraphArea(data1:ctl.$data1,data2:ctl.$data2)
                         WinLoseArrayArea()
                         DateArrayArea()
                         Spacer().frame(height: 10)
@@ -38,7 +39,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }
 
 

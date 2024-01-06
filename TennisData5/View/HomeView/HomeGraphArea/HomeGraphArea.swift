@@ -2,20 +2,12 @@ import SwiftUI
 import Charts
 
 struct HomeGraphArea: View {
+    @Binding var data1: [LineGraphData]
+    @Binding var data2: [LineGraphData]
     let ctl = HomeController()
-    func minAxis() -> Int{
-        var minData: Int = 100
-        for data in ctl.firstServIn {
-            minData = data.stats < minData ? data.stats : minData
-        }
-        for data in ctl.secondServeIn {
-            minData = data.stats < minData ? data.stats : minData
-        }
-        return minData - 10
-    }
     var body: some View {
         Chart {
-            ForEach(ctl.firstServIn){ dataRow in
+            ForEach(data1){ dataRow in
                 LineMark(
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
@@ -37,7 +29,7 @@ struct HomeGraphArea: View {
                 .symbol(by: .value("Category", dataRow.category))
                 .symbolSize(100)
             }
-            ForEach(ctl.secondServeIn){ dataRow in
+            ForEach(data2){ dataRow in
                 LineMark(
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
@@ -62,21 +54,21 @@ struct HomeGraphArea: View {
         }
         .frame(height: 200)
         .chartForegroundStyleScale([
-            "1stServeIn": .orange,
-            "2ndServeIn": .red
+            "data1": .orange,
+            "data2": .red
         ])
         .chartSymbolScale([
-            "1stServeIn": Circle().strokeBorder(lineWidth: 5),
-            "2ndServeIn": Circle().strokeBorder(lineWidth: 5)
+            "data1": Circle().strokeBorder(lineWidth: 5),
+            "data2": Circle().strokeBorder(lineWidth: 5)
         ])
         .chartXAxis(.hidden)
         .chartYAxis(.hidden)
-        .chartYScale(domain: [minAxis(), 100])
+        .chartYScale(domain: [ctl.minAxis(data1: data1,data2: data2), 100])
         .chartLegend(.hidden)
     }
 }
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }
 

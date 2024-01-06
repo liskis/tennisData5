@@ -78,7 +78,7 @@ struct PointInputView: View {
 
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }
 
 

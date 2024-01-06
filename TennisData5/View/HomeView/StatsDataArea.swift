@@ -112,5 +112,5 @@ struct SecondServeRate: View {
 }
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }

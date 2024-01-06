@@ -1,10 +1,3 @@
-//
-//  PointInputController.swift
-//  TennisData5
-//
-//  Created by 渡辺健輔 on 2024/01/02.
-//
-
 import Foundation
 
 class PointInputController {

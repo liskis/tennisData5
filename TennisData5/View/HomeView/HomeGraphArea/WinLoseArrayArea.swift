@@ -35,5 +35,5 @@ struct LoseText:View {
     }
 }
 #Preview {
-    ContentView()
+    HomeTabView()
 }

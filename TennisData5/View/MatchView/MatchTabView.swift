@@ -9,7 +9,6 @@ struct MatchTabView: View {
         UITabBar.appearance().standardAppearance = contentViewAp
         UITabBar.appearance().unselectedItemTintColor = UIColor.gray
     }
-
     var body: some View {
         TabView {
             PointInputView(gameType:$gameType).tabItem {
@@ -27,5 +26,5 @@ struct MatchTabView: View {
 
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }

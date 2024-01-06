@@ -1,6 +1,6 @@
 import Foundation
 import SwiftUI
-struct HomeGraphData: Identifiable {
+struct LineGraphData: Identifiable {
     var id: String = UUID().uuidString
     var dateString: String
     var stats: Int

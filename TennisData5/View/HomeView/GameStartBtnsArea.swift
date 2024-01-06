@@ -147,5 +147,5 @@ struct DisabledBtnStyle: ButtonStyle {
 }
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }

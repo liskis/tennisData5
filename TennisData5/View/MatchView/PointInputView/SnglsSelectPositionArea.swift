@@ -16,5 +16,5 @@ struct SnglsSelectPositionArea: View {
 
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }

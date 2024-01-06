@@ -257,5 +257,5 @@ struct SelectPositionBtnStyle: ButtonStyle {
 }
 
 #Preview {
-    ContentView()
+    HomeTabView()
 }
