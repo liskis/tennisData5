@@ -1,10 +1,10 @@
 import Foundation
 import SwiftUI
 struct DateArrayArea: View {
-    let ctl = HomeController()
+    @Binding var data1: [LineGraphData]
     var body: some View {
         HStack{
-            ForEach(ctl.data1){ dataRow in
+            ForEach(data1){ dataRow in
                 Spacer()
                 Text("\(dataRow.dateString)")
                     .font(.custom("Verdana",size:10))
