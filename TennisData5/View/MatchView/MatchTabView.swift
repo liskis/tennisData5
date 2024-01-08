@@ -1,7 +1,9 @@
 import SwiftUI
 struct MatchTabView: View {
-    @Binding var gameType: String
-    init(gameType: Binding<String>) {
+    @Binding var matchFormat: MatchFormat
+    @Binding var gameType: GameType
+    init(matchFormat: Binding<MatchFormat>,gameType: Binding<GameType>) {
+        self._matchFormat = matchFormat
         self._gameType = gameType
         let contentViewAp: UITabBarAppearance = UITabBarAppearance()
         contentViewAp.backgroundColor = .black
@@ -11,9 +13,12 @@ struct MatchTabView: View {
     }
     var body: some View {
         TabView {
-            PointInputView(gameType:$gameType).tabItem {
-                Text("ポイント入力")
-                Image(systemName: "hand.point.up")
+            if matchFormat == .singles && gameType == .pointGame {
+                SnglsPintGmPointInputView()
+                    .tabItem {
+                        Text("ポイント入力")
+                        Image(systemName: "hand.point.up")
+                    }
             }
             RealTimeDataView().tabItem {
                 Text("リアルタイムデータ")

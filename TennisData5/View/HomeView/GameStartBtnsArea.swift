@@ -21,7 +21,8 @@ struct GameStartBtnsArea: View {
 
 struct SinglesPointGameBtn: View {
     @State var isPresented: Bool = false
-    @State var gameType: String = "singlesPointGame"
+    @State var gameType: GameType = .pointGame
+    @State var matchFormat: MatchFormat = .singles
     var body: some View {
         Button(action: {
             isPresented = true
@@ -31,18 +32,18 @@ struct SinglesPointGameBtn: View {
                 Text("ポイントゲームを始める")
             }
             .frame(maxWidth: .infinity, minHeight: 30)
-            
         }
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(gameType: $gameType)
+            MatchTabView(matchFormat: $matchFormat, gameType: $gameType)
         }
     }
 }
 struct DoublesPointgameBtn: View {
     @State var isPresented: Bool = false
-    @State var gameType = "doublesPointGame"
+    @State var gameType: GameType = .pointGame
+    @State var matchFormat: MatchFormat = .doubles
     var body: some View {
         Button(action: {
             isPresented = true
@@ -57,7 +58,7 @@ struct DoublesPointgameBtn: View {
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(gameType: $gameType)
+            MatchTabView(matchFormat: $matchFormat, gameType: $gameType)
         }
     }
 }

@@ -1,20 +1,22 @@
 import SwiftUI
 struct NextBtnArea: View {
     @Environment(\.dismiss) var dismiss
+    let ctl = SnglsPintGmPointInputController()
     var body: some View {
         VStack(spacing:1){
             Button(action: {
-                
+                ctl.deleteAll()
             }) {
-                Text("次のゲームへ")
+                Text("データを削除")
                 .frame(maxWidth: .infinity, maxHeight: 15)
             }
             .padding(.horizontal, 10)
             .buttonStyle(NextBtnStyle())
             Button(action: {
-                dismiss()
+//                dismiss()
+                ctl.printAll()
             }) {
-                Text("ポイントゲームを終了する")
+                Text("データを表示")
                 .frame(maxWidth: .infinity, maxHeight: 15)
             }
             .padding(.horizontal, 10)

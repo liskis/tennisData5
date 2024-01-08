@@ -1,21 +1,42 @@
 import SwiftUI
 struct ServerAdvSngls: View {
+    var ctl = SnglsPintGmPointInputController()
+    @State var position: Position = .NoSelection
     var body: some View {
-        Button(action: {
+        if position == .ServerAdv {
+            Button(action: {
                 // action
-        }) {
-            HStack(spacing:0){
-                Spacer()
-                Image("ServerAdvSngls")
-                    .resizable()
-                    .frame(width: 35,height: 35)
-                Text("左のサーバー")
-                    .frame(maxWidth: .infinity, maxHeight: 15)
-                Spacer()
+            }) {
+                HStack(spacing:0){
+                    Spacer()
+                    Image("ServerAdvSngls")
+                        .resizable()
+                        .frame(width: 35,height: 35)
+                    Text("左のサーバー")
+                        .frame(maxWidth: .infinity, maxHeight: 15)
+                    Spacer()
+                }
             }
+            .padding(.leading, 10)
+            .buttonStyle(SinglesSelectPositionBtnStyleDisabled())
+            .disabled(true)
+        } else {
+            Button(action: {
+                self.position = .ServerAdv
+            }) {
+                HStack(spacing:0){
+                    Spacer()
+                    Image("ServerAdvSngls")
+                        .resizable()
+                        .frame(width: 35,height: 35)
+                    Text("左のサーバー")
+                        .frame(maxWidth: .infinity, maxHeight: 15)
+                    Spacer()
+                }
+            }
+            .padding(.leading, 10)
+            .buttonStyle(SinglesSelectPositionBtnStyle())
         }
-        .padding(.leading, 10)
-        .buttonStyle(SelectPositionBtnStyle())
     }
 }
 struct ServerDuceSngls:View {

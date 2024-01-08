@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091AC3D22B4A57D9007E68F0 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3D12B4A57D9007E68F0 /* GameType.swift */; };
+		091AC3D42B4A8AAE007E68F0 /* PointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3D32B4A8AAE007E68F0 /* PointData.swift */; };
+		091AC3D62B4A8C52007E68F0 /* MatchFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3D52B4A8C52007E68F0 /* MatchFormat.swift */; };
+		091AC3D82B4A931F007E68F0 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3D72B4A931F007E68F0 /* Position.swift */; };
+		091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3D92B4A9443007E68F0 /* Server.swift */; };
+		091AC3DC2B4A94E1007E68F0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3DB2B4A94E1007E68F0 /* Service.swift */; };
+		091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */; };
+		091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3DF2B4A961C007E68F0 /* Shot.swift */; };
+		091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3E12B4A96B1007E68F0 /* Whose.swift */; };
+		091AC3E72B4BE15B007E68F0 /* PointInputBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */; };
 		0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */; };
 		0927E0A52B41A6A00069BEF1 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */; };
 		0927E0A72B41A6A20069BEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0927E0A62B41A6A20069BEF1 /* Assets.xcassets */; };
@@ -30,24 +40,26 @@
 		0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10A2B41A88B0069BEF1 /* HomeView.swift */; };
 		0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */; };
 		0927E10F2B41A8CC0069BEF1 /* WinLoseArrayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */; };
-		09AAA8172B4A4B02003CA970 /* LineGraphDataPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AAA8162B4A4B02003CA970 /* LineGraphDataPass.swift */; };
 		09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */; };
-		09BC06F92B43A389008A44FD /* PointInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F82B43A389008A44FD /* PointInputView.swift */; };
-		09BC06FB2B443655008A44FD /* PointInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FA2B443655008A44FD /* PointInputController.swift */; };
-		09BC06FD2B443736008A44FD /* NameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */; };
+		09BC06F92B43A389008A44FD /* SnglspintGmPointInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F82B43A389008A44FD /* SnglspintGmPointInputView.swift */; };
+		09BC06FB2B443655008A44FD /* SnglsPintGmPointInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FA2B443655008A44FD /* SnglsPintGmPointInputController.swift */; };
+		09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */; };
 		09BC07002B444657008A44FD /* MatchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchTabView.swift */; };
 		09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC07012B4447B5008A44FD /* RealTimeDataView.swift */; };
 		09BD521B2B44F45500EC347E /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521A2B44F45500EC347E /* MatchController.swift */; };
-		09BD521D2B44FEE400EC347E /* SnglsSelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521C2B44FEE400EC347E /* SnglsSelectPositionArea.swift */; };
-		09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521E2B45166100EC347E /* PointBtnArea.swift */; };
 		09BD52212B45926000EC347E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52202B45926000EC347E /* HomeController.swift */; };
-		09BD52232B45987500EC347E /* PointinputBtns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52222B45987500EC347E /* PointinputBtns.swift */; };
+		09BD52232B45987500EC347E /* btnStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52222B45987500EC347E /* btnStyles.swift */; };
 		09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52242B463FE500EC347E /* NextBtnArea.swift */; };
 		09BD52272B46456D00EC347E /* AllNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */; };
 		09BD52292B46C4D600EC347E /* DblsSelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */; };
 		09BD522B2B478ACB00EC347E /* SelectPositionBtns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */; };
 		09BD52972B497BF500EC347E /* MyColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52962B497BF500EC347E /* MyColorType.swift */; };
 		09BD52992B49871600EC347E /* LineGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52982B49871600EC347E /* LineGraphData.swift */; };
+		239EB68C67D5C409E04843E8 /* Pods_TennisData5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073DB5AA7DCAA367816279FE /* Pods_TennisData5.framework */; };
+		63112886C1EFA6849A683DAE /* Pods_TennisData5Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */; };
+		73C965FB793AF59B3E32EEA8 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA53CCCF8D00FCE3847E407 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework */; };
+		900D62C7B0A364B850957824 /* Pods_TennisData5_Watch_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45936527676F62360AF96D3 /* Pods_TennisData5_Watch_AppTests.framework */; };
+		A60FEFBAD7E7080A121A0D10 /* Pods_TennisData5_TennisData5UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A8B28FFF78C31F106535BA /* Pods_TennisData5_TennisData5UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +115,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		073DB5AA7DCAA367816279FE /* Pods_TennisData5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		091AC3D12B4A57D9007E68F0 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
+		091AC3D32B4A8AAE007E68F0 /* PointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointData.swift; sourceTree = "<group>"; };
+		091AC3D52B4A8C52007E68F0 /* MatchFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchFormat.swift; sourceTree = "<group>"; };
+		091AC3D72B4A931F007E68F0 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		091AC3D92B4A9443007E68F0 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		091AC3DB2B4A94E1007E68F0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPoint.swift; sourceTree = "<group>"; };
+		091AC3DF2B4A961C007E68F0 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
+		091AC3E12B4A96B1007E68F0 /* Whose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whose.swift; sourceTree = "<group>"; };
+		091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputBtn.swift; sourceTree = "<group>"; };
 		0927E09F2B41A6A00069BEF1 /* TennisData5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisData5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisData5App.swift; sourceTree = "<group>"; };
 		0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
@@ -131,24 +154,35 @@
 		0927E10A2B41A88B0069BEF1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDataArea.swift; sourceTree = "<group>"; };
 		0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLoseArrayArea.swift; sourceTree = "<group>"; };
-		09AAA8162B4A4B02003CA970 /* LineGraphDataPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphDataPass.swift; sourceTree = "<group>"; };
 		09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartBtnsArea.swift; sourceTree = "<group>"; };
-		09BC06F82B43A389008A44FD /* PointInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputView.swift; sourceTree = "<group>"; };
-		09BC06FA2B443655008A44FD /* PointInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputController.swift; sourceTree = "<group>"; };
-		09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScoreArea.swift; sourceTree = "<group>"; };
+		09BC06F82B43A389008A44FD /* SnglspintGmPointInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglspintGmPointInputView.swift; sourceTree = "<group>"; };
+		09BC06FA2B443655008A44FD /* SnglsPintGmPointInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsPintGmPointInputController.swift; sourceTree = "<group>"; };
+		09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNameAndScoreArea.swift; sourceTree = "<group>"; };
 		09BC06FF2B444657008A44FD /* MatchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTabView.swift; sourceTree = "<group>"; };
 		09BC07012B4447B5008A44FD /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
 		09BD521A2B44F45500EC347E /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
-		09BD521C2B44FEE400EC347E /* SnglsSelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsSelectPositionArea.swift; sourceTree = "<group>"; };
-		09BD521E2B45166100EC347E /* PointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBtnArea.swift; sourceTree = "<group>"; };
 		09BD52202B45926000EC347E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		09BD52222B45987500EC347E /* PointinputBtns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointinputBtns.swift; sourceTree = "<group>"; };
+		09BD52222B45987500EC347E /* btnStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btnStyles.swift; sourceTree = "<group>"; };
 		09BD52242B463FE500EC347E /* NextBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBtnArea.swift; sourceTree = "<group>"; };
 		09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNameAndScoreArea.swift; sourceTree = "<group>"; };
 		09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DblsSelectPositionArea.swift; sourceTree = "<group>"; };
 		09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionBtns.swift; sourceTree = "<group>"; };
 		09BD52962B497BF500EC347E /* MyColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorType.swift; sourceTree = "<group>"; };
 		09BD52982B49871600EC347E /* LineGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphData.swift; sourceTree = "<group>"; };
+		1DD891B8B5AC7081C5F0CE99 /* Pods-TennisData5 Watch AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5 Watch AppTests.release.xcconfig"; path = "Target Support Files/Pods-TennisData5 Watch AppTests/Pods-TennisData5 Watch AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43D86F11D09C09DBD154E658 /* Pods-TennisData5 Watch AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5 Watch AppTests.debug.xcconfig"; path = "Target Support Files/Pods-TennisData5 Watch AppTests/Pods-TennisData5 Watch AppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AF2DEA21EC7FFC73F0C71F4 /* Pods-TennisData5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5.release.xcconfig"; path = "Target Support Files/Pods-TennisData5/Pods-TennisData5.release.xcconfig"; sourceTree = "<group>"; };
+		55B1D84AE920A51E4224B0AB /* Pods-TennisData5-TennisData5UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5-TennisData5UITests.release.xcconfig"; path = "Target Support Files/Pods-TennisData5-TennisData5UITests/Pods-TennisData5-TennisData5UITests.release.xcconfig"; sourceTree = "<group>"; };
+		631C4D07D578DB6EC73097F9 /* Pods-TennisData5-TennisData5 Watch AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5-TennisData5 Watch AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TennisData5-TennisData5 Watch AppUITests/Pods-TennisData5-TennisData5 Watch AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		71A8B28FFF78C31F106535BA /* Pods_TennisData5_TennisData5UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5_TennisData5UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89A79B85A0A1C6D9E49A58DC /* Pods-TennisData5Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5Tests.debug.xcconfig"; path = "Target Support Files/Pods-TennisData5Tests/Pods-TennisData5Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C26DA8F12FE0E41596A59D0B /* Pods-TennisData5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5.debug.xcconfig"; path = "Target Support Files/Pods-TennisData5/Pods-TennisData5.debug.xcconfig"; sourceTree = "<group>"; };
+		D241B2756B3D6760FCED04C2 /* Pods-TennisData5Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5Tests.release.xcconfig"; path = "Target Support Files/Pods-TennisData5Tests/Pods-TennisData5Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E1DE1758E970453C0CA1F284 /* Pods-TennisData5-TennisData5 Watch AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5-TennisData5 Watch AppUITests.release.xcconfig"; path = "Target Support Files/Pods-TennisData5-TennisData5 Watch AppUITests/Pods-TennisData5-TennisData5 Watch AppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E45936527676F62360AF96D3 /* Pods_TennisData5_Watch_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5_Watch_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFA53CCCF8D00FCE3847E407 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5_TennisData5_Watch_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8E5D8AE9133F36E1B556480 /* Pods-TennisData5-TennisData5UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5-TennisData5UITests.debug.xcconfig"; path = "Target Support Files/Pods-TennisData5-TennisData5UITests/Pods-TennisData5-TennisData5UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239EB68C67D5C409E04843E8 /* Pods_TennisData5.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63112886C1EFA6849A683DAE /* Pods_TennisData5Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A60FEFBAD7E7080A121A0D10 /* Pods_TennisData5_TennisData5UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900D62C7B0A364B850957824 /* Pods_TennisData5_Watch_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,12 +229,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73C965FB793AF59B3E32EEA8 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		091AC3E52B4AE46F007E68F0 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				091AC3D52B4A8C52007E68F0 /* MatchFormat.swift */,
+				091AC3D92B4A9443007E68F0 /* Server.swift */,
+				091AC3D72B4A931F007E68F0 /* Position.swift */,
+				091AC3DF2B4A961C007E68F0 /* Shot.swift */,
+				091AC3DB2B4A94E1007E68F0 /* Service.swift */,
+				091AC3E12B4A96B1007E68F0 /* Whose.swift */,
+				091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */,
+				091AC3D12B4A57D9007E68F0 /* GameType.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
 		0927E0962B41A69F0069BEF1 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +261,8 @@
 				0927E0DA2B41A6A30069BEF1 /* TennisData5 Watch AppTests */,
 				0927E0E42B41A6A30069BEF1 /* TennisData5 Watch AppUITests */,
 				0927E0A02B41A6A00069BEF1 /* Products */,
+				D26F8F2A97F4C746D4171431 /* Pods */,
+				D11CF3C71DDB29837A6B5097 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -334,11 +390,9 @@
 		09BC06F72B43A36D008A44FD /* PointInputView */ = {
 			isa = PBXGroup;
 			children = (
-				09BD52222B45987500EC347E /* PointinputBtns.swift */,
-				09BC06F82B43A389008A44FD /* PointInputView.swift */,
-				09BC06FC2B443736008A44FD /* NameAndScoreArea.swift */,
-				09BD521C2B44FEE400EC347E /* SnglsSelectPositionArea.swift */,
-				09BD521E2B45166100EC347E /* PointBtnArea.swift */,
+				09BD52222B45987500EC347E /* btnStyles.swift */,
+				09BC06F82B43A389008A44FD /* SnglspintGmPointInputView.swift */,
+				09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */,
 				09BD52242B463FE500EC347E /* NextBtnArea.swift */,
 				09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */,
 				09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */,
@@ -368,7 +422,7 @@
 		09BC07042B447B5E008A44FD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				09BC06FA2B443655008A44FD /* PointInputController.swift */,
+				09BC06FA2B443655008A44FD /* SnglsPintGmPointInputController.swift */,
 				09BD521A2B44F45500EC347E /* MatchController.swift */,
 				09BD52202B45926000EC347E /* HomeController.swift */,
 			);
@@ -378,11 +432,42 @@
 		09BC07052B447BD9008A44FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				091AC3E52B4AE46F007E68F0 /* enum */,
 				09BD52962B497BF500EC347E /* MyColorType.swift */,
 				09BD52982B49871600EC347E /* LineGraphData.swift */,
-				09AAA8162B4A4B02003CA970 /* LineGraphDataPass.swift */,
+				091AC3D32B4A8AAE007E68F0 /* PointData.swift */,
+				091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D11CF3C71DDB29837A6B5097 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				073DB5AA7DCAA367816279FE /* Pods_TennisData5.framework */,
+				E45936527676F62360AF96D3 /* Pods_TennisData5_Watch_AppTests.framework */,
+				EFA53CCCF8D00FCE3847E407 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework */,
+				71A8B28FFF78C31F106535BA /* Pods_TennisData5_TennisData5UITests.framework */,
+				2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D26F8F2A97F4C746D4171431 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C26DA8F12FE0E41596A59D0B /* Pods-TennisData5.debug.xcconfig */,
+				4AF2DEA21EC7FFC73F0C71F4 /* Pods-TennisData5.release.xcconfig */,
+				43D86F11D09C09DBD154E658 /* Pods-TennisData5 Watch AppTests.debug.xcconfig */,
+				1DD891B8B5AC7081C5F0CE99 /* Pods-TennisData5 Watch AppTests.release.xcconfig */,
+				631C4D07D578DB6EC73097F9 /* Pods-TennisData5-TennisData5 Watch AppUITests.debug.xcconfig */,
+				E1DE1758E970453C0CA1F284 /* Pods-TennisData5-TennisData5 Watch AppUITests.release.xcconfig */,
+				F8E5D8AE9133F36E1B556480 /* Pods-TennisData5-TennisData5UITests.debug.xcconfig */,
+				55B1D84AE920A51E4224B0AB /* Pods-TennisData5-TennisData5UITests.release.xcconfig */,
+				89A79B85A0A1C6D9E49A58DC /* Pods-TennisData5Tests.debug.xcconfig */,
+				D241B2756B3D6760FCED04C2 /* Pods-TennisData5Tests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,10 +477,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0927E0EF2B41A6A30069BEF1 /* Build configuration list for PBXNativeTarget "TennisData5" */;
 			buildPhases = (
+				6060DA5D708912799FB79E73 /* [CP] Check Pods Manifest.lock */,
 				0927E09B2B41A69F0069BEF1 /* Sources */,
 				0927E09C2B41A69F0069BEF1 /* Frameworks */,
 				0927E09D2B41A69F0069BEF1 /* Resources */,
 				0927E0EE2B41A6A30069BEF1 /* Embed Watch Content */,
+				710FEE8BEBCE7211751EBCAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -411,6 +498,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0927E0F22B41A6A30069BEF1 /* Build configuration list for PBXNativeTarget "TennisData5Tests" */;
 			buildPhases = (
+				21715A85AA16E947E19C9507 /* [CP] Check Pods Manifest.lock */,
 				0927E0AB2B41A6A20069BEF1 /* Sources */,
 				0927E0AC2B41A6A20069BEF1 /* Frameworks */,
 				0927E0AD2B41A6A20069BEF1 /* Resources */,
@@ -429,9 +517,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0927E0F52B41A6A30069BEF1 /* Build configuration list for PBXNativeTarget "TennisData5UITests" */;
 			buildPhases = (
+				B625F931E3C326D47E446181 /* [CP] Check Pods Manifest.lock */,
 				0927E0B52B41A6A20069BEF1 /* Sources */,
 				0927E0B62B41A6A20069BEF1 /* Frameworks */,
 				0927E0B72B41A6A20069BEF1 /* Resources */,
+				55FBBB734ADACB720019B406 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -464,6 +554,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0927E0F82B41A6A30069BEF1 /* Build configuration list for PBXNativeTarget "TennisData5 Watch AppTests" */;
 			buildPhases = (
+				26D2D9725D37EBA679F348D1 /* [CP] Check Pods Manifest.lock */,
 				0927E0D32B41A6A30069BEF1 /* Sources */,
 				0927E0D42B41A6A30069BEF1 /* Frameworks */,
 				0927E0D52B41A6A30069BEF1 /* Resources */,
@@ -482,9 +573,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0927E0FB2B41A6A30069BEF1 /* Build configuration list for PBXNativeTarget "TennisData5 Watch AppUITests" */;
 			buildPhases = (
+				D236E1475ABC9C48FB500243 /* [CP] Check Pods Manifest.lock */,
 				0927E0DD2B41A6A30069BEF1 /* Sources */,
 				0927E0DE2B41A6A30069BEF1 /* Frameworks */,
 				0927E0DF2B41A6A30069BEF1 /* Resources */,
+				600C9E40A93092E83CA30B82 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -602,38 +695,209 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		21715A85AA16E947E19C9507 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TennisData5Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		26D2D9725D37EBA679F348D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TennisData5 Watch AppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55FBBB734ADACB720019B406 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TennisData5-TennisData5UITests/Pods-TennisData5-TennisData5UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TennisData5-TennisData5UITests/Pods-TennisData5-TennisData5UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TennisData5-TennisData5UITests/Pods-TennisData5-TennisData5UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		600C9E40A93092E83CA30B82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TennisData5-TennisData5 Watch AppUITests/Pods-TennisData5-TennisData5 Watch AppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TennisData5-TennisData5 Watch AppUITests/Pods-TennisData5-TennisData5 Watch AppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TennisData5-TennisData5 Watch AppUITests/Pods-TennisData5-TennisData5 Watch AppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6060DA5D708912799FB79E73 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TennisData5-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		710FEE8BEBCE7211751EBCAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TennisData5/Pods-TennisData5-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TennisData5/Pods-TennisData5-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TennisData5/Pods-TennisData5-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B625F931E3C326D47E446181 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TennisData5-TennisData5UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D236E1475ABC9C48FB500243 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TennisData5-TennisData5 Watch AppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0927E09B2B41A69F0069BEF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0927E1072B41A8430069BEF1 /* HomeGraphArea.swift in Sources */,
+				091AC3E72B4BE15B007E68F0 /* PointInputBtn.swift in Sources */,
 				0927E0A52B41A6A00069BEF1 /* HomeTabView.swift in Sources */,
 				09BD52212B45926000EC347E /* HomeController.swift in Sources */,
 				09BD522B2B478ACB00EC347E /* SelectPositionBtns.swift in Sources */,
 				09BC07002B444657008A44FD /* MatchTabView.swift in Sources */,
-				09AAA8172B4A4B02003CA970 /* LineGraphDataPass.swift in Sources */,
 				0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */,
-				09BC06FB2B443655008A44FD /* PointInputController.swift in Sources */,
+				091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */,
+				09BC06FB2B443655008A44FD /* SnglsPintGmPointInputController.swift in Sources */,
 				09BD52992B49871600EC347E /* LineGraphData.swift in Sources */,
 				0927E1032B41A7F10069BEF1 /* DataAnalysisView.swift in Sources */,
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
+				091AC3DC2B4A94E1007E68F0 /* Service.swift in Sources */,
+				091AC3D62B4A8C52007E68F0 /* MatchFormat.swift in Sources */,
 				09BD521B2B44F45500EC347E /* MatchController.swift in Sources */,
-				09BD521F2B45166100EC347E /* PointBtnArea.swift in Sources */,
+				091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */,
 				09BD52272B46456D00EC347E /* AllNameAndScoreArea.swift in Sources */,
-				09BD52232B45987500EC347E /* PointinputBtns.swift in Sources */,
+				09BD52232B45987500EC347E /* btnStyles.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
 				0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */,
-				09BD521D2B44FEE400EC347E /* SnglsSelectPositionArea.swift in Sources */,
 				0927E1092B41A8680069BEF1 /* DateArrayArea.swift in Sources */,
 				0927E10F2B41A8CC0069BEF1 /* WinLoseArrayArea.swift in Sources */,
 				0927E1052B41A8140069BEF1 /* HomeHeaderBar.swift in Sources */,
+				091AC3D42B4A8AAE007E68F0 /* PointData.swift in Sources */,
 				09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */,
 				09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */,
-				09BC06F92B43A389008A44FD /* PointInputView.swift in Sources */,
-				09BC06FD2B443736008A44FD /* NameAndScoreArea.swift in Sources */,
+				09BC06F92B43A389008A44FD /* SnglspintGmPointInputView.swift in Sources */,
+				091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */,
+				09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */,
+				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
+				091AC3D22B4A57D9007E68F0 /* GameType.swift in Sources */,
 				09BD52972B497BF500EC347E /* MyColorType.swift in Sources */,
+				091AC3D82B4A931F007E68F0 /* Position.swift in Sources */,
 				09BD52292B46C4D600EC347E /* DblsSelectPositionArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -889,6 +1153,7 @@
 		};
 		0927E0F02B41A6A30069BEF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C26DA8F12FE0E41596A59D0B /* Pods-TennisData5.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -922,6 +1187,7 @@
 		};
 		0927E0F12B41A6A30069BEF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AF2DEA21EC7FFC73F0C71F4 /* Pods-TennisData5.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -956,6 +1222,7 @@
 		};
 		0927E0F32B41A6A30069BEF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A79B85A0A1C6D9E49A58DC /* Pods-TennisData5Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -976,6 +1243,7 @@
 		};
 		0927E0F42B41A6A30069BEF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D241B2756B3D6760FCED04C2 /* Pods-TennisData5Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -997,6 +1265,7 @@
 		};
 		0927E0F62B41A6A30069BEF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8E5D8AE9133F36E1B556480 /* Pods-TennisData5-TennisData5UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1016,6 +1285,7 @@
 		};
 		0927E0F72B41A6A30069BEF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55B1D84AE920A51E4224B0AB /* Pods-TennisData5-TennisData5UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1036,6 +1306,7 @@
 		};
 		0927E0F92B41A6A30069BEF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43D86F11D09C09DBD154E658 /* Pods-TennisData5 Watch AppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1056,6 +1327,7 @@
 		};
 		0927E0FA2B41A6A30069BEF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DD891B8B5AC7081C5F0CE99 /* Pods-TennisData5 Watch AppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1077,6 +1349,7 @@
 		};
 		0927E0FC2B41A6A30069BEF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 631C4D07D578DB6EC73097F9 /* Pods-TennisData5-TennisData5 Watch AppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1096,6 +1369,7 @@
 		};
 		0927E0FD2B41A6A30069BEF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1DE1758E970453C0CA1F284 /* Pods-TennisData5-TennisData5 Watch AppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

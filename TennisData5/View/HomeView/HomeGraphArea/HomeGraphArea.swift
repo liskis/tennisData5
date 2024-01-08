@@ -18,12 +18,12 @@ struct HomeGraphArea: View {
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
                 )
-                .annotation(position: .bottomTrailing, alignment: .trailing, spacing: 0) {
+                .annotation(position: .bottomTrailing, alignment: .trailing, spacing: -5) {
                     Text(String(dataRow.stats) + "%")
                         .foregroundColor(.white)
-                        .font(.custom("Verdana",size:10))
+                        .font(.custom("Verdana",size:15))
                         .bold()
-                        .shadow(radius: 10)
+//                        .shadow(radius: 100)
                 }
                 .foregroundStyle(by: .value("Category", dataRow.category))
                 .symbol(by: .value("Category", dataRow.category))
@@ -40,12 +40,12 @@ struct HomeGraphArea: View {
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
                 )
-                .annotation(position: .topLeading, alignment: .trailing, spacing: 0) {
+                .annotation(position: .topLeading, alignment: .trailing, spacing: -5) {
                     Text(String(dataRow.stats) + "%")
                         .foregroundColor(.white)
-                        .font(.custom("Verdana",size:10))
+                        .font(.custom("Verdana",size:15))
                         .bold()
-                        .shadow(radius: 10)
+//                        .shadow(radius: 10)
                 }
                 .foregroundStyle(by: .value("Category", dataRow.category))
                 .symbol(by: .value("Category", dataRow.category))
