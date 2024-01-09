@@ -1,0 +1,6 @@
+framework module Pods_TennisData5_TennisData5_Watch_AppUITests {
+  umbrella header "Pods-TennisData5-TennisData5 Watch AppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
