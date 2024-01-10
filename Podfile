@@ -1,7 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-<<<<<<< HEAD
 #post_install do |installer|
 #  installer.pods_project.targets.each do |target|
 #    if target.name == 'Realm'
@@ -18,8 +17,6 @@
 #  end
 #end
 
-=======
->>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 target 'TennisData5' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -62,7 +59,6 @@ end
   # end
 
 # end
-<<<<<<< HEAD
 
 #post_install do |installer|
 #  installer.pods_project.targets.each do |target|
@@ -72,5 +68,3 @@ end
 #    end
 #  end
 #end
-=======
->>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d

@@ -1,11 +1,7 @@
 import SwiftUI
 struct NextBtnArea: View {
     @Environment(\.dismiss) var dismiss
-<<<<<<< HEAD
     let ctl = PointGameInputController()
-=======
-    let ctl = SnglsPintGmPointInputController()
->>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
     var body: some View {
         VStack(spacing:1){
             Button(action: {

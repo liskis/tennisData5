@@ -23,10 +23,6 @@ class HomeController{
         for data in data2 {
             minData = data.stats < minData ? data.stats : minData
         }
-<<<<<<< HEAD
         return minData - 20
-=======
-        return minData - 10
->>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
     }
 }
