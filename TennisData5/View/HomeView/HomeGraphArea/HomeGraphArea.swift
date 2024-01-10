@@ -18,10 +18,17 @@ struct HomeGraphArea: View {
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
                 )
+<<<<<<< HEAD
                 .annotation(position: .bottom, alignment: .leading, spacing: 0) {
                     Text(String(dataRow.stats) + "%")
                         .foregroundColor(.white)
                         .font(.custom("Verdana",size:17))
+=======
+                .annotation(position: .bottomTrailing, alignment: .trailing, spacing: -5) {
+                    Text(String(dataRow.stats) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:15))
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
                         .bold()
 //                        .shadow(radius: 100)
                 }
@@ -40,10 +47,17 @@ struct HomeGraphArea: View {
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
                 )
+<<<<<<< HEAD
                 .annotation(position: .top, alignment: .trailing, spacing: 0) {
                     Text(String(dataRow.stats) + "%")
                         .foregroundColor(.white)
                         .font(.custom("Verdana",size:17))
+=======
+                .annotation(position: .topLeading, alignment: .trailing, spacing: -5) {
+                    Text(String(dataRow.stats) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:15))
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
                         .bold()
 //                        .shadow(radius: 10)
                 }

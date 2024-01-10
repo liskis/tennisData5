@@ -110,6 +110,12 @@ Dir.mktmpdir do |tmp|
   end
 end
 
+<<<<<<< HEAD
+=======
+# Our normal Xcode 15 xcframework includes visionOS slices build with a beta
+# version of Xcode, but Carthage doesn't like that so we have to build a
+# separate xcframework without visionOS
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 puts 'Creating Carthage release zip'
 Dir.mktmpdir do |tmp|
   tmp = File.realpath tmp

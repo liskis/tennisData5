@@ -4,7 +4,11 @@ struct MyNameAndScoreArea: View {
     @Binding var loseCount: Int
     @Binding var myPoint: Int
     @Binding var opponentPoint: Int
+<<<<<<< HEAD
     let ctl = PointGameInputController()
+=======
+    let ctl = SnglsPintGmPointInputController()
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
     var body: some View {
         HStack{
             Spacer()

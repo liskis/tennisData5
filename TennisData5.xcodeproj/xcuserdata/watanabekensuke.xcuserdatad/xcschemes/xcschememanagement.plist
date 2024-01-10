@@ -7,12 +7,20 @@
 		<key>TennisData5 Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>8</integer>
+=======
+			<integer>7</integer>
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 		</dict>
 		<key>TennisData5.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>7</integer>
+=======
+			<integer>8</integer>
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 		</dict>
 	</dict>
 </dict>

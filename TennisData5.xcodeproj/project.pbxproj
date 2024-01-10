@@ -41,8 +41,13 @@
 		0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */; };
 		0927E10F2B41A8CC0069BEF1 /* WinLoseArrayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */; };
 		09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */; };
+<<<<<<< HEAD
 		09BC06F92B43A389008A44FD /* PointGameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F82B43A389008A44FD /* PointGameInputView.swift */; };
 		09BC06FB2B443655008A44FD /* PointGameInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FA2B443655008A44FD /* PointGameInputController.swift */; };
+=======
+		09BC06F92B43A389008A44FD /* SnglspintGmPointInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F82B43A389008A44FD /* SnglspintGmPointInputView.swift */; };
+		09BC06FB2B443655008A44FD /* SnglsPintGmPointInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FA2B443655008A44FD /* SnglsPintGmPointInputController.swift */; };
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 		09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */; };
 		09BC07002B444657008A44FD /* MatchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchTabView.swift */; };
 		09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC07012B4447B5008A44FD /* RealTimeDataView.swift */; };
@@ -155,8 +160,13 @@
 		0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDataArea.swift; sourceTree = "<group>"; };
 		0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLoseArrayArea.swift; sourceTree = "<group>"; };
 		09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartBtnsArea.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		09BC06F82B43A389008A44FD /* PointGameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGameInputView.swift; sourceTree = "<group>"; };
 		09BC06FA2B443655008A44FD /* PointGameInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGameInputController.swift; sourceTree = "<group>"; };
+=======
+		09BC06F82B43A389008A44FD /* SnglspintGmPointInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglspintGmPointInputView.swift; sourceTree = "<group>"; };
+		09BC06FA2B443655008A44FD /* SnglsPintGmPointInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsPintGmPointInputController.swift; sourceTree = "<group>"; };
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 		09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNameAndScoreArea.swift; sourceTree = "<group>"; };
 		09BC06FF2B444657008A44FD /* MatchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTabView.swift; sourceTree = "<group>"; };
 		09BC07012B4447B5008A44FD /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
@@ -246,7 +256,10 @@
 				091AC3DB2B4A94E1007E68F0 /* Service.swift */,
 				091AC3E12B4A96B1007E68F0 /* Whose.swift */,
 				091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */,
+<<<<<<< HEAD
 				091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */,
+=======
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 				091AC3D12B4A57D9007E68F0 /* GameType.swift */,
 			);
 			path = enum;
@@ -392,7 +405,11 @@
 			isa = PBXGroup;
 			children = (
 				09BD52222B45987500EC347E /* btnStyles.swift */,
+<<<<<<< HEAD
 				09BC06F82B43A389008A44FD /* PointGameInputView.swift */,
+=======
+				09BC06F82B43A389008A44FD /* SnglspintGmPointInputView.swift */,
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 				09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */,
 				09BD52242B463FE500EC347E /* NextBtnArea.swift */,
 				09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */,
@@ -423,7 +440,11 @@
 		09BC07042B447B5E008A44FD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				09BC06FA2B443655008A44FD /* PointGameInputController.swift */,
+=======
+				09BC06FA2B443655008A44FD /* SnglsPintGmPointInputController.swift */,
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 				09BD521A2B44F45500EC347E /* MatchController.swift */,
 				09BD52202B45926000EC347E /* HomeController.swift */,
 			);
@@ -437,6 +458,10 @@
 				09BD52962B497BF500EC347E /* MyColorType.swift */,
 				09BD52982B49871600EC347E /* LineGraphData.swift */,
 				091AC3D32B4A8AAE007E68F0 /* PointData.swift */,
+<<<<<<< HEAD
+=======
+				091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */,
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -872,7 +897,11 @@
 				09BC07002B444657008A44FD /* MatchTabView.swift in Sources */,
 				0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */,
 				091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */,
+<<<<<<< HEAD
 				09BC06FB2B443655008A44FD /* PointGameInputController.swift in Sources */,
+=======
+				09BC06FB2B443655008A44FD /* SnglsPintGmPointInputController.swift in Sources */,
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 				09BD52992B49871600EC347E /* LineGraphData.swift in Sources */,
 				0927E1032B41A7F10069BEF1 /* DataAnalysisView.swift in Sources */,
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
@@ -891,7 +920,11 @@
 				091AC3D42B4A8AAE007E68F0 /* PointData.swift in Sources */,
 				09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */,
 				09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */,
+<<<<<<< HEAD
 				09BC06F92B43A389008A44FD /* PointGameInputView.swift in Sources */,
+=======
+				09BC06F92B43A389008A44FD /* SnglspintGmPointInputView.swift in Sources */,
+>>>>>>> 7f5c7b92233c277265fb174476d2cdc074b1198d
 				091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */,
 				09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */,
 				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
