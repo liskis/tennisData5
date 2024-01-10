@@ -1,7 +1,7 @@
 import SwiftUI
 struct NextBtnArea: View {
     @Environment(\.dismiss) var dismiss
-    let ctl = SnglsPintGmPointInputController()
+    let ctl = PointGameInputController()
     var body: some View {
         VStack(spacing:1){
             Button(action: {

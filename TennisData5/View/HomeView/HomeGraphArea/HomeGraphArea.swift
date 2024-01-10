@@ -18,10 +18,10 @@ struct HomeGraphArea: View {
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
                 )
-                .annotation(position: .bottomTrailing, alignment: .trailing, spacing: -5) {
+                .annotation(position: .bottom, alignment: .leading, spacing: 0) {
                     Text(String(dataRow.stats) + "%")
                         .foregroundColor(.white)
-                        .font(.custom("Verdana",size:15))
+                        .font(.custom("Verdana",size:17))
                         .bold()
 //                        .shadow(radius: 100)
                 }
@@ -40,10 +40,10 @@ struct HomeGraphArea: View {
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
                 )
-                .annotation(position: .topLeading, alignment: .trailing, spacing: -5) {
+                .annotation(position: .top, alignment: .trailing, spacing: 0) {
                     Text(String(dataRow.stats) + "%")
                         .foregroundColor(.white)
-                        .font(.custom("Verdana",size:15))
+                        .font(.custom("Verdana",size:17))
                         .bold()
 //                        .shadow(radius: 10)
                 }

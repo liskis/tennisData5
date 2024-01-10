@@ -29,7 +29,7 @@ struct SinglesPointGameBtn: View {
         }) {
             VStack{
                 Text("シングルスで")
-                Text("ポイントゲームを始める")
+                Text("ポイントゲーム")
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }
@@ -50,7 +50,7 @@ struct DoublesPointgameBtn: View {
         }) {
             VStack{
                 Text("ダブルスで")
-                Text("ポイントゲームを始める")
+                Text("ポイントゲーム")
             }
             .frame(maxWidth: .infinity, minHeight: 30)
             
@@ -68,8 +68,7 @@ struct SetMatchBtn: View {
             // action
         }) {
             VStack{
-                Text("セットマッチを")
-                Text("始める")
+                Text("セットマッチ")
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }
@@ -84,8 +83,7 @@ struct TieBreakBtn: View {
             // action
         }) {
             VStack{
-                Text("タイブレークを")
-                Text("始める")
+                Text("タイブレーク")
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }

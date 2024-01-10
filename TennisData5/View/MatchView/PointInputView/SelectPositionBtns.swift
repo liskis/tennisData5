@@ -1,6 +1,6 @@
 import SwiftUI
 struct ServerAdvSngls: View {
-    var ctl = SnglsPintGmPointInputController()
+    var ctl = PointGameInputController()
     @State var position: Position = .NoSelection
     var body: some View {
         if position == .ServerAdv {

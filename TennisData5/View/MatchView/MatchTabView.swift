@@ -13,8 +13,8 @@ struct MatchTabView: View {
     }
     var body: some View {
         TabView {
-            if matchFormat == .singles && gameType == .pointGame {
-                SnglsPintGmPointInputView()
+            if gameType == .pointGame {
+                PointGameInputView(matchFormat: $matchFormat)
                     .tabItem {
                         Text("ポイント入力")
                         Image(systemName: "hand.point.up")

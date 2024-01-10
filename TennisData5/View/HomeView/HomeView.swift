@@ -24,7 +24,12 @@ struct HomeView: View {
                         Spacer().frame(height: 10)
                         StatsDataArea()
                         Spacer().frame(height: 20)
-                        HomeGraphArea(data1:$data1, data2:$data2)
+                        HStack{
+                            Spacer()
+                            HomeGraphArea(data1:$data1, data2:$data2)
+                            Spacer()
+                        }
+                        
                         WinLoseArrayArea()
                         DateArrayArea(data1:$data1)
                         Spacer().frame(height: 10)

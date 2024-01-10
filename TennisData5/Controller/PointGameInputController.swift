@@ -1,6 +1,6 @@
 import Foundation
 import RealmSwift
-class SnglsPintGmPointInputController {
+class PointGameInputController {
     var pointData = PointData()
     var pointDataList: [PointData] = []
     let userName:String = "わたなべ"
@@ -8,9 +8,9 @@ class SnglsPintGmPointInputController {
     let opponentsName:String = "対戦チーム"
     let inputModeText:String = "アドバンスモード"
     let gametype: GameType = .pointGame
-    let matchFormat: MatchFormat = .singles
     let naviTitle: String = "シングルスポイントゲーム"
     func scoreRecord(
+        matchFormat: MatchFormat,
         pointInputBtn: PointInputBtn,
         service: Service,
         position: Position,
@@ -49,9 +49,7 @@ class SnglsPintGmPointInputController {
     func printAll(){
         let realm = try! Realm()
         let result = realm.objects(PointData.self)
-        for data in result {
-            print(data)
-        }
+        print(result)
     }
 }
 

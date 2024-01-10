@@ -1,11 +1,12 @@
 import Foundation
 import SwiftUI
-struct SnglsPintGmPointInputView: View {
-    let ctl = SnglsPintGmPointInputController()
+struct PointGameInputView: View {
+    let ctl = PointGameInputController()
     let matchId:String = UUID().uuidString
     let setId: String = UUID().uuidString
     let machStartDate: Date = Date()
     var gameId: String = UUID().uuidString
+    @Binding var matchFormat: MatchFormat
     @State var service: Service = .first
     @State var position: Position = .NoSelection
     @State var winCount:Int = 0
@@ -15,7 +16,8 @@ struct SnglsPintGmPointInputView: View {
     @State var server: Server = .noSelection
     @State var getPoint: GetPoint = .myTeam
     
-    init() {
+    init(matchFormat: Binding<MatchFormat>) {
+        self._matchFormat = matchFormat
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.black
@@ -28,6 +30,7 @@ struct SnglsPintGmPointInputView: View {
         NavigationStack {
             ZStack{
                 Color.gray.ignoresSafeArea()
+                if matchFormat == .singles {
                     VStack(spacing:0){
                         Spacer().frame(height: 10)
                         MyNameAndScoreArea(
@@ -223,11 +226,12 @@ struct SnglsPintGmPointInputView: View {
                                                 opponentPoint += 1
                                                 getPoint = .opponent
                                             } else if position == .ReturnerAdv
-                                                || position == .ReturnerDuce {
+                                                        || position == .ReturnerDuce {
                                                 myPoint += 1
                                                 getPoint = .myTeam
                                             }
                                             ctl.scoreRecord(
+                                                matchFormat: .singles,
                                                 pointInputBtn: .doubleFault,
                                                 service: service,
                                                 position: position,
@@ -253,7 +257,7 @@ struct SnglsPintGmPointInputView: View {
                                                 // action
                                             }) {
                                                 Text("ポイントをとった")
-                                                .frame(maxWidth: .infinity, maxHeight: 15)
+                                                    .frame(maxWidth: .infinity, maxHeight: 15)
                                             }
                                             .padding(.leading, 10)
                                             .buttonStyle(GetPointBtnStyle())
@@ -261,7 +265,7 @@ struct SnglsPintGmPointInputView: View {
                                                 // action
                                             }) {
                                                 Text("ポイントをとられた")
-                                                .frame(maxWidth: .infinity, maxHeight: 15)
+                                                    .frame(maxWidth: .infinity, maxHeight: 15)
                                             }
                                             .padding(.trailing, 10)
                                             .buttonStyle(LostPointBtnStyle())
@@ -271,7 +275,7 @@ struct SnglsPintGmPointInputView: View {
                                                 // action
                                             }) {
                                                 Text("自分たちが決めた")
-                                                .frame(maxWidth: .infinity, maxHeight: 15)
+                                                    .frame(maxWidth: .infinity, maxHeight: 15)
                                             }
                                             .padding(.leading, 10)
                                             .buttonStyle(MyWinnerBtnStyle())
@@ -280,7 +284,7 @@ struct SnglsPintGmPointInputView: View {
                                                 // action
                                             }) {
                                                 Text("相手が決めた")
-                                                .frame(maxWidth: .infinity, maxHeight: 15)
+                                                    .frame(maxWidth: .infinity, maxHeight: 15)
                                             }
                                             .padding(.trailing, 10)
                                             .buttonStyle(OpponentWinerBtnStyle())
@@ -291,7 +295,7 @@ struct SnglsPintGmPointInputView: View {
                                                 // action
                                             }) {
                                                 Text("相手のミス")
-                                                .frame(maxWidth: .infinity, maxHeight: 15)
+                                                    .frame(maxWidth: .infinity, maxHeight: 15)
                                             }
                                             .padding(.leading, 10)
                                             .buttonStyle(OpponetMissBtnStyle())
@@ -300,7 +304,7 @@ struct SnglsPintGmPointInputView: View {
                                                 // action
                                             }) {
                                                 Text("自分のミス")
-                                                .frame(maxWidth: .infinity, maxHeight: 15)
+                                                    .frame(maxWidth: .infinity, maxHeight: 15)
                                             }
                                             .padding(.trailing, 10)
                                             .buttonStyle(MyMissBtnStyle())
@@ -310,9 +314,10 @@ struct SnglsPintGmPointInputView: View {
                                 }
                                 Spacer().frame(height: 10)
                                 NextBtnArea()
+                            }
                         }
-                    }
-                } 
+                    } 
+                }
             }
             .navigationBarTitle(
                 ctl.naviTitle,
