@@ -3,6 +3,7 @@ import RealmSwift
 class PointGameInputController {
     var pointData = PointData()
     var pointDataList: [PointData] = []
+    
     let userName:String = "わたなべ"
     let opponentName:String = "対戦相手"
     let opponentsName:String = "対戦チーム"
@@ -36,6 +37,19 @@ class PointGameInputController {
             pointData.pointDateTime = Date()
             realm.add(pointData)
         }
+    }
+    
+    func naviTitle(matchFormat: MatchFormat) -> String{
+        var naviTitle: String
+        switch matchFormat {
+        case .singles:
+            naviTitle = "シングルスポイントゲーム"
+        case .doubles:
+            naviTitle = "ダブルスポイントゲーム"
+        case .noSelection:
+            naviTitle = ""
+        }
+        return naviTitle
     }
     
     func deleteAll(){
