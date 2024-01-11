@@ -49,7 +49,7 @@ struct DoubleFaultBtnStyle: ButtonStyle {
 struct GetPointBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
-        .padding()
+        .padding(8)
         .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
         .background(configuration.isPressed ? Color.primary : Color.red)
         .cornerRadius(5)
@@ -59,7 +59,7 @@ struct GetPointBtnStyle: ButtonStyle {
 struct LostPointBtnStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
-          .padding()
+          .padding(8)
           .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
           .background(configuration.isPressed ? Color.primary : Color.blue)
           .cornerRadius(5)
@@ -104,4 +104,7 @@ struct MyMissBtnStyle: ButtonStyle {
           .background(configuration.isPressed ? Color.primary : Color.gray)
           .cornerRadius(5)
     }
+}
+#Preview {
+    HomeTabView()
 }

@@ -15,10 +15,6 @@ struct SinglesPointGame: View {
     @State var opponentPoint:Int = 0
     @State var server: Server = .noSelection
     @State var getPoint: GetPoint = .myTeam
-    
-//    init(matchFormat: Binding<MatchFormat>) {
-//        self._matchFormat = matchFormat
-//    }
     var body: some View {
         VStack(spacing:0){
             Spacer().frame(height: 10)
@@ -220,7 +216,7 @@ struct SinglesPointGame: View {
                                     getPoint = .myTeam
                                 }
                                 ctl.scoreRecord(
-                                    matchFormat: .singles,
+                                    matchFormat: matchFormat,
                                     pointInputBtn: .doubleFault,
                                     service: service,
                                     position: position,
@@ -243,18 +239,45 @@ struct SinglesPointGame: View {
                         VStack(spacing:1){
                             HStack(spacing:40){
                                 Button(action: {
-                                    // action
+                                    if position != .NoSelection {
+                                        myPoint += 1
+                                        getPoint = .myTeam
+                                        let result = ctl.scoreRecord(
+                                            matchFormat: matchFormat,
+                                            pointInputBtn: .doubleFault,
+                                            service: service,
+                                            position: position,
+                                            matchId: matchId,
+                                            setId: setId,
+                                            gameId: gameId,
+                                            server: server,
+                                            getPoint: getPoint
+                                        )
+                                        position = .NoSelection
+                                        service = .first
+                                        myPoint = result["myPoint"] ?? 0
+                                        opponentPoint = result["opponentPoint"] ?? 0
+                                    }
                                 }) {
-                                    Text("ポイントをとった")
-                                        .frame(maxWidth: .infinity, maxHeight: 15)
+                                    VStack(spacing:1){
+                                        Text("ポイントを")
+                                            .frame(maxWidth: .infinity, maxHeight: 15)
+                                        Text("とった")
+                                            .frame(maxWidth: .infinity, maxHeight: 15)
+                                    }
                                 }
                                 .padding(.leading, 10)
                                 .buttonStyle(GetPointBtnStyle())
                                 Button(action: {
                                     // action
                                 }) {
-                                    Text("ポイントをとられた")
-                                        .frame(maxWidth: .infinity, maxHeight: 15)
+                                    VStack(spacing:1){
+                                        Text("ポイントを")
+                                            .frame(maxWidth: .infinity, maxHeight: 15)
+                                        Text("とられた")
+                                            .frame(maxWidth: .infinity, maxHeight: 15)
+                                    }
+                                    
                                 }
                                 .padding(.trailing, 10)
                                 .buttonStyle(LostPointBtnStyle())
@@ -307,4 +330,7 @@ struct SinglesPointGame: View {
             }
         }
     }
+}
+#Preview {
+    HomeTabView()
 }

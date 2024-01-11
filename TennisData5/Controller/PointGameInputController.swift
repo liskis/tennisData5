@@ -3,7 +3,6 @@ import RealmSwift
 class PointGameInputController {
     var pointData = PointData()
     var pointDataList: [PointData] = []
-    
     let userName:String = "わたなべ"
     let opponentName:String = "対戦相手"
     let opponentsName:String = "対戦チーム"
@@ -20,10 +19,11 @@ class PointGameInputController {
         gameId: String,
         server: Server,
         getPoint: GetPoint
-    ){
+    ) -> [String: Int] {
+        let pointId = UUID().uuidString
         let realm = try! Realm()
         try! realm.write {
-            pointData.id = UUID().uuidString
+            pointData.id = pointId
             pointData.machId = matchId
             pointData.setId = setId
             pointData.gameId = gameId
@@ -37,6 +37,17 @@ class PointGameInputController {
             pointData.pointDateTime = Date()
             realm.add(pointData)
         }
+        let gameResult = realm.objects(PointData.self).filter("matchId == \(matchId) AND setId == \(setId) AND gameId == \(gameId)")
+        var myPoint: Int = 0
+        var opponentPoint: Int = 0
+        for point in gameResult {
+            if point.getPoint == "myTeam" {
+                myPoint += 1
+            } else {
+                opponentPoint += 1
+            }
+        }
+        return ["myPoint":myPoint,"opponentPoint":opponentPoint]
     }
     
     func naviTitle(matchFormat: MatchFormat) -> String{
