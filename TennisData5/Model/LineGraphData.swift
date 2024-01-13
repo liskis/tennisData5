@@ -4,4 +4,5 @@ struct LineGraphData: Identifiable {
     var dateString: String
     var stats: Int
     var category: String
+    var issue: Issue
 }

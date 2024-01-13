@@ -3,16 +3,14 @@ struct WinLoseArrayArea: View {
     var body: some View {
         HStack{
             Spacer()
-            WinText()
-            Spacer()
-            WinText()
-            Spacer()
-            LoseText()
-            Spacer()
-            LoseText()
-            Spacer()
-            WinText()
-            Spacer()
+            ForEach(HomeGraphData.data1){ data in
+                if data.issue == .Win {
+                    WinText()
+                } else {
+                    LoseText()
+                }
+                Spacer()
+            }
         }
     }
 }
@@ -22,7 +20,7 @@ struct WinText:View {
             .font(.custom("Verdana",size:23))
             .bold()
             .foregroundColor(.red)
-            .shadow(color: .black, radius: 2)
+            .shadow(color: .white, radius: 2)
     }
 }
 struct LoseText:View {
@@ -31,7 +29,7 @@ struct LoseText:View {
             .font(.custom("Verdana",size:23))
             .bold()
             .foregroundColor(.blue)
-            .shadow(color: .black, radius: 2)
+            .shadow(color: .white, radius: 2)
     }
 }
 #Preview {

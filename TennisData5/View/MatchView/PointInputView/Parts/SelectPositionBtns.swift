@@ -1,7 +1,6 @@
 import SwiftUI
 struct ServerAdvSngls: View {
-    var ctl = PointGameInputController()
-    @State var position: Position = .NoSelection
+    var position: Position = .NoSelection
     var body: some View {
         if position == .ServerAdv {
             Button(action: {
@@ -22,7 +21,7 @@ struct ServerAdvSngls: View {
             .disabled(true)
         } else {
             Button(action: {
-                self.position = .ServerAdv
+                // action
             }) {
                 HStack(spacing:0){
                     Spacer()

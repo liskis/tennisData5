@@ -1,12 +1,5 @@
 import SwiftUI
 struct HomeView: View {
-    let ctl = HomeController()
-    @State var data1:[LineGraphData]
-    @State var data2:[LineGraphData]
-    init(){
-        data1 = ctl.data1
-        data2 = ctl.data2
-    }
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -23,15 +16,15 @@ struct HomeView: View {
                     VStack{
                         Spacer().frame(height: 10)
                         StatsDataArea()
-                        Spacer().frame(height: 20)
+                        Spacer().frame(height: 50)
                         HStack{
                             Spacer()
-                            HomeGraphArea(data1:$data1, data2:$data2)
+                            HomeGraphArea()
                             Spacer()
                         }
                         
                         WinLoseArrayArea()
-                        DateArrayArea(data1:$data1)
+                        DateArrayArea()
                         Spacer().frame(height: 10)
                         ZStack{
                             Color.white.ignoresSafeArea()

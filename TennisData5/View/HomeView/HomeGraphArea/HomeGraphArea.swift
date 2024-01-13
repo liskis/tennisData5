@@ -2,12 +2,9 @@ import SwiftUI
 import Charts
 
 struct HomeGraphArea: View {
-    @Binding var data1: [LineGraphData]
-    @Binding var data2: [LineGraphData]
-    let ctl = HomeController()
     var body: some View {
         Chart {
-            ForEach(data1){ dataRow in
+            ForEach(HomeGraphData.data1){ dataRow in
                 LineMark(
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
@@ -23,13 +20,13 @@ struct HomeGraphArea: View {
                         .foregroundColor(.white)
                         .font(.custom("Verdana",size:17))
                         .bold()
-//                        .shadow(radius: 100)
+                        .shadow(color: .black, radius: 5)
                 }
                 .foregroundStyle(by: .value("Category", dataRow.category))
                 .symbol(by: .value("Category", dataRow.category))
                 .symbolSize(100)
             }
-            ForEach(data2){ dataRow in
+            ForEach(HomeGraphData.data2){ dataRow in
                 LineMark(
                     x: .value("日付", dataRow.dateString),
                     y: .value("Stats", dataRow.stats)
@@ -45,7 +42,7 @@ struct HomeGraphArea: View {
                         .foregroundColor(.white)
                         .font(.custom("Verdana",size:17))
                         .bold()
-//                        .shadow(radius: 10)
+                        .shadow(color: .black, radius: 5)
                 }
                 .foregroundStyle(by: .value("Category", dataRow.category))
                 .symbol(by: .value("Category", dataRow.category))
@@ -63,7 +60,7 @@ struct HomeGraphArea: View {
         ])
         .chartXAxis(.hidden)
         .chartYAxis(.hidden)
-        .chartYScale(domain: [ctl.minAxis(data1: data1, data2: data2), 100])
+        .chartYScale(domain: [HomeGraphData.minAxis(), 100])
         .chartLegend(.hidden)
     }
 }

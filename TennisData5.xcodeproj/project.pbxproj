@@ -40,21 +40,26 @@
 		0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10A2B41A88B0069BEF1 /* HomeView.swift */; };
 		0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */; };
 		0927E10F2B41A8CC0069BEF1 /* WinLoseArrayArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */; };
+		092B2B3C2B5177620046BDBF /* PointInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B3B2B5177620046BDBF /* PointInputModel.swift */; };
+		092B2B3E2B5239360046BDBF /* SinglesPositionBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B3D2B5239360046BDBF /* SinglesPositionBtnArea.swift */; };
+		092B2B402B523BE80046BDBF /* SinglesPointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B3F2B523BE80046BDBF /* SinglesPointBtnArea.swift */; };
 		09806D272B4F692B007638B7 /* SinglesPointGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09806D262B4F692B007638B7 /* SinglesPointGame.swift */; };
+		09992D4C2B5132200049B877 /* HomeGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeGraphData.swift */; };
+		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
+		09992D502B513C1F0049B877 /* PointInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4F2B513C1F0049B877 /* PointInputData.swift */; };
+		09992D532B5141250049B877 /* SinglesSetMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D522B5141250049B877 /* SinglesSetMatch.swift */; };
+		09992D552B5141410049B877 /* SinglesTieBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D542B5141410049B877 /* SinglesTieBreak.swift */; };
+		09992D572B5141560049B877 /* DoublesPointGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D562B5141560049B877 /* DoublesPointGame.swift */; };
+		09992D592B5141650049B877 /* DoublesSetMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D582B5141650049B877 /* DoublesSetMath.swift */; };
+		09992D5B2B51417B0049B877 /* DoublesTieBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D5A2B51417B0049B877 /* DoublesTieBreak.swift */; };
 		09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */; };
-		09BC06F92B43A389008A44FD /* PointGameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F82B43A389008A44FD /* PointGameInputView.swift */; };
-		09BC06FB2B443655008A44FD /* PointGameInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FA2B443655008A44FD /* PointGameInputController.swift */; };
 		09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */; };
 		09BC07002B444657008A44FD /* MatchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchTabView.swift */; };
 		09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC07012B4447B5008A44FD /* RealTimeDataView.swift */; };
-		09BD521B2B44F45500EC347E /* MatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD521A2B44F45500EC347E /* MatchController.swift */; };
-		09BD52212B45926000EC347E /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52202B45926000EC347E /* HomeController.swift */; };
 		09BD52232B45987500EC347E /* btnStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52222B45987500EC347E /* btnStyles.swift */; };
 		09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52242B463FE500EC347E /* NextBtnArea.swift */; };
-		09BD52272B46456D00EC347E /* AllNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */; };
 		09BD52292B46C4D600EC347E /* DblsSelectPositionArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */; };
 		09BD522B2B478ACB00EC347E /* SelectPositionBtns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */; };
-		09BD52972B497BF500EC347E /* MyColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52962B497BF500EC347E /* MyColorType.swift */; };
 		09BD52992B49871600EC347E /* LineGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52982B49871600EC347E /* LineGraphData.swift */; };
 		239EB68C67D5C409E04843E8 /* Pods_TennisData5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073DB5AA7DCAA367816279FE /* Pods_TennisData5.framework */; };
 		63112886C1EFA6849A683DAE /* Pods_TennisData5Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */; };
@@ -155,21 +160,26 @@
 		0927E10A2B41A88B0069BEF1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDataArea.swift; sourceTree = "<group>"; };
 		0927E10E2B41A8CC0069BEF1 /* WinLoseArrayArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLoseArrayArea.swift; sourceTree = "<group>"; };
+		092B2B3B2B5177620046BDBF /* PointInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputModel.swift; sourceTree = "<group>"; };
+		092B2B3D2B5239360046BDBF /* SinglesPositionBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesPositionBtnArea.swift; sourceTree = "<group>"; };
+		092B2B3F2B523BE80046BDBF /* SinglesPointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesPointBtnArea.swift; sourceTree = "<group>"; };
 		09806D262B4F692B007638B7 /* SinglesPointGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesPointGame.swift; sourceTree = "<group>"; };
+		09992D4B2B5132200049B877 /* HomeGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGraphData.swift; sourceTree = "<group>"; };
+		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		09992D4F2B513C1F0049B877 /* PointInputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputData.swift; sourceTree = "<group>"; };
+		09992D522B5141250049B877 /* SinglesSetMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesSetMatch.swift; sourceTree = "<group>"; };
+		09992D542B5141410049B877 /* SinglesTieBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesTieBreak.swift; sourceTree = "<group>"; };
+		09992D562B5141560049B877 /* DoublesPointGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublesPointGame.swift; sourceTree = "<group>"; };
+		09992D582B5141650049B877 /* DoublesSetMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublesSetMath.swift; sourceTree = "<group>"; };
+		09992D5A2B51417B0049B877 /* DoublesTieBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublesTieBreak.swift; sourceTree = "<group>"; };
 		09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartBtnsArea.swift; sourceTree = "<group>"; };
-		09BC06F82B43A389008A44FD /* PointGameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGameInputView.swift; sourceTree = "<group>"; };
-		09BC06FA2B443655008A44FD /* PointGameInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGameInputController.swift; sourceTree = "<group>"; };
 		09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNameAndScoreArea.swift; sourceTree = "<group>"; };
 		09BC06FF2B444657008A44FD /* MatchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTabView.swift; sourceTree = "<group>"; };
 		09BC07012B4447B5008A44FD /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
-		09BD521A2B44F45500EC347E /* MatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchController.swift; sourceTree = "<group>"; };
-		09BD52202B45926000EC347E /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		09BD52222B45987500EC347E /* btnStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = btnStyles.swift; sourceTree = "<group>"; };
 		09BD52242B463FE500EC347E /* NextBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBtnArea.swift; sourceTree = "<group>"; };
-		09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNameAndScoreArea.swift; sourceTree = "<group>"; };
 		09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DblsSelectPositionArea.swift; sourceTree = "<group>"; };
 		09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPositionBtns.swift; sourceTree = "<group>"; };
-		09BD52962B497BF500EC347E /* MyColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorType.swift; sourceTree = "<group>"; };
 		09BD52982B49871600EC347E /* LineGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphData.swift; sourceTree = "<group>"; };
 		1DD891B8B5AC7081C5F0CE99 /* Pods-TennisData5 Watch AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5 Watch AppTests.release.xcconfig"; path = "Target Support Files/Pods-TennisData5 Watch AppTests/Pods-TennisData5 Watch AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +251,7 @@
 		091AC3E52B4AE46F007E68F0 /* enum */ = {
 			isa = PBXGroup;
 			children = (
+				09992D4D2B5134BE0049B877 /* Issue.swift */,
 				091AC3D52B4A8C52007E68F0 /* MatchFormat.swift */,
 				091AC3D92B4A9443007E68F0 /* Server.swift */,
 				091AC3D72B4A931F007E68F0 /* Position.swift */,
@@ -285,8 +296,9 @@
 		0927E0A12B41A6A00069BEF1 /* TennisData5 */ = {
 			isa = PBXGroup;
 			children = (
+				092B2B3A2B5177370046BDBF /* ViewModel */,
+				09992D4A2B5132050049B877 /* Data */,
 				09BC07052B447BD9008A44FD /* Model */,
-				09BC07042B447B5E008A44FD /* Controller */,
 				0927E0FE2B41A7390069BEF1 /* View */,
 				0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */,
 				0927E0A62B41A6A20069BEF1 /* Assets.xcassets */,
@@ -390,25 +402,47 @@
 			path = HomeGraphArea;
 			sourceTree = "<group>";
 		};
-		09806D252B4F68CD007638B7 /* PointGame */ = {
+		092B2B392B516A270046BDBF /* Parts */ = {
 			isa = PBXGroup;
 			children = (
-				09BC06F82B43A389008A44FD /* PointGameInputView.swift */,
-				09806D262B4F692B007638B7 /* SinglesPointGame.swift */,
+				09BD52222B45987500EC347E /* btnStyles.swift */,
+				09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */,
+				09BD52242B463FE500EC347E /* NextBtnArea.swift */,
+				09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */,
+				09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */,
+				092B2B3D2B5239360046BDBF /* SinglesPositionBtnArea.swift */,
+				092B2B3F2B523BE80046BDBF /* SinglesPointBtnArea.swift */,
 			);
-			path = PointGame;
+			path = Parts;
+			sourceTree = "<group>";
+		};
+		092B2B3A2B5177370046BDBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				092B2B3B2B5177620046BDBF /* PointInputModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		09992D4A2B5132050049B877 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				09992D4B2B5132200049B877 /* HomeGraphData.swift */,
+				09992D4F2B513C1F0049B877 /* PointInputData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		09BC06F72B43A36D008A44FD /* PointInputView */ = {
 			isa = PBXGroup;
 			children = (
-				09806D252B4F68CD007638B7 /* PointGame */,
-				09BD52222B45987500EC347E /* btnStyles.swift */,
-				09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */,
-				09BD52242B463FE500EC347E /* NextBtnArea.swift */,
-				09BD52262B46456C00EC347E /* AllNameAndScoreArea.swift */,
-				09BD52282B46C4D600EC347E /* DblsSelectPositionArea.swift */,
-				09BD522A2B478ACB00EC347E /* SelectPositionBtns.swift */,
+				092B2B392B516A270046BDBF /* Parts */,
+				09806D262B4F692B007638B7 /* SinglesPointGame.swift */,
+				09992D522B5141250049B877 /* SinglesSetMatch.swift */,
+				09992D542B5141410049B877 /* SinglesTieBreak.swift */,
+				09992D562B5141560049B877 /* DoublesPointGame.swift */,
+				09992D582B5141650049B877 /* DoublesSetMath.swift */,
+				09992D5A2B51417B0049B877 /* DoublesTieBreak.swift */,
 			);
 			path = PointInputView;
 			sourceTree = "<group>";
@@ -431,21 +465,10 @@
 			path = RealTimeDataView;
 			sourceTree = "<group>";
 		};
-		09BC07042B447B5E008A44FD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				09BC06FA2B443655008A44FD /* PointGameInputController.swift */,
-				09BD521A2B44F45500EC347E /* MatchController.swift */,
-				09BD52202B45926000EC347E /* HomeController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		09BC07052B447BD9008A44FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				091AC3E52B4AE46F007E68F0 /* enum */,
-				09BD52962B497BF500EC347E /* MyColorType.swift */,
 				09BD52982B49871600EC347E /* LineGraphData.swift */,
 				091AC3D32B4A8AAE007E68F0 /* PointData.swift */,
 			);
@@ -878,22 +901,25 @@
 				0927E1072B41A8430069BEF1 /* HomeGraphArea.swift in Sources */,
 				091AC3E72B4BE15B007E68F0 /* PointInputBtn.swift in Sources */,
 				0927E0A52B41A6A00069BEF1 /* HomeTabView.swift in Sources */,
-				09BD52212B45926000EC347E /* HomeController.swift in Sources */,
+				09992D4E2B5134BE0049B877 /* Issue.swift in Sources */,
 				09BD522B2B478ACB00EC347E /* SelectPositionBtns.swift in Sources */,
+				09992D4C2B5132200049B877 /* HomeGraphData.swift in Sources */,
 				09BC07002B444657008A44FD /* MatchTabView.swift in Sources */,
 				0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */,
 				091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */,
-				09BC06FB2B443655008A44FD /* PointGameInputController.swift in Sources */,
+				092B2B3C2B5177620046BDBF /* PointInputModel.swift in Sources */,
 				09BD52992B49871600EC347E /* LineGraphData.swift in Sources */,
 				09806D272B4F692B007638B7 /* SinglesPointGame.swift in Sources */,
 				0927E1032B41A7F10069BEF1 /* DataAnalysisView.swift in Sources */,
+				09992D592B5141650049B877 /* DoublesSetMath.swift in Sources */,
+				09992D572B5141560049B877 /* DoublesPointGame.swift in Sources */,
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
 				091AC3DC2B4A94E1007E68F0 /* Service.swift in Sources */,
 				091AC3D62B4A8C52007E68F0 /* MatchFormat.swift in Sources */,
-				09BD521B2B44F45500EC347E /* MatchController.swift in Sources */,
 				091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */,
-				09BD52272B46456D00EC347E /* AllNameAndScoreArea.swift in Sources */,
 				09BD52232B45987500EC347E /* btnStyles.swift in Sources */,
+				092B2B402B523BE80046BDBF /* SinglesPointBtnArea.swift in Sources */,
+				09992D552B5141410049B877 /* SinglesTieBreak.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
 				0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */,
@@ -903,12 +929,14 @@
 				091AC3D42B4A8AAE007E68F0 /* PointData.swift in Sources */,
 				09BD52252B463FE500EC347E /* NextBtnArea.swift in Sources */,
 				09BC07022B4447B5008A44FD /* RealTimeDataView.swift in Sources */,
-				09BC06F92B43A389008A44FD /* PointGameInputView.swift in Sources */,
+				092B2B3E2B5239360046BDBF /* SinglesPositionBtnArea.swift in Sources */,
 				091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */,
+				09992D502B513C1F0049B877 /* PointInputData.swift in Sources */,
 				09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */,
+				09992D532B5141250049B877 /* SinglesSetMatch.swift in Sources */,
 				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
+				09992D5B2B51417B0049B877 /* DoublesTieBreak.swift in Sources */,
 				091AC3D22B4A57D9007E68F0 /* GameType.swift in Sources */,
-				09BD52972B497BF500EC347E /* MyColorType.swift in Sources */,
 				091AC3D82B4A931F007E68F0 /* Position.swift in Sources */,
 				09BD52292B46C4D600EC347E /* DblsSelectPositionArea.swift in Sources */,
 			);

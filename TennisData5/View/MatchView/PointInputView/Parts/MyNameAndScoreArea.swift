@@ -1,14 +1,15 @@
 import SwiftUI
 struct MyNameAndScoreArea: View {
-    @Binding var winCount: Int
-    @Binding var loseCount: Int
     @Binding var myPoint: Int
     @Binding var opponentPoint: Int
-    let ctl = PointGameInputController()
+    @Binding var winCount: Int
+    @Binding var loseCount: Int
+    @Binding var drowCount: Int
+    let pointInputData = PointInputData()
     var body: some View {
         HStack{
             Spacer()
-            Text(ctl.userName)
+            Text(pointInputData.userName)
                 .font(.custom("Verdana",size:14))
                 .bold()
             Spacer()
@@ -18,13 +19,14 @@ struct MyNameAndScoreArea: View {
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("勝")
-                    Text("-")
-                        .font(.custom("Verdana",size:20))
-                        .bold()
                     Text(String(loseCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("負")
+                    Text(String(drowCount))
+                        .font(.custom("Verdana",size:20))
+                        .bold()
+                    Text("分")
                 }
                 HStack{
                     Text(String(myPoint))
@@ -39,7 +41,7 @@ struct MyNameAndScoreArea: View {
                 }
             }
             Spacer()
-            Text(ctl.opponentName)
+            Text("対戦相手")
                 .font(.custom("Verdana",size:14))
                 .bold()
             Spacer()
