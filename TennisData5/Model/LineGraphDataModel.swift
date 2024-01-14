@@ -1,5 +1,5 @@
 import Foundation
-struct LineGraphData: Identifiable {
+struct LineGraphDataModel: Identifiable {
     var id: String = UUID().uuidString
     var dateString: String
     var stats: Int

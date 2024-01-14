@@ -1,5 +1,5 @@
 import RealmSwift
-class PointData: Object {
+class PointDataModel: Object {
     @objc dynamic var id: String = ""
     @objc dynamic var machId: String = ""
     @objc dynamic var setId: String = ""

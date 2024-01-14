@@ -1,98 +1,26 @@
 import SwiftUI
-struct ServerAdvSngls: View {
-    var position: Position = .NoSelection
+struct DoublesPositionBtnArea: View {
+    @Binding var position: Position
     var body: some View {
-        if position == .ServerAdv {
-            Button(action: {
-                // action
-            }) {
-                HStack(spacing:0){
-                    Spacer()
-                    Image("ServerAdvSngls")
-                        .resizable()
-                        .frame(width: 35,height: 35)
-                    Text("左のサーバー")
-                        .frame(maxWidth: .infinity, maxHeight: 15)
-                    Spacer()
-                }
+        VStack(spacing:1){
+            HStack(spacing:1){
+                VolleyerDurServDuce()
+                VolleyerDurServAdv()
             }
-            .padding(.leading, 10)
-            .buttonStyle(SinglesSelectPositionBtnStyleDisabled())
-            .disabled(true)
-        } else {
-            Button(action: {
-                // action
-            }) {
-                HStack(spacing:0){
-                    Spacer()
-                    Image("ServerAdvSngls")
-                        .resizable()
-                        .frame(width: 35,height: 35)
-                    Text("左のサーバー")
-                        .frame(maxWidth: .infinity, maxHeight: 15)
-                    Spacer()
-                }
+            HStack(spacing:1){
+                ServerAdv()
+                ServerDuce()
             }
-            .padding(.leading, 10)
-            .buttonStyle(SinglesSelectPositionBtnStyle())
-        }
-    }
-}
-struct ServerDuceSngls:View {
-    var body: some View {
-        Button(action: {
-                // action
-        }) {
-            HStack(spacing:0){
-                Spacer()
-                Image("ServerDuceSngls")
-                    .resizable()
-                    .frame(width: 35,height: 35)
-                Text("右のサーバー")
-                    .frame(maxWidth: .infinity, maxHeight: 15)
-                Spacer()
+            Spacer().frame(height: 10)
+            HStack(spacing:1){
+                VolleyerDurRetDuce()
+                VolleyerDurRetAdv()
+            }
+            HStack(spacing:1){
+                ReturnerAdv()
+                ReturnerDuce()
             }
         }
-        .padding(.trailing, 10)
-        .buttonStyle(SelectPositionBtnStyle())
-    }
-}
-struct ReturnerAdvSngls: View {
-    var body: some View {
-        Button(action: {
-                // action
-        }) {
-            HStack(spacing:0){
-                Spacer()
-                Image("ReturnerAdvSngls")
-                    .resizable()
-                    .frame(width: 35,height: 35)
-                Text("左のリターン")
-                    .frame(maxWidth: .infinity, maxHeight: 15)
-                Spacer()
-            }
-        }
-        .padding(.leading, 10)
-        .buttonStyle(SelectPositionBtnStyle())
-    }
-}
-struct ReturnerDuceSngls:View {
-    var body: some View {
-        Button(action: {
-                // action
-        }) {
-            HStack(spacing:0){
-                Spacer()
-                Image("ReturnerDuceSngls")
-                    .resizable()
-                    .frame(width: 35,height: 35)
-                Text("右のリターン")
-                    .frame(maxWidth: .infinity, maxHeight: 15)
-                Spacer()
-            }
-        }
-        .padding(.trailing, 10)
-        .buttonStyle(SelectPositionBtnStyle())
     }
 }
 struct ServerAdv: View { //ダブルス

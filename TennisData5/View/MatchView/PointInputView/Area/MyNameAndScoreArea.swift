@@ -1,5 +1,6 @@
 import SwiftUI
 struct MyNameAndScoreArea: View {
+    @Binding var matchFormat: MatchFormat
     @Binding var myPoint: Int
     @Binding var opponentPoint: Int
     @Binding var winCount: Int
@@ -9,9 +10,16 @@ struct MyNameAndScoreArea: View {
     var body: some View {
         HStack{
             Spacer()
-            Text(pointInputData.userName)
-                .font(.custom("Verdana",size:14))
-                .bold()
+            if matchFormat == .singles {
+                Text(pointInputData.userName)
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+            } else {
+                Text(pointInputData.userName + "チーム")
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+            }
+            
             Spacer()
             VStack{
                 HStack{
@@ -41,9 +49,16 @@ struct MyNameAndScoreArea: View {
                 }
             }
             Spacer()
-            Text("対戦相手")
-                .font(.custom("Verdana",size:14))
-                .bold()
+            if matchFormat == .singles {
+                Text("対戦相手")
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+            } else {
+                Text("相手チーム")
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+            }
+            
             Spacer()
         }
     }

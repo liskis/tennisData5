@@ -3,7 +3,7 @@ import SwiftUI
 struct GoBackBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
-        .padding()
+        .padding(15)
         .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
         .background(configuration.isPressed ? Color.primary : Color.brown)
         .cornerRadius(5)
@@ -30,7 +30,7 @@ struct SinglesSelectPositionBtnStyleDisabled: ButtonStyle {
 struct FaultBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
-        .padding()
+        .padding(12)
         .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
         .background(configuration.isPressed ? Color.primary : Color.cyan)
         .cornerRadius(5)
@@ -39,7 +39,7 @@ struct FaultBtnStyle: ButtonStyle {
 struct DoubleFaultBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
-        .padding()
+        .padding(12)
         .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
         .background(configuration.isPressed ? Color.primary : Color.purple)
         .cornerRadius(5)
@@ -49,7 +49,7 @@ struct DoubleFaultBtnStyle: ButtonStyle {
 struct GetPointBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
-        .padding(8)
+        .padding(5)
         .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
         .background(configuration.isPressed ? Color.primary : Color.red)
         .cornerRadius(5)
@@ -59,7 +59,7 @@ struct GetPointBtnStyle: ButtonStyle {
 struct LostPointBtnStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
-          .padding(8)
+          .padding(5)
           .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
           .background(configuration.isPressed ? Color.primary : Color.blue)
           .cornerRadius(5)
@@ -69,7 +69,7 @@ struct LostPointBtnStyle: ButtonStyle {
 struct MyWinnerBtnStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
-          .padding()
+          .padding(5)
           .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
           .background(configuration.isPressed ? Color.primary : Color.gray)
           .cornerRadius(5)
@@ -79,7 +79,7 @@ struct MyWinnerBtnStyle: ButtonStyle {
 struct OpponentWinerBtnStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
-          .padding()
+          .padding(5)
           .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
           .background(configuration.isPressed ? Color.primary : Color.gray)
           .cornerRadius(5)
@@ -89,7 +89,7 @@ struct OpponentWinerBtnStyle: ButtonStyle {
 struct OpponetMissBtnStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
-          .padding()
+          .padding(5)
           .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
           .background(configuration.isPressed ? Color.primary : Color.gray)
           .cornerRadius(5)
@@ -99,7 +99,7 @@ struct OpponetMissBtnStyle: ButtonStyle {
 struct MyMissBtnStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
       configuration.label
-          .padding()
+          .padding(5)
           .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
           .background(configuration.isPressed ? Color.primary : Color.gray)
           .cornerRadius(5)
