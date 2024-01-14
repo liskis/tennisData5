@@ -11,7 +11,7 @@ struct GameEndBtn:View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.brown}
+                .background{Color.ocean}
                 .cornerRadius(4)
         })
     }

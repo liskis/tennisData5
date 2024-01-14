@@ -1,8 +1,8 @@
 import SwiftUI
 struct ReturnGame:View {
-    @Binding var gameSide: GameSide
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
-        if gameSide == .returnGame {
+        if pointInputModel.gameSide == .returnGame {
             Button(action: {
                 // NoAction
             },label:{
@@ -12,14 +12,13 @@ struct ReturnGame:View {
                     .font(.custom("Verdana", size: 12))
                     .frame(maxWidth: .infinity)
                     .frame(height: 40)
-                    .background{Color.gray}
+                    .background{Color.asparagus}
                     .cornerRadius(4)
             })
-            
             .disabled(true)
         } else {
             Button(action: {
-                gameSide = .returnGame
+                pointInputModel.gameSide = .returnGame
             },label:{
                 Text("リターンゲーム")
                     .foregroundColor(Color.white)
@@ -28,8 +27,8 @@ struct ReturnGame:View {
                     .frame(maxWidth: .infinity)
                     .frame(height: 40)
                     .background{Color.fern}
+                    .cornerRadius(4)
             })
-            .cornerRadius(4)
         }
     }
 }

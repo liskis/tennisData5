@@ -1,11 +1,11 @@
-import Foundation
+import SwiftUI
 class PointInputModel: ObservableObject {
-    let matchId:String = UUID().uuidString
-    let setId: String = UUID().uuidString
-    let machStartDate: Date = Date()
-    @Published var gameId: String = UUID().uuidString
-//    @Published var matchFormat: MatchFormat = .singles
-//    @Published var gameType: GameType = .pointGame
+    @Published var matchId:String = ""
+    @Published var setId: String = ""
+    @Published var gameId: String = ""
+    @Published var machStartDate: Date = Date()
+    @Published var matchFormat: MatchFormat = .noSelection
+    @Published var gameType: GameType = .noSelection
     @Published var gameSide: GameSide = .noSelection
     @Published var service: Service = .first
     @Published var position: Position = .NoSelection

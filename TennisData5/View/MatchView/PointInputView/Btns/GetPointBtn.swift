@@ -1,16 +1,13 @@
 import SwiftUI
 struct GetPointBtn:View {
-    @Binding var service: Service
-    @Binding var position: Position
-    @Binding var myPoint: Int
-    @Binding var gameSide: GameSide
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
         Button(action: {
-            if position != .NoSelection {
-                myPoint += 1
-                position = .NoSelection
-                service = .first
-                gameSide = .noSelection
+            if pointInputModel.position != .NoSelection {
+                pointInputModel.myPoint += 1
+                pointInputModel.position = .NoSelection
+                pointInputModel.service = .first
+                pointInputModel.gameSide = .noSelection
             }
         },label:{
             Text("ポイントをとった")

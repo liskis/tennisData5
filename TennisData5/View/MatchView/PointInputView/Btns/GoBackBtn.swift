@@ -1,16 +1,14 @@
 import SwiftUI
 struct GoBackBtn:View {
-    @Binding var gameSide: GameSide
-    @Binding var service: Service
-    @Binding var position: Position
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
         Button(action: {
-            if service == .second {
-                service = .first
-            } else if position != .NoSelection {
-                position = .NoSelection
-            } else if gameSide != .noSelection {
-                gameSide = .noSelection
+            if pointInputModel.service == .second {
+                pointInputModel.service = .first
+            } else if pointInputModel.position != .NoSelection {
+                pointInputModel.position = .NoSelection
+            } else if pointInputModel.gameSide != .noSelection {
+                pointInputModel.gameSide = .noSelection
             }
         },label: {
             Text("<< 一つ戻る")
@@ -18,7 +16,7 @@ struct GoBackBtn:View {
                 .bold()
                 .font(.custom("Verdana", size: 12))
                 .frame(width: 120,height: 40)
-                .background{ Color.brown }
+                .background{ Color.ocean }
         })
         
         .cornerRadius(4)

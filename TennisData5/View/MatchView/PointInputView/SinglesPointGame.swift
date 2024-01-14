@@ -1,9 +1,7 @@
 import Foundation
 import SwiftUI
 struct SinglesPointGame: View {
-    @StateObject var pointInputModel = PointInputModel()
-    @State var matchFormat:MatchFormat = .singles
-    @State var gameType:GameType = .pointGame
+    @EnvironmentObject var pointInputModel:PointInputModel
     init() {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
@@ -17,14 +15,7 @@ struct SinglesPointGame: View {
         NavigationStack {
             VStack(spacing:0){
                 Spacer().frame(height: 20)
-                MyNameAndScoreArea(
-                    matchFormat: $matchFormat,
-                    myPoint: $pointInputModel.myPoint,
-                    opponentPoint: $pointInputModel.opponentPoint,
-                    winCount: $pointInputModel.winCount,
-                    loseCount: $pointInputModel.loseCount,
-                    drowCount: $pointInputModel.drowCount
-                )
+                MyNameAndScoreArea()
                 HStack{
                     Spacer()
                     Text("ビギナーモード")
@@ -36,36 +27,20 @@ struct SinglesPointGame: View {
                     Spacer().frame(height:10)
                     HStack {
                         Spacer().frame(width: 10)
-                        GoBackBtn(
-                            gameSide: $pointInputModel.gameSide,
-                            service: $pointInputModel.service,
-                            position: $pointInputModel.position
-                        )
+                        GoBackBtn()
                         Spacer()
                     }
                     Spacer().frame(height: 10)
                     HStack(spacing:1){
                         Spacer().frame(width: 10)
-                        ServerAdvSngls(
-                            position: $pointInputModel.position,
-                            gameSide: $pointInputModel.gameSide
-                        )
-                        ServerDuceSngls(
-                            position: $pointInputModel.position,
-                            gameSide: $pointInputModel.gameSide
-                        )
+                        ServerAdvSngls()
+                        ServerDuceSngls()
                         Spacer().frame(width: 10)
                     }
                     HStack(spacing:1){
                         Spacer().frame(width: 10)
-                        ReturnerAdvSngls(
-                            position: $pointInputModel.position,
-                            gameSide: $pointInputModel.gameSide
-                        )
-                        ReturnerDuceSngls(
-                            position: $pointInputModel.position,
-                            gameSide: $pointInputModel.gameSide
-                        )
+                        ReturnerAdvSngls()
+                        ReturnerDuceSngls()
                         Spacer().frame(width: 10)
                     }
                     Spacer().frame(height: 10)
@@ -73,18 +48,9 @@ struct SinglesPointGame: View {
                         HStack(){
                             Spacer().frame(width:10)
                             if pointInputModel.service == .first {
-                                FaultBtn(
-                                    service: $pointInputModel.service,
-                                    position: $pointInputModel.position
-                                )
+                                FaultBtn()
                             } else {
-                                DoubleFaultBtn(
-                                    service: $pointInputModel.service,
-                                    position: $pointInputModel.position,
-                                    myPoint: $pointInputModel.myPoint,
-                                    opponentPoint: $pointInputModel.opponentPoint,
-                                    gameSide: $pointInputModel.gameSide
-                                )
+                                DoubleFaultBtn()
                             }
                             Spacer().frame(width:10)
                         }
@@ -92,18 +58,8 @@ struct SinglesPointGame: View {
                         Spacer().frame(height: 10)
                         HStack(spacing:1){
                             Spacer().frame(width:10)
-                            GetPointBtn(
-                                service: $pointInputModel.service,
-                                position: $pointInputModel.position,
-                                myPoint: $pointInputModel.myPoint,
-                                gameSide: $pointInputModel.gameSide
-                            )
-                            LostPointBtn(
-                                service: $pointInputModel.service,
-                                position: $pointInputModel.position,
-                                opponentPoint: $pointInputModel.opponentPoint,
-                                gameSide: $pointInputModel.gameSide
-                            )
+                            GetPointBtn()
+                            LostPointBtn()
                             Spacer().frame(width:10)
                         }
                         HStack(spacing:1){
@@ -122,16 +78,7 @@ struct SinglesPointGame: View {
                     Spacer().frame(height: 10)
                     HStack{
                         Spacer().frame(width:10)
-                        NextGameBtn(
-                            myPoint: $pointInputModel.myPoint,
-                            opponentPoint: $pointInputModel.opponentPoint,
-                            winCount: $pointInputModel.winCount,
-                            loseCount: $pointInputModel.loseCount,
-                            drowCount: $pointInputModel.drowCount,
-                            service: $pointInputModel.service,
-                            position: $pointInputModel.position,
-                            gameSide: $pointInputModel.gameSide
-                        )
+                        NextGameBtn()
                         Spacer().frame(width:10)
                     }
                     HStack{

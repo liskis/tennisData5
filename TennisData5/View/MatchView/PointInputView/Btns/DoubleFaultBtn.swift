@@ -1,20 +1,24 @@
 import SwiftUI
 struct DoubleFaultBtn:View {
-    @Binding var service: Service
-    @Binding var position: Position
-    @Binding var myPoint: Int
-    @Binding var opponentPoint: Int
-    @Binding var gameSide: GameSide
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
         Button(action: {
-            if position == .ServerDuce || position == .ServerAdv {
-                opponentPoint += 1
-            } else if position == .ReturnerDuce || position == .ReturnerAdv {
-                myPoint += 1
+            if pointInputModel.position == .ServerDuce ||
+                pointInputModel.position == .ServerAdv ||
+                pointInputModel.position == .VolleyerDurServAdv ||
+                pointInputModel.position == .VolleyerDurServDuce
+            {
+                pointInputModel.opponentPoint += 1
+            } else if pointInputModel.position == .ReturnerDuce ||
+                        pointInputModel.position == .ReturnerAdv ||
+                        pointInputModel.position == .VolleyerDurRetAdv ||
+                        pointInputModel.position == .VolleyerDurRetDuce
+            {
+                pointInputModel.myPoint += 1
             }
-            position = .NoSelection
-            service = .first
-            gameSide = .noSelection
+            pointInputModel.position = .NoSelection
+            pointInputModel.service = .first
+            pointInputModel.gameSide = .noSelection
         },label:{
             Text("ダブルフォルト")
                 .foregroundColor(Color.white)
@@ -22,7 +26,7 @@ struct DoubleFaultBtn:View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.purple}
+                .background{Color.grape}
                 .cornerRadius(4)
         })
     }

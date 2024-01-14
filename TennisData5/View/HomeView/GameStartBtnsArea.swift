@@ -20,9 +20,8 @@ struct GameStartBtnsArea: View {
 }
 
 struct SinglesPointGameBtn: View {
+    @EnvironmentObject var pointInputModel: PointInputModel
     @State var isPresented: Bool = false
-    @State var gameType: GameType = .pointGame
-    @State var matchFormat: MatchFormat = .singles
     var body: some View {
         Button(action: {
             isPresented = true
@@ -36,14 +35,31 @@ struct SinglesPointGameBtn: View {
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(matchFormat: $matchFormat, gameType: $gameType)
+            MatchTabView()
+                .onAppear{
+                    pointInputModel.matchId = UUID().uuidString
+                    pointInputModel.setId = UUID().uuidString
+                    pointInputModel.gameId = UUID().uuidString
+                    pointInputModel.machStartDate = Date()
+                    pointInputModel.matchFormat = .singles
+                    pointInputModel.gameType = .pointGame
+                    pointInputModel.gameSide = .noSelection
+                    pointInputModel.service = .first
+                    pointInputModel.position = .NoSelection
+                    pointInputModel.winCount = 0
+                    pointInputModel.loseCount = 0
+                    pointInputModel.drowCount = 0
+                    pointInputModel.myPoint = 0
+                    pointInputModel.opponentPoint = 0
+                    pointInputModel.server = .noSelection
+                    pointInputModel.getPoint = .myTeam
+                }
         }
     }
 }
 struct DoublesPointgameBtn: View {
+    @EnvironmentObject var pointInputModel: PointInputModel
     @State var isPresented: Bool = false
-    @State var gameType: GameType = .pointGame
-    @State var matchFormat: MatchFormat = .doubles
     var body: some View {
         Button(action: {
             isPresented = true
@@ -58,10 +74,30 @@ struct DoublesPointgameBtn: View {
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(matchFormat: $matchFormat, gameType: $gameType)
+            MatchTabView()
+                .onAppear{
+                    pointInputModel.matchId = UUID().uuidString
+                    pointInputModel.setId = UUID().uuidString
+                    pointInputModel.gameId = UUID().uuidString
+                    pointInputModel.machStartDate = Date()
+                    pointInputModel.matchFormat = .doubles
+                    pointInputModel.gameType = .pointGame
+                    pointInputModel.gameSide = .noSelection
+                    pointInputModel.service = .first
+                    pointInputModel.position = .NoSelection
+                    pointInputModel.winCount = 0
+                    pointInputModel.loseCount = 0
+                    pointInputModel.drowCount = 0
+                    pointInputModel.myPoint = 0
+                    pointInputModel.opponentPoint = 0
+                    pointInputModel.server = .noSelection
+                    pointInputModel.getPoint = .myTeam
+                }
+               
         }
     }
 }
+
 struct SetMatchBtn: View {
     var body: some View {
         Button(action: {
@@ -131,7 +167,7 @@ struct MatchStartBtnStyle: ButtonStyle {
     configuration.label
         .padding()
         .foregroundColor(Color.white).bold().font(.custom("Verdana", size: 14))
-        .background(configuration.isPressed ? Color.primary : Color.blue)
+        .background(configuration.isPressed ? Color.primary : Color.ocean)
         .cornerRadius(5)
     }
 }

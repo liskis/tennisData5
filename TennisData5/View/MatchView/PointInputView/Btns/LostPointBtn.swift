@@ -1,16 +1,13 @@
 import SwiftUI
 struct LostPointBtn:View {
-    @Binding var service: Service
-    @Binding var position: Position
-    @Binding var opponentPoint: Int
-    @Binding var gameSide: GameSide
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
         Button(action: {
-            if position != .NoSelection {
-                opponentPoint += 1
-                position = .NoSelection
-                service = .first
-                gameSide = .noSelection
+            if pointInputModel.position != .NoSelection {
+                pointInputModel.opponentPoint += 1
+                pointInputModel.position = .NoSelection
+                pointInputModel.service = .first
+                pointInputModel.gameSide = .noSelection
             }
         },label:{
             Text("ポイントをとられた")

@@ -60,7 +60,7 @@ struct HomeGraphArea: View {
         ])
         .chartXAxis(.hidden)
         .chartYAxis(.hidden)
-        .chartYScale(domain: [HomeGraphData.minAxis(), 100])
+        .chartYScale(domain: [HomeGraphData.minAxis, 100])
         .chartLegend(.hidden)
     }
 }

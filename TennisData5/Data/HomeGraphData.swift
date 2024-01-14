@@ -1,10 +1,3 @@
-//
-//  HomeGraphData.swift
-//  TennisData5
-//
-//  Created by 渡辺健輔 on 2024/01/12.
-//
-
 import Foundation
 struct HomeGraphData {
     static let data1: [LineGraphDataModel] = [
@@ -21,8 +14,8 @@ struct HomeGraphData {
         .init(dateString: "23/12/16", stats: 96, category: "data2", issue: .Lose),
         .init(dateString: "23/12/22", stats: 96, category: "data2", issue: .Win)
     ]
-   
-    static func minAxis() -> Int{
+    static let minAxis = getMinAxis()
+    static func getMinAxis() -> Int{
         var minData: Int = 100
         for data in self.data1 {
             minData = data.stats < minData ? data.stats : minData

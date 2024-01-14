@@ -1,8 +1,8 @@
 import SwiftUI
 struct ServerDuceDbls:View {
-    @Binding var position: Position
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
-        if position == .ServerDuce {
+        if pointInputModel.position == .ServerDuce {
             Button(action: {
                 // NoAction
             },label:{
@@ -20,12 +20,12 @@ struct ServerDuceDbls:View {
                 }
             })
             .frame(width: .infinity,height: 40)
-            .background{Color.gray}
+            .background{Color.asparagus}
             .cornerRadius(4)
             .disabled(true)
         } else {
             Button(action: {
-                position = .ServerDuce
+                pointInputModel.position = .ServerDuce
             },label:{
                 HStack(spacing:5){
                     Spacer().frame(width: 5)
@@ -41,7 +41,7 @@ struct ServerDuceDbls:View {
                 }
             })
             .frame(width: .infinity,height: 40)
-            .background{Color.green}
+            .background{Color.fern}
             .cornerRadius(4)
         }
     }

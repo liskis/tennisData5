@@ -1,27 +1,21 @@
 import SwiftUI
 struct NextGameBtn:View {
-    @Binding var myPoint: Int
-    @Binding var opponentPoint: Int
-    @Binding var winCount: Int
-    @Binding var loseCount: Int
-    @Binding var drowCount: Int
-    @Binding var service: Service
-    @Binding var position: Position
-    @Binding var gameSide: GameSide
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
         Button(action: {
-            if myPoint > opponentPoint {
-                winCount += 1
-            } else if myPoint < opponentPoint {
-                loseCount += 1
-            } else if myPoint == opponentPoint {
-                drowCount += 1
+            if pointInputModel.myPoint > pointInputModel.opponentPoint {
+                pointInputModel.winCount += 1
+            } else if pointInputModel.myPoint < pointInputModel.opponentPoint {
+                pointInputModel.loseCount += 1
+            } else if pointInputModel.myPoint == pointInputModel.opponentPoint {
+                pointInputModel.drowCount += 1
             }
-            service = .first
-            position = .NoSelection
-            gameSide = .noSelection
-            myPoint = 0
-            opponentPoint = 0
+            pointInputModel.service = .first
+            pointInputModel.position = .NoSelection
+            pointInputModel.gameSide = .noSelection
+            pointInputModel.myPoint = 0
+            pointInputModel.opponentPoint = 0
+            pointInputModel.gameId = UUID().uuidString
         },label:{
             Text("次のゲームへ")
                 .foregroundColor(Color.white)
@@ -29,7 +23,7 @@ struct NextGameBtn:View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.brown}
+                .background{Color.ocean}
                 .cornerRadius(4)
         })
     }

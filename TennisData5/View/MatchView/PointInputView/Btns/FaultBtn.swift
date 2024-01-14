@@ -1,11 +1,10 @@
 import SwiftUI
 struct FaultBtn:View {
-    @Binding var service: Service
-    @Binding var position: Position
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
         Button(action: {
-            if position != .NoSelection {
-                service = .second
+            if pointInputModel.position != .NoSelection {
+                pointInputModel.service = .second
             }
         },label:{
             Text("フォルト")

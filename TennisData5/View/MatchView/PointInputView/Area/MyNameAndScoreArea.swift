@@ -1,16 +1,11 @@
 import SwiftUI
 struct MyNameAndScoreArea: View {
-    @Binding var matchFormat: MatchFormat
-    @Binding var myPoint: Int
-    @Binding var opponentPoint: Int
-    @Binding var winCount: Int
-    @Binding var loseCount: Int
-    @Binding var drowCount: Int
+    @EnvironmentObject var pointInputModel:PointInputModel
     let pointInputData = PointInputData()
     var body: some View {
         HStack{
             Spacer()
-            if matchFormat == .singles {
+            if pointInputModel.matchFormat == .singles {
                 Text(pointInputData.userName)
                     .font(.custom("Verdana",size:14))
                     .bold()
@@ -23,33 +18,33 @@ struct MyNameAndScoreArea: View {
             Spacer()
             VStack{
                 HStack{
-                    Text(String(winCount))
+                    Text(String(pointInputModel.winCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("勝")
-                    Text(String(loseCount))
+                    Text(String(pointInputModel.loseCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("負")
-                    Text(String(drowCount))
+                    Text(String(pointInputModel.drowCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("分")
                 }
                 HStack{
-                    Text(String(myPoint))
+                    Text(String(pointInputModel.myPoint))
                         .font(.custom("Verdana",size:40))
                         .bold()
                     Text("-")
                         .font(.custom("Verdana",size:40))
                         .bold()
-                    Text(String(opponentPoint))
+                    Text(String(pointInputModel.opponentPoint))
                         .font(.custom("Verdana",size:40))
                         .bold()
                 }
             }
             Spacer()
-            if matchFormat == .singles {
+            if pointInputModel.matchFormat == .singles {
                 Text("対戦相手")
                     .font(.custom("Verdana",size:14))
                     .bold()
@@ -58,7 +53,6 @@ struct MyNameAndScoreArea: View {
                     .font(.custom("Verdana",size:14))
                     .bold()
             }
-            
             Spacer()
         }
     }

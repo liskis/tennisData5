@@ -1,12 +1,7 @@
 import SwiftUI
 struct MatchTabView: View {
-    @Binding var matchFormat: MatchFormat
-    @Binding var gameType: GameType
-    init(matchFormat: Binding<MatchFormat>,
-         gameType: Binding<GameType>
-    ) {
-        self._matchFormat = matchFormat
-        self._gameType = gameType
+    @EnvironmentObject var pointInputModel:PointInputModel
+    init() {
         let contentViewAp: UITabBarAppearance = UITabBarAppearance()
         contentViewAp.backgroundColor = .black
         UITabBar.appearance().scrollEdgeAppearance = contentViewAp
@@ -15,13 +10,13 @@ struct MatchTabView: View {
     }
     var body: some View {
         TabView {
-            if matchFormat == .singles {
-                if gameType == .pointGame {
+            if pointInputModel.matchFormat == .singles {
+                if pointInputModel.gameType == .pointGame {
                     SinglesPointGame().tabItem {
                         Text("ポイント入力")
                         Image(systemName: "hand.point.up")
                     }
-                } else if gameType == .setMatch {
+                } else if pointInputModel.gameType == .setMatch {
                     SinglesSetMatch().tabItem {
                         Text("ポイント入力")
                         Image(systemName: "hand.point.up")
@@ -33,12 +28,12 @@ struct MatchTabView: View {
                     }
                 }
             } else {
-                if gameType == .pointGame {
+                if pointInputModel.gameType == .pointGame {
                     DoublesPointGame().tabItem {
                         Text("ポイント入力")
                         Image(systemName: "hand.point.up")
                     }
-                } else if gameType == .setMatch {
+                } else if pointInputModel.gameType == .setMatch {
                     DoublesSetMath().tabItem {
                         Text("ポイント入力")
                         Image(systemName: "hand.point.up")
@@ -50,7 +45,7 @@ struct MatchTabView: View {
                     }
                 }
             }
-            RealTimeDataView().tabItem {
+            RealTimeData().tabItem {
                 Text("リアルタイムデータ")
                 Image(systemName: "gauge.with.dots.needle.67percent")
             }

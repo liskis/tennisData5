@@ -1,9 +1,8 @@
 import SwiftUI
 struct ServerAdvSngls:View {
-    @Binding var position: Position
-    @Binding var gameSide: GameSide
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
-        if position == .ServerAdv {
+        if pointInputModel.position == .ServerAdv {
             Button(action: {
                 // NoAction
             },label:{
@@ -21,13 +20,12 @@ struct ServerAdvSngls:View {
                 }
             })
             .frame(width: .infinity,height: 50)
-            .background{Color.gray}
+            .background{Color.asparagus}
             .cornerRadius(4)
             .disabled(true)
         } else {
             Button(action: {
-                position = .ServerAdv
-                gameSide = .serviceGame
+                pointInputModel.position = .ServerAdv
             },label:{
                 HStack(spacing:5){
                     Spacer().frame(width: 5)
@@ -43,7 +41,7 @@ struct ServerAdvSngls:View {
                 }
             })
             .frame(width: .infinity,height: 50)
-            .background{Color.green}
+            .background{Color.fern}
             .cornerRadius(4)
         }
     }

@@ -1,8 +1,8 @@
 import SwiftUI
 struct VolleyerRetAdv:View {
-    @Binding var position: Position
+    @EnvironmentObject var pointInputModel:PointInputModel
     var body: some View {
-        if position == .VolleyerDurRetAdv {
+        if pointInputModel.position == .VolleyerDurRetAdv {
             Button(action: {
                 // NoAction
             },label:{
@@ -20,12 +20,12 @@ struct VolleyerRetAdv:View {
                 }
             })
             .frame(width: .infinity,height: 40)
-            .background{Color.gray}
+            .background{Color.asparagus}
             .cornerRadius(4)
             .disabled(true)
         } else {
             Button(action: {
-                position = .VolleyerDurRetAdv
+                pointInputModel.position = .VolleyerDurRetAdv
             },label:{
                 HStack(spacing:5){
                     Spacer().frame(width: 5)
@@ -41,7 +41,7 @@ struct VolleyerRetAdv:View {
                 }
             })
             .frame(width: .infinity,height: 40)
-            .background{Color.green}
+            .background{Color.fern}
             .cornerRadius(4)
         }
     }
