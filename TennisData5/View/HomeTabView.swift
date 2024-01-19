@@ -8,6 +8,7 @@ struct HomeTabView: View {
         UITabBar.appearance().unselectedItemTintColor = UIColor.gray
     }
     var body: some View {
+       
             TabView {
                 HomeView().tabItem {
                     Text("HOME")
@@ -23,6 +24,7 @@ struct HomeTabView: View {
                 }
             }
             .accentColor(.white)
+        
     }
 }
 

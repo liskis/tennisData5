@@ -1,28 +1,28 @@
 import SwiftUI
 
 struct GameStartBtnsArea: View {
+    @State var isPresented: Bool = false
+    @State var singles: MatchFormat = .singles
+    @State var doubles: MatchFormat = .doubles
+    @State var pointGame: GameType = .pointGame
     var body: some View {
         VStack(spacing:1){
             HStack(spacing:1){
-                SinglesPointGameBtn()
-                DoublesPointgameBtn()
+                singlesPointGameBtn
+                doublesPointGameBtn
             }
             HStack(spacing:1){
-                SetMatchBtn()
-                TieBreakBtn()
+                setMatchBtn
+                tieBreakBtn
             }
             HStack(spacing:1){
-                PointGameFromCoach()
-                SetMatchFromCoach()
+                pointGameFromCoach
+                setMatchFromCoach
             }
         }
     }
-}
-
-struct SinglesPointGameBtn: View {
-    @EnvironmentObject var pointInputModel: PointInputModel
-    @State var isPresented: Bool = false
-    var body: some View {
+    var singlesPointGameBtn: some View {
+       
         Button(action: {
             isPresented = true
         }) {
@@ -35,32 +35,10 @@ struct SinglesPointGameBtn: View {
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView()
-                .onAppear{
-                    pointInputModel.matchId = UUID().uuidString
-                    pointInputModel.setId = UUID().uuidString
-                    pointInputModel.gameId = UUID().uuidString
-                    pointInputModel.machStartDate = Date()
-                    pointInputModel.matchFormat = .singles
-                    pointInputModel.gameType = .pointGame
-                    pointInputModel.gameSide = .noSelection
-                    pointInputModel.service = .first
-                    pointInputModel.position = .NoSelection
-                    pointInputModel.winCount = 0
-                    pointInputModel.loseCount = 0
-                    pointInputModel.drowCount = 0
-                    pointInputModel.myPoint = 0
-                    pointInputModel.opponentPoint = 0
-                    pointInputModel.server = .noSelection
-                    pointInputModel.getPoint = .myTeam
-                }
+            MatchTabView(matchFormat: $singles, gameType: $pointGame)
         }
     }
-}
-struct DoublesPointgameBtn: View {
-    @EnvironmentObject var pointInputModel: PointInputModel
-    @State var isPresented: Bool = false
-    var body: some View {
+    var doublesPointGameBtn: some View {
         Button(action: {
             isPresented = true
         }) {
@@ -74,32 +52,10 @@ struct DoublesPointgameBtn: View {
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView()
-                .onAppear{
-                    pointInputModel.matchId = UUID().uuidString
-                    pointInputModel.setId = UUID().uuidString
-                    pointInputModel.gameId = UUID().uuidString
-                    pointInputModel.machStartDate = Date()
-                    pointInputModel.matchFormat = .doubles
-                    pointInputModel.gameType = .pointGame
-                    pointInputModel.gameSide = .noSelection
-                    pointInputModel.service = .first
-                    pointInputModel.position = .NoSelection
-                    pointInputModel.winCount = 0
-                    pointInputModel.loseCount = 0
-                    pointInputModel.drowCount = 0
-                    pointInputModel.myPoint = 0
-                    pointInputModel.opponentPoint = 0
-                    pointInputModel.server = .noSelection
-                    pointInputModel.getPoint = .myTeam
-                }
-               
+            MatchTabView(matchFormat: $singles, gameType: $pointGame)
         }
     }
-}
-
-struct SetMatchBtn: View {
-    var body: some View {
+    var setMatchBtn: some View {
         Button(action: {
             // action
         }) {
@@ -112,9 +68,7 @@ struct SetMatchBtn: View {
         .buttonStyle(DisabledBtnStyle())
         .disabled(true)
     }
-}
-struct TieBreakBtn: View {
-    var body: some View {
+    var tieBreakBtn: some View {
         Button(action: {
             // action
         }) {
@@ -127,10 +81,7 @@ struct TieBreakBtn: View {
         .buttonStyle(DisabledBtnStyle())
         .disabled(true)
     }
-}
-struct PointGameFromCoach: View {
-    var body: some View {
-        
+    var pointGameFromCoach: some View {
         Button(action: {
                 // action
         }) {
@@ -144,10 +95,7 @@ struct PointGameFromCoach: View {
         .buttonStyle(DisabledBtnStyle())
         .disabled(true)
     }
-}
-struct SetMatchFromCoach: View {
-    var body: some View {
-        
+    var setMatchFromCoach: some View {
         Button(action: {
                 // action
         }) {
@@ -162,6 +110,7 @@ struct SetMatchFromCoach: View {
         .disabled(true)
     }
 }
+
 struct MatchStartBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
@@ -179,8 +128,4 @@ struct DisabledBtnStyle: ButtonStyle {
         .background(configuration.isPressed ? Color.primary : Color.gray)
         .cornerRadius(5)
     }
-}
-
-#Preview {
-    HomeTabView()
 }

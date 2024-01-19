@@ -3,17 +3,15 @@ struct StatsDataArea: View {
     var body: some View {
         HStack(alignment: .bottom){
             Spacer()
-            WinningRate()
+            winningRate
             Spacer()
-            FirstServeRate()
+            firstServeRate
             Spacer()
-            SecondServeRate()
+            secondServeRate
             Spacer()
         }
     }
-}
-struct WinningRate: View {
-    var body: some View {
+    var winningRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text("46.7")
@@ -39,9 +37,7 @@ struct WinningRate: View {
                 .shadow(color: .black, radius: 2)
         }
     }
-}
-struct FirstServeRate: View {
-    var body: some View {
+    var firstServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text("42.2")
@@ -74,9 +70,7 @@ struct FirstServeRate: View {
             }
         }
     }
-}
-struct SecondServeRate: View {
-    var body: some View {
+    var secondServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text("42.2")
@@ -109,8 +103,4 @@ struct SecondServeRate: View {
             }
         }
     }
-}
-
-#Preview {
-    HomeTabView()
 }

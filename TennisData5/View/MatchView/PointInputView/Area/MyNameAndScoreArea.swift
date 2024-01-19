@@ -1,11 +1,12 @@
 import SwiftUI
 struct MyNameAndScoreArea: View {
-    @EnvironmentObject var pointInputModel:PointInputModel
+    @ObservedObject var matchInfoVM: MatchInfoViewModel
+    @ObservedObject var pointVM: PointViewModel
     let pointInputData = PointInputData()
     var body: some View {
         HStack{
             Spacer()
-            if pointInputModel.matchFormat == .singles {
+            if matchInfoVM.matchFormat == .singles {
                 Text(pointInputData.userName)
                     .font(.custom("Verdana",size:14))
                     .bold()
@@ -18,33 +19,33 @@ struct MyNameAndScoreArea: View {
             Spacer()
             VStack{
                 HStack{
-                    Text(String(pointInputModel.winCount))
+                    Text(String(pointVM.winCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("勝")
-                    Text(String(pointInputModel.loseCount))
+                    Text(String(pointVM.loseCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("負")
-                    Text(String(pointInputModel.drowCount))
+                    Text(String(pointVM.drowCount))
                         .font(.custom("Verdana",size:20))
                         .bold()
                     Text("分")
                 }
                 HStack{
-                    Text(String(pointInputModel.myPoint))
+                    Text(String(pointVM.myPoint))
                         .font(.custom("Verdana",size:40))
                         .bold()
                     Text("-")
                         .font(.custom("Verdana",size:40))
                         .bold()
-                    Text(String(pointInputModel.opponentPoint))
+                    Text(String(pointVM.opponentPoint))
                         .font(.custom("Verdana",size:40))
                         .bold()
                 }
             }
             Spacer()
-            if pointInputModel.matchFormat == .singles {
+            if matchInfoVM.matchFormat == .singles {
                 Text("対戦相手")
                     .font(.custom("Verdana",size:14))
                     .bold()

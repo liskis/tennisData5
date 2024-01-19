@@ -11,7 +11,7 @@ struct HomeView: View {
                 HomeHeaderBar()
                 ZStack {
                     VStack{
-                        Image("background2")
+                        Image(.background2)
                             .resizable()
                             .scaledToFit()
                         Spacer()
@@ -25,8 +25,8 @@ struct HomeView: View {
                             LineChartView(data1: $data1, data2: $data2, minAxis: $minAxis)
                             Spacer()
                         }
-                        WinLoseArrayArea()
-                        DateArrayArea()
+                        winLoseArrayArea
+                        dateArrayArea
                         Spacer().frame(height: 10)
                         ZStack{
                             Color.white.ignoresSafeArea()
@@ -42,10 +42,39 @@ struct HomeView: View {
             }
         }
     }
+    var winLoseArrayArea: some View {
+        HStack{
+            Spacer()
+            ForEach(HomeGraphData.data1){ data in
+                if data.issue == .Win {
+                    Text("Win")
+                        .font(.custom("Verdana",size:23))
+                        .bold()
+                        .foregroundColor(.red)
+                        .shadow(color: .white, radius: 2)
+                } else {
+                    Text("Lose")
+                        .font(.custom("Verdana",size:23))
+                        .bold()
+                        .foregroundColor(.blue)
+                        .shadow(color: .white, radius: 2)
+                }
+                Spacer()
+            }
+        }
+    }
+    var dateArrayArea: some View {
+        HStack{
+            ForEach(HomeGraphData.data1){ dataRow in
+                Spacer()
+                Text("\(dataRow.dateString)")
+                    .font(.custom("Verdana",size:10))
+                    .bold()
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 2)
+            }
+            Spacer()
+        }
+    }
 }
-
-#Preview {
-    HomeTabView()
-}
-
 

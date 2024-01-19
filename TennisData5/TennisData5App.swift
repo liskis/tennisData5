@@ -4,7 +4,6 @@ struct TennisData5App: App {
     var body: some Scene {
         WindowGroup {
             HomeTabView()
-                .environmentObject(PointInputModel())
         }
     }
 }

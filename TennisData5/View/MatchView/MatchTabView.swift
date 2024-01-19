@@ -1,60 +1,27 @@
 import SwiftUI
 struct MatchTabView: View {
-    @EnvironmentObject var pointInputModel:PointInputModel
-    init() {
-        let contentViewAp: UITabBarAppearance = UITabBarAppearance()
-        contentViewAp.backgroundColor = .black
-        UITabBar.appearance().scrollEdgeAppearance = contentViewAp
-        UITabBar.appearance().standardAppearance = contentViewAp
-        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
-    }
+    @Binding var matchFormat: MatchFormat
+    @Binding var gameType: GameType
+    @ObservedObject var matchInfoVM = MatchInfoViewModel()
+    @ObservedObject var positionVM = PositionViewModel()
+    @ObservedObject var pointVM = PointViewModel()
     var body: some View {
-        TabView {
-            if pointInputModel.matchFormat == .singles {
-                if pointInputModel.gameType == .pointGame {
-                    SinglesPointGame().tabItem {
-                        Text("ポイント入力")
-                        Image(systemName: "hand.point.up")
-                    }
-                } else if pointInputModel.gameType == .setMatch {
-                    SinglesSetMatch().tabItem {
-                        Text("ポイント入力")
-                        Image(systemName: "hand.point.up")
-                    }
-                } else {
-                    SinglesTieBreak().tabItem {
-                        Text("ポイント入力")
-                        Image(systemName: "hand.point.up")
-                    }
+        ZStack {
+            Color.black.ignoresSafeArea()
+            TabView {
+                PointGame(matchInfoVM: matchInfoVM, positionVM: positionVM, pointVM: pointVM).tabItem {
+                    Text("ポイント入力")
+                    Image(systemName: "hand.point.up")
                 }
-            } else {
-                if pointInputModel.gameType == .pointGame {
-                    DoublesPointGame().tabItem {
-                        Text("ポイント入力")
-                        Image(systemName: "hand.point.up")
-                    }
-                } else if pointInputModel.gameType == .setMatch {
-                    DoublesSetMath().tabItem {
-                        Text("ポイント入力")
-                        Image(systemName: "hand.point.up")
-                    }
-                } else {
-                    DoublesTieBreak().tabItem {
-                        Text("ポイント入力")
-                        Image(systemName: "hand.point.up")
-                    }
+                RealTimeDataView(matchInfoVM: matchInfoVM, positionVM: positionVM, pointVM: pointVM).tabItem {
+                    Text("リアルタイムデータ")
+                    Image(systemName: "gauge.with.dots.needle.67percent")
                 }
+                .toolbarBackground(.black, for: .tabBar)
             }
-            RealTimeData().tabItem {
-                Text("リアルタイムデータ")
-                Image(systemName: "gauge.with.dots.needle.67percent")
-            }
+           
         }
-        .accentColor(.white)
+       
     }
 }
 
-
-#Preview {
-    HomeTabView()
-}
