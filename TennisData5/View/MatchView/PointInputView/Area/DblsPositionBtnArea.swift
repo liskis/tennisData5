@@ -52,7 +52,21 @@ struct DblsPositionBtnArea: View {
                     returnerDuceBtn
                 }
             }.padding(.horizontal,10)
+        } else if positionVM.gameSide == .noSelection {
+            HStack(spacing: 1) {
+                posisionDisBtn
+                posisionDisBtn
+            }.padding(.horizontal,10)
+            HStack (spacing: 1) {
+                posisionDisBtn
+                posisionDisBtn
+            }.padding(.horizontal, 10)
         }
+    }
+    var posisionDisBtn: some View {
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
     }
     var volleyerServDuceDisBtn: some View {
         Button(action: {
@@ -71,7 +85,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -93,7 +107,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -114,7 +128,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -136,7 +150,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -157,7 +171,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -179,7 +193,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -200,7 +214,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -222,7 +236,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -243,7 +257,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -265,7 +279,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -286,7 +300,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -308,7 +322,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -329,7 +343,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -351,7 +365,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }
@@ -372,7 +386,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.asparagus}
         .cornerRadius(4)
         .disabled(true)
@@ -394,7 +408,7 @@ struct DblsPositionBtnArea: View {
                 Spacer()
             }
         })
-        .frame(width: .infinity,height: 40)
+        .frame(height: 40)
         .background{Color.fern}
         .cornerRadius(4)
     }

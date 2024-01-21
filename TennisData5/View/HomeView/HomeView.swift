@@ -1,5 +1,8 @@
 import SwiftUI
 struct HomeView: View {
+    @ObservedObject var matchInfoVM = MatchInfoViewModel()
+    @ObservedObject var positionVM = PositionViewModel()
+    @ObservedObject var pointVM = PointViewModel()
     @State var data1: [LineGraphDataModel] = HomeGraphData.data1
     @State var data2: [LineGraphDataModel] = HomeGraphData.data2
     @State var minAxis: Int = HomeGraphData.minAxis

@@ -2,32 +2,43 @@ import SwiftUI
 struct SnglsPositionBtnArea: View {
     @ObservedObject var positionVM: PositionViewModel
     var body: some View {
-        HStack(spacing:1){
-            if positionVM.position == .ServerAdv {
-                serverAdvDisBtn
-            } else {
-                serverAdvBtn
-            }
-            if positionVM.position == .ServerDuce {
-                serverDuceDisBtn
-            } else {
-                serverDuceBtn
-            }
+        if positionVM.gameSide == .serviceGame {
+            HStack(spacing:1){
+                if positionVM.position == .ServerAdv {
+                    serverAdvDisBtn
+                } else {
+                    serverAdvBtn
+                }
+                if positionVM.position == .ServerDuce {
+                    serverDuceDisBtn
+                } else {
+                    serverDuceBtn
+                }
+            } .padding(.horizontal,10)
+        } else if positionVM.gameSide == .returnGame {
+            HStack(spacing:1){
+                if positionVM.position == .ReturnerAdv {
+                    returnerAdvDisBtn
+                } else {
+                    returnerAdvBtn
+                }
+                if positionVM.position == .ReturnerDuce {
+                    returnerDuceDisBtn
+                } else {
+                    returnerDuceBtn
+                }
+            }.padding(.horizontal,10)
+        } else if positionVM.gameSide == .noSelection {
+            HStack(spacing:1){
+                posisionDisBtn
+                posisionDisBtn
+            }.padding(.horizontal,10)
         }
-        .padding(.horizontal,10)
-        HStack(spacing:1){
-            if positionVM.position == .ReturnerAdv {
-                returnerAdvDisBtn
-            } else {
-                returnerAdvBtn
-            }
-            if positionVM.position == .ReturnerDuce {
-                returnerDuceDisBtn
-            } else {
-                returnerDuceBtn
-            }
-        }
-        .padding(.horizontal,10)
+    }
+    var posisionDisBtn: some View {
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
     }
     var serverAdvDisBtn: some View {
         Button(action: {
@@ -53,6 +64,7 @@ struct SnglsPositionBtnArea: View {
     var serverAdvBtn: some View {
         Button(action: {
             positionVM.position = .ServerAdv
+            positionVM.gameSide = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -95,6 +107,7 @@ struct SnglsPositionBtnArea: View {
     var serverDuceBtn: some View {
         Button(action: {
             positionVM.position = .ServerDuce
+            positionVM.gameSide = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -136,6 +149,7 @@ struct SnglsPositionBtnArea: View {
     var returnerAdvBtn: some View {
         Button(action: {
             positionVM.position = .ReturnerAdv
+            positionVM.gameSide = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -177,6 +191,7 @@ struct SnglsPositionBtnArea: View {
     var returnerDuceBtn: some View {
         Button(action: {
             positionVM.position = .ReturnerDuce
+            positionVM.gameSide = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)

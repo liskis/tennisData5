@@ -1,10 +1,9 @@
 import SwiftUI
-
 struct GameStartBtnsArea: View {
+    @State var matchFormat: MatchFormat = .noSelection
+    @State var gameType: GameType = .noSelection
+    @State var naviTitle: String = ""
     @State var isPresented: Bool = false
-    @State var singles: MatchFormat = .singles
-    @State var doubles: MatchFormat = .doubles
-    @State var pointGame: GameType = .pointGame
     var body: some View {
         VStack(spacing:1){
             HStack(spacing:1){
@@ -25,6 +24,9 @@ struct GameStartBtnsArea: View {
        
         Button(action: {
             isPresented = true
+            matchFormat = .singles
+            gameType = .pointGame
+            naviTitle = "シングルスポイントゲーム"
         }) {
             VStack{
                 Text("シングルスで")
@@ -35,12 +37,15 @@ struct GameStartBtnsArea: View {
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(matchFormat: $singles, gameType: $pointGame)
+            MatchTabView(matchFormat: $matchFormat, gameType: $gameType, naviTitle: $naviTitle)
         }
     }
     var doublesPointGameBtn: some View {
         Button(action: {
             isPresented = true
+            matchFormat = .doubles
+            gameType = .pointGame
+            naviTitle = "ダブルスポイントゲーム"
         }) {
             VStack{
                 Text("ダブルスで")
@@ -52,7 +57,7 @@ struct GameStartBtnsArea: View {
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(matchFormat: $singles, gameType: $pointGame)
+            MatchTabView(matchFormat: $matchFormat, gameType: $gameType, naviTitle: $naviTitle)
         }
     }
     var setMatchBtn: some View {

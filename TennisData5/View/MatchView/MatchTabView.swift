@@ -2,26 +2,29 @@ import SwiftUI
 struct MatchTabView: View {
     @Binding var matchFormat: MatchFormat
     @Binding var gameType: GameType
-    @ObservedObject var matchInfoVM = MatchInfoViewModel()
-    @ObservedObject var positionVM = PositionViewModel()
-    @ObservedObject var pointVM = PointViewModel()
+    @Binding var naviTitle: String
+    @ObservedObject var matchVM = MatchViewModel()
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            TabView {
-                PointGame(matchInfoVM: matchInfoVM, positionVM: positionVM, pointVM: pointVM).tabItem {
+        TabView {
+            PointGame(matchVM: matchVM)
+                .toolbarBackground(.black, for: .tabBar)
+                .tabItem {
                     Text("ポイント入力")
                     Image(systemName: "hand.point.up")
                 }
-                RealTimeDataView(matchInfoVM: matchInfoVM, positionVM: positionVM, pointVM: pointVM).tabItem {
+            RealTimeDataView(matchVM: matchVM)
+                .toolbarBackground(.black, for: .tabBar)
+                .tabItem {
                     Text("リアルタイムデータ")
                     Image(systemName: "gauge.with.dots.needle.67percent")
                 }
-                .toolbarBackground(.black, for: .tabBar)
-            }
-           
         }
-       
+        .accentColor(.white)
+        .onAppear{
+            matchVM.matchInfoVM.matchFormat = matchFormat
+            matchVM.matchInfoVM.gameType = gameType
+            matchVM.matchInfoVM.naviTitle = naviTitle
+        }
     }
 }
 

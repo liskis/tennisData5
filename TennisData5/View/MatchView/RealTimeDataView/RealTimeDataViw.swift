@@ -1,97 +1,104 @@
 import SwiftUI
 import Charts
 struct RealTimeDataView: View {
-    @ObservedObject var matchInfoVM:MatchInfoViewModel
-    @ObservedObject var positionVM: PositionViewModel
-    @ObservedObject var pointVM: PointViewModel
-    @State var firstSvIn: [BarChartDataModel] = RealTimeData.firstSvIn
-    @State var secondSvIn: [BarChartDataModel] = RealTimeData.secondSvIn
-    @State var atFirstSv: [BarChartDataModel] = RealTimeData.atFirstSv
-    @State var atSecondSv: [BarChartDataModel] = RealTimeData.atSecondSv
-    @State var serviceGameKeep: [BarChartDataModel] = RealTimeData.serviceGameKeep
-    @State var returnGameBreak: [BarChartDataModel] = RealTimeData.returnGameBreak
-    @State var getAndLostPoint: [PieChartDataModel] = RealTimeData.getAndLostPoint
-    @State var missCount: [PieChartDataModel] = RealTimeData.missCount
+    @ObservedObject var matchVM: MatchViewModel
     var body: some View {
-        NavigationStack{
+        ZStack {
+            Color.black.ignoresSafeArea()
             VStack{
-                Spacer().frame(height: 20)
-                MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM: pointVM)
-                Spacer().frame(height: 20)
-                HStack{
-                    Spacer().frame(width: 10)
+                Text("リアルタイムデータ")
+                    .font(.custom("Verdana",size:15))
+                    .bold()
+                    .foregroundColor(.white)
+                    .padding(.bottom,10)
+                ScrollView {
                     VStack{
-                        Spacer().frame(height: 10)
-                        HStack{
-                            Text("ファーストサーブの確率")
-                                .font(.custom("Verdana",size:10))
-                                .bold()
-                                .foregroundColor(.tungsten)
+                        Spacer(minLength: 20)
+                        MyNameAndScoreArea(matchInfoVM: matchVM.matchInfoVM, pointVM: matchVM.pointVM)
+                        Spacer(minLength: 20)
+                        VStack{
+                            Spacer().frame(height: 10)
+                            HStack{
+                                Text("ファーストサーブの確率")
+                                    .font(.custom("Verdana",size:10))
+                                    .bold()
+                                    .foregroundColor(.tungsten)
+                                Spacer()
+                            }
+                            BarChartView(barChartData: $matchVM.firstSvIn)
+                            Spacer().frame(height: 15)
+                            HStack{
+                                Text("セカンドサーブの確率")
+                                    .font(.custom("Verdana",size:10))
+                                    .bold()
+                                    .foregroundColor(.tungsten)
+                                Spacer()
+                            }
+                            BarChartView(barChartData: $matchVM.secondSvIn)
+                            Spacer().frame(height: 15)
+                            HStack{
+                                Text("ファーストサーブ時のポイント取得率")
+                                    .font(.custom("Verdana",size:10))
+                                    .bold()
+                                    .foregroundColor(.tungsten)
+                                Spacer()
+                            }
+                            BarChartView(barChartData: $matchVM.atFirstSv)
+                            Spacer().frame(height: 15)
+                            HStack{
+                                Text("セカンドサーブ時のポイント取得率")
+                                    .font(.custom("Verdana",size:10))
+                                    .bold()
+                                    .foregroundColor(.tungsten)
+                                Spacer()
+                            }
+                            BarChartView(barChartData: $matchVM.atSecondSv)
+                            Spacer().frame(height: 15)
+                            HStack{
+                                Text("キープ率")
+                                    .font(.custom("Verdana",size:10))
+                                    .bold()
+                                    .foregroundColor(.tungsten)
+                                Spacer()
+                            }
+                            BarChartView(barChartData: $matchVM.serviceGameKeep)
+                            Spacer(minLength: 15)
+                            HStack{
+                                Text("ブレーク率")
+                                    .font(.custom("Verdana",size:10))
+                                    .bold()
+                                    .foregroundColor(.tungsten)
+                                Spacer()
+                            }
+                            BarChartView(barChartData: $matchVM.returnGameBreak)
+                            Spacer(minLength: UIScreen.main.bounds.width/4)
+                            if matchVM.matchInfoVM.matchFormat == .singles {
+                                HStack{
+                                    PieChartView(pieChartData: $matchVM.missCount,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $matchVM.winnerCount,styleScale: $matchVM.styleScaleDis)
+                                }.offset(y:-UIScreen.main.bounds.width/8)
+                                HStack{
+                                    PieChartView(pieChartData: $matchVM.getPoint,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $matchVM.lostPoint,styleScale: $matchVM.styleScaleDis)
+                                }.offset(y:-UIScreen.main.bounds.width/4)
+                            } else if matchVM.matchInfoVM.matchFormat == .doubles {
+                                HStack{
+                                    PieChartView(pieChartData: $matchVM.missCountDbls,styleScale: $matchVM.styleScaleDisDbls)
+                                    PieChartView(pieChartData: $matchVM.winnerCountDbls,styleScale: $matchVM.styleScaleDis)
+                                }.offset(y:-UIScreen.main.bounds.width/8)
+                                HStack{
+                                    PieChartView(pieChartData: $matchVM.getPoint,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $matchVM.lostPoint,styleScale: $matchVM.styleScaleDis)
+                                }.offset(y:-UIScreen.main.bounds.width/4)
+                            }
                             Spacer()
                         }
-                        BarChartView(barChartData: $firstSvIn)
-                        Spacer().frame(height: 15)
-                        HStack{
-                            Text("セカンドサーブの確率")
-                                .font(.custom("Verdana",size:10))
-                                .bold()
-                                .foregroundColor(.tungsten)
-                            Spacer()
-                        }
-                        BarChartView(barChartData: $secondSvIn)
-                        Spacer().frame(height: 15)
-                        HStack{
-                            Text("ファーストサーブ時のポイント取得率")
-                                .font(.custom("Verdana",size:10))
-                                .bold()
-                                .foregroundColor(.tungsten)
-                            Spacer()
-                        }
-                        BarChartView(barChartData: $atFirstSv)
-                        Spacer().frame(height: 15)
-                        HStack{
-                            Text("セカンドサーブ時のポイント取得率")
-                                .font(.custom("Verdana",size:10))
-                                .bold()
-                                .foregroundColor(.tungsten)
-                            Spacer()
-                        }
-                        BarChartView(barChartData: $atSecondSv)
-                        Spacer().frame(height: 15)
-                        HStack{
-                            Text("キープ率")
-                                .font(.custom("Verdana",size:10))
-                                .bold()
-                                .foregroundColor(.tungsten)
-                            Spacer()
-                        }
-                        BarChartView(barChartData: $serviceGameKeep)
-                        Spacer().frame(height: 15)
-                        HStack{
-                            Text("ブレーク率")
-                                .font(.custom("Verdana",size:10))
-                                .bold()
-                                .foregroundColor(.tungsten)
-                            Spacer()
-                        }
-                        BarChartView(barChartData: $returnGameBreak)
-                        Spacer().frame(height: 15)
-                        HStack{
-                            PieChartView(pieChartData: $getAndLostPoint)
-                            Spacer()
-                        }
-                        HStack{
-                            PieChartView(pieChartData: $missCount)
-                        }
-                        
+                        .padding(.horizontal,10)
+                        .background{Color.white}
                     }
-                    Spacer().frame(width: 10)
+                    .background{ Color.mercury }
                 }
-                .background{Color.white}
             }
-            .background{ Color.mercury }
-            .navigationBarTitle("リアルタイムデータ")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

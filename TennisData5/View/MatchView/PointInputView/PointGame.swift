@@ -1,70 +1,75 @@
 import Foundation
 import SwiftUI
 struct PointGame: View {
-    @ObservedObject var matchInfoVM:MatchInfoViewModel
-    @ObservedObject var positionVM: PositionViewModel
-    @ObservedObject var pointVM: PointViewModel
+    @ObservedObject var matchVM: MatchViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        NavigationStack {
-            VStack(spacing:0){
-                Spacer().frame(height: 20)
-                MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM: pointVM)
-                HStack{
-                    Spacer()
-                    Text("ビギナーモード")
-                        .padding(10)
-                        .background(.white)
-                        .font(.custom("Verdana",size:10))
-                }
-                VStack(spacing:1){
-                    Spacer().frame(height:10)
-                    HStack {
-                        goBackBtn
+        ZStack {
+            Color.black.ignoresSafeArea()
+            VStack{
+                Text(matchVM.matchInfoVM.naviTitle)
+                    .font(.custom("Verdana",size:15))
+                    .bold()
+                    .foregroundColor(.white)
+                    .padding(.bottom,10)
+                VStack(spacing:0){
+                    Spacer(minLength: 20)
+                    MyNameAndScoreArea(matchInfoVM: matchVM.matchInfoVM, pointVM: matchVM.pointVM)
+                    HStack{
                         Spacer()
+                        Text("ビギナーモード")
+                            .padding(10)
+                            .background(.white)
+                            .font(.custom("Verdana",size:10))
                     }
-                    Spacer().frame(height: 10)
-                    if matchInfoVM.matchFormat == .singles {
-                        SnglsPositionBtnArea(positionVM: positionVM)
-                    } else if matchInfoVM.matchFormat == .doubles {
-                        DblsGameSideArea(positionVM: positionVM)
-                        DblsPositionBtnArea(positionVM: positionVM)
-                    }
-                    Spacer().frame(height: 10)
-                    if positionVM.position != .NoSelection {
-                        if pointVM.service == .first {
+                    VStack(spacing:1){
+                        Spacer().frame(height:10)
+                        HStack {
+                            goBackBtn
+                            Spacer()
+                        }
+                        Spacer().frame(height: 10)
+                        if matchVM.matchInfoVM.matchFormat == .singles {
+                            GameSideArea(positionVM: matchVM.positionVM, pointVM: matchVM.pointVM)
+                            SnglsPositionBtnArea(positionVM: matchVM.positionVM)
+                        } else if matchVM.matchInfoVM.matchFormat == .doubles {
+                            GameSideArea(positionVM: matchVM.positionVM, pointVM: matchVM.pointVM)
+                            DblsPositionBtnArea(positionVM: matchVM.positionVM)
+                        }
+                        Spacer().frame(height: 10)
+                        if matchVM.positionVM.position == .NoSelection {
+                            faultBtnDis
+                        } else if matchVM.pointVM.service == .first {
                             faultBtn
-                        } else {
+                        } else if matchVM.pointVM.service == .second {
                             doubleFaultBtn
                         }
+                        Spacer().frame(height: 10)
+                        
+                        if matchVM.matchInfoVM.matchFormat == .singles {
+                            SnglsPointBtnArea(positionVM: matchVM.positionVM, pointVM: matchVM.pointVM)
+                        } else if matchVM.matchInfoVM.matchFormat == .doubles {
+                            DblsPointBtnArea(positionVM: matchVM.positionVM, pointVM: matchVM.pointVM)
+                        }
+                        Spacer().frame(height: 10)
+                        nextGameBtn
+                        gameEndBtn
                     }
-                    Spacer().frame(height: 10)
-                    
-                    if matchInfoVM.matchFormat == .singles {
-                        SnglsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                    } else if matchInfoVM.matchFormat == .doubles {
-                        DblsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                    }
-                    Spacer().frame(height: 10)
-                    nextGameBtn
-                    gameEndBtn
+                    .background{ Color.white}
+                    Spacer()
                 }
-                .background{ Color.white}
-                Spacer()
+                .background{ Color.mercury }
             }
-            .background{ Color.mercury }
-            .navigationBarTitle("シングルスポイントゲーム")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
     var goBackBtn: some View {
         Button(action: {
-            if pointVM.service == .second {
-                pointVM.service = .first
-            } else if positionVM.position != .NoSelection {
-                positionVM.position = .NoSelection
-            } else if positionVM.gameSide != .noSelection {
-                positionVM.gameSide = .noSelection
+            if matchVM.pointVM.service == .second {
+                matchVM.pointVM.service = .first
+            } else if matchVM.positionVM.position != .NoSelection {
+                matchVM.positionVM.position = .NoSelection
+            } else if matchVM.positionVM.gameSide != .noSelection && matchVM.pointVM.myPoint + matchVM.pointVM.opponentPoint == 0 {
+                matchVM.positionVM.gameSide = .noSelection
             }
         },label: {
             Text("<< 一つ戻る")
@@ -73,14 +78,31 @@ struct PointGame: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(width: 120,height: 40)
                 .background{ Color.ocean }
+                .padding(.leading,10)
+                .cornerRadius(4)
         })
-        .padding(.leading,10)
-        .cornerRadius(4)
+        
+    }
+    var faultBtnDis: some View {
+        Button(action: {
+            
+        },label:{
+            Text("フォルト")
+                .foregroundColor(Color.white)
+                .bold()
+                .font(.custom("Verdana", size: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background{Color.silver}
+                .cornerRadius(4)
+        })
+        .padding(.horizontal,10)
+        .disabled(true)
     }
     var faultBtn: some View {
         Button(action: {
-            if positionVM.position != .NoSelection {
-                pointVM.service = .second
+            if matchVM.positionVM.position != .NoSelection {
+                matchVM.pointVM.service = .second
             }
         },label:{
             Text("フォルト")
@@ -91,18 +113,18 @@ struct PointGame: View {
                 .frame(height: 40)
                 .background{Color.cyan}
                 .cornerRadius(4)
-        }).padding(.horizontal,10)
+                .padding(.horizontal,10)
+        })
     }
     var doubleFaultBtn: some View {
         Button(action: {
-            if positionVM.gameSide == .serviceGame {
-                pointVM.opponentPoint += 1
-            } else if positionVM.gameSide == .returnGame {
-                pointVM.myPoint += 1
+            if matchVM.positionVM.gameSide == .serviceGame {
+                matchVM.pointVM.opponentPoint += 1
+            } else if matchVM.positionVM.gameSide == .returnGame {
+                matchVM.pointVM.myPoint += 1
             }
-            positionVM.position = .NoSelection
-            pointVM.service = .first
-            positionVM.gameSide = .noSelection
+            matchVM.positionVM.position = .NoSelection
+            matchVM.pointVM.service = .first
         },label:{
             Text("ダブルフォルト")
                 .foregroundColor(Color.white)
@@ -112,23 +134,24 @@ struct PointGame: View {
                 .frame(height: 40)
                 .background{Color.grape}
                 .cornerRadius(4)
+                .padding(.horizontal,10)
         })
     }
     var nextGameBtn: some View {
         Button(action: {
-            if pointVM.myPoint > pointVM.opponentPoint {
-                pointVM.winCount += 1
-            } else if pointVM.myPoint < pointVM.opponentPoint {
-                pointVM.loseCount += 1
-            } else if pointVM.myPoint == pointVM.opponentPoint {
-                pointVM.drowCount += 1
+            if matchVM.pointVM.myPoint > matchVM.pointVM.opponentPoint {
+                matchVM.pointVM.winCount += 1
+            } else if matchVM.pointVM.myPoint < matchVM.pointVM.opponentPoint {
+                matchVM.pointVM.loseCount += 1
+            } else if matchVM.pointVM.myPoint == matchVM.pointVM.opponentPoint {
+                matchVM.pointVM.drowCount += 1
             }
-            pointVM.service = .first
-            positionVM.position = .NoSelection
-            positionVM.gameSide = .noSelection
-            pointVM.myPoint = 0
-            pointVM.opponentPoint = 0
-            matchInfoVM.gameId = UUID().uuidString
+            matchVM.pointVM.service = .first
+            matchVM.positionVM.position = .NoSelection
+            matchVM.positionVM.gameSide = .noSelection
+            matchVM.pointVM.myPoint = 0
+            matchVM.pointVM.opponentPoint = 0
+            matchVM.matchInfoVM.gameId = UUID().uuidString
         },label:{
             Text("次のゲームへ")
                 .foregroundColor(Color.white)
@@ -138,10 +161,14 @@ struct PointGame: View {
                 .frame(height: 40)
                 .background{Color.ocean}
                 .cornerRadius(4)
+                .padding(.horizontal,10)
         })
     }
     var gameEndBtn: some View {
         Button(action: {
+            matchVM.matchInfoVM.resetModel()
+            matchVM.pointVM.resetModel()
+            matchVM.positionVM.resetModel()
             dismiss()
         },label:{
             Text("ゲームを終了する")
@@ -152,7 +179,9 @@ struct PointGame: View {
                 .frame(height: 40)
                 .background{Color.ocean}
                 .cornerRadius(4)
+                .padding(.horizontal,10)
         })
+        
     }
 }
 

@@ -5,7 +5,11 @@ struct DblsPointBtnArea: View {
     var body: some View {
         HStack(spacing:1){
             VStack(spacing:1){
-                getPointBtn
+                if positionVM.position == .NoSelection {
+                    getPointBtnDis
+                } else {
+                    getPointBtn
+                }
                 HStack(spacing:1){
                     myWinnerBtn
                     partnerWinnerBtn
@@ -13,7 +17,11 @@ struct DblsPointBtnArea: View {
                 opponentMissBtn
             }.padding(.leading,10)
             VStack(spacing:1){
-                lostPointBtn
+                if positionVM.position == .NoSelection {
+                    lostPointBtnDis
+                } else {
+                    lostPointBtn
+                }
                 opponentWinerBtn
                 HStack(spacing:1){
                     myMissBtn
@@ -22,13 +30,26 @@ struct DblsPointBtnArea: View {
             }.padding(.trailing,10)
         }
     }
+    var getPointBtnDis: some View {
+        Button(action: {
+            
+        },label:{
+            Text("ポイントをとった")
+                .foregroundColor(Color.white)
+                .bold()
+                .font(.custom("Verdana", size: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background{Color.silver}
+                .cornerRadius(4)
+        }).disabled(true)
+    }
     var getPointBtn: some View {
         Button(action: {
             if positionVM.position != .NoSelection {
                 pointVM.myPoint += 1
                 positionVM.position = .NoSelection
                 pointVM.service = .first
-                positionVM.gameSide = .noSelection
             }
         },label:{
             Text("ポイントをとった")
@@ -41,13 +62,30 @@ struct DblsPointBtnArea: View {
                 .cornerRadius(4)
         })
     }
+    var lostPointBtnDis: some View {
+        Button(action: {
+            if positionVM.position != .NoSelection {
+                pointVM.opponentPoint += 1
+                positionVM.position = .NoSelection
+                pointVM.service = .first
+            }
+        },label:{
+            Text("ポイントをとられた")
+                .foregroundColor(Color.white)
+                .bold()
+                .font(.custom("Verdana", size: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background{Color.silver}
+                .cornerRadius(4)
+        }).disabled(true)
+    }
     var lostPointBtn: some View {
         Button(action: {
             if positionVM.position != .NoSelection {
                 pointVM.opponentPoint += 1
                 positionVM.position = .NoSelection
                 pointVM.service = .first
-                positionVM.gameSide = .noSelection
             }
         },label:{
             Text("ポイントをとられた")
@@ -70,7 +108,7 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
         })
         .disabled(true)
@@ -85,10 +123,9 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
-        })
-        .disabled(true)
+        }).disabled(true)
     }
     var opponentMissBtn: some View {
         Button(action: {
@@ -100,10 +137,9 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
-        })
-        .disabled(true)
+        }).disabled(true)
     }
     var opponentWinerBtn: some View {
         Button(action: {
@@ -115,10 +151,9 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
-        })
-        .disabled(true)
+        }).disabled(true)
     }
     var myMissBtn: some View {
         Button(action: {
@@ -130,10 +165,9 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
-        })
-        .disabled(true)
+        }).disabled(true)
     }
     var partnerMissBtn: some View {
         Button(action: {
@@ -145,10 +179,9 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
-        })
-        .disabled(true)
+        }).disabled(true)
     }
 }
 

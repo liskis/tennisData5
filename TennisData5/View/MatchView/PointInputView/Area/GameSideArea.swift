@@ -1,22 +1,35 @@
 
 import SwiftUI
 
-struct DblsGameSideArea: View {
+struct GameSideArea: View {
     @ObservedObject var positionVM: PositionViewModel
+    @ObservedObject var pointVM: PointViewModel
     var body: some View {
         HStack(spacing:1){
             if positionVM.gameSide == .serviceGame {
                 serviceGameDisBtn
             } else {
-                serviceGameBtn
+                if pointVM.myPoint + pointVM.opponentPoint == 0 {
+                    serviceGameBtn
+                } else {
+                    posisionDisBtn
+                }
             }
             if positionVM.gameSide == .returnGame {
                 returnGameDisBtn
             } else {
-                returnGameBtn
+                if pointVM.myPoint + pointVM.opponentPoint == 0 {
+                    returnGameBtn
+                } else {
+                    posisionDisBtn
+                }
             }
-        }
-        .padding(.horizontal,10)
+        } .padding(.horizontal,10)
+    }
+    var posisionDisBtn: some View {
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
     }
     var serviceGameDisBtn: some View {
         Button(action: {

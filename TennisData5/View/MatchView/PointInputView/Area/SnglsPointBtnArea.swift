@@ -1,19 +1,16 @@
-//
-//  SnglsPointBtnArea.swift
-//  TennisData5
-//
-//  Created by 渡辺健輔 on 2024/01/19.
-//
-
 import SwiftUI
-
 struct SnglsPointBtnArea: View {
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
     var body: some View {
         HStack(spacing:1){
-            getPointBtn
-            lostPointBtn
+            if positionVM.position == .NoSelection {
+                getPointBtnDis
+                lostPointBtnDis
+            } else {
+                getPointBtn
+                lostPointBtn
+            }
         }.padding(.horizontal,10)
         HStack(spacing:1){
             myWinnerBtn
@@ -24,13 +21,27 @@ struct SnglsPointBtnArea: View {
             myMissBtn
         }.padding(.horizontal,10)
     }
+    var getPointBtnDis: some View {
+        Button(action: {
+            
+        },label:{
+            Text("ポイントをとった")
+                .foregroundColor(Color.white)
+                .bold()
+                .font(.custom("Verdana", size: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background{Color.silver}
+                .cornerRadius(4)
+        })
+        .disabled(true)
+    }
     var getPointBtn: some View {
         Button(action: {
             if positionVM.position != .NoSelection {
                 pointVM.myPoint += 1
                 positionVM.position = .NoSelection
                 pointVM.service = .first
-                positionVM.gameSide = .noSelection
             }
         },label:{
             Text("ポイントをとった")
@@ -43,13 +54,27 @@ struct SnglsPointBtnArea: View {
                 .cornerRadius(4)
         })
     }
+    var lostPointBtnDis: some View {
+        Button(action: {
+           
+        },label:{
+            Text("ポイントをとられた")
+                .foregroundColor(Color.white)
+                .bold()
+                .font(.custom("Verdana", size: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background{Color.silver}
+                .cornerRadius(4)
+        })
+        .disabled(true)
+    }
     var lostPointBtn: some View {
         Button(action: {
             if positionVM.position != .NoSelection {
                 pointVM.opponentPoint += 1
                 positionVM.position = .NoSelection
                 pointVM.service = .first
-                positionVM.gameSide = .noSelection
             }
         },label:{
             Text("ポイントをとられた")
@@ -72,7 +97,7 @@ struct SnglsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
         })
         .disabled(true)
@@ -87,7 +112,7 @@ struct SnglsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
         })
         .disabled(true)
@@ -102,7 +127,7 @@ struct SnglsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
         })
         .disabled(true)
@@ -117,7 +142,7 @@ struct SnglsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.gray}
+                .background{Color.silver}
                 .cornerRadius(4)
         })
         .disabled(true)

@@ -1,7 +1,8 @@
 import SwiftUI
 struct DataAnalysisView: View {
     var body: some View {
-        ZStack{
+        ZStack {
+            Color.black.ignoresSafeArea()
             
         }
     }
