@@ -1,9 +1,6 @@
 import Foundation
 import SwiftUI
-class MatchViewModel: ObservableObject {
-    @Published var pointVM = PointViewModel()
-    @Published var matchInfoVM = MatchInfoViewModel()
-    @Published var positionVM = PositionViewModel()
+class ChartDataViewModel: ObservableObject {
     @Published var firstSvIn: [BarChartDataModel] = [
         .init(value: 66.7, color: .ocean, category: "firstSvIn", index: 60.0),
         .init(value: 33.3, color: .mercury, category: "firstSvIn",index:60.0)

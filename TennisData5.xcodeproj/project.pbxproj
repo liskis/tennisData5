@@ -47,7 +47,7 @@
 		0972296C2B564BF60046FAF8 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972296B2B564BF60046FAF8 /* BarChartView.swift */; };
 		0972296E2B5A617C0046FAF8 /* MatchInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972296D2B5A617C0046FAF8 /* MatchInfoViewModel.swift */; };
 		097229702B5A620B0046FAF8 /* PositionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972296F2B5A620B0046FAF8 /* PositionViewModel.swift */; };
-		097229742B5A63660046FAF8 /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229732B5A63660046FAF8 /* MatchViewModel.swift */; };
+		097229742B5A63660046FAF8 /* ChartDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229732B5A63660046FAF8 /* ChartDataViewModel.swift */; };
 		097229762B5A70850046FAF8 /* SnglsPositionBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229752B5A70850046FAF8 /* SnglsPositionBtnArea.swift */; };
 		097229782B5A70DE0046FAF8 /* DblsPositionBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229772B5A70DE0046FAF8 /* DblsPositionBtnArea.swift */; };
 		0972297A2B5A7CDD0046FAF8 /* GameSideArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229792B5A7CDD0046FAF8 /* GameSideArea.swift */; };
@@ -175,7 +175,7 @@
 		0972296B2B564BF60046FAF8 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		0972296D2B5A617C0046FAF8 /* MatchInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchInfoViewModel.swift; sourceTree = "<group>"; };
 		0972296F2B5A620B0046FAF8 /* PositionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionViewModel.swift; sourceTree = "<group>"; };
-		097229732B5A63660046FAF8 /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
+		097229732B5A63660046FAF8 /* ChartDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataViewModel.swift; sourceTree = "<group>"; };
 		097229752B5A70850046FAF8 /* SnglsPositionBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsPositionBtnArea.swift; sourceTree = "<group>"; };
 		097229772B5A70DE0046FAF8 /* DblsPositionBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DblsPositionBtnArea.swift; sourceTree = "<group>"; };
 		097229792B5A7CDD0046FAF8 /* GameSideArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSideArea.swift; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 				092B2B3B2B5177620046BDBF /* PointViewModel.swift */,
 				0972296D2B5A617C0046FAF8 /* MatchInfoViewModel.swift */,
 				0972296F2B5A620B0046FAF8 /* PositionViewModel.swift */,
-				097229732B5A63660046FAF8 /* MatchViewModel.swift */,
+				097229732B5A63660046FAF8 /* ChartDataViewModel.swift */,
 				097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */,
 			);
 			path = ViewModel;
@@ -928,7 +928,7 @@
 				09992D4E2B5134BE0049B877 /* Issue.swift in Sources */,
 				09992D4C2B5132200049B877 /* HomeGraphData.swift in Sources */,
 				0972297A2B5A7CDD0046FAF8 /* GameSideArea.swift in Sources */,
-				097229742B5A63660046FAF8 /* MatchViewModel.swift in Sources */,
+				097229742B5A63660046FAF8 /* ChartDataViewModel.swift in Sources */,
 				09BC07002B444657008A44FD /* MatchTabView.swift in Sources */,
 				0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */,
 				091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */,

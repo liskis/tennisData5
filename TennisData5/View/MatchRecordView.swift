@@ -32,6 +32,7 @@ struct MatchRecordView: View {
                     }
                     .pickerStyle(.segmented)
                     .cornerRadius(10)
+                    .padding(.horizontal,10)
                     TextField("パートナーを選択", text: $recoadSearchVM.partner)
                         .textFieldStyle(.roundedBorder)
                         .focused($partnerFocus)

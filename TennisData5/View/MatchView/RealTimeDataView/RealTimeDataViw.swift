@@ -1,7 +1,10 @@
 import SwiftUI
 import Charts
 struct RealTimeDataView: View {
-    @ObservedObject var matchVM: MatchViewModel
+    @ObservedObject var pointVM: PointViewModel
+    @ObservedObject var matchInfoVM: MatchInfoViewModel
+    @ObservedObject var positionVM: PositionViewModel
+    @ObservedObject var chartDataVM: ChartDataViewModel
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -14,7 +17,7 @@ struct RealTimeDataView: View {
                 ScrollView {
                     VStack{
                         Spacer(minLength: 20)
-                        MyNameAndScoreArea(matchInfoVM: matchVM.matchInfoVM, pointVM: matchVM.pointVM)
+                        MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM:pointVM)
                         Spacer(minLength: 20)
                         VStack{
                             Spacer().frame(height: 10)
@@ -25,7 +28,7 @@ struct RealTimeDataView: View {
                                     .foregroundColor(.tungsten)
                                 Spacer()
                             }
-                            BarChartView(barChartData: $matchVM.firstSvIn)
+                            BarChartView(barChartData: $chartDataVM.firstSvIn)
                             Spacer().frame(height: 15)
                             HStack{
                                 Text("セカンドサーブの確率")
@@ -34,7 +37,7 @@ struct RealTimeDataView: View {
                                     .foregroundColor(.tungsten)
                                 Spacer()
                             }
-                            BarChartView(barChartData: $matchVM.secondSvIn)
+                            BarChartView(barChartData: $chartDataVM.secondSvIn)
                             Spacer().frame(height: 15)
                             HStack{
                                 Text("ファーストサーブ時のポイント取得率")
@@ -43,7 +46,7 @@ struct RealTimeDataView: View {
                                     .foregroundColor(.tungsten)
                                 Spacer()
                             }
-                            BarChartView(barChartData: $matchVM.atFirstSv)
+                            BarChartView(barChartData: $chartDataVM.atFirstSv)
                             Spacer().frame(height: 15)
                             HStack{
                                 Text("セカンドサーブ時のポイント取得率")
@@ -52,7 +55,7 @@ struct RealTimeDataView: View {
                                     .foregroundColor(.tungsten)
                                 Spacer()
                             }
-                            BarChartView(barChartData: $matchVM.atSecondSv)
+                            BarChartView(barChartData: $chartDataVM.atSecondSv)
                             Spacer().frame(height: 15)
                             HStack{
                                 Text("キープ率")
@@ -61,7 +64,7 @@ struct RealTimeDataView: View {
                                     .foregroundColor(.tungsten)
                                 Spacer()
                             }
-                            BarChartView(barChartData: $matchVM.serviceGameKeep)
+                            BarChartView(barChartData: $chartDataVM.serviceGameKeep)
                             Spacer(minLength: 15)
                             HStack{
                                 Text("ブレーク率")
@@ -70,25 +73,25 @@ struct RealTimeDataView: View {
                                     .foregroundColor(.tungsten)
                                 Spacer()
                             }
-                            BarChartView(barChartData: $matchVM.returnGameBreak)
+                            BarChartView(barChartData: $chartDataVM.returnGameBreak)
                             Spacer(minLength: UIScreen.main.bounds.width/4)
-                            if matchVM.matchInfoVM.matchFormat == .singles {
+                            if matchInfoVM.matchFormat == .singles {
                                 HStack{
-                                    PieChartView(pieChartData: $matchVM.missCount,styleScale: $matchVM.styleScaleDis)
-                                    PieChartView(pieChartData: $matchVM.winnerCount,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.missCount,styleScale: $chartDataVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.winnerCount,styleScale: $chartDataVM.styleScaleDis)
                                 }.offset(y:-UIScreen.main.bounds.width/8)
                                 HStack{
-                                    PieChartView(pieChartData: $matchVM.getPoint,styleScale: $matchVM.styleScaleDis)
-                                    PieChartView(pieChartData: $matchVM.lostPoint,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.getPoint,styleScale: $chartDataVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.lostPoint,styleScale: $chartDataVM.styleScaleDis)
                                 }.offset(y:-UIScreen.main.bounds.width/4)
-                            } else if matchVM.matchInfoVM.matchFormat == .doubles {
+                            } else if matchInfoVM.matchFormat == .doubles {
                                 HStack{
-                                    PieChartView(pieChartData: $matchVM.missCountDbls,styleScale: $matchVM.styleScaleDisDbls)
-                                    PieChartView(pieChartData: $matchVM.winnerCountDbls,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.missCountDbls,styleScale: $chartDataVM.styleScaleDisDbls)
+                                    PieChartView(pieChartData: $chartDataVM.winnerCountDbls,styleScale: $chartDataVM.styleScaleDis)
                                 }.offset(y:-UIScreen.main.bounds.width/8)
                                 HStack{
-                                    PieChartView(pieChartData: $matchVM.getPoint,styleScale: $matchVM.styleScaleDis)
-                                    PieChartView(pieChartData: $matchVM.lostPoint,styleScale: $matchVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.getPoint,styleScale: $chartDataVM.styleScaleDis)
+                                    PieChartView(pieChartData: $chartDataVM.lostPoint,styleScale: $chartDataVM.styleScaleDis)
                                 }.offset(y:-UIScreen.main.bounds.width/4)
                             }
                             Spacer()
