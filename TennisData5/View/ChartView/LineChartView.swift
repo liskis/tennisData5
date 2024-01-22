@@ -51,7 +51,7 @@ struct LineChartView: View {
                 .symbolSize(100)
             }
         }
-        .frame(height: 200)
+        .frame(height: 180)
         .chartForegroundStyleScale([
             "data1": .orange,
             "data2": .red

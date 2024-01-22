@@ -1,10 +1,11 @@
 import Foundation
 struct MatchRecordModel: Identifiable {
-    var id: String
-    var matchStartDate: Date
+    var id: String = UUID().uuidString
+    var matchId: String
+    var matchStartDate: String
     var matchFormat: MatchFormat
     var gameType: GameType
     var WinScore: Int
     var LoseScore: Int
-    var EvenScore: Int
+    var DrawScore: Int
 }

@@ -14,7 +14,7 @@ struct HomeView: View {
                 HomeHeaderBar()
                 ZStack {
                     VStack{
-                        Image(.background2)
+                        Image(.tennisCourt)
                             .resizable()
                             .scaledToFit()
                         Spacer()
@@ -22,12 +22,8 @@ struct HomeView: View {
                     VStack{
                         Spacer().frame(height: 10)
                         StatsDataArea()
-                        Spacer().frame(height: 50)
-                        HStack{
-                            Spacer()
-                            LineChartView(data1: $data1, data2: $data2, minAxis: $minAxis)
-                            Spacer()
-                        }
+                        Spacer().frame(height: 40)
+                        LineChartView(data1: $data1, data2: $data2, minAxis: $minAxis)
                         winLoseArrayArea
                         dateArrayArea
                         Spacer().frame(height: 10)

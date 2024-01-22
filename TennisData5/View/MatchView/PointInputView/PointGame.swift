@@ -7,62 +7,58 @@ struct PointGame: View {
     @ObservedObject var chartDataVM: ChartDataViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            VStack{
-                Text(matchInfoVM.naviTitle)
-                    .font(.custom("Verdana",size:15))
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding(.bottom,10)
-                VStack(spacing:0){
-                    Spacer(minLength: 20)
-                    MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM: pointVM)
-                    HStack{
-                        Spacer()
-                        Text("ビギナーモード")
-                            .padding(10)
-                            .background(.white)
-                            .font(.custom("Verdana",size:10))
-                    }
-                    VStack(spacing:1){
-                        Spacer().frame(height:10)
-                        HStack {
-                            goBackBtn
-                            Spacer()
-                        }
-                        Spacer().frame(height: 10)
-                        if matchInfoVM.matchFormat == .singles {
-                            GameSideArea(positionVM: positionVM, pointVM: pointVM)
-                            SnglsPositionBtnArea(positionVM: positionVM)
-                        } else if matchInfoVM.matchFormat == .doubles {
-                            GameSideArea(positionVM: positionVM, pointVM: pointVM)
-                            DblsPositionBtnArea(positionVM: positionVM)
-                        }
-                        Spacer().frame(height: 10)
-                        if positionVM.position == .NoSelection {
-                            faultBtnDis
-                        } else if pointVM.service == .first {
-                            faultBtn
-                        } else if pointVM.service == .second {
-                            doubleFaultBtn
-                        }
-                        Spacer().frame(height: 10)
-                        
-                        if matchInfoVM.matchFormat == .singles {
-                            SnglsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                        } else if matchInfoVM.matchFormat == .doubles {
-                            DblsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                        }
-                        Spacer().frame(height: 10)
-                        nextGameBtn
-                        gameEndBtn
-                    }
-                    .background{ Color.white}
+        NavigationStack {
+            VStack(spacing:0){
+                Spacer(minLength: 20)
+                MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM: pointVM)
+                HStack{
                     Spacer()
+                    Text("ビギナーモード")
+                        .padding(10)
+                        .background(.white)
+                        .font(.custom("Verdana",size:10))
                 }
-                .background{ Color.mercury }
+                VStack(spacing:1){
+                    Spacer().frame(height:10)
+                    HStack {
+                        goBackBtn
+                        Spacer()
+                    }
+                    Spacer().frame(height: 10)
+                    if matchInfoVM.matchFormat == .singles {
+                        GameSideArea(positionVM: positionVM, pointVM: pointVM)
+                        SnglsPositionBtnArea(positionVM: positionVM)
+                    } else if matchInfoVM.matchFormat == .doubles {
+                        GameSideArea(positionVM: positionVM, pointVM: pointVM)
+                        DblsPositionBtnArea(positionVM: positionVM)
+                    }
+                    Spacer().frame(height: 10)
+                    if positionVM.position == .NoSelection {
+                        faultBtnDis
+                    } else if pointVM.service == .first {
+                        faultBtn
+                    } else if pointVM.service == .second {
+                        doubleFaultBtn
+                    }
+                    Spacer().frame(height: 10)
+                    
+                    if matchInfoVM.matchFormat == .singles {
+                        SnglsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
+                    } else if matchInfoVM.matchFormat == .doubles {
+                        DblsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
+                    }
+                    Spacer().frame(height: 10)
+                    nextGameBtn
+                    gameEndBtn
+                }
+                .background{ Color.white}
+                Spacer()
             }
+            .background{ Color.mercury }
+        .navigationBarTitle(matchInfoVM.naviTitle, displayMode: .inline)
+        .toolbarBackground(.black, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark)
         }
     }
     var goBackBtn: some View {
@@ -84,7 +80,6 @@ struct PointGame: View {
                 .padding(.leading,10)
                 .cornerRadius(4)
         })
-        
     }
     var faultBtnDis: some View {
         Button(action: {
@@ -169,9 +164,6 @@ struct PointGame: View {
     }
     var gameEndBtn: some View {
         Button(action: {
-//            matchInfoVM.resetModel()
-//            pointVM.resetModel()
-//            positionVM.resetModel()
             dismiss()
         },label:{
             Text("ゲームを終了する")

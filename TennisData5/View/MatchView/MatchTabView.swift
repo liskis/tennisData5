@@ -11,12 +11,14 @@ struct MatchTabView: View {
         TabView {
             PointGame(pointVM: pointVM, matchInfoVM: matchInfoVM, positionVM: positionVM, chartDataVM: chartDataVM)
                 .toolbarBackground(.black, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Text("ポイント入力")
                     Image(systemName: "hand.point.up")
                 }
             RealTimeDataView(pointVM: pointVM, matchInfoVM: matchInfoVM, positionVM: positionVM, chartDataVM: chartDataVM)
                 .toolbarBackground(.black, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Text("リアルタイムデータ")
                     Image(systemName: "gauge.with.dots.needle.67percent")
