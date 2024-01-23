@@ -64,6 +64,7 @@ struct LineChartView: View {
         .chartYAxis(.hidden)
         .chartYScale(domain: [minAxis, 100])
         .chartLegend(.hidden)
+        .padding(.horizontal,10)
     }
 }
 

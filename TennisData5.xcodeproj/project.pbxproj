@@ -57,6 +57,9 @@
 		097229842B5CC3210046FAF8 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229832B5CC3210046FAF8 /* TextPosition.swift */; };
 		097229862B5D2DC70046FAF8 /* MatchRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */; };
 		097229882B5D359D0046FAF8 /* RecoadSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */; };
+		0972298B2B5F87380046FAF8 /* OneMatchDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */; };
+		0972298D2B5F89590046FAF8 /* NameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */; };
+		0972298F2B60060D0046FAF8 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298E2B60060D0046FAF8 /* DateExtention.swift */; };
 		09806D272B4F692B007638B7 /* PointGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09806D262B4F692B007638B7 /* PointGame.swift */; };
 		09992D4C2B5132200049B877 /* HomeGraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeGraphData.swift */; };
 		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
@@ -185,6 +188,9 @@
 		097229832B5CC3210046FAF8 /* TextPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPosition.swift; sourceTree = "<group>"; };
 		097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRecordModel.swift; sourceTree = "<group>"; };
 		097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoadSearchViewModel.swift; sourceTree = "<group>"; };
+		0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMatchDataView.swift; sourceTree = "<group>"; };
+		0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScoreArea.swift; sourceTree = "<group>"; };
+		0972298E2B60060D0046FAF8 /* DateExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		09806D262B4F692B007638B7 /* PointGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGame.swift; sourceTree = "<group>"; };
 		09992D4B2B5132200049B877 /* HomeGraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGraphData.swift; sourceTree = "<group>"; };
 		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
@@ -322,6 +328,7 @@
 				0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */,
 				0927E0A62B41A6A20069BEF1 /* Assets.xcassets */,
 				0927E0A82B41A6A20069BEF1 /* Preview Content */,
+				0972298E2B60060D0046FAF8 /* DateExtention.swift */,
 			);
 			path = TennisData5;
 			sourceTree = "<group>";
@@ -390,11 +397,11 @@
 		0927E0FE2B41A7390069BEF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				097229892B5F86EC0046FAF8 /* MatchRecordView */,
 				0972295E2B53FEA30046FAF8 /* ChartView */,
 				09BC06FE2B44463D008A44FD /* MatchView */,
 				0927E0FF2B41A7B40069BEF1 /* HomeView */,
 				0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */,
-				0927E1002B41A7CE0069BEF1 /* MatchRecordView.swift */,
 				0927E1022B41A7F10069BEF1 /* DataAnalysisView.swift */,
 			);
 			path = View;
@@ -446,6 +453,16 @@
 			path = ChartView;
 			sourceTree = "<group>";
 		};
+		097229892B5F86EC0046FAF8 /* MatchRecordView */ = {
+			isa = PBXGroup;
+			children = (
+				0927E1002B41A7CE0069BEF1 /* MatchRecordView.swift */,
+				0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */,
+				0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */,
+			);
+			path = MatchRecordView;
+			sourceTree = "<group>";
+		};
 		09992D4A2B5132050049B877 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,7 +476,6 @@
 		09BC06F72B43A36D008A44FD /* PointInputView */ = {
 			isa = PBXGroup;
 			children = (
-				092B2B392B516A270046BDBF /* Area */,
 				09806D262B4F692B007638B7 /* PointGame.swift */,
 				09992D522B5141250049B877 /* SinglesSetMatch.swift */,
 				09992D542B5141410049B877 /* SinglesTieBreak.swift */,
@@ -472,6 +488,7 @@
 		09BC06FE2B44463D008A44FD /* MatchView */ = {
 			isa = PBXGroup;
 			children = (
+				092B2B392B516A270046BDBF /* Area */,
 				09BC07032B444897008A44FD /* RealTimeDataView */,
 				09BC06F72B43A36D008A44FD /* PointInputView */,
 				09BC06FF2B444657008A44FD /* MatchTabView.swift */,
@@ -959,6 +976,7 @@
 				097229642B550DB50046FAF8 /* PieChartView.swift in Sources */,
 				0972296C2B564BF60046FAF8 /* BarChartView.swift in Sources */,
 				091AC3D42B4A8AAE007E68F0 /* PointDataModel.swift in Sources */,
+				0972298B2B5F87380046FAF8 /* OneMatchDataView.swift in Sources */,
 				091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */,
 				09992D502B513C1F0049B877 /* PointInputData.swift in Sources */,
 				092B2B422B524A940046BDBF /* DammyPointData.swift in Sources */,
@@ -967,9 +985,11 @@
 				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
 				09992D5B2B51417B0049B877 /* DoublesTieBreak.swift in Sources */,
 				097229762B5A70850046FAF8 /* SnglsPositionBtnArea.swift in Sources */,
+				0972298D2B5F89590046FAF8 /* NameAndScoreArea.swift in Sources */,
 				0972295D2B53FA780046FAF8 /* LineChartView.swift in Sources */,
 				091AC3D22B4A57D9007E68F0 /* GameType.swift in Sources */,
 				091AC3D82B4A931F007E68F0 /* Position.swift in Sources */,
+				0972298F2B60060D0046FAF8 /* DateExtention.swift in Sources */,
 				0972296E2B5A617C0046FAF8 /* MatchInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

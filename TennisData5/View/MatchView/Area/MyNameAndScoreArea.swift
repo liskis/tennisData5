@@ -2,20 +2,18 @@ import SwiftUI
 struct MyNameAndScoreArea: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var pointVM: PointViewModel
-    let pointInputData = PointInputData()
     var body: some View {
         HStack{
             Spacer()
             if matchInfoVM.matchFormat == .singles {
-                Text(pointInputData.userName)
+                Text(matchInfoVM.player1)
                     .font(.custom("Verdana",size:14))
                     .bold()
             } else {
-                Text(pointInputData.userName + "チーム")
+                Text(matchInfoVM.player1 + "チーム")
                     .font(.custom("Verdana",size:14))
                     .bold()
             }
-            
             Spacer()
             VStack{
                 HStack{
