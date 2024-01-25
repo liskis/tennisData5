@@ -1,7 +1,6 @@
 import SwiftUI
 struct MatchRecordView: View {
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
-//    @ObservedObject var chartDataVM = ChartDataViewModel()
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
     @FocusState private var partnerFocus: Bool
