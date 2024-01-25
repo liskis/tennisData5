@@ -1,18 +1,18 @@
 //
-//  DoublesSetMath.swift
+//  SetMatch.swift
 //  TennisData5
 //
-//  Created by 渡辺健輔 on 2024/01/12.
+//  Created by 渡辺健輔 on 2024/01/25.
 //
 
 import SwiftUI
 
-struct DoublesSetMath: View {
+struct SetMatch: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    DoublesSetMath()
+    SetMatch()
 }

@@ -3,7 +3,6 @@ import Charts
 struct LineChartView: View {
     @Binding var data1: [LineGraphDataModel]
     @Binding var data2: [LineGraphDataModel]
-    @Binding var minAxis: Int
     var body: some View {
         Chart {
             ForEach(data1){ dataRow in
@@ -67,7 +66,15 @@ struct LineChartView: View {
         .padding(.horizontal,10)
     }
 }
-
-//#Preview {
-//    LineChartVeiw()
-//}
+extension LineChartView {
+    var minAxis: Double {
+        var minData: Int = 100
+        for data in data1 {
+            minData = data.stats < minData ? data.stats : minData
+        }
+        for data in data2 {
+            minData = data.stats < minData ? data.stats : minData
+        }
+        return Double(minData) - Double(20)
+    }
+}

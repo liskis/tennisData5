@@ -16,7 +16,7 @@ struct MatchTabView: View {
                     Text("ポイント入力")
                     Image(systemName: "hand.point.up")
                 }
-            RealTimeDataView(pointVM: pointVM, matchInfoVM: matchInfoVM, positionVM: positionVM, chartDataVM: chartDataVM)
+            RealTimeDataView(pointVM: pointVM, matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {

@@ -1,89 +1,230 @@
 import SwiftUI
 import Charts
-@available(iOS 17.0, *)
 struct PieChartView: View {
     @Binding var pieChartData: [PieChartDataModel]
     @Binding var styleScale: KeyValuePairs<String, Color>
-    let width = (UIScreen.main.bounds.width)/2 - 20
-    var rowCount:Int = 0
+    let chartWidth = UIScreen.main.bounds.width/2 - 20
     var body: some View {
-        
-            ZStack{
-                VStack{
-                    Spacer(minLength: 20)
-                    Chart(pieChartData) { dataRow in
-                        SectorMark(
-                            angle: .value("value", dataRow.value),
-                            angularInset: 1
-                        )
-                        .foregroundStyle(by: .value("name", dataRow.name))
-                        .cornerRadius(4)
-                    }
-                    .chartPlotStyle { content in
-                        content
-                            .frame(width: width, height: width)
-                    }
-                    .rotationEffect(.degrees(270))
-                    .chartLegend(.hidden)
-                    .chartForegroundStyleScale(styleScale)
-                    Spacer()
-                }.frame(height: width)
-                VStack{
-                    Spacer(minLength: 20)
-                    HStack{
-                        Spacer()
-                        ForEach(pieChartData) { datum in
-                            if datum.name != "blank" {
-                                if datum.textPsition == .low {
-                                    VStack{
-                                        Text(datum.nameString)
-                                            .font(.custom("Verdana",size:10))
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .shadow(color:.black,radius: 3)
-                                        Text(String(datum.value))
-                                            .font(.custom("Verdana",size:14))
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .shadow(color:.black,radius: 3)
-                                    }.offset(y: -20)
-                                    Spacer()
-                                } else if datum.textPsition == .highRight {
-                                    VStack{
-                                        Text(datum.nameString)
-                                            .font(.custom("Verdana",size:10))
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .shadow(color:.black,radius: 3)
-                                        Text(String(datum.value))
-                                            .font(.custom("Verdana",size:14))
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .shadow(color:.black,radius: 3)
-                                    }.offset(x: 20,y: -60)
-                                    Spacer()
-                                } else if datum.textPsition == .highLeft {
-                                    VStack{
-                                        Text(datum.nameString)
-                                            .font(.custom("Verdana",size:10))
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .shadow(color:.black,radius: 3)
-                                        Text(String(datum.value))
-                                            .font(.custom("Verdana",size:14))
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .shadow(color:.black,radius: 3)
-                                    }.offset(x: -20,y: -60)
-                                    Spacer()
-                                }
-                            }
-                        }
-                    }
-                    Spacer()
-                }.frame(height: width)
-            } .frame(height: width)
+        ZStack{
+            VStack{
+                Chart(pieChartData) { dataRow in
+                    SectorMark(
+                        angle: .value("value", dataRow.value),
+                        innerRadius: .ratio(0.4),
+                        angularInset: 1
+                    )
+                    .foregroundStyle(by: .value("name", dataRow.name))
+                    .cornerRadius(2)
+                }
+                .chartPlotStyle { content in
+                    content
+                        .frame(width: chartWidth, height: chartWidth)
+                }
+                .rotationEffect(.degrees(270))
+                .chartLegend(.hidden)
+                .chartForegroundStyleScale(styleScale)
+                Spacer()
+            }
+            VStack{
+                switch pieChartData[0].labelType {
+                case .twoLabels:
+                    twoLabels
+                case .keepAndBreak:
+                    keepAndBreak
+                case .oneAndTwoLabels:
+                    oneAndTwoLabels
+                case .twoAndOneLabels:
+                    twoAndOneLabels
+                }
+                Spacer()
+            }
+        }
     }
+    var twoLabels: some View {
+        HStack{
+            VStack{
+                Text(pieChartData[0].nameString)
+                    .font(.custom("Verdana",size:10))
+                    .bold()
+                    .foregroundColor(.white)
+                Text(String(format: "%.0f",pieChartData[0].value))
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                    .foregroundColor(.white)
+            }
+            .background(Color.black.opacity(0.5))
+            .padding(4)
+            .cornerRadius(4)
+            Spacer()
+            VStack{
+                Text(pieChartData[1].nameString)
+                    .font(.custom("Verdana",size:10))
+                    .bold()
+                    .foregroundColor(.white)
+                Text(String(format: "%.0f",pieChartData[1].value))
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                    .foregroundColor(.white)
+            }
+            .background(Color.black.opacity(0.5))
+            .padding(4)
+            .cornerRadius(4)
+        }
+        .offset(y: chartWidth*0.2)
+        .padding(.horizontal,10)
+    }
+    var keepAndBreak: some View {
+        HStack{
+            VStack(spacing:1){
+                VStack{
+                    Text(pieChartData[1].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.1f",pieChartData[1].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(4)
+                Spacer().frame(height: chartWidth*0.1)
+                VStack{
+                    Text(pieChartData[0].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.1f",pieChartData[0].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(4)
+                .offset(x:-30)
+                Spacer()
+            }
+            VStack(spacing:1){
+                VStack{
+                    Text(pieChartData[2].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.1f",pieChartData[2].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(4)
+                VStack{
+                    Text(pieChartData[3].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.1f",pieChartData[3].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(4)
+                .offset(x:30)
+                Spacer()
+            }
+        }
+    }
+    var oneAndTwoLabels: some View {
+        HStack{
+            Spacer().frame(width: 20)
+            VStack{
+                Text(pieChartData[0].nameString)
+                    .font(.custom("Verdana",size:10))
+                    .bold()
+                    .foregroundColor(.white)
+                Text(String(format: "%.0f",pieChartData[0].value))
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                    .foregroundColor(.white)
+            }
+            .background(Color.black.opacity(0.5))
+            .offset(y:chartWidth*0.1)
+            
+            Spacer()
+            VStack(spacing:1){
+                VStack{
+                    Text(pieChartData[1].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.0f",pieChartData[1].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                .offset(x:-chartWidth*0.2)
+                VStack{
+                    Text(pieChartData[2].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.0f",pieChartData[2].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+            }
+            Spacer().frame(width: 20)
+        }
+    }
+    var twoAndOneLabels: some View {
+        HStack{
+            Spacer().frame(width: 20)
+            VStack(spacing:1){
+                VStack{
+                    Text(pieChartData[1].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.0f",pieChartData[1].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                .offset(x:chartWidth*0.2)
+                VStack{
+                    Text(pieChartData[0].nameString)
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                    Text(String(format: "%.0f",pieChartData[0].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .background(Color.black.opacity(0.5))
+                Spacer()
+            }
+            Spacer()
+            VStack{
+                Text(pieChartData[2].nameString)
+                    .font(.custom("Verdana",size:10))
+                    .bold()
+                    .foregroundColor(.white)
+                Text(String(format: "%.0f",pieChartData[2].value))
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                    .foregroundColor(.white)
+            }
+            .background(Color.black.opacity(0.5))
+            .offset(y:-chartWidth*0.15)
+            Spacer().frame(width: 20)
+        }
+    }
+    
 }
 
 

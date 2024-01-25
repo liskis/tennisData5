@@ -1,13 +1,11 @@
 import SwiftUI
 struct MatchRecordView: View {
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
-    @ObservedObject var pointVM = PointViewModel()
-    @ObservedObject var matchInfoVM = MatchInfoViewModel()
-    @ObservedObject var chartDataVM = ChartDataViewModel()
+//    @ObservedObject var chartDataVM = ChartDataViewModel()
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
-//    @FocusState var partnerFocus: Bool
-//    @FocusState var opponentFocus: Bool
+    @FocusState private var partnerFocus: Bool
+    @FocusState var opponentFocus: Bool
     var body: some View {
         NavigationStack {
             ZStack {
@@ -28,7 +26,7 @@ struct MatchRecordView: View {
                         Spacer().frame(width:10)
                     }
                     Spacer().frame(height:10)
-                    Picker("matchFormat", selection: $recoadSearchVM.matchFormat){
+                    Picker("matchFormat", selection: $recoadSearchVM.matchInfoVM.matchFormat){
                         ForEach(MatchFormat.allCases, id: \.self) { format in
                             Text(format.forString)
                         }
@@ -36,7 +34,7 @@ struct MatchRecordView: View {
                     .pickerStyle(.segmented)
                     .cornerRadius(10)
                     .padding(.horizontal,10)
-                    Picker("gameType", selection: $recoadSearchVM.gameType){
+                    Picker("gameType", selection: $recoadSearchVM.matchInfoVM.gameType){
                         ForEach(GameType.allCases, id: \.self) { format in
                             Text(format.forString)
                         }
@@ -46,26 +44,24 @@ struct MatchRecordView: View {
                     .padding(.horizontal,10)
                     TextField("パートナーで検索", text: $recoadSearchVM.partner)
                         .textFieldStyle(.roundedBorder)
-                    //                        .focused($partnerFocus)
+                        .focused($partnerFocus)
                         .padding(.horizontal,10)
-                        .disabled(true)
                     TextField("対戦相手で検索", text: $recoadSearchVM.opponent)
                         .textFieldStyle(.roundedBorder)
-                    //                        .focused($opponentFocus)
+                        .focused($opponentFocus)
                         .padding(.horizontal,10)
-                        .disabled(true)
                     List(recoadSearchVM.matchRecoad){ recoad in
                         if checkPeriod(recoad: recoad) && checkMatchFormat(recoad: recoad) && checkGameType(recoad: recoad) {
                             NavigationLink(
-                                destination: OneMatchDataView(pointVM: pointVM, matchInfoVM: matchInfoVM)
+                                destination: OneMatchDataView(pointVM: recoadSearchVM.pointVM, matchInfoVM: recoadSearchVM.matchInfoVM, chartDataVM: recoadSearchVM.chartDataVM)
                                     .onAppear{
-                                        matchInfoVM.matchId = recoad.matchId
-                                        matchInfoVM.matchFormat = recoad.matchFormat
-                                        matchInfoVM.gameType = recoad.gameType
-                                        matchInfoVM.matchStartDate = recoad.matchStartDate
-                                        pointVM.winCount = recoad.WinScore
-                                        pointVM.loseCount = recoad.LoseScore
-                                        pointVM.drowCount = recoad.DrawScore
+                                        recoadSearchVM.matchInfoVM.matchId = recoad.matchId
+                                        recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
+                                        recoadSearchVM.matchInfoVM.gameType = recoad.gameType
+                                        recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
+                                        recoadSearchVM.pointVM.winCount = recoad.WinScore
+                                        recoadSearchVM.pointVM.loseCount = recoad.LoseScore
+                                        recoadSearchVM.pointVM.drowCount = recoad.DrawScore
                                     }
                             ) {
                                 HStack {
@@ -142,6 +138,18 @@ struct MatchRecordView: View {
                         .animation(.linear,value:10)
                         .offset(y: self.searchEndDatePickerFocus ? 0 : UIScreen.main.bounds.height)
                 }
+                VStack{
+                    Spacer()
+                    partnerPickerView
+                        .animation(.linear,value:10)
+                        .offset(y: self.partnerFocus ? 0 : UIScreen.main.bounds.height)
+                }
+                VStack{
+                    Spacer()
+                    opponentPickerView
+                        .animation(.linear,value:10)
+                        .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
+                }
             }
         .navigationBarTitle("試合履歴", displayMode: .inline)
         .toolbarBackground(.black, for: .navigationBar)
@@ -151,6 +159,7 @@ struct MatchRecordView: View {
     }
     var searchStartDatePicker: some View {
         VStack{
+            Spacer().frame(height: 10)
             HStack{
                 Spacer()
                 Button(action: {
@@ -158,7 +167,7 @@ struct MatchRecordView: View {
                     searchStartDatePickerFocus = false
                 }, label: {
                     Text("決定")
-                        .font(.custom("Verdana",size:16))
+                        .font(.custom("Verdana",size:20))
                         .foregroundColor(.blue)
                 })
                 .padding(.trailing,15)
@@ -168,7 +177,7 @@ struct MatchRecordView: View {
                 .labelsHidden()
                 .accentColor(.ocean)
                 .datePickerStyle(WheelDatePickerStyle())
-        }.background(Color.magnesium)
+        }.background(Color.silver)
     }
     var searchEndDatePicker: some View {
         VStack{
@@ -189,45 +198,70 @@ struct MatchRecordView: View {
                 .labelsHidden()
                 .accentColor(.ocean)
                 .datePickerStyle(WheelDatePickerStyle())
-        }.background(Color.magnesium)
+        }.background(Color.silver)
     }
     var partnerPickerView: some View {
-        Picker("パートナー", selection: $recoadSearchVM.partner) {
-            Text("渡辺")
-                .tag("0")
-                .font(.custom("Verdana",size:12))
-            Text("渡瀬")
-                .tag("1")
-                .font(.custom("Verdana",size:12))
-            Text("石川")
-                .tag("2")
-                .font(.custom("Verdana",size:12))
-        }
-        .pickerStyle(.wheel)
-        .foregroundColor(.tungsten)
-        .background(Color.mercury)
-        .animation(.linear, value: 10)
-//        .offset(y: partnerFocus ? 0 : UIScreen.main.bounds.height)
+        VStack{
+            HStack{
+                Spacer()
+                Button(action: {
+                    partnerFocus = false
+                }, label: {
+                    Text("決定")
+                        .font(.custom("Verdana",size:16))
+                        .foregroundColor(.blue)
+                })
+                .padding(.trailing,15)
+            }
+            Picker("パートナー", selection: $recoadSearchVM.partner) {
+                Text("-")
+                    .tag("-")
+                    .font(.custom("Verdana",size:12))
+//                Text("渡辺")
+//                    .tag("12345")
+//                    .font(.custom("Verdana",size:12))
+//                Text("渡瀬")
+//                    .tag("67890")
+//                    .font(.custom("Verdana",size:12))
+//                Text("石川")
+//                    .tag("23456")
+//                    .font(.custom("Verdana",size:12))
+            }
+            .pickerStyle(.wheel)
+            .foregroundColor(.tungsten)
+        }.background(Color.silver)
     }
     var opponentPickerView: some View {
-        Picker("対戦相手", selection: $recoadSearchVM.opponent) {
-            Text("渡辺")
-                .tag("0")
-                .font(.custom("Verdana",size:12))
-            Text("渡瀬")
-                .tag("1")
-                .font(.custom("Verdana",size:12))
-            Text("石川")
-                .tag("2")
-                .font(.custom("Verdana",size:12))
-        }
-        .pickerStyle(.wheel)
-        .foregroundColor(.tungsten)
-        .background(Color.mercury)
-        .animation(.linear, value: 10)
-//        .offset(y: opponentFocus ? 0 : UIScreen.main.bounds.height)
+        VStack{
+            HStack{
+                Spacer()
+                Button(action: {
+                    opponentFocus = false
+                }, label: {
+                    Text("決定")
+                        .font(.custom("Verdana",size:16))
+                        .foregroundColor(.blue)
+                })
+                .padding(.trailing,15)
+            }
+            Picker("対戦相手", selection: $recoadSearchVM.opponent) {
+                Text("-")
+                    .tag("-")
+                    .font(.custom("Verdana",size:12))
+//                Text("渡辺")
+//                    .tag("12345")
+//                    .font(.custom("Verdana",size:12))
+//                Text("渡瀬")
+//                    .tag("67890")
+//                    .font(.custom("Verdana",size:12))
+//                Text("石川")
+//                    .tag("23456")
+//                    .font(.custom("Verdana",size:12))
+            }
+            .pickerStyle(.wheel)
+            .foregroundColor(.tungsten)
+        }.background(Color.silver)
     }
-    
 }
 extension MatchRecordView{
     func checkPeriod(recoad:MatchRecordModel) -> Bool {
@@ -235,12 +269,12 @@ extension MatchRecordView{
             recoad.matchStartDate <= pulus1day(date: recoadSearchVM.searchEndDate)
     }
     func checkMatchFormat(recoad:MatchRecordModel) -> Bool {
-        return recoadSearchVM.matchFormat == .noSelection ||
-        recoadSearchVM.matchFormat == recoad.matchFormat
+        return recoadSearchVM.matchInfoVM.matchFormat == .noSelection ||
+        recoadSearchVM.matchInfoVM.matchFormat == recoad.matchFormat
     }
     func checkGameType(recoad:MatchRecordModel) -> Bool {
-        recoadSearchVM.gameType == .noSelection ||
-            recoadSearchVM.gameType == recoad.gameType
+        recoadSearchVM.matchInfoVM.gameType == .noSelection ||
+        recoadSearchVM.matchInfoVM.gameType == recoad.gameType
     }
     
     func DateToString(date:Date) -> String {

@@ -3,6 +3,6 @@ struct PieChartDataModel: Identifiable {
     var id = UUID().uuidString
     var name: String
     var nameString: String
-    var value: Int
-    var textPsition: TextPosition
+    var value: Double
+    var labelType: LabelType
 }

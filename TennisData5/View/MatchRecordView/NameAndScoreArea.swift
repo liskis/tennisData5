@@ -23,6 +23,22 @@ struct NameAndScoreArea: View {
             Text("分")
                 .font(.custom("Verdana",size:20))
                 .bold()
+            if pointVM.winCount > pointVM.loseCount {
+                Text("Win")
+                    .font(.custom("Verdana",size:30))
+                    .bold()
+                    .foregroundColor(Color.red)
+            } else if pointVM.winCount < pointVM.loseCount {
+                Text("Lose")
+                    .font(.custom("Verdana",size:30))
+                    .bold()
+                    .foregroundColor(Color.blue)
+            } else {
+                Text("Draw")
+                    .font(.custom("Verdana",size:30))
+                    .bold()
+                    .foregroundColor(Color.gray)
+            }
         }
     }
 }

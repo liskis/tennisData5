@@ -3,9 +3,7 @@ struct HomeView: View {
     @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var pointVM = PointViewModel()
-    @State var data1: [LineGraphDataModel] = HomeGraphData.data1
-    @State var data2: [LineGraphDataModel] = HomeGraphData.data2
-    @State var minAxis: Int = HomeGraphData.minAxis
+    @ObservedObject var homeChartVM = HomeChartViewModel()
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -23,7 +21,10 @@ struct HomeView: View {
                         Spacer().frame(height: 10)
                         StatsDataArea()
                         Spacer().frame(height: 40)
-                        LineChartView(data1: $data1, data2: $data2, minAxis: $minAxis)
+                        LineChartView(
+                            data1: $homeChartVM.data1,
+                            data2: $homeChartVM.data2
+                        )
                         winLoseArrayArea
                         dateArrayArea
                         Spacer().frame(height: 10)
@@ -44,7 +45,7 @@ struct HomeView: View {
     var winLoseArrayArea: some View {
         HStack{
             Spacer()
-            ForEach(HomeGraphData.data1){ data in
+            ForEach(homeChartVM.data1){ data in
                 if data.issue == .Win {
                     Text("Win")
                         .font(.custom("Verdana",size:23))
@@ -64,7 +65,7 @@ struct HomeView: View {
     }
     var dateArrayArea: some View {
         HStack{
-            ForEach(HomeGraphData.data1){ dataRow in
+            ForEach(homeChartVM.data1){ dataRow in
                 Spacer()
                 Text("\(dataRow.dateString)")
                     .font(.custom("Verdana",size:10))
@@ -76,4 +77,5 @@ struct HomeView: View {
         }
     }
 }
+
 

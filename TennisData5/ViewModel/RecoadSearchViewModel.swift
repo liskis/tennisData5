@@ -1,12 +1,15 @@
 import Foundation
 import SwiftUI
 class RecordSearchViewModel: ObservableObject {
-    @Published var matchId:String = ""
-    @Published var setId: String = ""
-    @Published var gameId: String = ""
-    @Published var matchStartDate: Date = Date()
-    @Published var matchFormat: MatchFormat = .noSelection
-    @Published var gameType: GameType = .noSelection
+//    @Published var matchId:String = ""
+//    @Published var setId: String = ""
+//    @Published var gameId: String = ""
+//    @Published var matchStartDate: Date = Date()
+//    @Published var matchFormat: MatchFormat = .noSelection
+//    @Published var gameType: GameType = .noSelection
+    @ObservedObject var chartDataVM = ChartDataViewModel()
+    @Published var matchInfoVM = MatchInfoViewModel()
+    @ObservedObject var pointVM = PointViewModel()
     @Published var searchStartDateString: String = "2023-01-24"
     @Published var searchEndDateString: String = "2024-01-23"
     @Published var searchStartDate: Date = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
