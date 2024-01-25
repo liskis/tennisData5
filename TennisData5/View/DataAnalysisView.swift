@@ -1,7 +1,6 @@
 import SwiftUI
 struct DataAnalysisView: View {
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
-    
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
     @FocusState private var partnerFocus: Bool

@@ -23,7 +23,16 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.secondSvIn)
+            BarChartView(barChartData: $chartDataVM.firstSvIn)
+            Spacer().frame(height: 15)
+            HStack{
+                Text("ダブルフォルトをしない確率")
+                    .font(.custom("Verdana",size:10))
+                    .bold()
+                    .foregroundColor(.tungsten)
+                Spacer()
+            }
+            BarChartView(barChartData: $chartDataVM.noDoubleFault)
             Spacer().frame(height: 15)
             HStack{
                 Text("ファーストサーブ時のポイント取得率")

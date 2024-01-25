@@ -9,7 +9,7 @@ struct OneMatchDataView: View {
             ScrollView {
                 VStack{
                     Spacer(minLength: 20)
-                    Text(dateFormatter(date:matchInfoVM.matchStartDate))
+                    Text(Date.DateTimeToString(date:matchInfoVM.matchStartDate))
                         .font(.custom("Verdana",size:20))
                         .bold()
                         .foregroundColor(.tungsten)
@@ -27,12 +27,4 @@ struct OneMatchDataView: View {
         }   
     }
 }
-extension OneMatchDataView{
-    func dateFormatter(date:Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm"
-        return dateFormatter.string(from: date)
-    }
-}
+

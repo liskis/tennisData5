@@ -88,7 +88,7 @@ struct MatchRecordView: View {
                                                 .bold()
                                         }
                                     }
-                                    Text(DateToString(date:recoad.matchStartDate))
+                                    Text(Date.DateToString(date:recoad.matchStartDate))
                                         .foregroundColor(Color.tungsten)
                                         .font(.custom("Verdana", size: 10))
                                         .frame(width:60)
@@ -163,7 +163,7 @@ struct MatchRecordView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    recoadSearchVM.searchStartDateString = DateToString(date: recoadSearchVM.searchStartDate)
+                    recoadSearchVM.searchStartDateString = Date.DateToString(date: recoadSearchVM.searchStartDate)
                     searchStartDatePickerFocus = false
                 }, label: {
                     Text("決定")
@@ -184,7 +184,7 @@ struct MatchRecordView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    recoadSearchVM.searchEndDateString = DateToString(date: recoadSearchVM.searchEndDate)
+                    recoadSearchVM.searchEndDateString = Date.DateToString(date: recoadSearchVM.searchEndDate)
                     searchEndDatePickerFocus = false
                 }, label: {
                     Text("決定")
@@ -265,8 +265,8 @@ struct MatchRecordView: View {
 }
 extension MatchRecordView{
     func checkPeriod(recoad:MatchRecordModel) -> Bool {
-        return recoad.matchStartDate > recoadSearchVM.searchStartDate &&
-            recoad.matchStartDate <= pulus1day(date: recoadSearchVM.searchEndDate)
+        return recoad.matchStartDate > recoadSearchVM.searchStartDate.zeroClock &&
+        recoad.matchStartDate <= recoadSearchVM.searchEndDate.endClock
     }
     func checkMatchFormat(recoad:MatchRecordModel) -> Bool {
         return recoadSearchVM.matchInfoVM.matchFormat == .noSelection ||
@@ -276,21 +276,5 @@ extension MatchRecordView{
         recoadSearchVM.matchInfoVM.gameType == .noSelection ||
         recoadSearchVM.matchInfoVM.gameType == recoad.gameType
     }
-    
-    func DateToString(date:Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    func StringToDate(date: String) -> Date {
-            let dateFormatter = DateFormatter()
-            dateFormatter.calendar = Calendar(identifier: .gregorian)
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            return dateFormatter.date(from: date) ?? Date()
-        }
-    func pulus1day(date:Date) -> Date {
-        return Calendar.current.date(byAdding: .day, value: +1, to: date) ?? Date()
-    }
+
 }

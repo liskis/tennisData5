@@ -25,6 +25,10 @@ class ChartDataViewModel: ObservableObject {
         .init(value: 16.7, color: .maraschino, category: "returnGameBreak", index: 30.0),
         .init(value: 83.3, color: .mercury, category: "returnGameBreak", index: 30.0)
     ]
+    @Published var noDoubleFault: [BarChartDataModel] = [
+        .init(value: 91.3, color: .ocean, category: "noDoubleFault", index: 90.0),
+        .init(value: 9.7, color: .mercury, category: "noDoubleFault", index: 90.0)
+    ]
     @Published var getAndLostPoint: [PieChartDataModel] = [
         .init(name: "data1", nameString: "とった\nポイント", value: 70, labelType: .twoLabels),
         .init(name: "data2", nameString: "とられた\nポイント", value: 50, labelType: .twoLabels),
