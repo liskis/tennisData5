@@ -41,6 +41,7 @@ struct DataAnalysisView: View {
                     .pickerStyle(.segmented)
                     .cornerRadius(10)
                     .padding(.horizontal,10)
+                    .disabled(true)
                     TextField("パートナーで検索", text: $recoadSearchVM.partner)
                         .textFieldStyle(.roundedBorder)
                         .focused($partnerFocus)
@@ -90,7 +91,7 @@ struct DataAnalysisView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    recoadSearchVM.searchStartDateString = DateToString(date: recoadSearchVM.searchStartDate)
+                    recoadSearchVM.searchStartDateString = Date.DateToString(date: recoadSearchVM.searchStartDate)
                     searchStartDatePickerFocus = false
                 }, label: {
                     Text("決定")
@@ -111,7 +112,7 @@ struct DataAnalysisView: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    recoadSearchVM.searchEndDateString = DateToString(date: recoadSearchVM.searchEndDate)
+                    recoadSearchVM.searchEndDateString = Date.DateToString(date: recoadSearchVM.searchEndDate)
                     searchEndDatePickerFocus = false
                 }, label: {
                     Text("決定")
@@ -141,7 +142,7 @@ struct DataAnalysisView: View {
                 .padding(.trailing,15)
             }
             Picker("パートナー", selection: $recoadSearchVM.partner) {
-                Text("-")
+                Text("パートナーを選んでくださいね")
                     .tag("-")
                     .font(.custom("Verdana",size:12))
 //                Text("渡辺")
@@ -172,7 +173,7 @@ struct DataAnalysisView: View {
                 .padding(.trailing,15)
             }
             Picker("対戦相手", selection: $recoadSearchVM.opponent) {
-                Text("-")
+                Text("対戦相手を選んでくださいね")
                     .tag("-")
                     .font(.custom("Verdana",size:12))
 //                Text("渡辺")
@@ -193,7 +194,7 @@ struct DataAnalysisView: View {
 extension DataAnalysisView{
     func checkPeriod(recoad:MatchRecordModel) -> Bool {
         return recoad.matchStartDate > recoadSearchVM.searchStartDate &&
-            recoad.matchStartDate <= pulus1day(date: recoadSearchVM.searchEndDate)
+        recoad.matchStartDate <= recoadSearchVM.searchEndDate.endClock
     }
     func checkMatchFormat(recoad:MatchRecordModel) -> Bool {
         return recoadSearchVM.matchInfoVM.matchFormat == .noSelection ||
@@ -204,20 +205,5 @@ extension DataAnalysisView{
             recoadSearchVM.matchInfoVM.gameType == recoad.gameType
     }
     
-    func DateToString(date:Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateStyle = .medium
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    func StringToDate(date: String) -> Date {
-            let dateFormatter = DateFormatter()
-            dateFormatter.calendar = Calendar(identifier: .gregorian)
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            return dateFormatter.date(from: date) ?? Date()
-        }
-    func pulus1day(date:Date) -> Date {
-        return Calendar.current.date(byAdding: .day, value: +1, to: date) ?? Date()
-    }
+    
 }

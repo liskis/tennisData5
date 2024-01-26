@@ -19,6 +19,7 @@ struct HomeHeaderBar: View {
                 })
                 .frame(width: 100, height:30)
                 .background(.gray)
+                .clipped()
                 Image(.angleGW)
                     .resizable()
                     .scaledToFill()
@@ -38,6 +39,7 @@ struct HomeHeaderBar: View {
                 })
                 .frame(width: 80, height:30)
                 .background(.white)
+                .clipped()
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }

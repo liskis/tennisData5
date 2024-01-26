@@ -109,7 +109,7 @@ struct ChartsLayOutArea: View {
                     }
                 }
                 .offset(y:-chartWidth*0.8)
-            } else if matchInfoVM.matchFormat == .doubles {
+            } else {
                 HStack{
                     ZStack{
                         PieChartView(pieChartData: $chartDataVM.winnerPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)

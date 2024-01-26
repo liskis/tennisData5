@@ -4,6 +4,7 @@ class PointDataModel: Object {
     @objc dynamic var matchId: String
     @objc dynamic var setId: String
     @objc dynamic var gameId: String
+    @objc dynamic var inputMode: String
     @objc dynamic var matchFormat: String
     @objc dynamic var gemeType: String
     @objc dynamic var player1id: String
@@ -19,12 +20,13 @@ class PointDataModel: Object {
     @objc dynamic var getPoint: String
     @objc dynamic var shot: String
     @objc dynamic var whose: String
-    @objc dynamic var pointDateTime: Date
+    @objc dynamic var matchStartDate: String
     init(
         id: String,
         matchId: String,
         setId: String,
         gameId: String,
+        inputMode: String,
         matchFormat: String,
         gemeType: String,
         player1id: String,
@@ -40,12 +42,13 @@ class PointDataModel: Object {
         getPoint: String,
         shot: String,
         whose: String,
-        pointDateTime: String
+        matchStartDate: String
     ){
         self.id = id
         self.matchId = matchId
         self.setId = setId
         self.gameId = gameId
+        self.inputMode = inputMode
         self.matchFormat = matchFormat
         self.gemeType = gemeType
         self.player1id = player1id
@@ -61,15 +64,7 @@ class PointDataModel: Object {
         self.getPoint = getPoint
         self.shot = shot
         self.whose = whose
-        self.pointDateTime = StringToDate(dateValue: pointDateTime)
-        func StringToDate(dateValue: String) -> Date {
-            let dateFormatter = DateFormatter()
-            dateFormatter.calendar = Calendar(identifier: .gregorian)
-            dateFormatter.dateFormat = "yyyy/MM/dd"
-            return dateFormatter.date(from: dateValue) ?? Date()
-        }
+        self.matchStartDate = matchStartDate
     }
-    
-    
 }
 

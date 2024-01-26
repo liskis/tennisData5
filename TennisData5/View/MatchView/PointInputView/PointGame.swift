@@ -18,41 +18,45 @@ struct PointGame: View {
                         .background(.white)
                         .font(.custom("Verdana",size:10))
                 }
+                
                 VStack(spacing:1){
-                    Spacer().frame(height:10)
-                    HStack {
-                        goBackBtn
-                        Spacer()
+                    ScrollView {
+                        Spacer().frame(height:10)
+                        HStack {
+                            goBackBtn
+                            Spacer()
+                        }
+                        Spacer().frame(height: 10)
+                        if matchInfoVM.matchFormat == .singles {
+                            GameSideArea(positionVM: positionVM, pointVM: pointVM)
+                            SnglsPositionBtnArea(positionVM: positionVM)
+                        } else if matchInfoVM.matchFormat == .doubles {
+                            GameSideArea(positionVM: positionVM, pointVM: pointVM)
+                            DblsPositionBtnArea(positionVM: positionVM)
+                        }
+                        Spacer().frame(height: 10)
+                        if positionVM.position == .NoSelection {
+                            faultBtnDis
+                        } else if pointVM.service == .first {
+                            faultBtn
+                        } else if pointVM.service == .second {
+                            doubleFaultBtn
+                        }
+                        Spacer().frame(height: 10)
+                        
+                        if matchInfoVM.matchFormat == .singles {
+                            SnglsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
+                        } else if matchInfoVM.matchFormat == .doubles {
+                            DblsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
+                        }
+                        Spacer().frame(height: 10)
+                        nextGameBtn
+                        gameEndBtn
                     }
-                    Spacer().frame(height: 10)
-                    if matchInfoVM.matchFormat == .singles {
-                        GameSideArea(positionVM: positionVM, pointVM: pointVM)
-                        SnglsPositionBtnArea(positionVM: positionVM)
-                    } else if matchInfoVM.matchFormat == .doubles {
-                        GameSideArea(positionVM: positionVM, pointVM: pointVM)
-                        DblsPositionBtnArea(positionVM: positionVM)
-                    }
-                    Spacer().frame(height: 10)
-                    if positionVM.position == .NoSelection {
-                        faultBtnDis
-                    } else if pointVM.service == .first {
-                        faultBtn
-                    } else if pointVM.service == .second {
-                        doubleFaultBtn
-                    }
-                    Spacer().frame(height: 10)
-                    
-                    if matchInfoVM.matchFormat == .singles {
-                        SnglsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                    } else if matchInfoVM.matchFormat == .doubles {
-                        DblsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                    }
-                    Spacer().frame(height: 10)
-                    nextGameBtn
-                    gameEndBtn
                 }
                 .background{ Color.white}
                 Spacer()
+                
             }
             .background{ Color.mercury }
         .navigationBarTitle(matchInfoVM.naviTitle, displayMode: .inline)
