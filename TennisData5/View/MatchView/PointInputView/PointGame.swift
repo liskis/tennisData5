@@ -18,7 +18,6 @@ struct PointGame: View {
                         .background(.white)
                         .font(.custom("Verdana",size:10))
                 }
-                
                 VStack(spacing:1){
                     ScrollView {
                         Spacer().frame(height:10)
@@ -28,10 +27,10 @@ struct PointGame: View {
                         }
                         Spacer().frame(height: 10)
                         if matchInfoVM.matchFormat == .singles {
-                            GameSideArea(positionVM: positionVM, pointVM: pointVM)
+                            ServOrRetArea(positionVM: positionVM, pointVM: pointVM)
                             SnglsPositionBtnArea(positionVM: positionVM)
                         } else if matchInfoVM.matchFormat == .doubles {
-                            GameSideArea(positionVM: positionVM, pointVM: pointVM)
+                            ServOrRetArea(positionVM: positionVM, pointVM: pointVM)
                             DblsPositionBtnArea(positionVM: positionVM)
                         }
                         Spacer().frame(height: 10)
@@ -71,8 +70,8 @@ struct PointGame: View {
                 pointVM.service = .first
             } else if positionVM.position != .NoSelection {
                 positionVM.position = .NoSelection
-            } else if positionVM.gameSide != .noSelection && pointVM.myPoint + pointVM.opponentPoint == 0 {
-                positionVM.gameSide = .noSelection
+            } else if positionVM.servOrRet != .noSelection && pointVM.myPoint + pointVM.opponentPoint == 0 {
+                positionVM.servOrRet = .noSelection
             }
         },label: {
             Text("<< 一つ戻る")
@@ -120,9 +119,9 @@ struct PointGame: View {
     }
     var doubleFaultBtn: some View {
         Button(action: {
-            if positionVM.gameSide == .serviceGame {
+            if positionVM.servOrRet == .serviceGame {
                 pointVM.opponentPoint += 1
-            } else if positionVM.gameSide == .returnGame {
+            } else if positionVM.servOrRet == .returnGame {
                 pointVM.myPoint += 1
             }
             positionVM.position = .NoSelection
@@ -150,7 +149,7 @@ struct PointGame: View {
             }
             pointVM.service = .first
             positionVM.position = .NoSelection
-            positionVM.gameSide = .noSelection
+            positionVM.servOrRet = .noSelection
             pointVM.myPoint = 0
             pointVM.opponentPoint = 0
             matchInfoVM.gameId = UUID().uuidString

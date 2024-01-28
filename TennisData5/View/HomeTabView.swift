@@ -6,23 +6,20 @@ struct HomeTabView: View {
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
-                Text("HOME")
-                Image(systemName: "house.fill")
-            }
+                    Label("HOME", systemImage: "house.fill")
+                }
             MatchRecordView()
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
-                Text("試合履歴")
-                Image(systemName: "list.bullet")
-            }
+                    Label("試合履歴", systemImage: "list.bullet")
+                }
             DataAnalysisView()
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
-                Text("データ分析")
-                Image(systemName: "chart.pie.fill")
-            }
+                    Label("データ分析", systemImage: "chart.pie.fill")
+                }
         } .accentColor(.white)
     }
 }

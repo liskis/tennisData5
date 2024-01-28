@@ -11,8 +11,6 @@ class MatchInfoViewModel: ObservableObject {
     @Published var player2: String = ""
     @Published var player3: String = ""
     @Published var player4: String = ""
-//    @Published var searchStartDate: Date = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
-//    @Published var seatchEndDate: Date = Date()
     
     func resetModel(){
         matchId = ""

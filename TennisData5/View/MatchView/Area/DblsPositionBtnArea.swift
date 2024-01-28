@@ -2,7 +2,7 @@ import SwiftUI
 struct DblsPositionBtnArea: View {
     @ObservedObject var positionVM: PositionViewModel
     var body: some View {
-        if positionVM.gameSide == .serviceGame {
+        if positionVM.servOrRet == .serviceGame {
             HStack(spacing:1){
                 if positionVM.position == .VolleyerDurServDuce {
                     volleyerServDuceDisBtn
@@ -27,7 +27,7 @@ struct DblsPositionBtnArea: View {
                     serverDuceBtn
                 }
             }.padding(.horizontal,10)
-        } else if positionVM.gameSide == .returnGame {
+        } else if positionVM.servOrRet == .returnGame {
             HStack(spacing:1){
                 if positionVM.position == .VolleyerDurRetDuce {
                     volleyerRetDuceDisBtn
@@ -52,7 +52,7 @@ struct DblsPositionBtnArea: View {
                     returnerDuceBtn
                 }
             }.padding(.horizontal,10)
-        } else if positionVM.gameSide == .noSelection {
+        } else if positionVM.servOrRet == .noSelection {
             HStack(spacing: 1) {
                 posisionDisBtn
                 posisionDisBtn
@@ -93,6 +93,7 @@ struct DblsPositionBtnArea: View {
     var volleyerServDuceBtn: some View {
         Button(action: {
             positionVM.position = .VolleyerDurServDuce
+            positionVM.servOrRet = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -136,6 +137,7 @@ struct DblsPositionBtnArea: View {
     var volleyerServAdvBtn: some View {
         Button(action: {
             positionVM.position = .VolleyerDurServAdv
+            positionVM.servOrRet = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -179,6 +181,7 @@ struct DblsPositionBtnArea: View {
     var serverAdvBtn: some View {
         Button(action: {
             positionVM.position = .ServerAdv
+            positionVM.servOrRet = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -222,6 +225,7 @@ struct DblsPositionBtnArea: View {
     var serverDuceBtn: some View {
         Button(action: {
             positionVM.position = .ServerDuce
+            positionVM.servOrRet = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -265,6 +269,7 @@ struct DblsPositionBtnArea: View {
     var volleyerRetDuceBtn: some View {
         Button(action: {
             positionVM.position = .VolleyerDurRetDuce
+            positionVM.servOrRet = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -308,6 +313,7 @@ struct DblsPositionBtnArea: View {
     var volleyerRetAdvBtn: some View {
         Button(action: {
             positionVM.position = .VolleyerDurRetAdv
+            positionVM.servOrRet = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -351,6 +357,7 @@ struct DblsPositionBtnArea: View {
     var returnerAdvBtn: some View {
         Button(action: {
             positionVM.position = .ReturnerAdv
+            positionVM.servOrRet = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -394,6 +401,7 @@ struct DblsPositionBtnArea: View {
     var returnerDuceBtn: some View {
         Button(action: {
             positionVM.position = .ReturnerDuce
+            positionVM.servOrRet = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)

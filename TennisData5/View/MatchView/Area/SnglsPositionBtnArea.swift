@@ -2,7 +2,7 @@ import SwiftUI
 struct SnglsPositionBtnArea: View {
     @ObservedObject var positionVM: PositionViewModel
     var body: some View {
-        if positionVM.gameSide == .serviceGame {
+        if positionVM.servOrRet == .serviceGame {
             HStack(spacing:1){
                 if positionVM.position == .ServerAdv {
                     serverAdvDisBtn
@@ -15,7 +15,7 @@ struct SnglsPositionBtnArea: View {
                     serverDuceBtn
                 }
             } .padding(.horizontal,10)
-        } else if positionVM.gameSide == .returnGame {
+        } else if positionVM.servOrRet == .returnGame {
             HStack(spacing:1){
                 if positionVM.position == .ReturnerAdv {
                     returnerAdvDisBtn
@@ -28,7 +28,7 @@ struct SnglsPositionBtnArea: View {
                     returnerDuceBtn
                 }
             }.padding(.horizontal,10)
-        } else if positionVM.gameSide == .noSelection {
+        } else if positionVM.servOrRet == .noSelection {
             HStack(spacing:1){
                 posisionDisBtn
                 posisionDisBtn
@@ -64,7 +64,7 @@ struct SnglsPositionBtnArea: View {
     var serverAdvBtn: some View {
         Button(action: {
             positionVM.position = .ServerAdv
-            positionVM.gameSide = .serviceGame
+            positionVM.servOrRet = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -107,7 +107,7 @@ struct SnglsPositionBtnArea: View {
     var serverDuceBtn: some View {
         Button(action: {
             positionVM.position = .ServerDuce
-            positionVM.gameSide = .serviceGame
+            positionVM.servOrRet = .serviceGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -149,7 +149,7 @@ struct SnglsPositionBtnArea: View {
     var returnerAdvBtn: some View {
         Button(action: {
             positionVM.position = .ReturnerAdv
-            positionVM.gameSide = .returnGame
+            positionVM.servOrRet = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -191,7 +191,7 @@ struct SnglsPositionBtnArea: View {
     var returnerDuceBtn: some View {
         Button(action: {
             positionVM.position = .ReturnerDuce
-            positionVM.gameSide = .returnGame
+            positionVM.servOrRet = .returnGame
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum GameSide {
+enum ServOrRet {
     case noSelection
     case serviceGame
     case returnGame

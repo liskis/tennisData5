@@ -1,12 +1,12 @@
 
 import SwiftUI
 
-struct GameSideArea: View {
+struct ServOrRetArea: View {
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
     var body: some View {
         HStack(spacing:1){
-            if positionVM.gameSide == .serviceGame {
+            if positionVM.servOrRet == .serviceGame {
                 serviceGameDisBtn
             } else {
                 if pointVM.myPoint + pointVM.opponentPoint == 0 {
@@ -15,7 +15,7 @@ struct GameSideArea: View {
                     posisionDisBtn
                 }
             }
-            if positionVM.gameSide == .returnGame {
+            if positionVM.servOrRet == .returnGame {
                 returnGameDisBtn
             } else {
                 if pointVM.myPoint + pointVM.opponentPoint == 0 {
@@ -48,7 +48,7 @@ struct GameSideArea: View {
     }
     var serviceGameBtn: some View {
         Button(action: {
-            positionVM.gameSide = .serviceGame
+            positionVM.servOrRet = .serviceGame
         },label:{
             Text("サービスゲーム")
                 .foregroundColor(Color.white)
@@ -77,7 +77,7 @@ struct GameSideArea: View {
     }
     var returnGameBtn: some View {
         Button(action: {
-            positionVM.gameSide = .returnGame
+            positionVM.servOrRet = .returnGame
         },label:{
             Text("リターンゲーム")
                 .foregroundColor(Color.white)

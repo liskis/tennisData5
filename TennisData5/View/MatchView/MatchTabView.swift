@@ -13,16 +13,15 @@ struct MatchTabView: View {
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
-                    Text("ポイント入力")
-                    Image(systemName: "hand.point.up")
+                    Label("ポイント入力", systemImage: "hand.point.up")
                 }
             RealTimeDataView(pointVM: pointVM, matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
-                    Text("リアルタイムデータ")
-                    Image(systemName: "gauge.with.dots.needle.67percent")
+                    Label("リアルタイムデータ", systemImage: "chart.bar.doc.horizontal")
                 }
+                .tabViewStyle(.automatic)
         }
         .accentColor(.white)
         .onAppear{

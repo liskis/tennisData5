@@ -11,6 +11,7 @@ class PointDataModel: Object {
     @objc dynamic var player2id: String
     @objc dynamic var player3id: String
     @objc dynamic var player4id: String
+    @objc dynamic var servOrRet: String
     @objc dynamic var player1position: String
     @objc dynamic var player2position: String
     @objc dynamic var player3position: String
@@ -33,6 +34,7 @@ class PointDataModel: Object {
         player2id: String,
         player3id: String,
         player4id: String,
+        servOrRet: String,
         player1position: String,
         player2position: String,
         player3position: String,
@@ -55,6 +57,7 @@ class PointDataModel: Object {
         self.player2id = player2id
         self.player3id = player3id
         self.player4id = player4id
+        self.servOrRet = servOrRet
         self.player1position = player1position
         self.player2position = player2position
         self.player3position = player3position
