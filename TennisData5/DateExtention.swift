@@ -1,13 +1,5 @@
-//
-//  DateExtention.swift
-//  TennisData5
-//
-//  Created by 渡辺健輔 on 2024/01/25.
-//
-
 import Foundation
 extension Date {
-    
     static func DateToString(date:Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")
@@ -50,7 +42,6 @@ extension Date {
         comp.second = second ?? calendar.component(.second, from: self)
         return calendar.date(from: comp)!
     }
-    
     var zeroClock: Date {
         return fixed(hour: 0, minute: 0, second: 0)
     }

@@ -16,7 +16,6 @@
 		091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */; };
 		091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3DF2B4A961C007E68F0 /* Shot.swift */; };
 		091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3E12B4A96B1007E68F0 /* Whose.swift */; };
-		091AC3E72B4BE15B007E68F0 /* PointInputBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */; };
 		0927E0A32B41A6A00069BEF1 /* TennisData5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */; };
 		0927E0A52B41A6A00069BEF1 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */; };
 		0927E0A72B41A6A20069BEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0927E0A62B41A6A20069BEF1 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 		0927E0C02B41A6A20069BEF1 /* TennisData5UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0BF2B41A6A20069BEF1 /* TennisData5UITestsLaunchTests.swift */; };
 		0927E0C62B41A6A20069BEF1 /* TennisData5 Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0927E0C52B41A6A20069BEF1 /* TennisData5 Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0927E0CB2B41A6A20069BEF1 /* TennisData5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0CA2B41A6A20069BEF1 /* TennisData5App.swift */; };
-		0927E0CD2B41A6A20069BEF1 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0CC2B41A6A20069BEF1 /* HomeTabView.swift */; };
 		0927E0CF2B41A6A30069BEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0927E0CE2B41A6A30069BEF1 /* Assets.xcassets */; };
 		0927E0D22B41A6A30069BEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0927E0D12B41A6A30069BEF1 /* Preview Assets.xcassets */; };
 		0927E0DC2B41A6A30069BEF1 /* TennisData5_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E0DB2B41A6A30069BEF1 /* TennisData5_Watch_AppTests.swift */; };
@@ -40,7 +38,7 @@
 		092B2B422B524A940046BDBF /* DammyPointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B412B524A940046BDBF /* DammyPointData.swift */; };
 		092B2B752B53C0B40046BDBF /* ServOrRet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B742B53C0B40046BDBF /* ServOrRet.swift */; };
 		0972295D2B53FA780046FAF8 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972295C2B53FA780046FAF8 /* LineChartView.swift */; };
-		097229602B54022B0046FAF8 /* RealTimeDataViw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972295F2B54022B0046FAF8 /* RealTimeDataViw.swift */; };
+		097229602B54022B0046FAF8 /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */; };
 		097229642B550DB50046FAF8 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229632B550DB50046FAF8 /* PieChartView.swift */; };
 		097229682B550F040046FAF8 /* PieChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229672B550F040046FAF8 /* PieChartDataModel.swift */; };
 		0972296A2B564ACF0046FAF8 /* BarChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229692B564ACF0046FAF8 /* BarChartDataModel.swift */; };
@@ -54,32 +52,23 @@
 		0972297C2B5AA7810046FAF8 /* SnglsPointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972297B2B5AA7810046FAF8 /* SnglsPointBtnArea.swift */; };
 		0972297E2B5AA79C0046FAF8 /* DblsPointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972297D2B5AA79C0046FAF8 /* DblsPointBtnArea.swift */; };
 		097229822B5B73EA0046FAF8 /* HomeHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229812B5B73EA0046FAF8 /* HomeHeaderBar.swift */; };
-		097229842B5CC3210046FAF8 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229832B5CC3210046FAF8 /* TextPosition.swift */; };
 		097229862B5D2DC70046FAF8 /* MatchRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */; };
 		097229882B5D359D0046FAF8 /* RecoadSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */; };
 		0972298B2B5F87380046FAF8 /* OneMatchDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */; };
 		0972298D2B5F89590046FAF8 /* NameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */; };
 		097229912B6122560046FAF8 /* LabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229902B6122560046FAF8 /* LabelType.swift */; };
 		097229932B61E04C0046FAF8 /* ChartsLayOutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229922B61E04C0046FAF8 /* ChartsLayOutArea.swift */; };
-		097229952B61F9F50046FAF8 /* SetMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229942B61F9F50046FAF8 /* SetMatch.swift */; };
-		097229972B61FA0D0046FAF8 /* TieBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229962B61FA0D0046FAF8 /* TieBreak.swift */; };
 		097229992B6244930046FAF8 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229982B6244930046FAF8 /* DateExtention.swift */; };
 		0972299B2B6366410046FAF8 /* InputMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972299A2B6366410046FAF8 /* InputMode.swift */; };
 		0972299D2B636EED0046FAF8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972299C2B636EED0046FAF8 /* HomeView.swift */; };
-		0972299F2B6372960046FAF8 /* GetPointBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972299E2B6372960046FAF8 /* GetPointBtnView.swift */; };
-		097229A12B6372CE0046FAF8 /* LostPointBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229A02B6372CE0046FAF8 /* LostPointBtnView.swift */; };
-		097229AF2B637E690046FAF8 /* MatchRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229AC2B637E690046FAF8 /* MatchRecordModel.swift */; };
 		097229B02B637E690046FAF8 /* BarChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229AB2B637E690046FAF8 /* BarChartDataModel.swift */; };
 		097229B12B637E690046FAF8 /* PieChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229A92B637E690046FAF8 /* PieChartDataModel.swift */; };
 		097229C22B637EA10046FAF8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229BF2B637EA10046FAF8 /* Service.swift */; };
-		097229C32B637EA10046FAF8 /* PointInputBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229B62B637EA00046FAF8 /* PointInputBtn.swift */; };
 		097229C42B637EA10046FAF8 /* GetPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229BB2B637EA00046FAF8 /* GetPoint.swift */; };
 		097229C52B637EA10046FAF8 /* LabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229B82B637EA00046FAF8 /* LabelType.swift */; };
-		097229C62B637EA10046FAF8 /* TextPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229B52B637EA00046FAF8 /* TextPosition.swift */; };
 		097229C72B637EA10046FAF8 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229B92B637EA00046FAF8 /* GameType.swift */; };
 		097229C82B637EA10046FAF8 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229BE2B637EA10046FAF8 /* Server.swift */; };
 		097229C92B637EA10046FAF8 /* InputMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229C12B637EA10046FAF8 /* InputMode.swift */; };
-		097229CA2B637EA10046FAF8 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229BD2B637EA00046FAF8 /* Issue.swift */; };
 		097229CB2B637EA10046FAF8 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229C02B637EA10046FAF8 /* Shot.swift */; };
 		097229CC2B637EA10046FAF8 /* ServOrRet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229B42B637EA00046FAF8 /* ServOrRet.swift */; };
 		097229CD2B637EA10046FAF8 /* MatchFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229B72B637EA00046FAF8 /* MatchFormat.swift */; };
@@ -99,13 +88,14 @@
 		097229EE2B65FD770046FAF8 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229ED2B65FD770046FAF8 /* PieChartView.swift */; };
 		097229F02B65FD890046FAF8 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229EF2B65FD890046FAF8 /* BarChartView.swift */; };
 		097229F22B65FDA10046FAF8 /* ChartsLayOutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F12B65FDA10046FAF8 /* ChartsLayOutArea.swift */; };
+		097229F42B66831D0046FAF8 /* DataStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F32B66831D0046FAF8 /* DataStorageViewModel.swift */; };
 		09806D272B4F692B007638B7 /* PointGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09806D262B4F692B007638B7 /* PointGame.swift */; };
 		09992D4C2B5132200049B877 /* HomeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeChartViewModel.swift */; };
 		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
 		09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */; };
 		09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */; };
 		09BC07002B444657008A44FD /* MatchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchTabView.swift */; };
-		09BD52992B49871600EC347E /* LineGraphDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52982B49871600EC347E /* LineGraphDataModel.swift */; };
+		09BD52992B49871600EC347E /* LineChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52982B49871600EC347E /* LineChartDataModel.swift */; };
 		239EB68C67D5C409E04843E8 /* Pods_TennisData5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073DB5AA7DCAA367816279FE /* Pods_TennisData5.framework */; };
 		63112886C1EFA6849A683DAE /* Pods_TennisData5Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */; };
 		73C965FB793AF59B3E32EEA8 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA53CCCF8D00FCE3847E407 /* Pods_TennisData5_TennisData5_Watch_AppUITests.framework */; };
@@ -176,7 +166,6 @@
 		091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPoint.swift; sourceTree = "<group>"; };
 		091AC3DF2B4A961C007E68F0 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		091AC3E12B4A96B1007E68F0 /* Whose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whose.swift; sourceTree = "<group>"; };
-		091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputBtn.swift; sourceTree = "<group>"; };
 		0927E09F2B41A6A00069BEF1 /* TennisData5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisData5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisData5App.swift; sourceTree = "<group>"; };
 		0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
@@ -189,7 +178,6 @@
 		0927E0BF2B41A6A20069BEF1 /* TennisData5UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisData5UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0927E0C52B41A6A20069BEF1 /* TennisData5 Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TennisData5 Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0927E0CA2B41A6A20069BEF1 /* TennisData5App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisData5App.swift; sourceTree = "<group>"; };
-		0927E0CC2B41A6A20069BEF1 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		0927E0CE2B41A6A30069BEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0927E0D12B41A6A30069BEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0927E0D72B41A6A30069BEF1 /* TennisData5 Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TennisData5 Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,7 +193,7 @@
 		092B2B412B524A940046BDBF /* DammyPointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DammyPointData.swift; sourceTree = "<group>"; };
 		092B2B742B53C0B40046BDBF /* ServOrRet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServOrRet.swift; sourceTree = "<group>"; };
 		0972295C2B53FA780046FAF8 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
-		0972295F2B54022B0046FAF8 /* RealTimeDataViw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataViw.swift; sourceTree = "<group>"; };
+		0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
 		097229632B550DB50046FAF8 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		097229672B550F040046FAF8 /* PieChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDataModel.swift; sourceTree = "<group>"; };
 		097229692B564ACF0046FAF8 /* BarChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartDataModel.swift; sourceTree = "<group>"; };
@@ -219,33 +207,24 @@
 		0972297B2B5AA7810046FAF8 /* SnglsPointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsPointBtnArea.swift; sourceTree = "<group>"; };
 		0972297D2B5AA79C0046FAF8 /* DblsPointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DblsPointBtnArea.swift; sourceTree = "<group>"; };
 		097229812B5B73EA0046FAF8 /* HomeHeaderBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderBar.swift; sourceTree = "<group>"; };
-		097229832B5CC3210046FAF8 /* TextPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPosition.swift; sourceTree = "<group>"; };
 		097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRecordModel.swift; sourceTree = "<group>"; };
 		097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoadSearchViewModel.swift; sourceTree = "<group>"; };
 		0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMatchDataView.swift; sourceTree = "<group>"; };
 		0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScoreArea.swift; sourceTree = "<group>"; };
 		097229902B6122560046FAF8 /* LabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelType.swift; sourceTree = "<group>"; };
 		097229922B61E04C0046FAF8 /* ChartsLayOutArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLayOutArea.swift; sourceTree = "<group>"; };
-		097229942B61F9F50046FAF8 /* SetMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMatch.swift; sourceTree = "<group>"; };
-		097229962B61FA0D0046FAF8 /* TieBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TieBreak.swift; sourceTree = "<group>"; };
 		097229982B6244930046FAF8 /* DateExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		0972299A2B6366410046FAF8 /* InputMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMode.swift; sourceTree = "<group>"; };
 		0972299C2B636EED0046FAF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0972299E2B6372960046FAF8 /* GetPointBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPointBtnView.swift; sourceTree = "<group>"; };
-		097229A02B6372CE0046FAF8 /* LostPointBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPointBtnView.swift; sourceTree = "<group>"; };
 		097229A92B637E690046FAF8 /* PieChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartDataModel.swift; sourceTree = "<group>"; };
 		097229AB2B637E690046FAF8 /* BarChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartDataModel.swift; sourceTree = "<group>"; };
-		097229AC2B637E690046FAF8 /* MatchRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRecordModel.swift; sourceTree = "<group>"; };
 		097229B42B637EA00046FAF8 /* ServOrRet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServOrRet.swift; sourceTree = "<group>"; };
-		097229B52B637EA00046FAF8 /* TextPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPosition.swift; sourceTree = "<group>"; };
-		097229B62B637EA00046FAF8 /* PointInputBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInputBtn.swift; sourceTree = "<group>"; };
 		097229B72B637EA00046FAF8 /* MatchFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchFormat.swift; sourceTree = "<group>"; };
 		097229B82B637EA00046FAF8 /* LabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelType.swift; sourceTree = "<group>"; };
 		097229B92B637EA00046FAF8 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		097229BA2B637EA00046FAF8 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		097229BB2B637EA00046FAF8 /* GetPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPoint.swift; sourceTree = "<group>"; };
 		097229BC2B637EA00046FAF8 /* Whose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whose.swift; sourceTree = "<group>"; };
-		097229BD2B637EA00046FAF8 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		097229BE2B637EA10046FAF8 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		097229BF2B637EA10046FAF8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		097229C02B637EA10046FAF8 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
@@ -264,13 +243,14 @@
 		097229ED2B65FD770046FAF8 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		097229EF2B65FD890046FAF8 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		097229F12B65FDA10046FAF8 /* ChartsLayOutArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLayOutArea.swift; sourceTree = "<group>"; };
+		097229F32B66831D0046FAF8 /* DataStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageViewModel.swift; sourceTree = "<group>"; };
 		09806D262B4F692B007638B7 /* PointGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGame.swift; sourceTree = "<group>"; };
 		09992D4B2B5132200049B877 /* HomeChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChartViewModel.swift; sourceTree = "<group>"; };
 		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartBtnsArea.swift; sourceTree = "<group>"; };
 		09BC06FC2B443736008A44FD /* MyNameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNameAndScoreArea.swift; sourceTree = "<group>"; };
 		09BC06FF2B444657008A44FD /* MatchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTabView.swift; sourceTree = "<group>"; };
-		09BD52982B49871600EC347E /* LineGraphDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphDataModel.swift; sourceTree = "<group>"; };
+		09BD52982B49871600EC347E /* LineChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDataModel.swift; sourceTree = "<group>"; };
 		1DD891B8B5AC7081C5F0CE99 /* Pods-TennisData5 Watch AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5 Watch AppTests.release.xcconfig"; path = "Target Support Files/Pods-TennisData5 Watch AppTests/Pods-TennisData5 Watch AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		2C5A4F3FEC9C3304CCCCE5F7 /* Pods_TennisData5Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisData5Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D86F11D09C09DBD154E658 /* Pods-TennisData5 Watch AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisData5 Watch AppTests.debug.xcconfig"; path = "Target Support Files/Pods-TennisData5 Watch AppTests/Pods-TennisData5 Watch AppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -349,10 +329,8 @@
 				091AC3DB2B4A94E1007E68F0 /* Service.swift */,
 				091AC3E12B4A96B1007E68F0 /* Whose.swift */,
 				091AC3DD2B4A95B8007E68F0 /* GetPoint.swift */,
-				091AC3E62B4BE15B007E68F0 /* PointInputBtn.swift */,
 				091AC3D12B4A57D9007E68F0 /* GameType.swift */,
 				092B2B742B53C0B40046BDBF /* ServOrRet.swift */,
-				097229832B5CC3210046FAF8 /* TextPosition.swift */,
 				097229902B6122560046FAF8 /* LabelType.swift */,
 				0972299A2B6366410046FAF8 /* InputMode.swift */,
 			);
@@ -515,6 +493,7 @@
 				092B2B3B2B5177620046BDBF /* PointViewModel.swift */,
 				097229732B5A63660046FAF8 /* ChartDataViewModel.swift */,
 				097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */,
+				097229F32B66831D0046FAF8 /* DataStorageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -544,10 +523,7 @@
 			children = (
 				097229EC2B65FD510046FAF8 /* ChartView */,
 				097229DF2B63E1870046FAF8 /* Area */,
-				0927E0CC2B41A6A20069BEF1 /* HomeTabView.swift */,
-				0972299E2B6372960046FAF8 /* GetPointBtnView.swift */,
 				0972299C2B636EED0046FAF8 /* HomeView.swift */,
-				097229A02B6372CE0046FAF8 /* LostPointBtnView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,7 +533,6 @@
 			children = (
 				097229A92B637E690046FAF8 /* PieChartDataModel.swift */,
 				097229AB2B637E690046FAF8 /* BarChartDataModel.swift */,
-				097229AC2B637E690046FAF8 /* MatchRecordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,7 +540,6 @@
 		097229B32B637EA00046FAF8 /* enum */ = {
 			isa = PBXGroup;
 			children = (
-				097229BD2B637EA00046FAF8 /* Issue.swift */,
 				097229B72B637EA00046FAF8 /* MatchFormat.swift */,
 				097229BE2B637EA10046FAF8 /* Server.swift */,
 				097229BA2B637EA00046FAF8 /* Position.swift */,
@@ -573,10 +547,8 @@
 				097229BF2B637EA10046FAF8 /* Service.swift */,
 				097229BC2B637EA00046FAF8 /* Whose.swift */,
 				097229BB2B637EA00046FAF8 /* GetPoint.swift */,
-				097229B62B637EA00046FAF8 /* PointInputBtn.swift */,
 				097229B92B637EA00046FAF8 /* GameType.swift */,
 				097229B42B637EA00046FAF8 /* ServOrRet.swift */,
-				097229B52B637EA00046FAF8 /* TextPosition.swift */,
 				097229B82B637EA00046FAF8 /* LabelType.swift */,
 				097229C12B637EA10046FAF8 /* InputMode.swift */,
 			);
@@ -629,8 +601,6 @@
 			isa = PBXGroup;
 			children = (
 				09806D262B4F692B007638B7 /* PointGame.swift */,
-				097229942B61F9F50046FAF8 /* SetMatch.swift */,
-				097229962B61FA0D0046FAF8 /* TieBreak.swift */,
 			);
 			path = PointInputView;
 			sourceTree = "<group>";
@@ -649,7 +619,7 @@
 		09BC07032B444897008A44FD /* RealTimeDataView */ = {
 			isa = PBXGroup;
 			children = (
-				0972295F2B54022B0046FAF8 /* RealTimeDataViw.swift */,
+				0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */,
 			);
 			path = RealTimeDataView;
 			sourceTree = "<group>";
@@ -657,11 +627,11 @@
 		09BC07052B447BD9008A44FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				09BD52982B49871600EC347E /* LineGraphDataModel.swift */,
-				091AC3D32B4A8AAE007E68F0 /* PointDataModel.swift */,
+				09BD52982B49871600EC347E /* LineChartDataModel.swift */,
 				097229672B550F040046FAF8 /* PieChartDataModel.swift */,
 				097229692B564ACF0046FAF8 /* BarChartDataModel.swift */,
 				097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */,
+				091AC3D32B4A8AAE007E68F0 /* PointDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1089,9 +1059,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				091AC3E72B4BE15B007E68F0 /* PointInputBtn.swift in Sources */,
 				0927E0A52B41A6A00069BEF1 /* HomeTabView.swift in Sources */,
-				097229952B61F9F50046FAF8 /* SetMatch.swift in Sources */,
 				0972296A2B564ACF0046FAF8 /* BarChartDataModel.swift in Sources */,
 				09992D4E2B5134BE0049B877 /* Issue.swift in Sources */,
 				09992D4C2B5132200049B877 /* HomeChartViewModel.swift in Sources */,
@@ -1102,11 +1070,10 @@
 				091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */,
 				092B2B3C2B5177620046BDBF /* PointViewModel.swift in Sources */,
 				097229702B5A620B0046FAF8 /* PositionViewModel.swift in Sources */,
-				09BD52992B49871600EC347E /* LineGraphDataModel.swift in Sources */,
+				09BD52992B49871600EC347E /* LineChartDataModel.swift in Sources */,
 				097229992B6244930046FAF8 /* DateExtention.swift in Sources */,
 				09806D272B4F692B007638B7 /* PointGame.swift in Sources */,
 				097229862B5D2DC70046FAF8 /* MatchRecordModel.swift in Sources */,
-				097229842B5CC3210046FAF8 /* TextPosition.swift in Sources */,
 				0927E1032B41A7F10069BEF1 /* DataAnalysisView.swift in Sources */,
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
 				091AC3DC2B4A94E1007E68F0 /* Service.swift in Sources */,
@@ -1114,8 +1081,9 @@
 				097229782B5A70DE0046FAF8 /* DblsPositionBtnArea.swift in Sources */,
 				091AC3D62B4A8C52007E68F0 /* MatchFormat.swift in Sources */,
 				091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */,
+				097229F42B66831D0046FAF8 /* DataStorageViewModel.swift in Sources */,
 				0972297E2B5AA79C0046FAF8 /* DblsPointBtnArea.swift in Sources */,
-				097229602B54022B0046FAF8 /* RealTimeDataViw.swift in Sources */,
+				097229602B54022B0046FAF8 /* RealTimeDataView.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				097229822B5B73EA0046FAF8 /* HomeHeaderBar.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
@@ -1132,7 +1100,6 @@
 				092B2B422B524A940046BDBF /* DammyPointData.swift in Sources */,
 				09BC06FD2B443736008A44FD /* MyNameAndScoreArea.swift in Sources */,
 				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
-				097229972B61FA0D0046FAF8 /* TieBreak.swift in Sources */,
 				097229762B5A70850046FAF8 /* SnglsPositionBtnArea.swift in Sources */,
 				0972298D2B5F89590046FAF8 /* NameAndScoreArea.swift in Sources */,
 				0972295D2B53FA780046FAF8 /* LineChartView.swift in Sources */,
@@ -1165,25 +1132,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				097229C62B637EA10046FAF8 /* TextPosition.swift in Sources */,
 				097229C52B637EA10046FAF8 /* LabelType.swift in Sources */,
 				097229D32B637EFF0046FAF8 /* DateExtention.swift in Sources */,
-				097229CA2B637EA10046FAF8 /* Issue.swift in Sources */,
-				0927E0CD2B41A6A20069BEF1 /* HomeTabView.swift in Sources */,
 				097229E92B63E1880046FAF8 /* ServOrRetArera.swift in Sources */,
 				097229B12B637E690046FAF8 /* PieChartDataModel.swift in Sources */,
 				0927E0CB2B41A6A20069BEF1 /* TennisData5App.swift in Sources */,
 				097229DE2B63D51C0046FAF8 /* ChartDataViewModel.swift in Sources */,
 				097229DA2B63D4DD0046FAF8 /* PositionViewModel.swift in Sources */,
-				097229A12B6372CE0046FAF8 /* LostPointBtnView.swift in Sources */,
 				097229EA2B63E1880046FAF8 /* SnglsPointBtnArea.swift in Sources */,
 				097229D82B63D4A80046FAF8 /* MatchInfoViewModel.swift in Sources */,
 				097229F22B65FDA10046FAF8 /* ChartsLayOutArea.swift in Sources */,
 				097229CC2B637EA10046FAF8 /* ServOrRet.swift in Sources */,
 				097229CF2B637EA10046FAF8 /* Whose.swift in Sources */,
 				097229E62B63E1880046FAF8 /* DblsPointBtnArea.swift in Sources */,
-				097229C32B637EA10046FAF8 /* PointInputBtn.swift in Sources */,
-				0972299F2B6372960046FAF8 /* GetPointBtnView.swift in Sources */,
 				097229C42B637EA10046FAF8 /* GetPoint.swift in Sources */,
 				097229C72B637EA10046FAF8 /* GameType.swift in Sources */,
 				097229D52B63AAFE0046FAF8 /* MyNameAndScoreArea.swift in Sources */,
@@ -1193,7 +1154,6 @@
 				097229CE2B637EA10046FAF8 /* Position.swift in Sources */,
 				097229CD2B637EA10046FAF8 /* MatchFormat.swift in Sources */,
 				097229B02B637E690046FAF8 /* BarChartDataModel.swift in Sources */,
-				097229AF2B637E690046FAF8 /* MatchRecordModel.swift in Sources */,
 				097229CB2B637EA10046FAF8 /* Shot.swift in Sources */,
 				097229DC2B63D5000046FAF8 /* PointViewModel.swift in Sources */,
 				097229EE2B65FD770046FAF8 /* PieChartView.swift in Sources */,

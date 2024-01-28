@@ -12,13 +12,6 @@ class MatchInfoViewModel: ObservableObject {
     @Published var player3: String = ""
     @Published var player4: String = ""
     
-    func resetModel(){
-        matchId = ""
-        setId = ""
-        gameId = ""
-        matchStartDate = Date()
-        matchFormat = .noSelection
-        gameType = .noSelection
-    }
+    
     
 }

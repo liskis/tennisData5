@@ -1,8 +1,8 @@
 import SwiftUI
 import Charts
 struct LineChartView: View {
-    @Binding var data1: [LineGraphDataModel]
-    @Binding var data2: [LineGraphDataModel]
+    @Binding var data1: [LineChartDataModel]
+    @Binding var data2: [LineChartDataModel]
     var body: some View {
         Chart {
             ForEach(data1){ dataRow in

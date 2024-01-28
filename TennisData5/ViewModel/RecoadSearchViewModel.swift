@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 class RecordSearchViewModel: ObservableObject {
     @ObservedObject var chartDataVM = ChartDataViewModel()
-    @Published var matchInfoVM = MatchInfoViewModel()
+    @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var pointVM = PointViewModel()
     @Published var searchStartDateString: String = Date.DateToString(date: Date.plusYear(date: Date(), value: -1))
     @Published var searchEndDateString: String = Date.DateToString(date: Date())

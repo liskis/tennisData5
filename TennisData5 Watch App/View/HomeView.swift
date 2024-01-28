@@ -36,7 +36,6 @@ struct HomeView: View {
                         gameEndBtn
                     }
                 ChartsLayOutArea(matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
-                
             }.frame(height: WKInterfaceDevice.current().screenBounds.size.height*0.75)
             Spacer()
         }

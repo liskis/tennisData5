@@ -119,6 +119,7 @@ struct PointGame: View {
     }
     var doubleFaultBtn: some View {
         Button(action: {
+            
             if positionVM.servOrRet == .serviceGame {
                 pointVM.opponentPoint += 1
             } else if positionVM.servOrRet == .returnGame {
