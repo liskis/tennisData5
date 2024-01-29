@@ -3,19 +3,23 @@ struct MatchTabView: View {
     @Binding var matchFormat: MatchFormat
     @Binding var gameType: GameType
     @Binding var naviTitle: String
-    @ObservedObject var pointVM = PointViewModel()
-    @ObservedObject var matchInfoVM = MatchInfoViewModel()
-    @ObservedObject var positionVM = PositionViewModel()
+    @ObservedObject var dataManageVM = DataManageViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
     var body: some View {
         TabView {
-            PointGame(pointVM: pointVM, matchInfoVM: matchInfoVM, positionVM: positionVM, chartDataVM: chartDataVM)
+            PointGame(dataManageVM: dataManageVM,
+                      pointVM: dataManageVM.pointVM,
+                      matchInfoVM: dataManageVM.matchInfoVM,
+                      positionVM: dataManageVM.positionVM,
+                      chartDataVM: chartDataVM)
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
                     Label("ポイント入力", systemImage: "hand.point.up")
                 }
-            RealTimeDataView(pointVM: pointVM, matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
+            RealTimeDataView(pointVM: dataManageVM.pointVM,
+                             matchInfoVM: dataManageVM.matchInfoVM,
+                             chartDataVM: chartDataVM)
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {
@@ -25,9 +29,9 @@ struct MatchTabView: View {
         }
         .accentColor(.white)
         .onAppear{
-            matchInfoVM.matchFormat = matchFormat
-            matchInfoVM.gameType = gameType
-            matchInfoVM.naviTitle = naviTitle
+            dataManageVM.matchInfoVM.matchFormat = matchFormat
+            dataManageVM.matchInfoVM.gameType = gameType
+            dataManageVM.matchInfoVM.naviTitle = naviTitle
         }
     }
 }

@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 struct PointGame: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var pointVM: PointViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var positionVM: PositionViewModel
@@ -119,7 +120,13 @@ struct PointGame: View {
     }
     var doubleFaultBtn: some View {
         Button(action: {
-            
+            if positionVM.servOrRet == .serviceGame {
+                pointVM.getPoint = .opponent
+            } else if positionVM.servOrRet == .returnGame {
+                pointVM.getPoint = .myTeam
+            }
+            pointVM.shot = .seavice
+            dataManageVM.pointRecoad()
             if positionVM.servOrRet == .serviceGame {
                 pointVM.opponentPoint += 1
             } else if positionVM.servOrRet == .returnGame {
@@ -127,6 +134,7 @@ struct PointGame: View {
             }
             positionVM.position = .NoSelection
             pointVM.service = .first
+            dataManageVM.showRealm()
         },label:{
             Text("ダブルフォルト")
                 .foregroundColor(Color.white)
@@ -168,7 +176,9 @@ struct PointGame: View {
     }
     var gameEndBtn: some View {
         Button(action: {
-            dismiss()
+//            dataManageVM.showRealm()
+            dataManageVM.deleteRealm()
+//            dismiss()
         },label:{
             Text("ゲームを終了する")
                 .foregroundColor(Color.white)

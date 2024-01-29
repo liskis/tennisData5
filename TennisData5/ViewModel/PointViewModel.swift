@@ -7,13 +7,7 @@ class PointViewModel: ObservableObject {
     @Published var opponentPoint:Int = 0
     @Published var service: Service = .first
     @Published var getPoint: GetPoint = .myTeam
-    func resetModel(){
-        winCount = 0
-        loseCount = 0
-        drowCount = 0
-        myPoint = 0
-        opponentPoint = 0
-        service = .first
-        getPoint = .myTeam
-    }
+    @Published var shot: Shot = .noSelection
+    @Published var whose: Whose = .noSelection
+   
 }

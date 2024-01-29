@@ -88,7 +88,7 @@
 		097229EE2B65FD770046FAF8 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229ED2B65FD770046FAF8 /* PieChartView.swift */; };
 		097229F02B65FD890046FAF8 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229EF2B65FD890046FAF8 /* BarChartView.swift */; };
 		097229F22B65FDA10046FAF8 /* ChartsLayOutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F12B65FDA10046FAF8 /* ChartsLayOutArea.swift */; };
-		097229F42B66831D0046FAF8 /* DataStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F32B66831D0046FAF8 /* DataStorageViewModel.swift */; };
+		097229F42B66831D0046FAF8 /* DataManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F32B66831D0046FAF8 /* DataManageViewModel.swift */; };
 		09806D272B4F692B007638B7 /* PointGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09806D262B4F692B007638B7 /* PointGame.swift */; };
 		09992D4C2B5132200049B877 /* HomeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeChartViewModel.swift */; };
 		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
@@ -243,7 +243,7 @@
 		097229ED2B65FD770046FAF8 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		097229EF2B65FD890046FAF8 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		097229F12B65FDA10046FAF8 /* ChartsLayOutArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLayOutArea.swift; sourceTree = "<group>"; };
-		097229F32B66831D0046FAF8 /* DataStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageViewModel.swift; sourceTree = "<group>"; };
+		097229F32B66831D0046FAF8 /* DataManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManageViewModel.swift; sourceTree = "<group>"; };
 		09806D262B4F692B007638B7 /* PointGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGame.swift; sourceTree = "<group>"; };
 		09992D4B2B5132200049B877 /* HomeChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChartViewModel.swift; sourceTree = "<group>"; };
 		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
@@ -493,7 +493,7 @@
 				092B2B3B2B5177620046BDBF /* PointViewModel.swift */,
 				097229732B5A63660046FAF8 /* ChartDataViewModel.swift */,
 				097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */,
-				097229F32B66831D0046FAF8 /* DataStorageViewModel.swift */,
+				097229F32B66831D0046FAF8 /* DataManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1081,7 +1081,7 @@
 				097229782B5A70DE0046FAF8 /* DblsPositionBtnArea.swift in Sources */,
 				091AC3D62B4A8C52007E68F0 /* MatchFormat.swift in Sources */,
 				091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */,
-				097229F42B66831D0046FAF8 /* DataStorageViewModel.swift in Sources */,
+				097229F42B66831D0046FAF8 /* DataManageViewModel.swift in Sources */,
 				0972297E2B5AA79C0046FAF8 /* DblsPointBtnArea.swift in Sources */,
 				097229602B54022B0046FAF8 /* RealTimeDataView.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,

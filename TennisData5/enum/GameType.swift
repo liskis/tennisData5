@@ -1,5 +1,5 @@
 import Foundation
-enum GameType: CaseIterable{
+enum GameType: String ,CaseIterable{
     case noSelection
     case pointGame
     case setMatch

@@ -1,5 +1,5 @@
 import Foundation
-enum Issue{
+enum Issue: String{
     case Win
     case Lose
     case Draw

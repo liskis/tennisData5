@@ -7,5 +7,4 @@ class PointViewModel: ObservableObject {
     @Published var opponentPoint:Int = 0
     @Published var service: Service = .first
     @Published var getPoint: GetPoint = .myTeam
-    
 }

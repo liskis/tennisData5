@@ -1,5 +1,5 @@
 import Foundation
-enum MatchFormat: CaseIterable {
+enum MatchFormat: String, CaseIterable {
     case noSelection
     case singles
     case doubles

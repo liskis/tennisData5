@@ -11,7 +11,4 @@ class MatchInfoViewModel: ObservableObject {
     @Published var player2: String = ""
     @Published var player3: String = ""
     @Published var player4: String = ""
-    
-    
-    
 }
