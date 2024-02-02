@@ -189,20 +189,22 @@ struct PointGame: View {
                 pointVM.winCount += 1
             } else if pointVM.myPoint < pointVM.opponentPoint {
                 pointVM.loseCount += 1
-            } else if pointVM.myPoint == pointVM.opponentPoint {
+            } else if pointVM.myPoint == pointVM.opponentPoint && pointVM.myPoint + pointVM.opponentPoint != 0{
                 pointVM.drowCount += 1
             }
-            matchInfoVM.matchEnd = "end"
-            matchInfoVM.matchEndDate = Date()
-            pointVM.service = .first
-            positionVM.myPosition = .noSelection
-            positionVM.servOrRet = .noSelection
-            pointVM.myPoint = 0
-            pointVM.opponentPoint = 0
-            matchInfoVM.gameId = ""
-            matchInfoVM.setId = ""
-            dataManageVM.pointRecoad()
-            homeDataVM.setHomeData()
+            if pointVM.myPoint + pointVM.opponentPoint + pointVM.winCount + pointVM.loseCount + pointVM.drowCount != 0 {
+                matchInfoVM.matchEnd = "end"
+                matchInfoVM.matchEndDate = Date()
+                pointVM.service = .first
+                positionVM.myPosition = .noSelection
+                positionVM.servOrRet = .noSelection
+                pointVM.myPoint = 0
+                pointVM.opponentPoint = 0
+                matchInfoVM.gameId = ""
+                matchInfoVM.setId = ""
+                dataManageVM.pointRecoad()
+                homeDataVM.setHomeData()
+            }
 //            dataManageVM.showRealm()
             dismiss()
 //            dataManageVM.deleteRealm()

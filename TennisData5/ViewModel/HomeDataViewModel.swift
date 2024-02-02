@@ -22,7 +22,10 @@ class HomeDataViewModel: ObservableObject {
             var firstInPointCount: Int = 0
             var secondPointCount: Int = 0
             var secondInPointCount: Int = 0
-            var num: Int = 0
+            var num: Int = matchEndData.count - 1
+            if num > 4 {
+                num = 4
+            }
             firstSvInChartData = []
             secondSvInChartData = []
             for endData in matchEndData {
@@ -60,8 +63,8 @@ class HomeDataViewModel: ObservableObject {
                 secondInPointCount += secondPoints.count - doubleFaultPoints.count
                 
                 // グラフデータ
-                let dateString: String = Date.dateToString(date: endData.matchStartDate, format: "yy/MM/dd")
-//                let dateString: String = Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")
+//                let dateString: String = Date.dateToString(date: endData.matchStartDate, format: "yy/MM/dd")
+                let dateString: String = Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")
                 var category: String = "data1"
                 var issue: Issue = .Draw
                 var stats: Int = 0
@@ -80,7 +83,6 @@ class HomeDataViewModel: ObservableObject {
                     issue = .Draw
                 }
                 firstSvInChartData.append(LineChartDataModel(num: num, dateString: dateString, stats: stats, category: category, issue: issue))
-                firstSvInChartData.sort(by: {$0.num > $1.num})
                 // セカンドサーブ
                 category = "data2"
                 let secondIn = secondPoints.count - doubleFaultPoints.count
@@ -94,11 +96,10 @@ class HomeDataViewModel: ObservableObject {
                     stats = Int((Double(secondIn) / Double(secondPoints.count))*100)
                 }
                 secondSvInChartData.append(LineChartDataModel(num: num, dateString: dateString, stats: stats, category: category, issue: issue))
-                secondSvInChartData.sort(by: {$0.num > $1.num})
-                num += 1
-                if num > 4 {
+                if num == 0 {
                     break
                 }
+                num -= 1
             }
             winningRate = String( format: "%.1f", (Double(win)/Double(win+lose+draw))*100)
             winningCount = "(\(win)/\( win + lose + draw))"
@@ -110,6 +111,10 @@ class HomeDataViewModel: ObservableObject {
                 secondSvInRate = String(format: "%.1f", (Double(secondInPointCount) / Double(secondPointCount))*100 )
             }
             secondSvInCount = "(\(secondInPointCount)/\(secondPointCount))"
+            firstSvInChartData.sort(by: {$0.num < $1.num})
+            secondSvInChartData.sort(by: {$0.num < $1.num})
+            print(firstSvInChartData)
+            print(secondSvInChartData)
         }
     }
 }
