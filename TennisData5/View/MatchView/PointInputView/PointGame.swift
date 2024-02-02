@@ -6,12 +6,14 @@ struct PointGame: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
+    @ObservedObject var homeDataVM: HomeDataViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack {
             VStack(spacing:0){
                 Spacer(minLength: 20)
-                MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM: pointVM)
+                MyNameAndScoreArea(matchInfoVM: matchInfoVM, 
+                                   pointVM: pointVM)
                 HStack{
                     Spacer()
                     Text("ビギナーモード")
@@ -21,37 +23,45 @@ struct PointGame: View {
                 }
                 VStack(spacing:1){
                     ScrollView {
-                        Spacer().frame(height:10)
-                        HStack {
-                            goBackBtn
-                            Spacer()
+                        VStack(spacing:1){
+                            Spacer().frame(height:10)
+                            HStack {
+                                goBackBtn
+                                Spacer()
+                            }
+                            Spacer().frame(height: 10)
+                            if matchInfoVM.matchFormat == .singles {
+                                ServOrRetArea(positionVM: positionVM,
+                                              pointVM: pointVM)
+                                SnglsPositionBtnArea(positionVM: positionVM)
+                            } else if matchInfoVM.matchFormat == .doubles {
+                                ServOrRetArea(positionVM: positionVM,
+                                              pointVM: pointVM)
+                                DblsPositionBtnArea(positionVM: positionVM)
+                            }
+                            Spacer().frame(height: 10)
+                            if positionVM.myPosition == .noSelection {
+                                faultBtnDis
+                            } else if pointVM.service == .first {
+                                faultBtn
+                            } else if pointVM.service == .second {
+                                doubleFaultBtn
+                            }
+                            Spacer().frame(height: 10)
+                            
+                            if matchInfoVM.matchFormat == .singles {
+                                SnglsPointBtnArea(dataManageVM: dataManageVM,
+                                                  positionVM: positionVM,
+                                                  pointVM: pointVM)
+                            } else if matchInfoVM.matchFormat == .doubles {
+                                DblsPointBtnArea(dataManageVM: dataManageVM,
+                                                 positionVM: positionVM,
+                                                 pointVM: pointVM)
+                            }
+                            Spacer().frame(height: 10)
+                            nextGameBtn
+                            gameEndBtn
                         }
-                        Spacer().frame(height: 10)
-                        if matchInfoVM.matchFormat == .singles {
-                            ServOrRetArea(positionVM: positionVM, pointVM: pointVM)
-                            SnglsPositionBtnArea(positionVM: positionVM)
-                        } else if matchInfoVM.matchFormat == .doubles {
-                            ServOrRetArea(positionVM: positionVM, pointVM: pointVM)
-                            DblsPositionBtnArea(positionVM: positionVM)
-                        }
-                        Spacer().frame(height: 10)
-                        if positionVM.position == .NoSelection {
-                            faultBtnDis
-                        } else if pointVM.service == .first {
-                            faultBtn
-                        } else if pointVM.service == .second {
-                            doubleFaultBtn
-                        }
-                        Spacer().frame(height: 10)
-                        
-                        if matchInfoVM.matchFormat == .singles {
-                            SnglsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                        } else if matchInfoVM.matchFormat == .doubles {
-                            DblsPointBtnArea(positionVM: positionVM, pointVM: pointVM)
-                        }
-                        Spacer().frame(height: 10)
-                        nextGameBtn
-                        gameEndBtn
                     }
                 }
                 .background{ Color.white}
@@ -69,8 +79,8 @@ struct PointGame: View {
         Button(action: {
             if pointVM.service == .second {
                 pointVM.service = .first
-            } else if positionVM.position != .NoSelection {
-                positionVM.position = .NoSelection
+            } else if positionVM.myPosition != .noSelection {
+                positionVM.myPosition = .noSelection
             } else if positionVM.servOrRet != .noSelection && pointVM.myPoint + pointVM.opponentPoint == 0 {
                 positionVM.servOrRet = .noSelection
             }
@@ -103,7 +113,7 @@ struct PointGame: View {
     }
     var faultBtn: some View {
         Button(action: {
-            if positionVM.position != .NoSelection {
+            if positionVM.myPosition != .noSelection {
                 pointVM.service = .second
             }
         },label:{
@@ -122,19 +132,17 @@ struct PointGame: View {
         Button(action: {
             if positionVM.servOrRet == .serviceGame {
                 pointVM.getPoint = .opponent
-            } else if positionVM.servOrRet == .returnGame {
-                pointVM.getPoint = .myTeam
-            }
-            pointVM.shot = .seavice
-            dataManageVM.pointRecoad()
-            if positionVM.servOrRet == .serviceGame {
                 pointVM.opponentPoint += 1
             } else if positionVM.servOrRet == .returnGame {
+                pointVM.getPoint = .myTeam
                 pointVM.myPoint += 1
             }
-            positionVM.position = .NoSelection
+            pointVM.shot = .serve
+            dataManageVM.pointRecoad()
+            positionVM.myPosition = .noSelection
             pointVM.service = .first
-            dataManageVM.showRealm()
+            pointVM.getPoint = .noSelection
+            pointVM.shot = .noSelection
         },label:{
             Text("ダブルフォルト")
                 .foregroundColor(Color.white)
@@ -157,11 +165,12 @@ struct PointGame: View {
                 pointVM.drowCount += 1
             }
             pointVM.service = .first
-            positionVM.position = .NoSelection
+            positionVM.myPosition = .noSelection
             positionVM.servOrRet = .noSelection
             pointVM.myPoint = 0
             pointVM.opponentPoint = 0
             matchInfoVM.gameId = UUID().uuidString
+            dataManageVM.showRealm()
         },label:{
             Text("次のゲームへ")
                 .foregroundColor(Color.white)
@@ -176,9 +185,27 @@ struct PointGame: View {
     }
     var gameEndBtn: some View {
         Button(action: {
+            if pointVM.myPoint > pointVM.opponentPoint {
+                pointVM.winCount += 1
+            } else if pointVM.myPoint < pointVM.opponentPoint {
+                pointVM.loseCount += 1
+            } else if pointVM.myPoint == pointVM.opponentPoint {
+                pointVM.drowCount += 1
+            }
+            matchInfoVM.matchEnd = "end"
+            matchInfoVM.matchEndDate = Date()
+            pointVM.service = .first
+            positionVM.myPosition = .noSelection
+            positionVM.servOrRet = .noSelection
+            pointVM.myPoint = 0
+            pointVM.opponentPoint = 0
+            matchInfoVM.gameId = ""
+            matchInfoVM.setId = ""
+            dataManageVM.pointRecoad()
+            homeDataVM.setHomeData()
 //            dataManageVM.showRealm()
-            dataManageVM.deleteRealm()
-//            dismiss()
+            dismiss()
+//            dataManageVM.deleteRealm()
         },label:{
             Text("ゲームを終了する")
                 .foregroundColor(Color.white)

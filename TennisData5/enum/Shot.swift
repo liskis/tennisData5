@@ -1,7 +1,7 @@
 import Foundation
 enum Shot: String {
     case noSelection
-    case seavice
+    case serve
     case foreStroke
     case backStroke
     case foreVolley

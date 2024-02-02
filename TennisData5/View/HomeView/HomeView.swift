@@ -3,7 +3,7 @@ struct HomeView: View {
     @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var pointVM = PointViewModel()
-    @ObservedObject var homeChartVM = HomeChartViewModel()
+    @ObservedObject var homeDataVM: HomeDataViewModel
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -19,11 +19,11 @@ struct HomeView: View {
                     }
                     VStack{
                         Spacer().frame(height: 10)
-                        StatsDataArea()
+                        StatsDataArea(homeDataVM: homeDataVM)
                         Spacer().frame(height: 40)
                         LineChartView(
-                            data1: $homeChartVM.data1,
-                            data2: $homeChartVM.data2
+                            data1: $homeDataVM.firstSvInChartData,
+                            data2: $homeDataVM.secondSvInChartData
                         )
                         winLoseArrayArea
                         dateArrayArea
@@ -32,7 +32,7 @@ struct HomeView: View {
                             Color.white.ignoresSafeArea()
                             VStack{
                                 Spacer().frame(height: 5)
-                                GameStartBtnsArea()
+                                GameStartBtnsArea(homeDataVM: homeDataVM)
                                 Spacer()
                             }
                         }
@@ -45,18 +45,24 @@ struct HomeView: View {
     var winLoseArrayArea: some View {
         HStack{
             Spacer()
-            ForEach(homeChartVM.data1){ data in
+            ForEach(homeDataVM.firstSvInChartData){ data in
                 if data.issue == .Win {
-                    Text("Win")
+                    Text(data.issue.rawValue)
                         .font(.custom("Verdana",size:23))
                         .bold()
                         .foregroundColor(.red)
                         .shadow(color: .white, radius: 2)
-                } else {
-                    Text("Lose")
+                } else if data.issue == .Lose {
+                    Text(data.issue.rawValue)
                         .font(.custom("Verdana",size:23))
                         .bold()
                         .foregroundColor(.blue)
+                        .shadow(color: .white, radius: 2)
+                } else {
+                    Text(data.issue.rawValue)
+                        .font(.custom("Verdana",size:23))
+                        .bold()
+                        .foregroundColor(.gray)
                         .shadow(color: .white, radius: 2)
                 }
                 Spacer()
@@ -65,7 +71,7 @@ struct HomeView: View {
     }
     var dateArrayArea: some View {
         HStack{
-            ForEach(homeChartVM.data1){ dataRow in
+            ForEach(homeDataVM.firstSvInChartData){ dataRow in
                 Spacer()
                 Text("\(dataRow.dateString)")
                     .font(.custom("Verdana",size:10))

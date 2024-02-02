@@ -1,5 +1,6 @@
 import SwiftUI
 struct StatsDataArea: View {
+    @ObservedObject var homeDataVM: HomeDataViewModel
     var body: some View {
         HStack(alignment: .bottom){
             Spacer()
@@ -14,18 +15,26 @@ struct StatsDataArea: View {
     var winningRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text("46.7")
-                    .font(.custom("Verdana",size:35))
-                    .bold()
-                    .foregroundColor(.white)
-                    .shadow(color: .black, radius: 2)
+                if homeDataVM.winningRate == "100.0" {
+                    Text(homeDataVM.winningRate)
+                        .font(.custom("Verdana",size:30))
+                        .bold()
+                        .foregroundColor(.white)
+                        .shadow(color: .black, radius: 2)
+                } else {
+                    Text(homeDataVM.winningRate)
+                        .font(.custom("Verdana",size:35))
+                        .bold()
+                        .foregroundColor(.white)
+                        .shadow(color: .black, radius: 2)
+                }
                 Text("%")
                     .font(.custom("Verdana",size:16))
                     .bold()
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text("(5/17)")
+            Text(homeDataVM.winningCount)
                 .font(.custom("Verdana",size:16))
                 .bold()
                 .foregroundColor(.white)
@@ -40,7 +49,7 @@ struct StatsDataArea: View {
     var firstServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text("42.2")
+                Text(homeDataVM.firstSvInRate)
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(.white)
@@ -51,7 +60,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text("(76/180)")
+            Text(homeDataVM.firstSvInCount)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)
@@ -73,7 +82,7 @@ struct StatsDataArea: View {
     var secondServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text("42.2")
+                Text(homeDataVM.secondSvInRate)
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(.white)
@@ -84,7 +93,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text("(76/180)")
+            Text(homeDataVM.secondSvInCount)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)

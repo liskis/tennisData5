@@ -1,8 +1,12 @@
 import SwiftUI
 struct HomeTabView: View {
+    @ObservedObject var homeDataVM = HomeDataViewModel()
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(homeDataVM: homeDataVM)
+                .onAppear{
+                    homeDataVM.setHomeData()
+                }
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {

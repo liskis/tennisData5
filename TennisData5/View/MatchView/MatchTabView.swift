@@ -5,13 +5,15 @@ struct MatchTabView: View {
     @Binding var naviTitle: String
     @ObservedObject var dataManageVM = DataManageViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
+    @ObservedObject var homeDataVM: HomeDataViewModel
     var body: some View {
         TabView {
             PointGame(dataManageVM: dataManageVM,
                       pointVM: dataManageVM.pointVM,
                       matchInfoVM: dataManageVM.matchInfoVM,
                       positionVM: dataManageVM.positionVM,
-                      chartDataVM: chartDataVM)
+                      chartDataVM: chartDataVM,
+                      homeDataVM: homeDataVM)
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
                 .tabItem {

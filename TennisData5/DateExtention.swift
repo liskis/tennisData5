@@ -1,5 +1,12 @@
 import Foundation
 extension Date {
+    static func dateToString(date: Date, format:String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
     static func DateToString(date:Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")

@@ -1,5 +1,6 @@
 import SwiftUI
 struct GameStartBtnsArea: View {
+    @ObservedObject var homeDataVM: HomeDataViewModel
     @State var matchFormat: MatchFormat = .noSelection
     @State var gameType: GameType = .noSelection
     @State var naviTitle: String = ""
@@ -37,7 +38,10 @@ struct GameStartBtnsArea: View {
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(matchFormat: $matchFormat, gameType: $gameType, naviTitle: $naviTitle)
+            MatchTabView(matchFormat: $matchFormat,
+                         gameType: $gameType,
+                         naviTitle: $naviTitle,
+                         homeDataVM: homeDataVM)
         }
     }
     var doublesPointGameBtn: some View {
@@ -57,7 +61,10 @@ struct GameStartBtnsArea: View {
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
         .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(matchFormat: $matchFormat, gameType: $gameType, naviTitle: $naviTitle)
+            MatchTabView(matchFormat: $matchFormat, 
+                         gameType: $gameType,
+                         naviTitle: $naviTitle,
+                         homeDataVM: homeDataVM)
         }
     }
     var setMatchBtn: some View {

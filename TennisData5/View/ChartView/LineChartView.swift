@@ -7,13 +7,13 @@ struct LineChartView: View {
         Chart {
             ForEach(data1){ dataRow in
                 LineMark(
-                    x: .value("日付", dataRow.dateString),
+                    x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
                 )
                 .foregroundStyle(by: .value("Category", dataRow.category))
                 .lineStyle(StrokeStyle(lineWidth: 5))
                 PointMark(
-                    x: .value("日付", dataRow.dateString),
+                    x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
                 )
                 .annotation(position: .bottom, alignment: .leading, spacing: 0) {
@@ -29,13 +29,13 @@ struct LineChartView: View {
             }
             ForEach(data2){ dataRow in
                 LineMark(
-                    x: .value("日付", dataRow.dateString),
+                    x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
                 )
                 .foregroundStyle(by: .value("Category", dataRow.category))
                 .lineStyle(StrokeStyle(lineWidth: 5))
                 PointMark(
-                    x: .value("日付", dataRow.dateString),
+                    x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
                 )
                 .annotation(position: .top, alignment: .trailing, spacing: 0) {
@@ -64,16 +64,19 @@ struct LineChartView: View {
         .chartYScale(domain: [minAxis, 100])
         .chartLegend(.hidden)
         .padding(.horizontal,10)
+//        .background(Color.black)
     }
 }
 extension LineChartView {
     var minAxis: Double {
         var minData: Int = 100
         for data in data1 {
-            minData = data.stats < minData ? data.stats : minData
+                minData = data.stats < minData ? data.stats : minData
+            
         }
         for data in data2 {
-            minData = data.stats < minData ? data.stats : minData
+                minData = data.stats < minData ? data.stats : minData
+            
         }
         return Double(minData) - Double(20)
     }

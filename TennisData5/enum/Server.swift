@@ -2,9 +2,12 @@ import Foundation
 enum Server: String {
     case noSelection
     case myTeam
+    case opponentTeam
+    case mySelf
     case opponent
-    case player1
-    case player2
-    case player3
-    case player4
+    case partner
+    case teamAplyayer1
+    case teamAplyayer2
+    case teamBplyayer1
+    case teamBplyayer2
 }

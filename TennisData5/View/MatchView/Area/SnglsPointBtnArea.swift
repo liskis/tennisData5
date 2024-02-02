@@ -1,10 +1,11 @@
 import SwiftUI
 struct SnglsPointBtnArea: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
     var body: some View {
         HStack(spacing:1){
-            if positionVM.position == .NoSelection {
+            if positionVM.myPosition == .noSelection {
                 getPointBtnDis
                 lostPointBtnDis
             } else {
@@ -22,26 +23,25 @@ struct SnglsPointBtnArea: View {
         }.padding(.horizontal,10)
     }
     var getPointBtnDis: some View {
-        Button(action: {
-            
-        },label:{
-            Text("ポイントをとった")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.silver}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
+            .overlay(
+                Text("ポイントをとった")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+            )
     }
     var getPointBtn: some View {
         Button(action: {
-            if positionVM.position != .NoSelection {
+            if positionVM.myPosition != .noSelection {
+                pointVM.getPoint = .myTeam
                 pointVM.myPoint += 1
-                positionVM.position = .NoSelection
+                dataManageVM.pointRecoad()
+                positionVM.myPosition = .noSelection
                 pointVM.service = .first
+                pointVM.getPoint = .noSelection
             }
         },label:{
             Text("ポイントをとった")
@@ -55,26 +55,25 @@ struct SnglsPointBtnArea: View {
         })
     }
     var lostPointBtnDis: some View {
-        Button(action: {
-           
-        },label:{
-            Text("ポイントをとられた")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.silver}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
+            .overlay(
+                Text("ポイントをとられた")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+            )
     }
     var lostPointBtn: some View {
         Button(action: {
-            if positionVM.position != .NoSelection {
+            if positionVM.myPosition != .noSelection {
+                pointVM.getPoint = .opponent
                 pointVM.opponentPoint += 1
-                positionVM.position = .NoSelection
+                dataManageVM.pointRecoad()
+                positionVM.myPosition = .noSelection
                 pointVM.service = .first
+                pointVM.getPoint = .noSelection
             }
         },label:{
             Text("ポイントをとられた")
@@ -88,64 +87,48 @@ struct SnglsPointBtnArea: View {
         })
     }
     var myWinnerBtn: some View {
-        Button(action: {
-            
-        },label:{
-            Text("自分が決めた")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.silver}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
+            .overlay(
+                Text("自分が決めた")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+            )
     }
     var opponentMissBtn: some View {
-        Button(action: {
-            
-        },label:{
-            Text("相手がミス")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.silver}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
+            .overlay(
+                Text("相手がミス")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+            )
     }
     var opponentWinerBtn: some View {
-        Button(action: {
-            
-        },label:{
-            Text("相手が決めた")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.silver}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
+            .overlay(
+                Text("相手が決めた")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+            )
     }
     var myMissBtn: some View {
-        Button(action: {
-            
-        },label:{
-            Text("自分がミス")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.silver}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.silver)
+            .frame(height: 40)
+            .overlay(
+                Text("自分がミス")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+            )
     }
 }
 

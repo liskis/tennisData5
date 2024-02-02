@@ -4,12 +4,12 @@ struct SnglsPositionBtnArea: View {
     var body: some View {
         if positionVM.servOrRet == .serviceGame {
             HStack(spacing:1){
-                if positionVM.position == .ServerAdv {
+                if positionVM.myPosition == .server && positionVM.side == .advantageSide {
                     serverAdvDisBtn
                 } else {
                     serverAdvBtn
                 }
-                if positionVM.position == .ServerDuce {
+                if positionVM.myPosition == .server && positionVM.side == .duceSide {
                     serverDuceDisBtn
                 } else {
                     serverDuceBtn
@@ -17,12 +17,12 @@ struct SnglsPositionBtnArea: View {
             } .padding(.horizontal,10)
         } else if positionVM.servOrRet == .returnGame {
             HStack(spacing:1){
-                if positionVM.position == .ReturnerAdv {
+                if positionVM.myPosition == .returner && positionVM.side == .advantageSide {
                     returnerAdvDisBtn
                 } else {
                     returnerAdvBtn
                 }
-                if positionVM.position == .ReturnerDuce {
+                if positionVM.myPosition == .returner && positionVM.side == .duceSide {
                     returnerDuceDisBtn
                 } else {
                     returnerDuceBtn
@@ -41,30 +41,30 @@ struct SnglsPositionBtnArea: View {
             .frame(height: 40)
     }
     var serverAdvDisBtn: some View {
-        Button(action: {
-            // NoAction
-        },label:{
-            HStack(spacing:5){
-                Spacer().frame(width: 5)
-                Image("ServerAdvSngls")
-                    .resizable()
-                    .frame(width: 40,height: 40)
-                Spacer().frame(width: 5)
-                Text("サービスゲーム\nバックサイド")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 12))
-                Spacer()
-            }
-        })
-        .background{Color.asparagus}
-        .cornerRadius(4)
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.asparagus)
+            .stroke(.red, lineWidth: 2)
+            .overlay(
+                HStack(spacing:5){
+                    Spacer().frame(width: 5)
+                    Image("ServerAdvSngls")
+                        .resizable()
+                        .frame(width: 40,height: 40)
+                    Spacer().frame(width: 5)
+                    Text("バックサイド")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .font(.custom("Verdana", size: 12))
+                    Spacer()
+                }
+            )
     }
     var serverAdvBtn: some View {
         Button(action: {
-            positionVM.position = .ServerAdv
-            positionVM.servOrRet = .serviceGame
+            positionVM.myPosition = .server
+            positionVM.side = .advantageSide
+            positionVM.server = .mySelf
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -72,7 +72,7 @@ struct SnglsPositionBtnArea: View {
                     .resizable()
                     .frame(width: 40,height: 40)
                 Spacer().frame(width: 5)
-                Text("サービスゲーム\nバックサイド")
+                Text("バックサイド")
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 12))
@@ -83,31 +83,30 @@ struct SnglsPositionBtnArea: View {
         })
     }
     var serverDuceDisBtn: some View {
-        Button(action: {
-            // NoAction
-        },label:{
-            HStack(spacing:5){
-                Spacer().frame(width: 5)
-                Image("ServerDuceSngls")
-                    .resizable()
-                    .frame(width: 40,height: 40)
-                Spacer().frame(width: 5)
-                Text("サービスゲーム\nフォアサイド")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 12))
-                Spacer()
-            }
-        })
-//            .frame(width: .infinity,height: 50)
-        .background{Color.asparagus}
-        .cornerRadius(4)
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.asparagus)
+            .stroke(.red, lineWidth: 2)
+            .overlay(
+                HStack(spacing:5){
+                    Spacer().frame(width: 5)
+                    Image("ServerDuceSngls")
+                        .resizable()
+                        .frame(width: 40,height: 40)
+                    Spacer().frame(width: 5)
+                    Text("フォアサイド")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .font(.custom("Verdana", size: 12))
+                    Spacer()
+                }
+            )
     }
     var serverDuceBtn: some View {
         Button(action: {
-            positionVM.position = .ServerDuce
-            positionVM.servOrRet = .serviceGame
+            positionVM.myPosition = .server
+            positionVM.side = .duceSide
+            positionVM.server = .mySelf
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -115,7 +114,7 @@ struct SnglsPositionBtnArea: View {
                     .resizable()
                     .frame(width: 40,height: 40)
                 Spacer().frame(width: 5)
-                Text("サービスゲーム\nフォアサイド")
+                Text("フォアサイド")
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 12))
@@ -126,30 +125,30 @@ struct SnglsPositionBtnArea: View {
         .cornerRadius(4)
     }
     var returnerAdvDisBtn: some View {
-        Button(action: {
-            // NoAction
-        },label:{
-            HStack(spacing:5){
-                Spacer().frame(width: 5)
-                Image("ReturnerAdvSngls")
-                    .resizable()
-                    .frame(width: 40,height: 40)
-                Spacer().frame(width: 5)
-                Text("リターンゲーム\nバックサイド")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 12))
-                Spacer()
-            }
-        })
-        .background{Color.asparagus}
-        .cornerRadius(4)
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.asparagus)
+            .stroke(.red, lineWidth: 2)
+            .overlay(
+                HStack(spacing:5){
+                    Spacer().frame(width: 5)
+                    Image("ReturnerAdvSngls")
+                        .resizable()
+                        .frame(width: 40,height: 40)
+                    Spacer().frame(width: 5)
+                    Text("バックサイド")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .font(.custom("Verdana", size: 12))
+                    Spacer()
+                }
+            )
     }
     var returnerAdvBtn: some View {
         Button(action: {
-            positionVM.position = .ReturnerAdv
-            positionVM.servOrRet = .returnGame
+            positionVM.myPosition = .returner
+            positionVM.side = .advantageSide
+            positionVM.server = .opponent
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -157,7 +156,7 @@ struct SnglsPositionBtnArea: View {
                     .resizable()
                     .frame(width: 40,height: 40)
                 Spacer().frame(width: 5)
-                Text("リターンゲーム\nバックサイド")
+                Text("バックサイド")
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 12))
@@ -168,30 +167,30 @@ struct SnglsPositionBtnArea: View {
         .cornerRadius(4)
     }
     var returnerDuceDisBtn: some View {
-        Button(action: {
-            // NoAction
-        },label:{
-            HStack(spacing:5){
-                Spacer().frame(width: 5)
-                Image("ReturnerDuceSngls")
-                    .resizable()
-                    .frame(width: 40,height: 40)
-                Spacer().frame(width: 5)
-                Text("リターンゲーム\nフォアサイド")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 12))
-                Spacer()
-            }
-            .background{Color.asparagus}
-            .cornerRadius(4)
-        })
-        .disabled(true)
+        RoundedRectangle(cornerRadius: 4)
+            .fill(.asparagus)
+            .stroke(.red, lineWidth: 2)
+            .overlay(
+                HStack(spacing:5){
+                    Spacer().frame(width: 5)
+                    Image("ReturnerDuceSngls")
+                        .resizable()
+                        .frame(width: 40,height: 40)
+                    Spacer().frame(width: 5)
+                    Text("フォアサイド")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .font(.custom("Verdana", size: 12))
+                    Spacer()
+                }
+            )
     }
     var returnerDuceBtn: some View {
         Button(action: {
-            positionVM.position = .ReturnerDuce
-            positionVM.servOrRet = .returnGame
+            positionVM.myPosition = .returner
+            positionVM.side = .duceSide
+            positionVM.server = .opponent
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -199,7 +198,7 @@ struct SnglsPositionBtnArea: View {
                     .resizable()
                     .frame(width: 40,height: 40)
                 Spacer().frame(width: 5)
-                Text("リターンゲーム\nフォアサイド")
+                Text("フォアサイド")
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 12))

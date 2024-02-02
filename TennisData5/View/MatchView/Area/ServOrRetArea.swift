@@ -29,26 +29,27 @@ struct ServOrRetArea: View {
     var posisionDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
+            .stroke(.silver, lineWidth: 2)
             .frame(height: 40)
+            
     }
     var serviceGameDisBtn: some View {
-        Button(action: {
-            // NoAction
-        },label:{
-            Text("サービスゲーム")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.asparagus}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        Text("サービスゲーム")
+            .frame(height: 40)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(Color.white)
+            .bold()
+            .font(.custom("Verdana", size: 12))
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(.asparagus)
+                    .stroke(.red, lineWidth: 2)
+            )
     }
     var serviceGameBtn: some View {
         Button(action: {
             positionVM.servOrRet = .serviceGame
+            positionVM.myPosition = .noSelection
         },label:{
             Text("サービスゲーム")
                 .foregroundColor(Color.white)
@@ -56,28 +57,27 @@ struct ServOrRetArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.fern}
-                .cornerRadius(4)
         })
+        .background{Color.fern}
+        .cornerRadius(4)
     }
     var returnGameDisBtn: some View {
-        Button(action: {
-            // NoAction
-        },label:{
-            Text("リターンゲーム")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(maxWidth: .infinity)
-                .frame(height: 40)
-                .background{Color.asparagus}
-                .cornerRadius(4)
-        })
-        .disabled(true)
+        Text("リターンゲーム")
+            .frame(height: 40)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(Color.white)
+            .bold()
+            .font(.custom("Verdana", size: 12))
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(.asparagus)
+                    .stroke(.red, lineWidth: 2)
+            )
     }
     var returnGameBtn: some View {
         Button(action: {
             positionVM.servOrRet = .returnGame
+            positionVM.myPosition = .noSelection
         },label:{
             Text("リターンゲーム")
                 .foregroundColor(Color.white)
@@ -85,9 +85,10 @@ struct ServOrRetArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.fern}
-                .cornerRadius(4)
+                
         })
+        .background{Color.fern}
+        .cornerRadius(4)
     }
 }
 
