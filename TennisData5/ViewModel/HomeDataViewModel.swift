@@ -9,26 +9,31 @@ class HomeDataViewModel: ObservableObject {
     @Published var secondSvInCount: String = "(0/0)"
     @Published var firstSvInChartData: [LineChartDataModel] = []
     @Published var secondSvInChartData: [LineChartDataModel] = []
+    @Published var signPost: [LineChartDataModel] = []
+    @Published var winLoseArray: [WinLoseArray] = []
+    @Published var dateArray: [DateArray] = []
+    
     func setHomeData(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 4)
         let realm = try! Realm()
-        // 勝率
-        var win:Int = 0
-        var lose:Int = 0
-        var draw:Int = 0
-        let matchEndData = realm.objects(PointDataModel.self).where({ $0.matchEnd == "end" }).sorted(byKeyPath: "matchStartDate", ascending: false)
+        let matchEndData = realm.objects(PointDataModel.self).where({ $0.matchEnd == "end" })
+//            .sorted(byKeyPath: "matchStartDate", ascending: false)
+//        print(matchEndData)
         if matchEndData.count != 0 {
+            var win:Int = 0
+            var lose:Int = 0
+            var draw:Int = 0
             var serverPointCount: Int = 0
             var firstInPointCount: Int = 0
             var secondPointCount: Int = 0
             var secondInPointCount: Int = 0
-            var num: Int = matchEndData.count - 1
-            if num > 4 {
-                num = 4
-            }
             firstSvInChartData = []
             secondSvInChartData = []
-            for endData in matchEndData {
+            signPost = []
+            winLoseArray = []
+            dateArray = []
+            var num: Int = 0
+            for endData in matchEndData.suffix(5) {
                 //  勝率
                 if endData.winCount > endData.loseCount {
                     win += 1
@@ -63,43 +68,38 @@ class HomeDataViewModel: ObservableObject {
                 secondInPointCount += secondPoints.count - doubleFaultPoints.count
                 
                 // グラフデータ
-//                let dateString: String = Date.dateToString(date: endData.matchStartDate, format: "yy/MM/dd")
-                let dateString: String = Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")
-                var category: String = "data1"
-                var issue: Issue = .Draw
-                var stats: Int = 0
                 
                 // ファーストサーブ
                 if serverPoints.count != 0 {
-                    stats = Int( ( Double(firstInPoints.count)/Double(serverPoints.count) )*100 )
-                } else {
-                    stats = 0
+                    let stats = Int( ( Double(firstInPoints.count)/Double(serverPoints.count) )*100 )
+                    firstSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "data1"))
                 }
-                if endData.winCount > endData.loseCount {
-                    issue = .Win
-                } else if endData.winCount < endData.loseCount {
-                    issue = .Lose
-                } else {
-                    issue = .Draw
-                }
-                firstSvInChartData.append(LineChartDataModel(num: num, dateString: dateString, stats: stats, category: category, issue: issue))
+                
                 // セカンドサーブ
-                category = "data2"
                 let secondIn = secondPoints.count - doubleFaultPoints.count
-                if secondPoints.count == 0 {
-                    if serverPoints.count == 0 {
-                        stats = 0
-                    } else {
-                        stats = 100
-                    }
-                } else {
-                    stats = Int((Double(secondIn) / Double(secondPoints.count))*100)
+                if secondPoints.count != 0 {
+                    let stats = Int((Double(secondIn) / Double(secondPoints.count))*100)
+                    secondSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "data2"))
                 }
-                secondSvInChartData.append(LineChartDataModel(num: num, dateString: dateString, stats: stats, category: category, issue: issue))
-                if num == 0 {
+                
+                // signPost
+                signPost.append(LineChartDataModel(num: num, stats: 100, category: "data3"))
+                
+                // winLoseArray
+                if endData.winCount > endData.loseCount {
+                    winLoseArray.append(WinLoseArray(num: num, issue: .Win))
+                } else if endData.winCount < endData.loseCount {
+                    winLoseArray.append(WinLoseArray(num: num, issue: .Lose))
+                } else {
+                    winLoseArray.append(WinLoseArray(num: num, issue: .Draw))
+                }
+                
+                // dateArray
+                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")))
+                num += 1
+                if num == matchEndData.count {
                     break
                 }
-                num -= 1
             }
             winningRate = String( format: "%.1f", (Double(win)/Double(win+lose+draw))*100)
             winningCount = "(\(win)/\( win + lose + draw))"
@@ -111,10 +111,9 @@ class HomeDataViewModel: ObservableObject {
                 secondSvInRate = String(format: "%.1f", (Double(secondInPointCount) / Double(secondPointCount))*100 )
             }
             secondSvInCount = "(\(secondInPointCount)/\(secondPointCount))"
-            firstSvInChartData.sort(by: {$0.num < $1.num})
-            secondSvInChartData.sort(by: {$0.num < $1.num})
+            
             print(firstSvInChartData)
-            print(secondSvInChartData)
+//            print(secondSvInChartData)
         }
     }
 }

@@ -23,7 +23,8 @@ struct HomeView: View {
                         Spacer().frame(height: 40)
                         LineChartView(
                             data1: $homeDataVM.firstSvInChartData,
-                            data2: $homeDataVM.secondSvInChartData
+                            data2: $homeDataVM.secondSvInChartData,
+                            data3: $homeDataVM.signPost
                         )
                         winLoseArrayArea
                         dateArrayArea
@@ -44,42 +45,48 @@ struct HomeView: View {
     }
     var winLoseArrayArea: some View {
         HStack{
-            Spacer()
-            ForEach(homeDataVM.firstSvInChartData){ data in
-                if data.issue == .Win {
-                    Text(data.issue.rawValue)
+            Spacer().frame(width: 20)
+            ForEach(homeDataVM.winLoseArray){ dataRow in
+                if dataRow.issue == .Win {
+                    Text(dataRow.issue.rawValue)
                         .font(.custom("Verdana",size:23))
                         .bold()
                         .foregroundColor(.red)
                         .shadow(color: .white, radius: 2)
-                } else if data.issue == .Lose {
-                    Text(data.issue.rawValue)
+                } else if dataRow.issue == .Lose {
+                    Text(dataRow.issue.rawValue)
                         .font(.custom("Verdana",size:23))
                         .bold()
                         .foregroundColor(.blue)
                         .shadow(color: .white, radius: 2)
                 } else {
-                    Text(data.issue.rawValue)
+                    Text(dataRow.issue.rawValue)
                         .font(.custom("Verdana",size:23))
                         .bold()
                         .foregroundColor(.gray)
                         .shadow(color: .white, radius: 2)
                 }
-                Spacer()
+                if dataRow.num != homeDataVM.dateArray.count - 1 {
+                    Spacer()
+                }
             }
+            Spacer().frame(width: 20)
         }
     }
     var dateArrayArea: some View {
         HStack{
-            ForEach(homeDataVM.firstSvInChartData){ dataRow in
-                Spacer()
+            Spacer().frame(width: 20)
+            ForEach(homeDataVM.dateArray){ dataRow in
                 Text("\(dataRow.dateString)")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
+                if dataRow.num != homeDataVM.dateArray.count - 1 {
+                    Spacer()
+                }
             }
-            Spacer()
+            Spacer().frame(width: 20)
         }
     }
 }

@@ -3,8 +3,16 @@ import Charts
 struct LineChartView: View {
     @Binding var data1: [LineChartDataModel]
     @Binding var data2: [LineChartDataModel]
+    @Binding var data3: [LineChartDataModel]
     var body: some View {
         Chart {
+            ForEach(data3) { dataRow in
+                LineMark(
+                    x: .value("num", dataRow.num),
+                    y: .value("Stats", dataRow.stats)
+                )
+                .foregroundStyle(by: .value("Category", dataRow.category))
+            }
             ForEach(data1){ dataRow in
                 LineMark(
                     x: .value("num", dataRow.num),
@@ -53,17 +61,19 @@ struct LineChartView: View {
         .frame(height: 180)
         .chartForegroundStyleScale([
             "data1": .orange,
-            "data2": .red
+            "data2": .red,
+            "data3": .clear
         ])
         .chartSymbolScale([
             "data1": Circle().strokeBorder(lineWidth: 5),
             "data2": Circle().strokeBorder(lineWidth: 5)
         ])
-        .chartXAxis(.hidden)
+//        .chartXAxis(.hidden)
         .chartYAxis(.hidden)
         .chartYScale(domain: [minAxis, 100])
+        .chartXScale(domain: [0,data3.count - 1])
         .chartLegend(.hidden)
-        .padding(.horizontal,10)
+        .padding(.horizontal,40)
 //        .background(Color.black)
     }
 }
