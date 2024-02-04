@@ -4,16 +4,13 @@ struct HomeView: View {
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var pointVM = PointViewModel()
     @ObservedObject var homeDataVM: HomeDataViewModel
-    @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             VStack(spacing:0) {
                 Spacer()
                 HomeHeaderBar(userVM: userVM)
-                    .onAppear{
-                        userVM.setUserInfo()
-                    }
                 ZStack {
                     VStack{
                         Image(.tennisCourt)

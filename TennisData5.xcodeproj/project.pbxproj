@@ -474,7 +474,6 @@
 				0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */,
 				0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */,
 				0927E0FF2B41A7B40069BEF1 /* HomeView */,
-				09BC06FE2B44463D008A44FD /* MatchView */,
 				097229892B5F86EC0046FAF8 /* MatchRecordView */,
 				0927E1022B41A7F10069BEF1 /* DataAnalysisView.swift */,
 				0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */,
@@ -491,6 +490,7 @@
 				0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */,
 				09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */,
 				09722A082B6F9D270046FAF8 /* UserInfoPopup.swift */,
+				09BC06FE2B44463D008A44FD /* MatchView */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -623,31 +623,15 @@
 			path = RealmModel;
 			sourceTree = "<group>";
 		};
-		09BC06F72B43A36D008A44FD /* PointInputView */ = {
-			isa = PBXGroup;
-			children = (
-				09806D262B4F692B007638B7 /* PointGame.swift */,
-			);
-			path = PointInputView;
-			sourceTree = "<group>";
-		};
 		09BC06FE2B44463D008A44FD /* MatchView */ = {
 			isa = PBXGroup;
 			children = (
 				092B2B392B516A270046BDBF /* Area */,
-				09BC07032B444897008A44FD /* RealTimeDataView */,
-				09BC06F72B43A36D008A44FD /* PointInputView */,
+				0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */,
+				09806D262B4F692B007638B7 /* PointGame.swift */,
 				09BC06FF2B444657008A44FD /* MatchTabView.swift */,
 			);
 			path = MatchView;
-			sourceTree = "<group>";
-		};
-		09BC07032B444897008A44FD /* RealTimeDataView */ = {
-			isa = PBXGroup;
-			children = (
-				0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */,
-			);
-			path = RealTimeDataView;
 			sourceTree = "<group>";
 		};
 		09BC07052B447BD9008A44FD /* Model */ = {
