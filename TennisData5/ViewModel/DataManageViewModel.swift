@@ -55,8 +55,8 @@ class DataManageViewModel: ObservableObject {
         let results = realm.objects(PointDataModel.self).where({ $0.matchId == matchInfoVM.matchId })
         // firstServeIn
         let serverPoints = results.filter{ $0.myPosition == "server"}
+        let firstInPoints = serverPoints.filter{ $0.service == "first"}
         if serverPoints.count != 0 {
-            let firstInPoints = serverPoints.filter{ $0.service == "first"}
             let firstSvInRate = (Float(firstInPoints.count) / Float(serverPoints.count))*100
             let fiestSvInRateRound = round(firstSvInRate * 10) / 10
             chartDataVM.firstSvIn = []
@@ -64,16 +64,16 @@ class DataManageViewModel: ObservableObject {
             chartDataVM.firstSvIn.append(BarChartDataModel(value: 100 - fiestSvInRateRound, color: .mercury, category: "firstSvIn", index: 60))
             chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
         }
-        // セカンドサーブ
+        // secondSvIn
         let secondSvPoints = serverPoints.filter{
             $0.service == "second"
         }
+        let doubleFaultPoints = secondSvPoints.filter{
+            $0.getPoint == "opponent"
+            && $0.shot == "serve"
+        }
+        let secondSvInCount = secondSvPoints.count - doubleFaultPoints.count
         if secondSvPoints.count != 0 {
-            let doubleFaultPoints = secondSvPoints.filter{
-                $0.getPoint == "opponent"
-                && $0.shot == "serve"
-            }
-            let secondSvInCount = secondSvPoints.count - doubleFaultPoints.count
             let secondSvInRate = ( Float(secondSvInCount) / Float(secondSvPoints.count) ) * 100
             let secondSvInRateRound = round(secondSvInRate * 10) / 10
             chartDataVM.secondSvIn = []
@@ -81,7 +81,40 @@ class DataManageViewModel: ObservableObject {
             chartDataVM.secondSvIn.append(BarChartDataModel(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80))
             chartDataVM.secondSvInCount = "\(secondSvInCount)/\(secondSvPoints.count)"
         }
-        
+        // noDoubleFault
+        let noDoubleFaultCount = serverPoints.count - doubleFaultPoints.count
+        if serverPoints.count != 0 {
+            let noDoubleFaultRate = ( Float(noDoubleFaultCount) / Float(serverPoints.count) ) * 100
+            let noDoubleFaultRateRound = round(noDoubleFaultRate * 10) / 10
+            chartDataVM.noDoubleFault = []
+            chartDataVM.noDoubleFault.append(BarChartDataModel(value: noDoubleFaultRateRound, color: .ocean, category: "noDoubleFault", index: 90))
+            chartDataVM.noDoubleFault.append(BarChartDataModel(value: 100 - noDoubleFaultRateRound, color: .mercury, category: "noDoubleFault", index: 90))
+            chartDataVM.noDoubleFaultCount = "\(noDoubleFaultCount)/\(serverPoints.count)"
+        }
+        // atFirstSv
+        let atFirstGet = firstInPoints.filter{
+            $0.getPoint == "myTeam"
+        }
+        if firstInPoints.count != 0 {
+            let atFirstRate = ( Float(atFirstGet.count) / Float(firstInPoints.count) ) * 100
+            let atFirstRateRound = round(atFirstRate * 10) / 10
+            chartDataVM.atFirstSv = []
+            chartDataVM.atFirstSv.append(BarChartDataModel(value: atFirstRateRound, color: .ocean, category: "atFirstSv", index: 60))
+            chartDataVM.atFirstSv.append(BarChartDataModel(value: 100 - atFirstRateRound, color: .mercury, category: "atFirstSv", index: 60))
+            chartDataVM.atFirstSvCount = "\(atFirstGet.count)/\(firstInPoints.count)"
+        }
+        // atSecondSv
+        let atSecondGet = secondSvPoints.filter{
+            $0.getPoint == "myTeam"
+        }
+        if secondSvPoints.count != 0 {
+            let atSecondRate = ( Float(atSecondGet.count) / Float(secondSvPoints.count) ) * 100
+            let atSecondRateRound = round(atSecondRate * 10) / 10
+            chartDataVM.atSecondSv = []
+            chartDataVM.atSecondSv.append(BarChartDataModel(value: atSecondRateRound, color: .ocean, category: "atSecond", index: 50))
+            chartDataVM.atSecondSv.append(BarChartDataModel(value: 100 - atSecondRateRound, color: .mercury, category: "atSecond", index: 50))
+            chartDataVM.atSecondSvCount = "\(atSecondGet.count)/\(secondSvPoints.count)"
+        }
         
         
     }

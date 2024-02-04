@@ -8,7 +8,7 @@ struct ChartsLayOutArea: View {
         VStack{
             Spacer().frame(height: 10)
             HStack{
-                Text("ファーストサーブの確率（\(chartDataVM.firstSvInCount)）")
+                Text("（\(chartDataVM.firstSvInCount)）ファーストサーブの確率")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)
@@ -17,7 +17,7 @@ struct ChartsLayOutArea: View {
             BarChartView(barChartData: $chartDataVM.firstSvIn)
             Spacer().frame(height: 15)
             HStack{
-                Text("セカンドサーブの確率（\(chartDataVM.secondSvInCount)）")
+                Text("（\(chartDataVM.secondSvInCount)）セカンドサーブの確率")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)
@@ -26,7 +26,7 @@ struct ChartsLayOutArea: View {
             BarChartView(barChartData: $chartDataVM.secondSvIn)
             Spacer().frame(height: 15)
             HStack{
-                Text("ダブルフォルトをしない確率")
+                Text("（\(chartDataVM.noDoubleFaultCount)）ダブルフォルトをしない確率")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)
@@ -35,7 +35,7 @@ struct ChartsLayOutArea: View {
             BarChartView(barChartData: $chartDataVM.noDoubleFault)
             Spacer().frame(height: 15)
             HStack{
-                Text("ファーストサーブ時のポイント取得率")
+                Text("（\(chartDataVM.atFirstSvCount)）ファーストサーブ時のポイント取得率")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)
@@ -44,7 +44,7 @@ struct ChartsLayOutArea: View {
             BarChartView(barChartData: $chartDataVM.atFirstSv)
             Spacer().frame(height: 15)
             HStack{
-                Text("セカンドサーブ時のポイント取得率")
+                Text("（\(chartDataVM.atSecondSvCount)）セカンドサーブ時のポイント取得率")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)

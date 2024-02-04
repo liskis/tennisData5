@@ -6,18 +6,13 @@ class ChartDataViewModel: ObservableObject {
     @Published var firstSvIn: [BarChartDataModel] = []
     @Published var secondSvInCount: String = "No Data"
     @Published var secondSvIn: [BarChartDataModel] = []
-    @Published var atFirstSv: [BarChartDataModel] = [
-        .init(value: 83.3, color: .ocean, category: "atFirstSv", index: 80.0),
-        .init(value: 16.7, color: .mercury, category: "atFirstSv",index:80.0)
-    ]
-    @Published var atSecondSv: [BarChartDataModel] = [
-        .init(value: 60.0, color: .ocean, category: "atSecondSv", index: 60.0),
-        .init(value: 40.0, color: .mercury, category: "atSecondSv", index: 60.0)
-    ]
-    @Published var noDoubleFault: [BarChartDataModel] = [
-        .init(value: 91.3, color: .ocean, category: "noDoubleFault", index: 90.0),
-        .init(value: 9.7, color: .mercury, category: "noDoubleFault", index: 90.0)
-    ]
+    @Published var noDoubleFaultCount: String = "No Data"
+    @Published var noDoubleFault: [BarChartDataModel] = []
+    @Published var atFirstSvCount: String = "No Data"
+    @Published var atFirstSv: [BarChartDataModel] = []
+    @Published var atSecondSvCount: String = "No Data"
+    @Published var atSecondSv: [BarChartDataModel] = []
+    
     @Published var getAndLostPoint: [PieChartDataModel] = [
         .init(name: "data1", nameString: "とった\nポイント", value: 70, labelType: .twoLabels),
         .init(name: "data2", nameString: "とられた\nポイント", value: 50, labelType: .twoLabels),
