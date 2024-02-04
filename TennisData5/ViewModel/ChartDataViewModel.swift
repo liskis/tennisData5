@@ -14,14 +14,6 @@ class ChartDataViewModel: ObservableObject {
         .init(value: 60.0, color: .ocean, category: "atSecondSv", index: 60.0),
         .init(value: 40.0, color: .mercury, category: "atSecondSv", index: 60.0)
     ]
-    @Published var serviceGameKeep: [BarChartDataModel] = [
-        .init(value: 50.0, color: .maraschino, category: "serviceGameKeep", index: 70.0),
-        .init(value: 50.0, color: .mercury, category: "serviceGameKeep", index: 70.0)
-    ]
-    @Published var returnGameBreak: [BarChartDataModel] = [
-        .init(value: 16.7, color: .maraschino, category: "returnGameBreak", index: 30.0),
-        .init(value: 83.3, color: .mercury, category: "returnGameBreak", index: 30.0)
-    ]
     @Published var noDoubleFault: [BarChartDataModel] = [
         .init(value: 91.3, color: .ocean, category: "noDoubleFault", index: 90.0),
         .init(value: 9.7, color: .mercury, category: "noDoubleFault", index: 90.0)
@@ -32,7 +24,7 @@ class ChartDataViewModel: ObservableObject {
         .init(name: "blank", nameString: "", value: 120 , labelType: .twoLabels)
     ]
     @Published var getAndLostPointStyleScale: KeyValuePairs<String, Color> = [
-        "data1": .ocean, "data2": .tangerine, "blank": .white
+        "data1": .ocean, "data2": .cantaloupe, "blank": .white
     ]
     @Published var keepAndBreak: [PieChartDataModel] = [
         .init(name: "data1", nameString: "キープ率", value: 66.67, labelType: .keepAndBreak),

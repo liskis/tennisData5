@@ -65,7 +65,9 @@ class DataManageViewModel: ObservableObject {
             chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
         }
         // セカンドサーブ
-        let secondSvPoints = serverPoints.filter{ $0.service == "second"}
+        let secondSvPoints = serverPoints.filter{
+            $0.service == "second"
+        }
         if secondSvPoints.count != 0 {
             let doubleFaultPoints = secondSvPoints.filter{
                 $0.getPoint == "opponent"
@@ -75,8 +77,8 @@ class DataManageViewModel: ObservableObject {
             let secondSvInRate = ( Float(secondSvInCount) / Float(secondSvPoints.count) ) * 100
             let secondSvInRateRound = round(secondSvInRate * 10) / 10
             chartDataVM.secondSvIn = []
-            chartDataVM.firstSvIn.append(BarChartDataModel(value: secondSvInRateRound, color: .ocean, category: "secondSvIn", index: 80))
-            chartDataVM.firstSvIn.append(BarChartDataModel(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80))
+            chartDataVM.secondSvIn.append(BarChartDataModel(value: secondSvInRateRound, color: .ocean, category: "secondSvIn", index: 80))
+            chartDataVM.secondSvIn.append(BarChartDataModel(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80))
             chartDataVM.secondSvInCount = "\(secondSvInCount)/\(secondSvPoints.count)"
         }
         
