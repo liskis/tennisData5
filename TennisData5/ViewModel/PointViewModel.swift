@@ -1,4 +1,5 @@
 import SwiftUI
+import RealmSwift
 class PointViewModel: ObservableObject {
     @Published var winCount:Int = 0
     @Published var loseCount:Int = 0
@@ -9,5 +10,10 @@ class PointViewModel: ObservableObject {
     @Published var getPoint: GetPoint = .noSelection
     @Published var shot: Shot = .noSelection
     @Published var whose: Whose = .noSelection
-   
+    var allPoint: Int {
+        myPoint + opponentPoint
+    }
+    var allgameCount: Int {
+        winCount + loseCount + drowCount
+    }
 }

@@ -15,5 +15,4 @@ class MatchInfoViewModel: ObservableObject {
     @Published var matchEnd: String = ""
     @Published var matchEndDate: Date = Date()
     @Published var naviTitle: String = ""
-    @Published var myName: String = "ゲスト"
 }

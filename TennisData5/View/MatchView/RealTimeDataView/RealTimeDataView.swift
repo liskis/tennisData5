@@ -4,14 +4,22 @@ struct RealTimeDataView: View {
     @ObservedObject var pointVM: PointViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack{
                     Spacer(minLength: 20)
-                    MyNameAndScoreArea(matchInfoVM: matchInfoVM, pointVM:pointVM)
+                    MyNameAndScoreArea(
+                        matchInfoVM: matchInfoVM,
+                        pointVM:pointVM,
+                        userVM: userVM
+                    )
                     Spacer(minLength: 20)
-                    ChartsLayOutArea(matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
+                    ChartsLayOutArea(
+                        matchInfoVM: matchInfoVM,
+                        chartDataVM: chartDataVM
+                    )
                 }
                 .background{ Color.mercury }
             }

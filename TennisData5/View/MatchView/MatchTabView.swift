@@ -6,28 +6,35 @@ struct MatchTabView: View {
     @ObservedObject var dataManageVM = DataManageViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
     @ObservedObject var homeDataVM: HomeDataViewModel
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
         TabView {
-            PointGame(dataManageVM: dataManageVM,
-                      pointVM: dataManageVM.pointVM,
-                      matchInfoVM: dataManageVM.matchInfoVM,
-                      positionVM: dataManageVM.positionVM,
-                      chartDataVM: chartDataVM,
-                      homeDataVM: homeDataVM)
-                .toolbarBackground(.black, for: .tabBar)
-                .toolbarBackground(.visible, for: .tabBar)
-                .tabItem {
-                    Label("ポイント入力", systemImage: "hand.point.up")
-                }
-            RealTimeDataView(pointVM: dataManageVM.pointVM,
-                             matchInfoVM: dataManageVM.matchInfoVM,
-                             chartDataVM: chartDataVM)
-                .toolbarBackground(.black, for: .tabBar)
-                .toolbarBackground(.visible, for: .tabBar)
-                .tabItem {
-                    Label("リアルタイムデータ", systemImage: "chart.bar.doc.horizontal")
-                }
-                .tabViewStyle(.automatic)
+            PointGame(
+                dataManageVM: dataManageVM,
+                pointVM: dataManageVM.pointVM,
+                matchInfoVM: dataManageVM.matchInfoVM,
+                positionVM: dataManageVM.positionVM,
+                chartDataVM: chartDataVM,
+                homeDataVM: homeDataVM,
+                userVM: userVM
+            )
+            .toolbarBackground(.black, for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
+            .tabItem {
+                Label("ポイント入力", systemImage: "hand.point.up")
+            }
+            RealTimeDataView(
+                pointVM: dataManageVM.pointVM,
+                matchInfoVM: dataManageVM.matchInfoVM,
+                chartDataVM: chartDataVM,
+                userVM: userVM
+            )
+            .toolbarBackground(.black, for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
+            .tabItem {
+                Label("リアルタイムデータ", systemImage: "chart.bar.doc.horizontal")
+            }
+            .tabViewStyle(.automatic)
         }
         .accentColor(.white)
         .onAppear{

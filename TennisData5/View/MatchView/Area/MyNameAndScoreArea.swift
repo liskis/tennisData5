@@ -2,6 +2,7 @@ import SwiftUI
 struct MyNameAndScoreArea: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var pointVM: PointViewModel
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
         VStack{
             HStack{
@@ -22,11 +23,11 @@ struct MyNameAndScoreArea: View {
         HStack{
             Spacer()
             if matchInfoVM.matchFormat == .singles {
-                Text(matchInfoVM.myName)
+                Text(userVM.myName)
                     .font(.custom("Verdana",size:14))
                     .bold()
             } else {
-                Text(matchInfoVM.myName + "チーム")
+                Text(userVM.myName + "チーム")
                     .font(.custom("Verdana",size:14))
                     .bold()
             }

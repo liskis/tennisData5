@@ -4,7 +4,7 @@ struct MatchRecordView: View {
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
     @FocusState private var partnerFocus: Bool
-    @FocusState var opponentFocus: Bool
+    @FocusState private var opponentFocus: Bool
     var body: some View {
         NavigationStack {
             ZStack {
@@ -52,16 +52,20 @@ struct MatchRecordView: View {
                     List(recoadSearchVM.matchRecoad){ recoad in
                         if checkPeriod(recoad: recoad) && checkMatchFormat(recoad: recoad) && checkGameType(recoad: recoad) {
                             NavigationLink(
-                                destination: OneMatchDataView(pointVM: recoadSearchVM.pointVM, matchInfoVM: recoadSearchVM.matchInfoVM, chartDataVM: recoadSearchVM.chartDataVM)
-                                    .onAppear{
-                                        recoadSearchVM.matchInfoVM.matchId = recoad.matchId
-                                        recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
-                                        recoadSearchVM.matchInfoVM.gameType = recoad.gameType
-                                        recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
-                                        recoadSearchVM.pointVM.winCount = recoad.WinScore
-                                        recoadSearchVM.pointVM.loseCount = recoad.LoseScore
-                                        recoadSearchVM.pointVM.drowCount = recoad.DrawScore
-                                    }
+                                destination: OneMatchDataView(
+                                    pointVM: recoadSearchVM.pointVM, 
+                                    matchInfoVM: recoadSearchVM.matchInfoVM,
+                                    chartDataVM: recoadSearchVM.chartDataVM
+                                )
+                                .onAppear{
+                                    recoadSearchVM.matchInfoVM.matchId = recoad.matchId
+                                    recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
+                                    recoadSearchVM.matchInfoVM.gameType = recoad.gameType
+                                    recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
+                                    recoadSearchVM.pointVM.winCount = recoad.WinScore
+                                    recoadSearchVM.pointVM.loseCount = recoad.LoseScore
+                                    recoadSearchVM.pointVM.drowCount = recoad.DrawScore
+                                }
                             ) {
                                 HStack {
                                     if recoad.matchFormat == .singles {

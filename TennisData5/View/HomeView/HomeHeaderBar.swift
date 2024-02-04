@@ -1,5 +1,6 @@
 import SwiftUI
 struct HomeHeaderBar: View {
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
         HStack {
             Image(.logo)
@@ -12,13 +13,18 @@ struct HomeHeaderBar: View {
                     .scaledToFill()
                     .frame(width: 15,height: 30)
                 Button(action: {
-                     //タップ処理
+                    withAnimation {
+                        userVM.showingPopUp = true
+                        userVM.showRealm()
+                    }
                 },label:  {
-                    Text("渡辺健輔さん")
-                        .font(.custom("", size: 10))
+                    Text(userVM.myName + " さん")
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 100, height:30)
+                        .background(.gray)
                 })
-                .frame(width: 100, height:30)
-                .background(.gray)
                 .clipped()
                 Image(.angleGW)
                     .resizable()
@@ -29,16 +35,16 @@ struct HomeHeaderBar: View {
                 },label:  {
                     VStack {
                         Text("初心者")
-                            .font(.custom("", size: 8))
-                            .foregroundColor(Color.black)
+                            .font(.custom("Verdana", size: 8))
+                            .foregroundColor(Color.tungsten)
                         Text("ビギナーモード")
-                            .font(.custom("", size: 8))
-                            .foregroundColor(Color.indigo)
+                            .font(.custom("Verdana", size: 8))
+                            .foregroundColor(Color.red)
                             .bold()
                     }
+                    .frame(width: 80, height:30)
+                    .background(.white)
                 })
-                .frame(width: 80, height:30)
-                .background(.white)
                 .clipped()
             }
             .frame(maxWidth: .infinity, alignment: .trailing)

@@ -7,13 +7,17 @@ struct PointGame: View {
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
     @ObservedObject var homeDataVM: HomeDataViewModel
+    @ObservedObject var userVM: UserViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack {
             VStack(spacing:0){
                 Spacer(minLength: 20)
-                MyNameAndScoreArea(matchInfoVM: matchInfoVM, 
-                                   pointVM: pointVM)
+                MyNameAndScoreArea(
+                    matchInfoVM: matchInfoVM,
+                    pointVM: pointVM,
+                    userVM: userVM
+                )
                 HStack{
                     Spacer()
                     Text("ビギナーモード")
@@ -31,13 +35,21 @@ struct PointGame: View {
                             }
                             Spacer().frame(height: 10)
                             if matchInfoVM.matchFormat == .singles {
-                                ServOrRetArea(positionVM: positionVM,
-                                              pointVM: pointVM)
-                                SnglsPositionBtnArea(positionVM: positionVM)
+                                ServOrRetArea(
+                                    positionVM: positionVM,
+                                    pointVM: pointVM
+                                )
+                                SnglsPositionBtnArea(
+                                    positionVM: positionVM
+                                )
                             } else if matchInfoVM.matchFormat == .doubles {
-                                ServOrRetArea(positionVM: positionVM,
-                                              pointVM: pointVM)
-                                DblsPositionBtnArea(positionVM: positionVM)
+                                ServOrRetArea(
+                                    positionVM: positionVM,
+                                    pointVM: pointVM
+                                )
+                                DblsPositionBtnArea(
+                                    positionVM: positionVM
+                                )
                             }
                             Spacer().frame(height: 10)
                             if positionVM.myPosition == .noSelection {
@@ -50,23 +62,30 @@ struct PointGame: View {
                             Spacer().frame(height: 10)
                             
                             if matchInfoVM.matchFormat == .singles {
-                                SnglsPointBtnArea(dataManageVM: dataManageVM,
-                                                  positionVM: positionVM,
-                                                  pointVM: pointVM)
+                                SnglsPointBtnArea(
+                                    dataManageVM: dataManageVM,
+                                    positionVM: positionVM,
+                                    pointVM: pointVM
+                                )
                             } else if matchInfoVM.matchFormat == .doubles {
-                                DblsPointBtnArea(dataManageVM: dataManageVM,
-                                                 positionVM: positionVM,
-                                                 pointVM: pointVM)
+                                DblsPointBtnArea(
+                                    dataManageVM: dataManageVM,
+                                    positionVM: positionVM,
+                                    pointVM: pointVM
+                                )
                             }
                             Spacer().frame(height: 10)
                             nextGameBtn
-                            gameEndBtn
+                            if pointVM.allPoint + pointVM.allgameCount == 0 {
+                                quitAfterAllBtn
+                            } else {
+                                gameEndBtn
+                            }
                         }
                     }
                 }
                 .background{ Color.white}
                 Spacer()
-                
             }
             .background{ Color.mercury }
         .navigationBarTitle(matchInfoVM.naviTitle, displayMode: .inline)
@@ -83,6 +102,8 @@ struct PointGame: View {
                 positionVM.myPosition = .noSelection
             } else if positionVM.servOrRet != .noSelection && pointVM.myPoint + pointVM.opponentPoint == 0 {
                 positionVM.servOrRet = .noSelection
+            } else {
+                dataManageVM.goBack()
             }
         },label: {
             Text("<< 一つ戻る")
@@ -189,27 +210,43 @@ struct PointGame: View {
                 pointVM.winCount += 1
             } else if pointVM.myPoint < pointVM.opponentPoint {
                 pointVM.loseCount += 1
-            } else if pointVM.myPoint == pointVM.opponentPoint && pointVM.myPoint + pointVM.opponentPoint != 0{
+            } else if pointVM.myPoint == pointVM.opponentPoint && pointVM.allPoint != 0{
                 pointVM.drowCount += 1
             }
-            if pointVM.myPoint + pointVM.opponentPoint + pointVM.winCount + pointVM.loseCount + pointVM.drowCount != 0 {
-                matchInfoVM.matchEnd = "end"
-                matchInfoVM.matchEndDate = Date()
-                pointVM.service = .first
-                positionVM.myPosition = .noSelection
-                positionVM.servOrRet = .noSelection
-                pointVM.myPoint = 0
-                pointVM.opponentPoint = 0
-                matchInfoVM.gameId = ""
-                matchInfoVM.setId = ""
-                dataManageVM.pointRecoad()
-                homeDataVM.setHomeData()
-            }
-//            dataManageVM.showRealm()
+            matchInfoVM.matchEnd = "end"
+            matchInfoVM.matchEndDate = Date()
+            pointVM.service = .first
+            positionVM.myPosition = .noSelection
+            positionVM.servOrRet = .noSelection
+            pointVM.myPoint = 0
+            pointVM.opponentPoint = 0
+            matchInfoVM.gameId = ""
+            matchInfoVM.setId = ""
+            dataManageVM.pointRecoad()
+            homeDataVM.setHomeData()
             dismiss()
+//            dataManageVM.showRealm()
 //            dataManageVM.deleteRealm()
         },label:{
-            Text("ゲームを終了する")
+            Text("ゲームを保存して終了する")
+                .foregroundColor(Color.white)
+                .bold()
+                .font(.custom("Verdana", size: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 40)
+                .background{Color.ocean}
+                .cornerRadius(4)
+                .padding(.horizontal,10)
+            
+        })
+    }
+    var quitAfterAllBtn: some View {
+        Button(action: {
+            dismiss()
+//            dataManageVM.showRealm()
+//            dataManageVM.deleteRealm()
+        },label:{
+            Text("やっぱりやめる")
                 .foregroundColor(Color.white)
                 .bold()
                 .font(.custom("Verdana", size: 12))
@@ -219,7 +256,6 @@ struct PointGame: View {
                 .cornerRadius(4)
                 .padding(.horizontal,10)
         })
-        
     }
 }
 

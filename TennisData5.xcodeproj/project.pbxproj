@@ -92,6 +92,12 @@
 		097229F82B6A8CC50046FAF8 /* Tactics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F72B6A8CC50046FAF8 /* Tactics.swift */; };
 		097229FA2B6E45F50046FAF8 /* WinLoseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229F92B6E45F50046FAF8 /* WinLoseArray.swift */; };
 		097229FC2B6E46640046FAF8 /* DateArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229FB2B6E46640046FAF8 /* DateArray.swift */; };
+		097229FF2B6F968A0046FAF8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229FE2B6F968A0046FAF8 /* UserModel.swift */; };
+		09722A012B6F97E00046FAF8 /* Dominant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09722A002B6F97E00046FAF8 /* Dominant.swift */; };
+		09722A032B6F98560046FAF8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09722A022B6F98560046FAF8 /* Gender.swift */; };
+		09722A052B6F990D0046FAF8 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09722A042B6F990D0046FAF8 /* Relation.swift */; };
+		09722A072B6F9B6B0046FAF8 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09722A062B6F9B6B0046FAF8 /* UserViewModel.swift */; };
+		09722A092B6F9D270046FAF8 /* UserInfoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09722A082B6F9D270046FAF8 /* UserInfoPopup.swift */; };
 		09806D272B4F692B007638B7 /* PointGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09806D262B4F692B007638B7 /* PointGame.swift */; };
 		09992D4C2B5132200049B877 /* HomeDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeDataViewModel.swift */; };
 		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
@@ -250,6 +256,12 @@
 		097229F72B6A8CC50046FAF8 /* Tactics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tactics.swift; sourceTree = "<group>"; };
 		097229F92B6E45F50046FAF8 /* WinLoseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLoseArray.swift; sourceTree = "<group>"; };
 		097229FB2B6E46640046FAF8 /* DateArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateArray.swift; sourceTree = "<group>"; };
+		097229FE2B6F968A0046FAF8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		09722A002B6F97E00046FAF8 /* Dominant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dominant.swift; sourceTree = "<group>"; };
+		09722A022B6F98560046FAF8 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		09722A042B6F990D0046FAF8 /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
+		09722A062B6F9B6B0046FAF8 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		09722A082B6F9D270046FAF8 /* UserInfoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoPopup.swift; sourceTree = "<group>"; };
 		09806D262B4F692B007638B7 /* PointGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGame.swift; sourceTree = "<group>"; };
 		09992D4B2B5132200049B877 /* HomeDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataViewModel.swift; sourceTree = "<group>"; };
 		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
@@ -341,6 +353,9 @@
 				097229902B6122560046FAF8 /* LabelType.swift */,
 				0972299A2B6366410046FAF8 /* InputMode.swift */,
 				097229F72B6A8CC50046FAF8 /* Tactics.swift */,
+				09722A002B6F97E00046FAF8 /* Dominant.swift */,
+				09722A022B6F98560046FAF8 /* Gender.swift */,
+				09722A042B6F990D0046FAF8 /* Relation.swift */,
 			);
 			path = enum;
 			sourceTree = "<group>";
@@ -380,6 +395,7 @@
 				092B2B3A2B5177370046BDBF /* ViewModel */,
 				091AC3E52B4AE46F007E68F0 /* enum */,
 				09BC07052B447BD9008A44FD /* Model */,
+				097229FD2B6F766E0046FAF8 /* RealmModel */,
 				0927E0FE2B41A7390069BEF1 /* View */,
 				0927E0A62B41A6A20069BEF1 /* Assets.xcassets */,
 				0927E0A82B41A6A20069BEF1 /* Preview Content */,
@@ -474,6 +490,7 @@
 				097229812B5B73EA0046FAF8 /* HomeHeaderBar.swift */,
 				0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */,
 				09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */,
+				09722A082B6F9D270046FAF8 /* UserInfoPopup.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -501,6 +518,7 @@
 				097229732B5A63660046FAF8 /* ChartDataViewModel.swift */,
 				097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */,
 				097229F32B66831D0046FAF8 /* DataManageViewModel.swift */,
+				09722A062B6F9B6B0046FAF8 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -596,6 +614,15 @@
 			path = ChartView;
 			sourceTree = "<group>";
 		};
+		097229FD2B6F766E0046FAF8 /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				091AC3D32B4A8AAE007E68F0 /* PointDataModel.swift */,
+				097229FE2B6F968A0046FAF8 /* UserModel.swift */,
+			);
+			path = RealmModel;
+			sourceTree = "<group>";
+		};
 		09BC06F72B43A36D008A44FD /* PointInputView */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,7 +657,6 @@
 				097229672B550F040046FAF8 /* PieChartDataModel.swift */,
 				097229692B564ACF0046FAF8 /* BarChartDataModel.swift */,
 				097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */,
-				091AC3D32B4A8AAE007E68F0 /* PointDataModel.swift */,
 				097229F92B6E45F50046FAF8 /* WinLoseArray.swift */,
 				097229FB2B6E46640046FAF8 /* DateArray.swift */,
 			);
@@ -1061,6 +1087,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0927E0A52B41A6A00069BEF1 /* HomeTabView.swift in Sources */,
+				09722A032B6F98560046FAF8 /* Gender.swift in Sources */,
 				0972296A2B564ACF0046FAF8 /* BarChartDataModel.swift in Sources */,
 				09992D4E2B5134BE0049B877 /* Issue.swift in Sources */,
 				09992D4C2B5132200049B877 /* HomeDataViewModel.swift in Sources */,
@@ -1072,6 +1099,7 @@
 				091AC3DE2B4A95B8007E68F0 /* GetPoint.swift in Sources */,
 				092B2B3C2B5177620046BDBF /* PointViewModel.swift in Sources */,
 				097229702B5A620B0046FAF8 /* PositionViewModel.swift in Sources */,
+				09722A072B6F9B6B0046FAF8 /* UserViewModel.swift in Sources */,
 				09BD52992B49871600EC347E /* LineChartDataModel.swift in Sources */,
 				097229FA2B6E45F50046FAF8 /* WinLoseArray.swift in Sources */,
 				097229992B6244930046FAF8 /* DateExtention.swift in Sources */,
@@ -1081,6 +1109,7 @@
 				09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */,
 				091AC3DC2B4A94E1007E68F0 /* Service.swift in Sources */,
 				097229682B550F040046FAF8 /* PieChartDataModel.swift in Sources */,
+				09722A012B6F97E00046FAF8 /* Dominant.swift in Sources */,
 				097229782B5A70DE0046FAF8 /* DblsPositionBtnArea.swift in Sources */,
 				091AC3D62B4A8C52007E68F0 /* MatchFormat.swift in Sources */,
 				091AC3E02B4A961C007E68F0 /* Shot.swift in Sources */,
@@ -1089,6 +1118,7 @@
 				097229602B54022B0046FAF8 /* RealTimeDataView.swift in Sources */,
 				0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */,
 				097229822B5B73EA0046FAF8 /* HomeHeaderBar.swift in Sources */,
+				09722A052B6F990D0046FAF8 /* Relation.swift in Sources */,
 				0927E1012B41A7CE0069BEF1 /* MatchRecordView.swift in Sources */,
 				0927E10B2B41A88B0069BEF1 /* HomeView.swift in Sources */,
 				097229932B61E04C0046FAF8 /* ChartsLayOutArea.swift in Sources */,
@@ -1109,9 +1139,11 @@
 				0972299B2B6366410046FAF8 /* InputMode.swift in Sources */,
 				097229912B6122560046FAF8 /* LabelType.swift in Sources */,
 				091AC3D22B4A57D9007E68F0 /* GameType.swift in Sources */,
+				09722A092B6F9D270046FAF8 /* UserInfoPopup.swift in Sources */,
 				097229F82B6A8CC50046FAF8 /* Tactics.swift in Sources */,
 				091AC3D82B4A931F007E68F0 /* Position.swift in Sources */,
 				0972296E2B5A617C0046FAF8 /* MatchInfoViewModel.swift in Sources */,
+				097229FF2B6F968A0046FAF8 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

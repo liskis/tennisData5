@@ -4,12 +4,16 @@ struct HomeView: View {
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var pointVM = PointViewModel()
     @ObservedObject var homeDataVM: HomeDataViewModel
+    @ObservedObject var userVM = UserViewModel()
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             VStack(spacing:0) {
                 Spacer()
-                HomeHeaderBar()
+                HomeHeaderBar(userVM: userVM)
+                    .onAppear{
+                        userVM.setUserInfo()
+                    }
                 ZStack {
                     VStack{
                         Image(.tennisCourt)
@@ -19,7 +23,9 @@ struct HomeView: View {
                     }
                     VStack{
                         Spacer().frame(height: 10)
-                        StatsDataArea(homeDataVM: homeDataVM)
+                        StatsDataArea(
+                            homeDataVM: homeDataVM
+                        )
                         Spacer().frame(height: 40)
                         LineChartView(
                             data1: $homeDataVM.firstSvInChartData,
@@ -33,13 +39,19 @@ struct HomeView: View {
                             Color.white.ignoresSafeArea()
                             VStack{
                                 Spacer().frame(height: 5)
-                                GameStartBtnsArea(homeDataVM: homeDataVM)
+                                GameStartBtnsArea(
+                                    homeDataVM: homeDataVM,
+                                    userVM: userVM
+                                )
                                 Spacer()
                             }
                         }
                         Spacer()
                     }
                 }
+            }
+            if userVM.showingPopUp {
+                UserInfoPopup(userVM: userVM)
             }
         }
     }

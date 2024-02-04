@@ -12,13 +12,10 @@ class HomeDataViewModel: ObservableObject {
     @Published var signPost: [LineChartDataModel] = []
     @Published var winLoseArray: [WinLoseArray] = []
     @Published var dateArray: [DateArray] = []
-    
     func setHomeData(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 4)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
         let realm = try! Realm()
         let matchEndData = realm.objects(PointDataModel.self).where({ $0.matchEnd == "end" })
-//            .sorted(byKeyPath: "matchStartDate", ascending: false)
-//        print(matchEndData)
         if matchEndData.count != 0 {
             var win:Int = 0
             var lose:Int = 0
@@ -67,7 +64,7 @@ class HomeDataViewModel: ObservableObject {
                 secondPointCount += secondPoints.count
                 secondInPointCount += secondPoints.count - doubleFaultPoints.count
                 
-                // グラフデータ
+            // グラフデータ
                 
                 // ファーストサーブ
                 if serverPoints.count != 0 {
@@ -95,7 +92,8 @@ class HomeDataViewModel: ObservableObject {
                 }
                 
                 // dateArray
-                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")))
+                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: endData.matchStartDate, format: "yy/MM/dd")))
+//                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")))
                 num += 1
                 if num == matchEndData.count {
                     break
@@ -111,9 +109,6 @@ class HomeDataViewModel: ObservableObject {
                 secondSvInRate = String(format: "%.1f", (Double(secondInPointCount) / Double(secondPointCount))*100 )
             }
             secondSvInCount = "(\(secondInPointCount)/\(secondPointCount))"
-            
-            print(firstSvInChartData)
-//            print(secondSvInChartData)
         }
     }
 }
