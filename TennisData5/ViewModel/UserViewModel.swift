@@ -12,7 +12,7 @@ class UserViewModel: ObservableObject {
         let realm = try! Realm()
         let userInfo = realm.objects(UserModel.self).where({ $0.relation == "me" })
         if userInfo.count == 1 {
-            change(userInfo: userInfo[0], realm: realm)
+            change(userInfo: userInfo.first!, realm: realm)
         } else {
             registration(realm: realm)
         }

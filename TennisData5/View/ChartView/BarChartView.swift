@@ -1,10 +1,3 @@
-//
-//  BarChartView.swift
-//  TennisData5
-//
-//  Created by 渡辺健輔 on 2024/01/16.
-//
-
 import SwiftUI
 import Charts
 struct BarChartView: View {
@@ -29,7 +22,6 @@ struct BarChartView: View {
                 width:1,
                 height: 20
             )
-//            .zIndex(-1)
             .foregroundStyle(.red)
             .annotation(position: .bottom, alignment: .leading, spacing: 0) {
                 Text(String(dataRow.index) + "%")

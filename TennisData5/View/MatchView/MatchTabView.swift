@@ -4,7 +4,6 @@ struct MatchTabView: View {
     @Binding var gameType: GameType
     @Binding var naviTitle: String
     @ObservedObject var dataManageVM = DataManageViewModel()
-    @ObservedObject var chartDataVM = ChartDataViewModel()
     @ObservedObject var homeDataVM: HomeDataViewModel
     @ObservedObject var userVM: UserViewModel
     var body: some View {
@@ -14,7 +13,7 @@ struct MatchTabView: View {
                 pointVM: dataManageVM.pointVM,
                 matchInfoVM: dataManageVM.matchInfoVM,
                 positionVM: dataManageVM.positionVM,
-                chartDataVM: chartDataVM,
+                chartDataVM: dataManageVM.chartDataVM,
                 homeDataVM: homeDataVM,
                 userVM: userVM
             )
@@ -26,7 +25,7 @@ struct MatchTabView: View {
             RealTimeDataView(
                 pointVM: dataManageVM.pointVM,
                 matchInfoVM: dataManageVM.matchInfoVM,
-                chartDataVM: chartDataVM,
+                chartDataVM: dataManageVM.chartDataVM,
                 userVM: userVM
             )
             .toolbarBackground(.black, for: .tabBar)

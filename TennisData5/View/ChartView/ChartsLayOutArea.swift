@@ -8,7 +8,7 @@ struct ChartsLayOutArea: View {
         VStack{
             Spacer().frame(height: 10)
             HStack{
-                Text("ファーストサーブの確率")
+                Text("ファーストサーブの確率（\(chartDataVM.firstSvInCount)）")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)
@@ -17,13 +17,13 @@ struct ChartsLayOutArea: View {
             BarChartView(barChartData: $chartDataVM.firstSvIn)
             Spacer().frame(height: 15)
             HStack{
-                Text("セカンドサーブの確率")
+                Text("セカンドサーブの確率（\(chartDataVM.secondSvInCount)）")
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.firstSvIn)
+            BarChartView(barChartData: $chartDataVM.secondSvIn)
             Spacer().frame(height: 15)
             HStack{
                 Text("ダブルフォルトをしない確率")

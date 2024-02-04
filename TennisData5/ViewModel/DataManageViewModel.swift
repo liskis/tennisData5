@@ -4,6 +4,7 @@ class DataManageViewModel: ObservableObject {
     @ObservedObject var pointVM = PointViewModel()
     @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var positionVM = PositionViewModel()
+    @ObservedObject var chartDataVM = ChartDataViewModel()
     
     func pointRecoad(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
@@ -44,7 +45,43 @@ class DataManageViewModel: ObservableObject {
             pointDataModel.shot = pointVM.shot.rawValue
             pointDataModel.whose = pointVM.whose.rawValue
             realm.add(pointDataModel)
+            setChartData()
         }
+    }
+    
+    func setChartData(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        let realm = try! Realm()
+        let results = realm.objects(PointDataModel.self).where({ $0.matchId == matchInfoVM.matchId })
+        // firstServeIn
+        let serverPoints = results.filter{ $0.myPosition == "server"}
+        if serverPoints.count != 0 {
+            let firstInPoints = serverPoints.filter{ $0.service == "first"}
+            let firstSvInRate = (Float(firstInPoints.count) / Float(serverPoints.count))*100
+            let fiestSvInRateRound = round(firstSvInRate * 10) / 10
+            chartDataVM.firstSvIn = []
+            chartDataVM.firstSvIn.append(BarChartDataModel(value: fiestSvInRateRound, color: .ocean, category: "firstSvIn", index: 60))
+            chartDataVM.firstSvIn.append(BarChartDataModel(value: 100 - fiestSvInRateRound, color: .mercury, category: "firstSvIn", index: 60))
+            chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
+        }
+        // セカンドサーブ
+        let secondSvPoints = serverPoints.filter{ $0.service == "second"}
+        if secondSvPoints.count != 0 {
+            let doubleFaultPoints = secondSvPoints.filter{
+                $0.getPoint == "opponent"
+                && $0.shot == "serve"
+            }
+            let secondSvInCount = secondSvPoints.count - doubleFaultPoints.count
+            let secondSvInRate = ( Float(secondSvInCount) / Float(secondSvPoints.count) ) * 100
+            let secondSvInRateRound = round(secondSvInRate * 10) / 10
+            chartDataVM.secondSvIn = []
+            chartDataVM.firstSvIn.append(BarChartDataModel(value: secondSvInRateRound, color: .ocean, category: "secondSvIn", index: 80))
+            chartDataVM.firstSvIn.append(BarChartDataModel(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80))
+            chartDataVM.secondSvInCount = "\(secondSvInCount)/\(secondSvPoints.count)"
+        }
+        
+        
+        
     }
     
     func goBack(){

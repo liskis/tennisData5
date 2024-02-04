@@ -1,14 +1,11 @@
 import Foundation
 import SwiftUI
+import RealmSwift
 class ChartDataViewModel: ObservableObject {
-    @Published var firstSvIn: [BarChartDataModel] = [
-        .init(value: 66.7, color: .ocean, category: "firstSvIn", index: 60.0),
-        .init(value: 33.3, color: .mercury, category: "firstSvIn",index:60.0)
-    ]
-    @Published var secondSvIn: [BarChartDataModel] = [
-        .init(value: 83.3, color: .ocean, category: "secondSvIn", index: 80.0),
-        .init(value: 16.7, color: .mercury, category: "secondSvIn", index: 80.0)
-    ]
+    @Published var firstSvInCount: String = "No Data"
+    @Published var firstSvIn: [BarChartDataModel] = []
+    @Published var secondSvInCount: String = "No Data"
+    @Published var secondSvIn: [BarChartDataModel] = []
     @Published var atFirstSv: [BarChartDataModel] = [
         .init(value: 83.3, color: .ocean, category: "atFirstSv", index: 80.0),
         .init(value: 16.7, color: .mercury, category: "atFirstSv",index:80.0)
@@ -100,4 +97,5 @@ class ChartDataViewModel: ObservableObject {
     @Published var styleScaleDisDbls: KeyValuePairs<String, Color> = [
         "data1": .silver, "data2": .silver, "data3": .silver, "blank": .white
     ]
+    
 }
