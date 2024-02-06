@@ -30,10 +30,10 @@
             filePath = "TennisData5/ViewModel/PointViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "PointViewModel"
-            landmarkType = "3">
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "whose"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - c83986f98df64327"
@@ -183,8 +183,8 @@
             filePath = "TennisData5/ViewModel/PointViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "PointViewModel"
             landmarkType = "3">
             <Locations>

@@ -5,30 +5,30 @@ struct NameAndScoreArea: View {
     @ObservedObject var pointVM: PointViewModel
     var body: some View {
         HStack{
-            Text(String(pointVM.winCount))
+            Text(String(pointVM.getGameCount))
                 .font(.custom("Verdana",size:40))
                 .bold()
             Text("勝")
                 .font(.custom("Verdana",size:20))
                 .bold()
-            Text(String(pointVM.loseCount))
+            Text(String(pointVM.lostGameCount))
                 .font(.custom("Verdana",size:40))
                 .bold()
             Text("負")
                 .font(.custom("Verdana",size:20))
                 .bold()
-            Text(String(pointVM.drowCount))
+            Text(String(pointVM.drowGameCount))
                 .font(.custom("Verdana",size:40))
                 .bold()
             Text("分")
                 .font(.custom("Verdana",size:20))
                 .bold()
-            if pointVM.winCount > pointVM.loseCount {
+            if pointVM.getGameCount > pointVM.lostGameCount {
                 Text("Win")
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(Color.red)
-            } else if pointVM.winCount < pointVM.loseCount {
+            } else if pointVM.getGameCount < pointVM.lostGameCount {
                 Text("Lose")
                     .font(.custom("Verdana",size:30))
                     .bold()

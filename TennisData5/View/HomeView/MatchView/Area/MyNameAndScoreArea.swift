@@ -6,15 +6,15 @@ struct MyNameAndScoreArea: View {
     var body: some View {
         VStack{
             HStack{
-                Text(String(pointVM.winCount))
+                Text(String(pointVM.getGameCount))
                     .font(.custom("Verdana",size:20))
                     .bold()
                 Text("勝")
-                Text(String(pointVM.loseCount))
+                Text(String(pointVM.lostGameCount))
                     .font(.custom("Verdana",size:20))
                     .bold()
                 Text("負")
-                Text(String(pointVM.drowCount))
+                Text(String(pointVM.drowGameCount))
                     .font(.custom("Verdana",size:20))
                     .bold()
                 Text("分")
@@ -35,13 +35,13 @@ struct MyNameAndScoreArea: View {
             
                 
             HStack{
-                Text(String(pointVM.myPoint))
+                Text(String(pointVM.getPoint))
                     .font(.custom("Verdana",size:40))
                     .bold()
                 Text("-")
                     .font(.custom("Verdana",size:40))
                     .bold()
-                Text(String(pointVM.opponentPoint))
+                Text(String(pointVM.lostPoint))
                     .font(.custom("Verdana",size:40))
                     .bold()
             }

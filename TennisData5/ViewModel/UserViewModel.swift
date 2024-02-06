@@ -8,7 +8,7 @@ class UserViewModel: ObservableObject {
     @Published var relation: String = "me"
     
     func updateUserInfo(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let userInfo = realm.objects(UserModel.self).where({ $0.relation == "me" })
         if userInfo.count == 1 {
@@ -43,7 +43,7 @@ class UserViewModel: ObservableObject {
         }
     }
     func setUserInfo(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let userInfo = realm.objects(UserModel.self).where({ $0.relation == "me" })
         if  userInfo.count == 1 {
@@ -53,13 +53,13 @@ class UserViewModel: ObservableObject {
         }
     }
     func showRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(UserModel.self)
         print(results)
     }
     func deleteRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(UserModel.self)
         try! realm.write {

@@ -9,7 +9,7 @@ struct ServOrRetArea: View {
             if positionVM.servOrRet == .serviceGame {
                 serviceGameDisBtn
             } else {
-                if pointVM.myPoint + pointVM.opponentPoint == 0 {
+                if pointVM.getPoint + pointVM.lostPoint == 0 {
                     serviceGameBtn
                 } else {
                     posisionDisBtn
@@ -18,7 +18,7 @@ struct ServOrRetArea: View {
             if positionVM.servOrRet == .returnGame {
                 returnGameDisBtn
             } else {
-                if pointVM.myPoint + pointVM.opponentPoint == 0 {
+                if pointVM.getPoint + pointVM.lostPoint == 0 {
                     returnGameBtn
                 } else {
                     posisionDisBtn

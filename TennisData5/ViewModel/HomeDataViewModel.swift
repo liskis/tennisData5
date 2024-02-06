@@ -13,10 +13,10 @@ class HomeDataViewModel: ObservableObject {
     @Published var winLoseArray: [WinLoseArray] = []
     @Published var dateArray: [DateArray] = []
     func setHomeData(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
-        let matchEndData = realm.objects(PointDataModel.self).where({ $0.matchEnd == "end" })
-        if matchEndData.count != 0 {
+        let setDataArray = realm.objects(SetDataModel.self)
+        if setDataArray.count != 0 {
             var win:Int = 0
             var lose:Int = 0
             var draw:Int = 0
@@ -30,11 +30,11 @@ class HomeDataViewModel: ObservableObject {
             winLoseArray = []
             dateArray = []
             var num: Int = 0
-            for endData in matchEndData.suffix(5) {
+            for setData in setDataArray.suffix(5) {
                 //  勝率
-                if endData.winCount > endData.loseCount {
+                if setData.getGameCount > setData.lostGameCount {
                     win += 1
-                } else if endData.winCount < endData.loseCount {
+                } else if setData.getGameCount < setData.lostGameCount {
                     lose += 1
                 } else {
                     draw += 1
@@ -42,7 +42,7 @@ class HomeDataViewModel: ObservableObject {
                 
                 // ファーストサーブ
                 let serverPoints = realm.objects(PointDataModel.self).where({
-                    $0.matchId == endData.matchId
+                    $0.setId == setData.setId
                     && $0.myPosition == "server"
                 })
                 let firstInPoints = serverPoints.filter{
@@ -53,12 +53,12 @@ class HomeDataViewModel: ObservableObject {
                 
                 // セカンドサーブ
                 let secondPoints = realm.objects(PointDataModel.self).where({
-                    $0.matchId == endData.matchId
+                    $0.setId == setData.setId
                     && $0.myPosition == "server"
                     && $0.service == "second"
                 })
                 let doubleFaultPoints = secondPoints.filter{
-                    $0.getPoint == "opponent"
+                    $0.whichPoint == "opponent"
                     && $0.shot == "serve"
                 }
                 secondPointCount += secondPoints.count
@@ -83,19 +83,19 @@ class HomeDataViewModel: ObservableObject {
                 signPost.append(LineChartDataModel(num: num, stats: 100, category: "data3"))
                 
                 // winLoseArray
-                if endData.winCount > endData.loseCount {
+                if setData.getGameCount > setData.lostGameCount {
                     winLoseArray.append(WinLoseArray(num: num, issue: .Win))
-                } else if endData.winCount < endData.loseCount {
+                } else if setData.getGameCount < setData.lostGameCount {
                     winLoseArray.append(WinLoseArray(num: num, issue: .Lose))
                 } else {
                     winLoseArray.append(WinLoseArray(num: num, issue: .Draw))
                 }
                 
                 // dateArray
-                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: endData.matchStartDate, format: "yy/MM/dd")))
+                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: setData.setStartDate, format: "yy/MM/dd")))
 //                dateArray.append(DateArray(num: num, dateString: Date.dateToString(date: endData.matchStartDate, format: "HH:mm:ss")))
                 num += 1
-                if num == matchEndData.count {
+                if num == setDataArray.count {
                     break
                 }
             }

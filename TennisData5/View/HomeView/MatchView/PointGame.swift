@@ -34,20 +34,16 @@ struct PointGame: View {
                                 Spacer()
                             }
                             Spacer().frame(height: 10)
-                            if matchInfoVM.matchFormat == .singles {
-                                ServOrRetArea(
-                                    positionVM: positionVM,
-                                    pointVM: pointVM
-                                )
-                                SnglsPositionBtnArea(
+                            ServOrRetArea(
+                                positionVM: positionVM,
+                                pointVM: pointVM
+                            )
+                            if matchInfoVM.matchFormat == .doubles {
+                                DblsPositionBtnArea(
                                     positionVM: positionVM
                                 )
-                            } else if matchInfoVM.matchFormat == .doubles {
-                                ServOrRetArea(
-                                    positionVM: positionVM,
-                                    pointVM: pointVM
-                                )
-                                DblsPositionBtnArea(
+                            } else if matchInfoVM.matchFormat == .singles {
+                                SnglsPositionBtnArea(
                                     positionVM: positionVM
                                 )
                             }
@@ -60,7 +56,6 @@ struct PointGame: View {
                                 doubleFaultBtn
                             }
                             Spacer().frame(height: 10)
-                            
                             if matchInfoVM.matchFormat == .singles {
                                 SnglsPointBtnArea(
                                     dataManageVM: dataManageVM,
@@ -100,7 +95,7 @@ struct PointGame: View {
                 pointVM.service = .first
             } else if positionVM.myPosition != .noSelection {
                 positionVM.myPosition = .noSelection
-            } else if positionVM.servOrRet != .noSelection && pointVM.myPoint + pointVM.opponentPoint == 0 {
+            } else if positionVM.servOrRet != .noSelection && pointVM.getPoint + pointVM.lostPoint == 0 {
                 positionVM.servOrRet = .noSelection
             } else {
                 dataManageVM.goBack()
@@ -152,17 +147,28 @@ struct PointGame: View {
     var doubleFaultBtn: some View {
         Button(action: {
             if positionVM.servOrRet == .serviceGame {
-                pointVM.getPoint = .opponent
-                pointVM.opponentPoint += 1
+                pointVM.whichPoint = .opponent
+                pointVM.lostPoint += 1
             } else if positionVM.servOrRet == .returnGame {
-                pointVM.getPoint = .myTeam
-                pointVM.myPoint += 1
+                pointVM.whichPoint = .myTeam
+                pointVM.getPoint += 1
             }
             pointVM.shot = .serve
             dataManageVM.pointRecoad()
-            positionVM.myPosition = .noSelection
+            if pointVM.allPoint % 2 == 0 {
+                positionVM.side = .duceSide
+            } else {
+                positionVM.side = .advantageSide
+            }
+            if matchInfoVM.matchFormat == .doubles && positionVM.servOrRet == .returnGame {
+                if positionVM.myPosition == .volleyer {
+                    positionVM.myPosition = .returner
+                } else {
+                    positionVM.myPosition = .volleyer
+                }
+            }
             pointVM.service = .first
-            pointVM.getPoint = .noSelection
+            pointVM.whichPoint = .noSelection
             pointVM.shot = .noSelection
         },label:{
             Text("ダブルフォルト")
@@ -178,18 +184,20 @@ struct PointGame: View {
     }
     var nextGameBtn: some View {
         Button(action: {
-            if pointVM.myPoint > pointVM.opponentPoint {
-                pointVM.winCount += 1
-            } else if pointVM.myPoint < pointVM.opponentPoint {
-                pointVM.loseCount += 1
-            } else if pointVM.myPoint == pointVM.opponentPoint {
-                pointVM.drowCount += 1
+            if pointVM.getPoint > pointVM.lostPoint {
+                pointVM.getGameCount += 1
+            } else if pointVM.getPoint < pointVM.lostPoint {
+                pointVM.lostGameCount += 1
+            } else if pointVM.getPoint == pointVM.lostPoint {
+                pointVM.drowGameCount += 1
             }
+            dataManageVM.gameRecoad()
+            dataManageVM.setGameChart()
             pointVM.service = .first
             positionVM.myPosition = .noSelection
             positionVM.servOrRet = .noSelection
-            pointVM.myPoint = 0
-            pointVM.opponentPoint = 0
+            pointVM.getPoint = 0
+            pointVM.lostPoint = 0
             matchInfoVM.gameId = UUID().uuidString
             dataManageVM.showRealm()
         },label:{
@@ -206,29 +214,26 @@ struct PointGame: View {
     }
     var gameEndBtn: some View {
         Button(action: {
-            if pointVM.myPoint > pointVM.opponentPoint {
-                pointVM.winCount += 1
-            } else if pointVM.myPoint < pointVM.opponentPoint {
-                pointVM.loseCount += 1
-            } else if pointVM.myPoint == pointVM.opponentPoint && pointVM.allPoint != 0{
-                pointVM.drowCount += 1
+            if pointVM.getPoint > pointVM.lostPoint {
+                pointVM.getGameCount += 1
+            } else if pointVM.getPoint < pointVM.lostPoint {
+                pointVM.lostGameCount += 1
+            } else if pointVM.getPoint == pointVM.lostPoint && pointVM.allPoint != 0{
+                pointVM.drowGameCount += 1
             }
-            matchInfoVM.matchEnd = "end"
-            matchInfoVM.matchEndDate = Date()
+            dataManageVM.matchRecoad()
+            dataManageVM.setRecoad()
             pointVM.service = .first
             positionVM.myPosition = .noSelection
             positionVM.servOrRet = .noSelection
-            pointVM.myPoint = 0
-            pointVM.opponentPoint = 0
+            pointVM.getPoint = 0
+            pointVM.lostPoint = 0
             matchInfoVM.gameId = ""
             matchInfoVM.setId = ""
-            dataManageVM.pointRecoad()
             homeDataVM.setHomeData()
             dismiss()
-//            dataManageVM.showRealm()
-//            dataManageVM.deleteRealm()
         },label:{
-            Text("ゲームを保存して終了する")
+            Text("試合を保存して終了する")
                 .foregroundColor(Color.white)
                 .bold()
                 .font(.custom("Verdana", size: 12))

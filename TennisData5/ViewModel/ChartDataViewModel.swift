@@ -14,19 +14,19 @@ class ChartDataViewModel: ObservableObject {
     @Published var atSecondSv: [BarChartDataModel] = []
     
     @Published var getAndLostPoint: [PieChartDataModel] = [
-        .init(name: "data1", nameString: "とった\nポイント", value: 70, labelType: .twoLabels),
-        .init(name: "data2", nameString: "とられた\nポイント", value: 50, labelType: .twoLabels),
-        .init(name: "blank", nameString: "", value: 120 , labelType: .twoLabels)
+        .init(name: "data1", nameString: "とった\nポイント", value: 0, labelType: .twoLabels),
+        .init(name: "data2", nameString: "とられた\nポイント", value: 0, labelType: .twoLabels),
+        .init(name: "blank", nameString: "", value: 0, labelType: .twoLabels)
     ]
     @Published var getAndLostPointStyleScale: KeyValuePairs<String, Color> = [
         "data1": .ocean, "data2": .cantaloupe, "blank": .white
     ]
     @Published var keepAndBreak: [PieChartDataModel] = [
-        .init(name: "data1", nameString: "キープ率", value: 66.67, labelType: .keepAndBreak),
-        .init(name: "data2", nameString: "ブレーク率", value: 20.0, labelType: .keepAndBreak),
-        .init(name: "data3", nameString: "サービス\nロスト率", value: 33.33, labelType: .keepAndBreak),
-        .init(name: "data4", nameString: "リターン\nロスト率", value: 80.0, labelType: .keepAndBreak),
-        .init(name: "blank", nameString: "", value: 200, labelType: .keepAndBreak)
+        .init(name: "data1", nameString: "キープ率", value: 0.0, labelType: .keepAndBreak),
+        .init(name: "data2", nameString: "ブレーク率", value: 0.0, labelType: .keepAndBreak),
+        .init(name: "data3", nameString: "サービス\nロスト率", value: 0.0, labelType: .keepAndBreak),
+        .init(name: "data4", nameString: "リターン\nロスト率", value: 0.0, labelType: .keepAndBreak),
+        .init(name: "blank", nameString: "", value: 0.0, labelType: .keepAndBreak)
     ]
     @Published var keepAndBreakStyleScale: KeyValuePairs<String, Color> = [
         "data1": .ocean, "data2": .aqua, "data3": .tangerine, "data4": .cantaloupe ,"blank": .white

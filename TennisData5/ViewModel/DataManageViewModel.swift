@@ -6,51 +6,93 @@ class DataManageViewModel: ObservableObject {
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
     
-    func pointRecoad(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+    func matchRecoad(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
-        let pointDataModel = PointDataModel()
+        let matchData = MatchDataModel()
         try! realm.write{
-            pointDataModel.id = UUID().uuidString
-            pointDataModel.matchId = matchInfoVM.matchId
-            pointDataModel.setId = matchInfoVM.setId
-            pointDataModel.gameId = matchInfoVM.gameId
-            pointDataModel.matchStartDate = matchInfoVM.matchStartDate
-            pointDataModel.matchFormat = matchInfoVM.matchFormat.rawValue
-            pointDataModel.gemeType = matchInfoVM.gameType.rawValue
-            pointDataModel.inputMode = matchInfoVM.inputMode.rawValue
-            pointDataModel.teamAplayer1id = matchInfoVM.teamAplayer1id
-            pointDataModel.teamAplayer2id = matchInfoVM.teamAplayer2id
-            pointDataModel.teamBplayer1id = matchInfoVM.teamBplayer1id
-            pointDataModel.teamBplayer2id = matchInfoVM.teamBplayer2id
-            pointDataModel.tactics = matchInfoVM.tactics
-            pointDataModel.matchEnd = matchInfoVM.matchEnd
-            pointDataModel.matchEndDate = matchInfoVM.matchEndDate
-            pointDataModel.servOrRet = positionVM.servOrRet.rawValue
-            pointDataModel.side = positionVM.side.rawValue
-            pointDataModel.myPosition = positionVM.myPosition.rawValue
-            pointDataModel.teamAplayer1position = positionVM.teamAplayer1position.rawValue
-            pointDataModel.teamAplayer2position = positionVM.teamAplayer2position.rawValue
-            pointDataModel.teamBplayer1position = positionVM.teamBplayer1position.rawValue
-            pointDataModel.teamBplayer2position = positionVM.teamBplayer2position.rawValue
-            pointDataModel.server = positionVM.server.rawValue
-            pointDataModel.tactics = positionVM.tactics.rawValue
-            pointDataModel.winCount = pointVM.winCount
-            pointDataModel.loseCount = pointVM.loseCount
-            pointDataModel.drowCount = pointVM.drowCount
-            pointDataModel.myPoint = pointVM.myPoint
-            pointDataModel.opponentPoint = pointVM.opponentPoint
-            pointDataModel.service = pointVM.service.rawValue
-            pointDataModel.getPoint = pointVM.getPoint.rawValue
-            pointDataModel.shot = pointVM.shot.rawValue
-            pointDataModel.whose = pointVM.whose.rawValue
-            realm.add(pointDataModel)
+            matchData.matchId = matchInfoVM.matchId
+            matchData.matchFormat = matchInfoVM.matchFormat.rawValue
+            matchData.gemeType = matchInfoVM.gameType.rawValue
+            matchData.inputMode = matchInfoVM.inputMode.rawValue
+            matchData.teamAplayer1id = matchInfoVM.teamAplayer1id
+            matchData.teamAplayer2id = matchInfoVM.teamAplayer2id
+            matchData.teamBplayer1id = matchInfoVM.teamBplayer1id
+            matchData.teamBplayer2id = matchInfoVM.teamBplayer2id
+            matchData.getSetCount = pointVM.getSetCount
+            matchData.lostSetCount = pointVM.lostSetCount
+            matchData.drowSetCount = pointVM.drowSetCount
+            matchData.matchStartDate = matchInfoVM.matchStartDate
+            matchData.matchEndDate = Date()
+            realm.add(matchData)
+        }
+    }
+    
+    func setRecoad(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let setData = SetDataModel()
+        try! realm.write{
+            setData.setId = matchInfoVM.setId
+            setData.matchId = matchInfoVM.matchId
+            setData.getGameCount = pointVM.getGameCount
+            setData.lostGameCount = pointVM.lostGameCount
+            setData.drowGameCount = pointVM.drowGameCount
+            setData.setStartDate = matchInfoVM.setStartDate
+            setData.setEndDate = Date()
+            realm.add(setData)
+        }
+    }
+    
+    func gameRecoad(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let gameData = GameDataModel()
+        try! realm.write{
+            gameData.gameId = matchInfoVM.gameId
+            gameData.setId = matchInfoVM.setId
+            gameData.matchId = matchInfoVM.matchId
+            gameData.servOrRet = positionVM.servOrRet.rawValue
+            gameData.gamePosition = positionVM.gamePosition.rawValue
+            gameData.getPoint = pointVM.getPoint
+            gameData.lostPoint = pointVM.lostPoint
+            gameData.gameStartDate = matchInfoVM.gameStartDate
+            gameData.gameEndDate = Date()
+            realm.add(gameData)
+        }
+    }
+    
+    func pointRecoad(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let pointData = PointDataModel()
+        try! realm.write{
+            pointData.pointId = UUID().uuidString
+            pointData.gameId = matchInfoVM.gameId
+            pointData.setId = matchInfoVM.setId
+            pointData.matchId = matchInfoVM.matchId
+            pointData.servOrRet = positionVM.servOrRet.rawValue
+            pointData.side = positionVM.side.rawValue
+            pointData.myPosition = positionVM.myPosition.rawValue
+            pointData.server = positionVM.server.rawValue
+            pointData.getGameCount = pointVM.getGameCount
+            pointData.lostGameCount = pointVM.lostGameCount
+            pointData.drowGameCount = pointVM.drowGameCount
+            pointData.getPoint = pointVM.getPoint
+            pointData.lostPoint = pointVM.lostPoint
+            pointData.service = pointVM.service.rawValue
+            pointData.whichPoint = pointVM.whichPoint.rawValue
+            pointData.shot = pointVM.shot.rawValue
+            pointData.whose = pointVM.whose.rawValue
+            pointData.tactics = pointVM.tactics.rawValue
+            pointData.dateTime = Date()
+            realm.add(pointData)
             setChartData()
         }
     }
     
     func setChartData(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(PointDataModel.self).where({ $0.matchId == matchInfoVM.matchId })
         // firstServeIn
@@ -69,7 +111,7 @@ class DataManageViewModel: ObservableObject {
             $0.service == "second"
         }
         let doubleFaultPoints = secondSvPoints.filter{
-            $0.getPoint == "opponent"
+            $0.whichPoint == "opponent"
             && $0.shot == "serve"
         }
         let secondSvInCount = secondSvPoints.count - doubleFaultPoints.count
@@ -93,7 +135,7 @@ class DataManageViewModel: ObservableObject {
         }
         // atFirstSv
         let atFirstGet = firstInPoints.filter{
-            $0.getPoint == "myTeam"
+            $0.whichPoint == "myTeam"
         }
         if firstInPoints.count != 0 {
             let atFirstRate = ( Float(atFirstGet.count) / Float(firstInPoints.count) ) * 100
@@ -105,7 +147,7 @@ class DataManageViewModel: ObservableObject {
         }
         // atSecondSv
         let atSecondGet = secondSvPoints.filter{
-            $0.getPoint == "myTeam"
+            $0.whichPoint == "myTeam"
         }
         if secondSvPoints.count != 0 {
             let atSecondRate = ( Float(atSecondGet.count) / Float(secondSvPoints.count) ) * 100
@@ -115,12 +157,95 @@ class DataManageViewModel: ObservableObject {
             chartDataVM.atSecondSv.append(BarChartDataModel(value: 100 - atSecondRateRound, color: .mercury, category: "atSecond", index: 50))
             chartDataVM.atSecondSvCount = "\(atSecondGet.count)/\(secondSvPoints.count)"
         }
-        
+        // getAndLostPoint
+        let getPoints = results.filter{
+            $0.whichPoint == "myTeam"
+        }
+        let lostPoints = results.filter{
+            $0.whichPoint == "opponent"
+        }
+        chartDataVM.getAndLostPoint = []
+        chartDataVM.getAndLostPoint.append(PieChartDataModel(
+            name: "data1",
+            nameString: "とった\nポイント",
+            value: Double(getPoints.count),
+            labelType: .twoLabels
+        ))
+        chartDataVM.getAndLostPoint.append(PieChartDataModel(
+            name: "data2",
+            nameString: "とられた\nポイント",
+            value: Double(lostPoints.count),
+            labelType: .twoLabels
+        ))
+        chartDataVM.getAndLostPoint.append(PieChartDataModel(
+            name: "blank",
+            nameString: "",
+            value: Double(getPoints.count + lostPoints.count),
+            labelType: .twoLabels
+        ))
         
     }
     
+    func setGameChart(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        // keepAndBreakPoint
+        var keepRate: Double = 0
+        var breakRate: Double = 0
+        var serviceLostRate: Double = 0
+        var returnLostRate: Double = 0
+        let serviceGames = realm.objects(GameDataModel.self).where({
+            $0.matchId == matchInfoVM.matchId
+            && $0.servOrRet == "serviceGame"
+            && $0.getPoint != $0.lostPoint
+        })
+        if serviceGames.count != 0 {
+            let keepGames = serviceGames.filter{ $0.getPoint > $0.lostPoint}
+            let serviceLostGames = serviceGames.filter{ $0.getPoint < $0.lostPoint}
+            keepRate = round((Double(keepGames.count)/Double(serviceGames.count)) * 1000) / 10
+            serviceLostRate = round((Double(serviceLostGames.count)/Double(serviceGames.count)) * 1000) / 10
+        }
+        let returnGames = realm.objects(GameDataModel.self).where({
+            $0.matchId == matchInfoVM.matchId
+            && $0.servOrRet == "returnGame"
+            && $0.getPoint != $0.lostPoint
+        })
+        if returnGames.count != 0 {
+            let breakGames = returnGames.filter{ $0.getPoint > $0.lostPoint}
+            let returnLostGames = returnGames.filter{ $0.getPoint < $0.lostPoint}
+            breakRate = round((Double(breakGames.count)/Double(returnGames.count)) * 1000) / 10
+            returnLostRate = round((Double(returnLostGames.count)/Double(returnGames.count)) * 1000) / 10
+        }
+        chartDataVM.keepAndBreak = []
+        chartDataVM.keepAndBreak.append(PieChartDataModel(
+            name: "data1",
+            nameString: "キープ率",
+            value: keepRate,
+            labelType: .keepAndBreak))
+        chartDataVM.keepAndBreak.append(PieChartDataModel(
+            name: "data2",
+            nameString: "ブレーク率",
+            value: breakRate,
+            labelType: .keepAndBreak))
+        chartDataVM.keepAndBreak.append(PieChartDataModel(
+            name: "data3",
+            nameString: "サービス\nロスト率",
+            value: serviceLostRate,
+            labelType: .keepAndBreak))
+        chartDataVM.keepAndBreak.append(PieChartDataModel(
+            name: "data4",
+            nameString: "リターン\nロスト率",
+            value: returnLostRate,
+            labelType: .keepAndBreak))
+        chartDataVM.keepAndBreak.append(PieChartDataModel(
+            name: "blank",
+            nameString: "",
+            value: 200,
+            labelType: .keepAndBreak))
+    }
+    
     func goBack(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(PointDataModel.self)
         if results.count != 0 {
@@ -130,8 +255,8 @@ class DataManageViewModel: ObservableObject {
                 positionVM.side = Side(rawValue: results.last!.side)!
                 pointVM.service = Service(rawValue: results.last!.service)!
                 if pointVM.allPoint == 1 {
-                    pointVM.myPoint = 0
-                    pointVM.opponentPoint = 0
+                    pointVM.getPoint = 0
+                    pointVM.lostPoint = 0
                     if let result = results.last {
                         try! realm.write() {
                             realm.delete(result)
@@ -142,17 +267,17 @@ class DataManageViewModel: ObservableObject {
                     positionVM.servOrRet = ServOrRet(rawValue: results.last!.servOrRet)!
                     positionVM.side = .noSelection
                     pointVM.service = .first
-                    pointVM.winCount = results.last!.winCount
-                    pointVM.loseCount = results.last!.loseCount
-                    pointVM.drowCount = results.last!.drowCount
-                    pointVM.myPoint = results.last!.myPoint
-                    pointVM.opponentPoint = results.last!.opponentPoint
+                    pointVM.getGameCount = results.last!.getGameCount
+                    pointVM.lostGameCount = results.last!.getGameCount
+                    pointVM.drowGameCount = results.last!.drowGameCount
+                    pointVM.getPoint = results.last!.getPoint
+                    pointVM.lostPoint = results.last!.lostPoint
                     matchInfoVM.gameId = results.last!.gameId
-                    if let result = results.last {
-                        try! realm.write() {
-                            realm.delete(result)
-                        }
-                    }
+//                    if let result = results.last {
+//                        try! realm.write() {
+//                            realm.delete(result)
+//                        }
+//                    }
                 } else {
                     if let result = results.last {
                         try! realm.write() {
@@ -161,11 +286,11 @@ class DataManageViewModel: ObservableObject {
                     }
                     
                     let results = realm.objects(PointDataModel.self)
-                    pointVM.winCount = results.last!.winCount
-                    pointVM.loseCount = results.last!.loseCount
-                    pointVM.drowCount = results.last!.drowCount
-                    pointVM.myPoint = results.last!.myPoint
-                    pointVM.opponentPoint = results.last!.opponentPoint
+                    pointVM.getGameCount = results.last!.getGameCount
+                    pointVM.lostGameCount = results.last!.lostGameCount
+                    pointVM.drowGameCount = results.last!.drowGameCount
+                    pointVM.getPoint = results.last!.getPoint
+                    pointVM.lostPoint = results.last!.lostPoint
                     matchInfoVM.gameId = results.last!.gameId
                 }
             }
@@ -173,13 +298,13 @@ class DataManageViewModel: ObservableObject {
     }
     
     func showRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(PointDataModel.self)
         print(results)
     }
     func deleteRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 5)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(PointDataModel.self)
         try! realm.write {

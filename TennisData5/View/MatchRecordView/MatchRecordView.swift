@@ -62,9 +62,9 @@ struct MatchRecordView: View {
                                     recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
                                     recoadSearchVM.matchInfoVM.gameType = recoad.gameType
                                     recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
-                                    recoadSearchVM.pointVM.winCount = recoad.WinScore
-                                    recoadSearchVM.pointVM.loseCount = recoad.LoseScore
-                                    recoadSearchVM.pointVM.drowCount = recoad.DrawScore
+                                    recoadSearchVM.pointVM.getGameCount = recoad.WinScore
+                                    recoadSearchVM.pointVM.lostGameCount = recoad.LoseScore
+                                    recoadSearchVM.pointVM.drowGameCount = recoad.DrawScore
                                 }
                             ) {
                                 HStack {

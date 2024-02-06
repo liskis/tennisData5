@@ -1,5 +1,5 @@
 import Foundation
-enum GetPoint: String {
+enum WhichPoint: String {
     case noSelection
     case myTeam
     case opponent

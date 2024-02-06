@@ -1,11 +1,13 @@
 import SwiftUI
 struct HomeTabView: View {
+//    @ObservedObject var dataManageVM = DataManageViewModel()
     @ObservedObject var homeDataVM = HomeDataViewModel()
     @ObservedObject var userVM = UserViewModel()
     var body: some View {
         TabView {
             HomeView(homeDataVM: homeDataVM, userVM: userVM)
                 .onAppear{
+//                    dataManageVM.deleteRealm()
                     homeDataVM.setHomeData()
                     userVM.setUserInfo()
                 }

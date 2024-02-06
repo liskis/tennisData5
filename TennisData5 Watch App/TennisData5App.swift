@@ -4,7 +4,6 @@ import SwiftUI
 struct TennisData5_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-//            HomeTabView()
             HomeView()
         }
     }

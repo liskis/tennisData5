@@ -72,7 +72,7 @@ struct HomeView: View {
                     Text(dataRow.issue.rawValue)
                         .font(.custom("Verdana",size:23))
                         .bold()
-                        .foregroundColor(.gray)
+                        .foregroundColor(.tungsten)
                         .shadow(color: .white, radius: 2)
                 }
                 if dataRow.num != homeDataVM.dateArray.count - 1 {

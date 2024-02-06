@@ -88,6 +88,7 @@ struct PieChartView: View {
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(4)
+                .offset(x:-20)
                 Spacer().frame(height: chartWidth*0.1)
                 VStack{
                     Text(pieChartData[0].nameString)
@@ -117,6 +118,7 @@ struct PieChartView: View {
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(4)
+                .offset(x:20)
                 VStack{
                     Text(pieChartData[3].nameString)
                         .font(.custom("Verdana",size:10))

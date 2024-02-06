@@ -36,12 +36,16 @@ struct SnglsPointBtnArea: View {
     var getPointBtn: some View {
         Button(action: {
             if positionVM.myPosition != .noSelection {
-                pointVM.getPoint = .myTeam
-                pointVM.myPoint += 1
+                pointVM.whichPoint = .myTeam
+                pointVM.getPoint += 1
                 dataManageVM.pointRecoad()
-                positionVM.myPosition = .noSelection
+                if pointVM.allPoint % 2 == 0 {
+                    positionVM.side = .duceSide
+                } else {
+                    positionVM.side = .advantageSide
+                }
                 pointVM.service = .first
-                pointVM.getPoint = .noSelection
+                pointVM.whichPoint = .noSelection
             }
         },label:{
             Text("ポイントをとった")
@@ -68,12 +72,16 @@ struct SnglsPointBtnArea: View {
     var lostPointBtn: some View {
         Button(action: {
             if positionVM.myPosition != .noSelection {
-                pointVM.getPoint = .opponent
-                pointVM.opponentPoint += 1
+                pointVM.whichPoint = .opponent
+                pointVM.lostPoint += 1
                 dataManageVM.pointRecoad()
-                positionVM.myPosition = .noSelection
+                if pointVM.allPoint % 2 == 0 {
+                    positionVM.side = .duceSide
+                } else {
+                    positionVM.side = .advantageSide
+                }
                 pointVM.service = .first
-                pointVM.getPoint = .noSelection
+                pointVM.whichPoint = .noSelection
             }
         },label:{
             Text("ポイントをとられた")
