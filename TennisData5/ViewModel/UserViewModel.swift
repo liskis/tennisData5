@@ -16,7 +16,7 @@ class UserViewModel: ObservableObject {
         } else {
             registration(realm: realm)
         }
-        
+        showRealm()
     }
     
     func change(userInfo: UserModel, realm: Realm){
@@ -26,8 +26,6 @@ class UserViewModel: ObservableObject {
             userInfo.gender = gender.rawValue
             userInfo.modified = Date()
         }
-//        showRealm()
-//        deleteRealm()
     }
     
     func registration(realm: Realm){

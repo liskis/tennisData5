@@ -153,6 +153,14 @@ struct MatchRecordView: View {
                         .animation(.linear,value:10)
                         .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
                 }
+                Text("Please wait for update !")
+                    .bold()
+                    .italic()
+                    .font(.custom("Verdana", size: 12))
+                    .frame(width: 200, height: 50, alignment: .center)
+                    .foregroundColor(.red)
+                    .background(Color.yellow)
+                    .rotationEffect(.degrees(-15))
             }
         .navigationBarTitle("試合履歴", displayMode: .inline)
         .toolbarBackground(.black, for: .navigationBar)

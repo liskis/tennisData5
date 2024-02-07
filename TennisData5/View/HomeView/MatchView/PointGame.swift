@@ -90,26 +90,42 @@ struct PointGame: View {
         }
     }
     var goBackBtn: some View {
-        Button(action: {
-            if pointVM.service == .second {
-                pointVM.service = .first
-            } else if positionVM.myPosition != .noSelection {
-                positionVM.myPosition = .noSelection
-            } else if positionVM.servOrRet != .noSelection && pointVM.getPoint + pointVM.lostPoint == 0 {
-                positionVM.servOrRet = .noSelection
-            } else {
-                dataManageVM.goBack()
-            }
-        },label: {
-            Text("<< 一つ戻る")
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("Verdana", size: 12))
-                .frame(width: 120,height: 40)
-                .background{ Color.ocean }
-                .padding(.leading,10)
-                .cornerRadius(4)
-        })
+        if pointVM.allPoint + pointVM.allgameCount == 0
+            && positionVM.servOrRet == .noSelection {
+            Button(action: {
+                
+            },label: {
+                Text("<< 一つ戻る")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+                    .frame(width: 120,height: 40)
+                    .background{ Color.silver }
+            })
+            .padding(.leading,10)
+            .cornerRadius(4)
+        } else {
+            Button(action: {
+                if pointVM.service == .second {
+                    pointVM.service = .first
+                } else if positionVM.myPosition != .noSelection {
+                    positionVM.myPosition = .noSelection
+                } else if positionVM.servOrRet != .noSelection && pointVM.getPoint + pointVM.lostPoint == 0 {
+                    positionVM.servOrRet = .noSelection
+                } else {
+                    dataManageVM.goBack()
+                }
+            },label: {
+                Text("<< 一つ戻る")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 12))
+                    .frame(width: 120,height: 40)
+                    .background{ Color.ocean }
+            })
+            .padding(.leading,10)
+            .cornerRadius(4)
+        }
     }
     var faultBtnDis: some View {
         Button(action: {
@@ -199,7 +215,6 @@ struct PointGame: View {
             pointVM.getPoint = 0
             pointVM.lostPoint = 0
             matchInfoVM.gameId = UUID().uuidString
-            dataManageVM.showRealm()
         },label:{
             Text("次のゲームへ")
                 .foregroundColor(Color.white)
@@ -221,8 +236,11 @@ struct PointGame: View {
             } else if pointVM.getPoint == pointVM.lostPoint && pointVM.allPoint != 0{
                 pointVM.drowGameCount += 1
             }
-            dataManageVM.matchRecoad()
+            if pointVM.allPoint != 0 {
+                dataManageVM.gameRecoad()
+            }
             dataManageVM.setRecoad()
+            dataManageVM.matchRecoad()
             pointVM.service = .first
             positionVM.myPosition = .noSelection
             positionVM.servOrRet = .noSelection

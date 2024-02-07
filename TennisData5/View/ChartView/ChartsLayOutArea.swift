@@ -15,7 +15,7 @@ struct ChartsLayOutArea: View {
                 Spacer()
             }
             BarChartView(barChartData: $chartDataVM.firstSvIn)
-            Spacer().frame(height: 15)
+            Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.secondSvInCount)）セカンドサーブの確率")
                     .font(.custom("Verdana",size:10))
@@ -24,7 +24,7 @@ struct ChartsLayOutArea: View {
                 Spacer()
             }
             BarChartView(barChartData: $chartDataVM.secondSvIn)
-            Spacer().frame(height: 15)
+            Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.noDoubleFaultCount)）ダブルフォルトをしない確率")
                     .font(.custom("Verdana",size:10))
@@ -33,7 +33,7 @@ struct ChartsLayOutArea: View {
                 Spacer()
             }
             BarChartView(barChartData: $chartDataVM.noDoubleFault)
-            Spacer().frame(height: 15)
+            Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.atFirstSvCount)）ファーストサーブ時のポイント取得率")
                     .font(.custom("Verdana",size:10))
@@ -42,7 +42,7 @@ struct ChartsLayOutArea: View {
                 Spacer()
             }
             BarChartView(barChartData: $chartDataVM.atFirstSv)
-            Spacer().frame(height: 15)
+            Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.atSecondSvCount)）セカンドサーブ時のポイント取得率")
                     .font(.custom("Verdana",size:10))
@@ -51,10 +51,20 @@ struct ChartsLayOutArea: View {
                 Spacer()
             }
             BarChartView(barChartData: $chartDataVM.atSecondSv)
-            Spacer().frame(height:40)
+            Spacer().frame(height:50)
             HStack{
                 ZStack{
-                    PieChartView(pieChartData: $chartDataVM.getAndLostPoint, styleScale: $chartDataVM.getAndLostPointStyleScale)
+                    if chartDataVM.getAndLostPoint[2].nameString == "init" {
+                        PieChartView(
+                            pieChartData: $chartDataVM.getAndLostPoint,
+                            styleScale: $chartDataVM.styleScaleDis
+                        )
+                    } else {
+                        PieChartView(
+                            pieChartData: $chartDataVM.getAndLostPoint,
+                            styleScale: $chartDataVM.getAndLostPointStyleScale
+                        )
+                    }
                     Text("とったポイントと取られたポイント")
                         .font(.custom("Verdana",size:10))
                         .bold()
@@ -62,7 +72,17 @@ struct ChartsLayOutArea: View {
                         .offset(y:chartWidth*0.03)
                 }
                 ZStack{
-                    PieChartView(pieChartData: $chartDataVM.keepAndBreak, styleScale: $chartDataVM.keepAndBreakStyleScale)
+                    if chartDataVM.keepAndBreak[4].nameString == "init"{
+                        PieChartView(
+                            pieChartData: $chartDataVM.keepAndBreak,
+                            styleScale: $chartDataVM.keepAndBreakStyleScaleDis
+                        )
+                    } else {
+                        PieChartView(
+                            pieChartData: $chartDataVM.keepAndBreak,
+                            styleScale: $chartDataVM.keepAndBreakStyleScale
+                        )
+                    }
                     Text("キープ率とブレーク率")
                         .font(.custom("Verdana",size:10))
                         .bold()

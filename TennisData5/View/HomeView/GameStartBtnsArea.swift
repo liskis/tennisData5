@@ -29,10 +29,7 @@ struct GameStartBtnsArea: View {
             gameType = .pointGame
             naviTitle = "シングルスポイントゲーム"
         }) {
-            VStack{
-                Text("シングルスで")
-                Text("ポイントゲーム")
-            }
+            Text("シングルスで\nポイントゲーム")
             .frame(maxWidth: .infinity, minHeight: 30)
         }
         .padding(.leading, 10)
@@ -54,11 +51,8 @@ struct GameStartBtnsArea: View {
             gameType = .pointGame
             naviTitle = "ダブルスポイントゲーム"
         }) {
-            VStack{
-                Text("ダブルスで")
-                Text("ポイントゲーム")
-            }
-            .frame(maxWidth: .infinity, minHeight: 30)
+            Text("ダブルスで\nポイントゲーム")
+                .frame(maxWidth: .infinity, minHeight: 30)
             
         }
         .padding(.trailing, 10)
@@ -77,8 +71,16 @@ struct GameStartBtnsArea: View {
         Button(action: {
             // action
         }) {
-            VStack{
-                Text("セットマッチ")
+            ZStack{
+                Text("セットマッチを\n始める")
+                Text("Please wait for update !")
+                    .frame(width: 150,height: 20)
+                    .bold()
+                    .italic()
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(.red)
+                    .background(Color.yellow)
+                    .rotationEffect(.degrees(-15))
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }
@@ -90,8 +92,17 @@ struct GameStartBtnsArea: View {
         Button(action: {
             // action
         }) {
-            VStack{
-                Text("タイブレーク")
+            ZStack{
+                Text("タイブレーク\n始める")
+                Text("Please wait for update !")
+                    .frame(width: 150,height: 20)
+                    .bold()
+                    .italic()
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(.red)
+                    .background(Color.yellow)
+                    .rotationEffect(.degrees(-15))
+                    
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }
@@ -103,9 +114,16 @@ struct GameStartBtnsArea: View {
         Button(action: {
                 // action
         }) {
-            VStack{
-                Text("コーチ目線で")
-                Text("ポイントゲーム")
+            ZStack{
+                Text("コーチ目線で\nポイントゲーム")
+                Text("Please wait for update !")
+                    .frame(width: 150,height: 20)
+                    .bold()
+                    .italic()
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(.red)
+                    .background(Color.yellow)
+                    .rotationEffect(.degrees(-15))
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }
@@ -117,9 +135,16 @@ struct GameStartBtnsArea: View {
         Button(action: {
                 // action
         }) {
-            VStack{
-                Text("コーチ目線で")
-                Text("セットマッチ")
+            ZStack{
+                Text("コーチ目線で\nセットマッチ")
+                Text("Please wait for update !")
+                    .frame(width: 150,height: 20)
+                    .bold()
+                    .italic()
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(.red)
+                    .background(Color.yellow)
+                    .rotationEffect(.degrees(-15))
             }
             .frame(maxWidth: .infinity, minHeight: 30)
         }

@@ -304,7 +304,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		091AC3E52B4AE46F007E68F0 /* enum */ = {
+		091AC3E52B4AE46F007E68F0 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
 				09992D4D2B5134BE0049B877 /* Issue.swift */,
@@ -326,7 +326,7 @@
 				09722A042B6F990D0046FAF8 /* Relation.swift */,
 				09722A102B70C1AD0046FAF8 /* GamePosition.swift */,
 			);
-			path = enum;
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		0927E0962B41A69F0069BEF1 = {
@@ -362,7 +362,7 @@
 			children = (
 				097229982B6244930046FAF8 /* DateExtention.swift */,
 				092B2B3A2B5177370046BDBF /* ViewModel */,
-				091AC3E52B4AE46F007E68F0 /* enum */,
+				091AC3E52B4AE46F007E68F0 /* Enum */,
 				09BC07052B447BD9008A44FD /* Model */,
 				097229FD2B6F766E0046FAF8 /* RealmModel */,
 				0927E0FE2B41A7390069BEF1 /* View */,

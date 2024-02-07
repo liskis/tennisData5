@@ -68,7 +68,7 @@ struct LineChartView: View {
             "data1": Circle().strokeBorder(lineWidth: 5),
             "data2": Circle().strokeBorder(lineWidth: 5)
         ])
-//        .chartXAxis(.hidden)
+        .chartXAxis(.hidden)
         .chartYAxis(.hidden)
         .chartYScale(domain: [minAxis, 100])
         .chartXScale(domain: [0,data3.count - 1])

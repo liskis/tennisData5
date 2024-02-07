@@ -47,24 +47,39 @@ struct PieChartView: View {
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.white)
-                Text(String(format: "%.0f",pieChartData[0].value))
-                    .font(.custom("Verdana",size:14))
-                    .bold()
-                    .foregroundColor(.white)
+                if pieChartData[2].nameString != "init" {
+                    Text(String(format: "%.0f",pieChartData[0].value))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                } else {
+                    Text(String(format: "%.0f",0))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
             }
             .background(Color.black.opacity(0.5))
             .padding(4)
             .cornerRadius(4)
             Spacer()
             VStack{
+                
                 Text(pieChartData[1].nameString)
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.white)
+                if pieChartData[2].nameString != "init" {
                 Text(String(format: "%.0f",pieChartData[1].value))
                     .font(.custom("Verdana",size:14))
                     .bold()
                     .foregroundColor(.white)
+                } else {
+                    Text(String(format: "%.0f",0))
+                        .font(.custom("Verdana",size:14))
+                        .bold()
+                        .foregroundColor(.white)
+                }
             }
             .background(Color.black.opacity(0.5))
             .padding(4)
@@ -81,10 +96,17 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.1f",pieChartData[1].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+                    if pieChartData[4].nameString != "init" {
+                        Text(String(format: "%.1f",pieChartData[1].value))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    } else {
+                        Text(String(format: "%.1f",0))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    }
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(4)
@@ -95,10 +117,17 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.1f",pieChartData[0].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+                    if pieChartData[4].nameString != "init" {
+                        Text(String(format: "%.1f",pieChartData[0].value))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    } else {
+                        Text(String(format: "%.1f",0))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    }
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(4)
@@ -111,10 +140,17 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.1f",pieChartData[2].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+                    if pieChartData[4].nameString != "init" {
+                        Text(String(format: "%.1f",pieChartData[2].value))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    } else {
+                        Text(String(format: "%.1f",0))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    }
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(4)
@@ -124,10 +160,17 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.1f",pieChartData[3].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+                    if pieChartData[4].nameString != "init" {
+                        Text(String(format: "%.1f",pieChartData[3].value))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    } else {
+                        Text(String(format: "%.1f",0))
+                            .font(.custom("Verdana",size:14))
+                            .bold()
+                            .foregroundColor(.white)
+                    }
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(4)
@@ -144,10 +187,10 @@ struct PieChartView: View {
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.white)
-                Text(String(format: "%.0f",pieChartData[0].value))
-                    .font(.custom("Verdana",size:14))
-                    .bold()
-                    .foregroundColor(.white)
+//                Text(String(format: "%.0f",pieChartData[0].value))
+//                    .font(.custom("Verdana",size:14))
+//                    .bold()
+//                    .foregroundColor(.white)
             }
             .background(Color.black.opacity(0.5))
             .offset(y:chartWidth*0.1)
@@ -159,10 +202,10 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.0f",pieChartData[1].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+//                    Text(String(format: "%.0f",pieChartData[1].value))
+//                        .font(.custom("Verdana",size:14))
+//                        .bold()
+//                        .foregroundColor(.white)
                 }
                 .background(Color.black.opacity(0.5))
                 .offset(x:-chartWidth*0.2)
@@ -171,10 +214,10 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.0f",pieChartData[2].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+//                    Text(String(format: "%.0f",pieChartData[2].value))
+//                        .font(.custom("Verdana",size:14))
+//                        .bold()
+//                        .foregroundColor(.white)
                 }
                 .background(Color.black.opacity(0.5))
             }
@@ -190,10 +233,10 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.0f",pieChartData[1].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+//                    Text(String(format: "%.0f",pieChartData[1].value))
+//                        .font(.custom("Verdana",size:14))
+//                        .bold()
+//                        .foregroundColor(.white)
                 }
                 .background(Color.black.opacity(0.5))
                 .offset(x:chartWidth*0.2)
@@ -202,10 +245,10 @@ struct PieChartView: View {
                         .font(.custom("Verdana",size:10))
                         .bold()
                         .foregroundColor(.white)
-                    Text(String(format: "%.0f",pieChartData[0].value))
-                        .font(.custom("Verdana",size:14))
-                        .bold()
-                        .foregroundColor(.white)
+//                    Text(String(format: "%.0f",pieChartData[0].value))
+//                        .font(.custom("Verdana",size:14))
+//                        .bold()
+//                        .foregroundColor(.white)
                 }
                 .background(Color.black.opacity(0.5))
                 Spacer()
@@ -216,10 +259,10 @@ struct PieChartView: View {
                     .font(.custom("Verdana",size:10))
                     .bold()
                     .foregroundColor(.white)
-                Text(String(format: "%.0f",pieChartData[2].value))
-                    .font(.custom("Verdana",size:14))
-                    .bold()
-                    .foregroundColor(.white)
+//                Text(String(format: "%.0f",pieChartData[2].value))
+//                    .font(.custom("Verdana",size:14))
+//                    .bold()
+//                    .foregroundColor(.white)
             }
             .background(Color.black.opacity(0.5))
             .offset(y:-chartWidth*0.15)
