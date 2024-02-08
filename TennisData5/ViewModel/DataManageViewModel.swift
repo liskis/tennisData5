@@ -211,7 +211,193 @@ class DataManageViewModel: ObservableObject {
             value: Double(getPoints.count + lostPoints.count),
             labelType: .twoLabels
         ))
+        // pointRateBySvOrVoly
+        let serviceGamePoints = results.filter{
+            $0.servOrRet == "serviceGame"
+        }
+        if serviceGamePoints.count != 0 {
+            var serverGetRate: Double = 0
+            var volleyerAtSvGetRate: Double = 0
+            if serverPoints.count != 0 {
+                let getServerPoints = serverPoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                serverGetRate = round( ( Double(getServerPoints.count) / Double(serverPoints.count) ) * 1000 ) / 10
+            }
+            
+            let volleyerAtSvPoints = results.filter{
+                $0.servOrRet == "serviceGame"
+                && $0.myPosition == "volleyer"
+            }
+            if volleyerAtSvPoints.count != 0 {
+                let getVolleyerAtSvPoints = volleyerAtSvPoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                volleyerAtSvGetRate = round( ( Double(getVolleyerAtSvPoints.count) / Double(volleyerAtSvPoints.count) ) * 1000 ) / 10
+            }
+            
+            chartDataVM.pointRateBySvOrVoly = []
+            chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
+                name: "data1",
+                nameString: "サーバー",
+                value: serverGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
+                name: "data2",
+                nameString: "ボレーヤー",
+                value: volleyerAtSvGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
+                name: "blank",
+                nameString: "",
+                value: serverGetRate + volleyerAtSvGetRate,
+                labelType: .twoLabels
+            ))
+        }
+        // pointRateByRetOrVoly
+        let returnGamePoints = results.filter{
+            $0.servOrRet == "returnGame"
+        }
+        if returnGamePoints.count != 0 {
+            var returnerGetRate: Double = 0
+            var volleyerAtRetGetRate: Double = 0
+            let returnerPoints = results.filter{
+                $0.myPosition == "returner"
+            }
+            if returnerPoints.count != 0 {
+                let getReturnerPoints = returnerPoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                returnerGetRate = round( ( Double(getReturnerPoints.count) / Double(returnerPoints.count) ) * 1000 ) / 10
+            }
+            
+            let volleyerAtRetPoints = results.filter{
+                $0.servOrRet == "returngame"
+                && $0.myPosition == "volleyer"
+            }
+            if volleyerAtRetPoints.count != 0 {
+                let getVolleyerAtRetPoints = volleyerAtRetPoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                volleyerAtRetGetRate = round( ( Double(getVolleyerAtRetPoints.count) / Double(volleyerAtRetPoints.count) ) * 1000 ) / 10
+            }
+            
+            chartDataVM.pointRateByRetOrVoly = []
+            chartDataVM.pointRateByRetOrVoly.append(PieChartDataModel(
+                name: "data1",
+                nameString: "リターナー",
+                value: returnerGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateByRetOrVoly.append(PieChartDataModel(
+                name: "data2",
+                nameString: "ボレーヤー",
+                value: volleyerAtRetGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateByRetOrVoly.append(PieChartDataModel(
+                name: "blank",
+                nameString: "",
+                value: returnerGetRate + volleyerAtRetGetRate,
+                labelType: .twoLabels
+            ))
+        }
         
+        // pointRateByServiceSide
+       
+        if serviceGamePoints.count != 0 {
+            var duceGetRate: Double = 0
+            var advGetRate: Double = 0
+            
+            let ducePoints = serviceGamePoints.filter{
+                $0.side == "duceSide"
+            }
+            if ducePoints.count != 0 {
+                let getDucePoints = ducePoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                duceGetRate = round( ( Double(getDucePoints.count) / Double(ducePoints.count) ) * 1000 ) / 10
+            }
+            
+            let advPoints = serviceGamePoints.filter{
+                $0.side == "duceSide"
+            }
+            if advPoints.count != 0 {
+                let getAdvPoints = advPoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
+            }
+            chartDataVM.pointRateByServiceSide = []
+            chartDataVM.pointRateByServiceSide.append(PieChartDataModel(
+                name: "data1",
+                nameString: "フォア\nサイド",
+                value: duceGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateByServiceSide.append(PieChartDataModel(
+                name: "data2",
+                nameString: "バック\nサイド",
+                value: advGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateByServiceSide.append(PieChartDataModel(
+                name: "blank",
+                nameString: "",
+                value: duceGetRate + advGetRate,
+                labelType: .twoLabels
+            ))
+        }
+        // pointRateByReturnSide
+        
+        if returnGamePoints.count != 0 {
+            var duceGetRate: Double = 0
+            var advGetRate: Double = 0
+            
+            let ducePoints = returnGamePoints.filter{
+                ( $0.side == "duceSide" && $0.myPosition == "returner" )
+                || ( $0.side == "advantageSide" && $0.myPosition == "volleyer")
+            }
+            if ducePoints.count != 0 {
+                let getDucePoints = ducePoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                duceGetRate = round( ( Double(getDucePoints.count) / Double(ducePoints.count) ) * 1000 ) / 10
+            }
+            
+            let advPoints = returnGamePoints.filter{
+                ( $0.side == "duceSide" && $0.myPosition == "volleyer" )
+                || ( $0.side == "advantageSide" && $0.myPosition == "returner")
+            }
+            if advPoints.count != 0 {
+                let getAdvPoints = advPoints.filter{
+                    $0.whichPoint == "myTeam"
+                }
+                advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
+            }
+            
+            chartDataVM.pointRateByReturnSide = []
+            chartDataVM.pointRateByReturnSide.append(PieChartDataModel(
+                name: "data1",
+                nameString: "フォア\nサイド",
+                value: duceGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateByReturnSide.append(PieChartDataModel(
+                name: "data2",
+                nameString: "バック\nサイド",
+                value: advGetRate,
+                labelType: .twoLabels
+            ))
+            chartDataVM.pointRateByReturnSide.append(PieChartDataModel(
+                name: "blank",
+                nameString: "",
+                value: duceGetRate + advGetRate,
+                labelType: .twoLabels
+            ))
+        }
     }
     
     func setGameChart(){
@@ -225,52 +411,70 @@ class DataManageViewModel: ObservableObject {
             // keepAndBreakPoint
             var keepRate: Double = 0
             var breakRate: Double = 0
-            var serviceLostRate: Double = 0
-            var returnLostRate: Double = 0
             let serviceGames = games.filter{
                 $0.servOrRet == "serviceGame"
             }
             if serviceGames.count != 0 {
                 let keepGames = serviceGames.filter{ $0.getPoint > $0.lostPoint}
-                let serviceLostGames = serviceGames.filter{ $0.getPoint < $0.lostPoint}
                 keepRate = round((Double(keepGames.count)/Double(serviceGames.count)) * 1000) / 10
-                serviceLostRate = round((Double(serviceLostGames.count)/Double(serviceGames.count)) * 1000) / 10
             }
             let returnGames = games.filter{
                 $0.servOrRet == "returnGame"
             }
             if returnGames.count != 0 {
                 let breakGames = returnGames.filter{ $0.getPoint > $0.lostPoint}
-                let returnLostGames = returnGames.filter{ $0.getPoint < $0.lostPoint}
                 breakRate = round((Double(breakGames.count)/Double(returnGames.count)) * 1000) / 10
-                returnLostRate = round((Double(returnLostGames.count)/Double(returnGames.count)) * 1000) / 10
             }
-            chartDataVM.keepAndBreak = []
-            chartDataVM.keepAndBreak.append(PieChartDataModel(
-                name: "data1",
-                nameString: "キープ率",
-                value: keepRate,
-                labelType: .keepAndBreak))
-            chartDataVM.keepAndBreak.append(PieChartDataModel(
-                name: "data2",
-                nameString: "ブレーク率",
-                value: breakRate,
-                labelType: .keepAndBreak))
-            chartDataVM.keepAndBreak.append(PieChartDataModel(
-                name: "data3",
-                nameString: "サービス\nロスト率",
-                value: serviceLostRate,
-                labelType: .keepAndBreak))
-            chartDataVM.keepAndBreak.append(PieChartDataModel(
-                name: "data4",
-                nameString: "リターン\nロスト率",
-                value: returnLostRate,
-                labelType: .keepAndBreak))
-            chartDataVM.keepAndBreak.append(PieChartDataModel(
-                name: "blank",
-                nameString: "",
-                value: keepRate + breakRate + serviceLostRate + returnLostRate,
-                labelType: .keepAndBreak))
+            var brankRate:Double = 0
+            if keepRate + breakRate >= 100 {
+                brankRate = keepRate + breakRate
+                chartDataVM.keepAndBreak = []
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "data1",
+                    nameString: "キープ率",
+                    value: keepRate,
+                    labelType: .twoLabels))
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "data2",
+                    nameString: "ブレーク率",
+                    value: breakRate,
+                    labelType: .twoLabels))
+                
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "blank",
+                    nameString: "",
+                    value: brankRate,
+                    labelType: .twoLabels))
+                chartDataVM.keepAndBreakStyleScale = [
+                    "data1": .ocean, "data2": .aqua, "blank": .white
+                ]
+            } else {
+                chartDataVM.keepAndBreak = []
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "data1",
+                    nameString: "キープ率",
+                    value: keepRate,
+                    labelType: .threeLabels))
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "data2",
+                    nameString: "ブレーク率",
+                    value: breakRate,
+                    labelType: .threeLabels))
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "data3",
+                    nameString: "あと",
+                    value:  100 - keepRate - breakRate,
+                    labelType: .threeLabels))
+                chartDataVM.keepAndBreak.append(PieChartDataModel(
+                    name: "blank",
+                    nameString: "",
+                    value: 100,
+                    labelType: .threeLabels))
+                chartDataVM.keepAndBreakStyleScale = [
+                    "data1": .ocean, "data2": .aqua, "data3": .red, "blank": .white
+                ]
+            }
+            
         }
     }
     

@@ -37,15 +37,38 @@ class ChartDataViewModel: ObservableObject {
         "data1": .ocean, "data2": .cantaloupe, "blank": .white
     ]
     @Published var keepAndBreak: [PieChartDataModel] = [
-        .init(name: "data1", nameString: "キープ率", value: 1, labelType: .keepAndBreak),
-        .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .keepAndBreak),
-        .init(name: "data3", nameString: "サービス\nロスト率", value: 1, labelType: .keepAndBreak),
-        .init(name: "data4", nameString: "リターン\nロスト率", value: 1, labelType: .keepAndBreak),
-        .init(name: "blank", nameString: "init", value: 4, labelType: .keepAndBreak)
+        .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
+        
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
     ]
     @Published var keepAndBreakStyleScale: KeyValuePairs<String, Color> = [
-        "data1": .ocean, "data2": .aqua, "data3": .tangerine, "data4": .cantaloupe ,"blank": .white
+        "data1": .ocean, "data2": .aqua, "blank": .white
     ]
+    @Published var pointRateBySvOrVoly: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateByRetOrVoly: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "リターナー", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateByServiceSide: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateByReturnSide: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateStyleScale: KeyValuePairs<String, Color> = [
+        "data1": .ocean, "data2": .aqua, "blank": .white
+    ]
+    
     @Published var keepAndBreakStyleScaleDis: KeyValuePairs<String, Color> = [
         "data1": .silver, "data2": .silver, "data3": .silver, "data4": .silver ,"blank": .white
     ]

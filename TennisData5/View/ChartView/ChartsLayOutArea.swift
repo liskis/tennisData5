@@ -72,7 +72,7 @@ struct ChartsLayOutArea: View {
                         .offset(y:chartWidth*0.03)
                 }
                 ZStack{
-                    if chartDataVM.keepAndBreak[4].nameString == "init"{
+                    if chartDataVM.keepAndBreak[2].nameString == "init"{
                         PieChartView(
                             pieChartData: $chartDataVM.keepAndBreak,
                             styleScale: $chartDataVM.keepAndBreakStyleScaleDis
@@ -90,84 +90,208 @@ struct ChartsLayOutArea: View {
                         .offset(y:chartWidth*0.03)
                 }
             }
-            if matchInfoVM.matchFormat == .singles {
-                HStack{
-                    ZStack{
-                        PieChartView(pieChartData: $chartDataVM.winnerPoint,styleScale: $chartDataVM.styleScaleDis)
-                        Text("決めたポイントの内訳")
-                            .font(.custom("Verdana",size:10))
-                            .bold()
-                            .foregroundColor(.silver)
-                            .offset(y:chartWidth*0.03)
+            
+            HStack{
+                ZStack{
+                    if chartDataVM.pointRateBySvOrVoly[2].nameString == "init" {
+                        PieChartView(
+                            pieChartData: $chartDataVM.pointRateByServiceSide,
+                            styleScale: $chartDataVM.styleScaleDis
+                        )
+                    } else {
+                        PieChartView(
+                            pieChartData: $chartDataVM.pointRateByServiceSide,
+                            styleScale: $chartDataVM.pointRateStyleScale
+                        )
                     }
-                    ZStack{
-                        PieChartView(pieChartData: $chartDataVM.missPoint,styleScale: $chartDataVM.styleScaleDis)
-                        Text("ミスの内訳")
-                            .font(.custom("Verdana",size:10))
-                            .bold()
-                            .foregroundColor(.silver)
-                            .offset(y:chartWidth*0.03)
-                    }
+                    Text("サービスサイドのポイント取得率")
+                        .font(.custom("Verdana",size:9))
+                        .bold()
+                        .foregroundColor(.tungsten)
+                        .offset(y:chartWidth*0.03)
                 }
-                .offset(y:-chartWidth*0.4)
-                HStack{
-                    ZStack{
-                        PieChartView(pieChartData: $chartDataVM.getPoint,styleScale: $chartDataVM.styleScaleDis)
-                        Text("とったポイントの内訳")
-                            .font(.custom("Verdana",size:10))
-                            .bold()
-                            .foregroundColor(.silver)
-                            .offset(y:chartWidth*0.03)
+                ZStack{
+                    if chartDataVM.pointRateByReturnSide[2].nameString == "init"{
+                        PieChartView(
+                            pieChartData: $chartDataVM.pointRateByReturnSide,
+                            styleScale: $chartDataVM.styleScaleDis
+                        )
+                    } else {
+                        PieChartView(
+                            pieChartData: $chartDataVM.pointRateByReturnSide,
+                            styleScale: $chartDataVM.pointRateStyleScale
+                        )
                     }
-                    ZStack{
-                        PieChartView(pieChartData: $chartDataVM.lostPoint,styleScale: $chartDataVM.styleScaleDis)
-                        Text("とられたポイントの内訳")
-                            .font(.custom("Verdana",size:10))
-                            .bold()
-                            .foregroundColor(.silver)
-                            .offset(y:chartWidth*0.03)
+                    Text("リターンサイドのポイント取得率")
+                        .font(.custom("Verdana",size:10))
+                        .bold()
+                        .foregroundColor(.tungsten)
+                        .offset(y:chartWidth*0.03)
+                }
+            }
+            .offset(y:-chartWidth*0.4)
+            
+            if matchInfoVM.matchFormat == .singles {
+                ZStack{
+                    HStack{
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.winnerPoint,styleScale: $chartDataVM.styleScaleDis)
+                            Text("決めたポイントの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.missPoint,styleScale: $chartDataVM.styleScaleDis)
+                            Text("ミスの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
                     }
+                    Text("Please wait for update !")
+                        .frame(width: 180,height: 20)
+                        .bold()
+                        .italic()
+                        .font(.custom("Verdana", size: 12))
+                        .foregroundColor(.red)
+                        .background(Color.yellow)
+                        .rotationEffect(.degrees(-10))
+                        .offset(y:-chartWidth*0.3)
                 }
                 .offset(y:-chartWidth*0.8)
+                ZStack{
+                    HStack{
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.getPoint,styleScale: $chartDataVM.styleScaleDis)
+                            Text("とったポイントの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.lostPoint,styleScale: $chartDataVM.styleScaleDis)
+                            Text("とられたポイントの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                    }
+                    Text("Please wait for update !")
+                        .frame(width: 180,height: 20)
+                        .bold()
+                        .italic()
+                        .font(.custom("Verdana", size: 12))
+                        .foregroundColor(.red)
+                        .background(Color.yellow)
+                        .rotationEffect(.degrees(-10))
+                        .offset(y:-chartWidth*0.3)
+                }
+                .offset(y:-chartWidth*1.2)
             } else {
                 HStack{
                     ZStack{
-                        PieChartView(pieChartData: $chartDataVM.winnerPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
-                        Text("決めたポイントの内訳")
-                            .font(.custom("Verdana",size:10))
+                        if chartDataVM.pointRateBySvOrVoly[2].nameString == "init" {
+                            PieChartView(
+                                pieChartData: $chartDataVM.pointRateBySvOrVoly,
+                                styleScale: $chartDataVM.styleScaleDis
+                            )
+                        } else {
+                            PieChartView(
+                                pieChartData: $chartDataVM.pointRateBySvOrVoly,
+                                styleScale: $chartDataVM.pointRateStyleScale
+                            )
+                        }
+                        Text("サーバーとボレーヤーのポイント取得率")
+                            .font(.custom("Verdana",size:9))
                             .bold()
-                            .foregroundColor(.silver)
+                            .foregroundColor(.tungsten)
                             .offset(y:chartWidth*0.03)
                     }
                     ZStack{
-                        PieChartView(pieChartData: $chartDataVM.missPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
-                        Text("ミスの内訳")
-                            .font(.custom("Verdana",size:10))
+                        if chartDataVM.pointRateByReturnSide[2].nameString == "init"{
+                            PieChartView(
+                                pieChartData: $chartDataVM.pointRateByRetOrVoly,
+                                styleScale: $chartDataVM.styleScaleDis
+                            )
+                        } else {
+                            PieChartView(
+                                pieChartData: $chartDataVM.pointRateByRetOrVoly,
+                                styleScale: $chartDataVM.pointRateStyleScale
+                            )
+                        }
+                        Text("リターナーとボレーヤーのポイント取得率")
+                            .font(.custom("Verdana",size:9))
                             .bold()
-                            .foregroundColor(.silver)
-                            .offset(y:chartWidth*0.03)
-                    }
-                }
-                .offset(y:-chartWidth*0.4)
-                HStack{
-                    ZStack{
-                        PieChartView(pieChartData: $chartDataVM.getPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
-                        Text("とったポイントの内訳")
-                            .font(.custom("Verdana",size:10))
-                            .bold()
-                            .foregroundColor(.silver)
-                            .offset(y:chartWidth*0.03)
-                    }
-                    ZStack{
-                        PieChartView(pieChartData: $chartDataVM.lostPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
-                        Text("とられたポイントの内訳")
-                            .font(.custom("Verdana",size:10))
-                            .bold()
-                            .foregroundColor(.silver)
+                            .foregroundColor(.tungsten)
                             .offset(y:chartWidth*0.03)
                     }
                 }
                 .offset(y:-chartWidth*0.8)
+                ZStack{
+                    HStack{
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.winnerPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
+                            Text("決めたポイントの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.missPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
+                            Text("ミスの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                    }
+                    Text("Please wait for update !")
+                        .frame(width: 180,height: 20)
+                        .bold()
+                        .italic()
+                        .font(.custom("Verdana", size: 12))
+                        .foregroundColor(.red)
+                        .background(Color.yellow)
+                        .rotationEffect(.degrees(-10))
+                        .offset(y:-chartWidth*0.3)
+                }
+                .offset(y:-chartWidth*1.2)
+                ZStack{
+                    HStack{
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.getPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
+                            Text("とったポイントの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                        ZStack{
+                            PieChartView(pieChartData: $chartDataVM.lostPointDbls,styleScale: $chartDataVM.styleScaleDisDbls)
+                            Text("とられたポイントの内訳")
+                                .font(.custom("Verdana",size:10))
+                                .bold()
+                                .foregroundColor(.silver)
+                                .offset(y:chartWidth*0.03)
+                        }
+                    }
+                    Text("Please wait for update !")
+                        .frame(width: 180,height: 20)
+                        .bold()
+                        .italic()
+                        .font(.custom("Verdana", size: 12))
+                        .foregroundColor(.red)
+                        .background(Color.yellow)
+                        .rotationEffect(.degrees(-10))
+                        .offset(y:-chartWidth*0.3)
+                }
+                .offset(y:-chartWidth*1.6)
             }
             Spacer()
         }

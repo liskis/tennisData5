@@ -11,11 +11,23 @@ struct DblsPointBtnArea: View {
                 } else {
                     getPointBtn
                 }
-                HStack(spacing:1){
-                    myWinnerBtn
-                    partnerWinnerBtn
+                ZStack{
+                    VStack(spacing:1){
+                        HStack(spacing:1){
+                            myWinnerBtn
+                            partnerWinnerBtn
+                        }
+                        opponentMissBtn
+                    }
+                    Text("Please wait for update !")
+                        .frame(width: 180,height: 20)
+                        .bold()
+                        .italic()
+                        .font(.custom("Verdana", size: 12))
+                        .foregroundColor(.red)
+                        .background(Color.yellow)
+                        .rotationEffect(.degrees(-10))
                 }
-                opponentMissBtn
             }.padding(.leading,10)
             VStack(spacing:1){
                 if positionVM.myPosition == .noSelection {
@@ -23,10 +35,22 @@ struct DblsPointBtnArea: View {
                 } else {
                     lostPointBtn
                 }
-                opponentWinerBtn
-                HStack(spacing:1){
-                    myMissBtn
-                    partnerMissBtn
+                ZStack{
+                    VStack(spacing:1){
+                        opponentWinerBtn
+                        HStack(spacing:1){
+                            myMissBtn
+                            partnerMissBtn
+                        }
+                    }
+                    Text("Please wait for update !")
+                        .frame(width: 180,height: 20)
+                        .bold()
+                        .italic()
+                        .font(.custom("Verdana", size: 12))
+                        .foregroundColor(.red)
+                        .background(Color.yellow)
+                        .rotationEffect(.degrees(-10))
                 }
             }.padding(.trailing,10)
         }
@@ -48,9 +72,9 @@ struct DblsPointBtnArea: View {
                 pointVM.whichPoint = .myTeam
                 pointVM.getPoint += 1
                 dataManageVM.pointRecoad()
-                if pointVM.allPoint % 2 == 0 {
+                if positionVM.side == .advantageSide {
                     positionVM.side = .duceSide
-                } else {
+                } else if positionVM.side == .duceSide {
                     positionVM.side = .advantageSide
                 }
                 if positionVM.servOrRet == .returnGame {
@@ -90,9 +114,9 @@ struct DblsPointBtnArea: View {
                 pointVM.whichPoint = .opponent
                 pointVM.lostPoint += 1
                 dataManageVM.pointRecoad()
-                if pointVM.allPoint % 2 == 0 {
+                if positionVM.side == .advantageSide {
                     positionVM.side = .duceSide
-                } else {
+                } else if positionVM.side == .duceSide {
                     positionVM.side = .advantageSide
                 }
                 if positionVM.servOrRet == .returnGame {

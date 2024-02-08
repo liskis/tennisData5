@@ -171,11 +171,13 @@ struct PointGame: View {
             }
             pointVM.shot = .serve
             dataManageVM.pointRecoad()
-            if pointVM.allPoint % 2 == 0 {
+            
+            if positionVM.side == .advantageSide {
                 positionVM.side = .duceSide
-            } else {
+            } else if positionVM.side == .duceSide {
                 positionVM.side = .advantageSide
             }
+            
             if matchInfoVM.matchFormat == .doubles && positionVM.servOrRet == .returnGame {
                 if positionVM.myPosition == .volleyer {
                     positionVM.myPosition = .returner
