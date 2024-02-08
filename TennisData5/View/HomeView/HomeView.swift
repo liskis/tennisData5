@@ -50,6 +50,12 @@ struct HomeView: View {
             if userVM.showingPopUp {
                 UserInfoPopup(userVM: userVM)
             }
+            if userVM.levelAndModePopUp {
+                LevelAndModePopUp(
+                    userVM: userVM,
+                    matchInfoVM: matchInfoVM
+                )
+            }
         }
     }
     var winLoseArrayArea: some View {

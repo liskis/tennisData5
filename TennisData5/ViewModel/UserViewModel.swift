@@ -2,6 +2,7 @@ import Foundation
 import RealmSwift
 class UserViewModel: ObservableObject {
     @Published var showingPopUp: Bool = false
+    @Published var levelAndModePopUp: Bool = false
     @Published var myName: String = "ゲスト"
     @Published var dominant: Dominant = .noSelection
     @Published var gender: Gender = .noSelection

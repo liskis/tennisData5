@@ -8,7 +8,8 @@ struct PointGame: View {
     @ObservedObject var chartDataVM: ChartDataViewModel
     @ObservedObject var homeDataVM: HomeDataViewModel
     @ObservedObject var userVM: UserViewModel
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
+    @State var isPresented: Bool = false
     var body: some View {
         NavigationStack {
             VStack(spacing:0){
@@ -246,12 +247,8 @@ struct PointGame: View {
             pointVM.service = .first
             positionVM.myPosition = .noSelection
             positionVM.servOrRet = .noSelection
-            pointVM.getPoint = 0
-            pointVM.lostPoint = 0
-            matchInfoVM.gameId = ""
-            matchInfoVM.setId = ""
             homeDataVM.setHomeData()
-            dismiss()
+            isPresented = true
         },label:{
             Text("試合を保存して終了する")
                 .foregroundColor(Color.white)
@@ -264,10 +261,17 @@ struct PointGame: View {
                 .padding(.horizontal,10)
             
         })
+        .fullScreenCover(isPresented: $isPresented) {
+            OneMatchDataView(
+                pointVM: pointVM,
+                matchInfoVM: matchInfoVM,
+                chartDataVM: chartDataVM
+            )
+        }
     }
     var quitAfterAllBtn: some View {
         Button(action: {
-            dismiss()
+//            dismiss()
 //            dataManageVM.showRealm()
 //            dataManageVM.deleteRealm()
         },label:{

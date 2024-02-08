@@ -31,7 +31,7 @@ struct HomeHeaderBar: View {
                     .scaledToFill()
                     .frame(width: 15,height: 30)
                 Button(action: {
-                     //タップ処理
+                    userVM.levelAndModePopUp = true
                 },label:  {
                     VStack {
                         Text("初心者")
