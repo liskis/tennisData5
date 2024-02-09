@@ -3,7 +3,7 @@ struct MatchTabView: View {
     @Binding var matchFormat: MatchFormat
     @Binding var gameType: GameType
     @Binding var naviTitle: String
-    @ObservedObject var dataManageVM = DataManageViewModel()
+    @StateObject var dataManageVM = DataManageViewModel()
     @ObservedObject var homeDataVM: HomeDataViewModel
     @ObservedObject var userVM: UserViewModel
     var body: some View {

@@ -6,9 +6,11 @@ struct StatsDataArea: View {
             Spacer()
             winningRate
             Spacer()
-            firstServeRate
+//            firstServeRate
+            keepRate
             Spacer()
-            secondServeRate
+//            secondServeRate
+            breakRate
             Spacer()
         }
     }
@@ -110,6 +112,60 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
+        }
+    }
+    var keepRate: some View {
+        VStack{
+            HStack(alignment: .bottom,spacing:0){
+                Text(homeDataVM.keepRate)
+                    .font(.custom("Verdana",size:30))
+                    .bold()
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 2)
+                Text("%")
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 2)
+            }
+            Text(homeDataVM.keepCount)
+                .font(.custom("Verdana",size:14))
+                .bold()
+                .foregroundColor(.white)
+                .shadow(color: .black, radius: 2)
+            Text("サービスキープ率")
+                .font(.custom("Verdana",size:14))
+                .bold()
+                .foregroundColor(.white)
+                .shadow(color: .black, radius: 2)
+            
+        }
+    }
+    var breakRate: some View {
+        VStack{
+            HStack(alignment: .bottom,spacing:0){
+                Text(homeDataVM.breakRate)
+                    .font(.custom("Verdana",size:30))
+                    .bold()
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 2)
+                Text("%")
+                    .font(.custom("Verdana",size:14))
+                    .bold()
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 2)
+            }
+            Text(homeDataVM.breakRate)
+                .font(.custom("Verdana",size:14))
+                .bold()
+                .foregroundColor(.white)
+                .shadow(color: .black, radius: 2)
+            Text("ブレーク率")
+                .font(.custom("Verdana",size:14))
+                .bold()
+                .foregroundColor(.white)
+                .shadow(color: .black, radius: 2)
+            
         }
     }
 }

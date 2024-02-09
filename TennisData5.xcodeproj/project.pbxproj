@@ -446,6 +446,7 @@
 				097229892B5F86EC0046FAF8 /* MatchRecordView */,
 				0927E1022B41A7F10069BEF1 /* DataAnalysisView.swift */,
 				0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */,
+				0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */,
 				0972295E2B53FEA30046FAF8 /* ChartView */,
 			);
 			path = View;
@@ -508,7 +509,6 @@
 			isa = PBXGroup;
 			children = (
 				0927E1002B41A7CE0069BEF1 /* MatchRecordView.swift */,
-				0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */,
 			);
 			path = MatchRecordView;
 			sourceTree = "<group>";

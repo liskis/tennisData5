@@ -1,25 +1,30 @@
 import SwiftUI
 import Charts
 struct LineChartView: View {
-    @Binding var data1: [LineChartDataModel]
-    @Binding var data2: [LineChartDataModel]
-    @Binding var data3: [LineChartDataModel]
+    @Binding var valueData: [LineChartDataModel]
+    @Binding var signPost: [LineChartDataModel]
     var body: some View {
         Chart {
-            ForEach(data3) { dataRow in
+            ForEach(signPost) { dataRow in
                 LineMark(
                     x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
                 )
-                .foregroundStyle(by: .value("Category", dataRow.category))
+                .foregroundStyle(by: .value("Color", dataRow.color))
             }
-            ForEach(data1){ dataRow in
+            ForEach(valueData){ dataRow in
                 LineMark(
                     x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
                 )
-                .foregroundStyle(by: .value("Category", dataRow.category))
+                .foregroundStyle(by: .value("Color", dataRow.color))
                 .lineStyle(StrokeStyle(lineWidth: 5))
+                .annotation(position: .top, alignment: .leading, spacing: 5) {
+                    Text(String(dataRow.category))
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:15))
+                        .shadow(color: .black, radius: 5)
+                }
                 PointMark(
                     x: .value("num", dataRow.num),
                     y: .value("Stats", dataRow.stats)
@@ -31,63 +36,42 @@ struct LineChartView: View {
                         .bold()
                         .shadow(color: .black, radius: 5)
                 }
-                .foregroundStyle(by: .value("Category", dataRow.category))
-                .symbol(by: .value("Category", dataRow.category))
-                .symbolSize(100)
-            }
-            ForEach(data2){ dataRow in
-                LineMark(
-                    x: .value("num", dataRow.num),
-                    y: .value("Stats", dataRow.stats)
-                )
-                .foregroundStyle(by: .value("Category", dataRow.category))
-                .lineStyle(StrokeStyle(lineWidth: 5))
-                PointMark(
-                    x: .value("num", dataRow.num),
-                    y: .value("Stats", dataRow.stats)
-                )
-                .annotation(position: .top, alignment: .trailing, spacing: 0) {
-                    Text(String(dataRow.stats) + "%")
-                        .foregroundColor(.white)
-                        .font(.custom("Verdana",size:17))
-                        .bold()
-                        .shadow(color: .black, radius: 5)
-                }
-                .foregroundStyle(by: .value("Category", dataRow.category))
-                .symbol(by: .value("Category", dataRow.category))
+                .foregroundStyle(by: .value("Color", dataRow.color))
+                .symbol(by: .value("Color", dataRow.color))
                 .symbolSize(100)
             }
         }
-        .frame(height: 180)
+        .frame(height: 100)
         .chartForegroundStyleScale([
-            "data1": .orange,
-            "data2": .red,
-            "data3": .clear
+            "orange": .orange,
+            "red": .red,
+            "clear": .clear
         ])
         .chartSymbolScale([
-            "data1": Circle().strokeBorder(lineWidth: 5),
-            "data2": Circle().strokeBorder(lineWidth: 5)
+            "orange": Circle().strokeBorder(lineWidth: 5),
+            "red": Circle().strokeBorder(lineWidth: 5)
         ])
         .chartXAxis(.hidden)
         .chartYAxis(.hidden)
-        .chartYScale(domain: [minAxis, 100])
-        .chartXScale(domain: [0,data3.count - 1])
+        .chartYScale(domain: [minAxis, maxAxis])
+        .chartXScale(domain: [0,signPost.count - 1])
         .chartLegend(.hidden)
         .padding(.horizontal,40)
-//        .background(Color.black)
     }
 }
 extension LineChartView {
-    var minAxis: Double {
+    var maxAxis: Int {
+        var maxData: Int = 0
+        for data in valueData {
+            maxData = data.stats > maxData ? data.stats : maxData
+        }
+        return maxData + 40
+    }
+    var minAxis: Int {
         var minData: Int = 100
-        for data in data1 {
-                minData = data.stats < minData ? data.stats : minData
-            
+        for data in valueData {
+            minData = data.stats < minData ? data.stats : minData
         }
-        for data in data2 {
-                minData = data.stats < minData ? data.stats : minData
-            
-        }
-        return Double(minData) - Double(20)
+        return minData - 50
     }
 }

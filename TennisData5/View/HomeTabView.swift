@@ -5,7 +5,10 @@ struct HomeTabView: View {
     @ObservedObject var userVM = UserViewModel()
     var body: some View {
         TabView {
-            HomeView(homeDataVM: homeDataVM, userVM: userVM)
+            HomeView(
+                homeDataVM: homeDataVM,
+                userVM: userVM
+            )
                 .onAppear{
 //                    dataManageVM.deleteRealm()
                     homeDataVM.setHomeData()

@@ -7,8 +7,13 @@ class HomeDataViewModel: ObservableObject {
     @Published var firstSvInCount: String = "(0/0)"
     @Published var secondSvInRate: String = "0.0"
     @Published var secondSvInCount: String = "(0/0)"
+    @Published var keepRate: String = "0.0"
+    @Published var keepCount: String = "(0/0)"
+    @Published var breakRate: String = "0.0"
+    @Published var breakCount: String = "(0/0)"
     @Published var firstSvInChartData: [LineChartDataModel] = []
     @Published var secondSvInChartData: [LineChartDataModel] = []
+    @Published var doubleFaultRateChartData: [LineChartDataModel] = []
     @Published var signPost: [LineChartDataModel] = []
     @Published var winLoseArray: [WinLoseArray] = []
     @Published var dateArray: [DateArray] = []
@@ -24,8 +29,13 @@ class HomeDataViewModel: ObservableObject {
             var firstInPointCount: Int = 0
             var secondPointCount: Int = 0
             var secondInPointCount: Int = 0
+            var serviceGameCount: Int = 0
+            var keepGameCount: Int = 0
+            var returnGameCount: Int = 0
+            var breakGameCount: Int = 0
             firstSvInChartData = []
             secondSvInChartData = []
+            doubleFaultRateChartData = []
             signPost = []
             winLoseArray = []
             dateArray = []
@@ -64,23 +74,51 @@ class HomeDataViewModel: ObservableObject {
                 secondPointCount += secondPoints.count
                 secondInPointCount += secondPoints.count - doubleFaultPoints.count
                 
+                // keepRate
+                let serviceGames = realm.objects(GameDataModel.self).where({
+                    $0.setId == setData.setId
+                    && $0.servOrRet == "serviceGame"
+                })
+                serviceGameCount += serviceGames.count
+                let keepGames = serviceGames.filter{
+                    $0.getPoint > $0.lostPoint
+                }
+                keepGameCount += keepGames.count
+                
+                // breakRate
+                let returnGames = realm.objects(GameDataModel.self).where({
+                    $0.setId == setData.setId
+                    && $0.servOrRet == "returnGame"
+                })
+                returnGameCount += returnGames.count
+                let breakGames = returnGames.filter{
+                    $0.getPoint > $0.lostPoint
+                }
+                breakGameCount += breakGames.count
             // グラフデータ
                 
                 // ファーストサーブ
                 if serverPoints.count != 0 {
-                    let stats = Int( ( Double(firstInPoints.count)/Double(serverPoints.count) )*100 )
-                    firstSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "data1"))
+                    let stats = Int(Double(firstInPoints.count)/Double(serverPoints.count))*100
+                    firstSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "1stサーブin", color: "orange"))
                 }
                 
                 // セカンドサーブ
                 let secondIn = secondPoints.count - doubleFaultPoints.count
                 if secondPoints.count != 0 {
-                    let stats = Int((Double(secondIn) / Double(secondPoints.count))*100)
-                    secondSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "data2"))
+                    let stats = Int(Double(secondIn) / Double(secondPoints.count))*100
+                    secondSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "2ndサーブin", color: "red"))
                 }
                 
+                // ダブルフォルト率
+                if serverPoints.count != 0 {
+                    let stats = Int(Double(doubleFaultPoints.count)/Double(serverPoints.count) )*100 
+                    doubleFaultRateChartData.append(LineChartDataModel(num: num, stats: stats, category: "ダブルフォルト率", color: "red"))
+                }
+                
+                
                 // signPost
-                signPost.append(LineChartDataModel(num: num, stats: 100, category: "data3"))
+                signPost.append(LineChartDataModel(num: num, stats: 100, category: "signPost", color: "clear"))
                 
                 // winLoseArray
                 if setData.getGameCount > setData.lostGameCount {
@@ -109,6 +147,14 @@ class HomeDataViewModel: ObservableObject {
                 secondSvInRate = String(format: "%.1f", (Double(secondInPointCount) / Double(secondPointCount))*100 )
             }
             secondSvInCount = "(\(secondInPointCount)/\(secondPointCount))"
+            if serviceGameCount != 0 {
+                keepRate = String(format: "%.1f", (Double(keepGameCount) / Double(serviceGameCount))*100 )
+            }
+            keepCount = "(\(keepGameCount)/\(serviceGameCount))"
+            if returnGameCount != 0 {
+                breakRate = String(format: "%.1f", (Double(breakGameCount) / Double(returnGameCount))*100 )
+            }
+            breakCount = "(\(breakGameCount)/\(returnGameCount))"
         }
     }
 }

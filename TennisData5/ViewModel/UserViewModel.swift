@@ -7,6 +7,7 @@ class UserViewModel: ObservableObject {
     @Published var dominant: Dominant = .noSelection
     @Published var gender: Gender = .noSelection
     @Published var relation: String = "me"
+    @Published var inputMode: InputMode = .beginner
     
     func updateUserInfo(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)

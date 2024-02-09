@@ -16,13 +16,12 @@ struct OneMatchDataView: View {
                         .foregroundColor(.tungsten)
                     Spacer(minLength: 10)
                     NameAndScoreArea(matchInfoVM: matchInfoVM, pointVM:pointVM)
-                    Spacer(minLength: 20)
-                    ChartsLayOutArea(matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
                     Button(action: {
                         pointVM.getPoint = 0
                         pointVM.lostPoint = 0
                         matchInfoVM.gameId = ""
                         matchInfoVM.setId = ""
+                        matchInfoVM.matchId = ""
                         dismiss()
                     }, label: {
                         Text("閉じる")
@@ -35,6 +34,9 @@ struct OneMatchDataView: View {
                             .cornerRadius(4)
                             .padding(.horizontal,10)
                     })
+                    Spacer(minLength: 20)
+                    ChartsLayOutArea(matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
+                    
                 }
                 .background{ Color.mercury }
             }

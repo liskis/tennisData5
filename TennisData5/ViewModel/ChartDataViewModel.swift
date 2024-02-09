@@ -4,27 +4,27 @@ import RealmSwift
 class ChartDataViewModel: ObservableObject {
     @Published var firstSvInCount: String = "No Data"
     @Published var firstSvIn: [BarChartDataModel] = [
-        .init(value: 0, color: .ocean, category: "firstSvIn", index: 60),
+        .init(value: 0, color: .blue, category: "firstSvIn", index: 60),
         .init(value: 100, color: .mercury, category: "firstSvIn", index: 60)
     ]
     @Published var secondSvInCount: String = "No Data"
     @Published var secondSvIn: [BarChartDataModel] = [
-        .init(value: 0, color: .ocean, category: "secondSvIn", index: 80),
+        .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
         .init(value: 100, color: .mercury, category: "secondSvIn", index: 80)
     ]
     @Published var noDoubleFaultCount: String = "No Data"
     @Published var noDoubleFault: [BarChartDataModel] = [
-        .init(value: 0, color: .ocean, category: "noDoubleFault", index: 92),
+        .init(value: 0, color: .blue, category: "noDoubleFault", index: 92),
         .init(value: 100, color: .mercury, category: "noDoubleFault", index: 92)
     ]
     @Published var atFirstSvCount: String = "No Data"
     @Published var atFirstSv: [BarChartDataModel] = [
-        .init(value: 0, color: .ocean, category: "atFirstSv", index: 60),
+        .init(value: 0, color: .blue, category: "atFirstSv", index: 60),
         .init(value: 100, color: .mercury, category: "atFirstSv", index: 60)
     ]
     @Published var atSecondSvCount: String = "No Data"
     @Published var atSecondSv: [BarChartDataModel] = [
-        .init(value: 0, color: .ocean, category: "atSecondSv", index: 50),
+        .init(value: 0, color: .blue, category: "atSecondSv", index: 50),
         .init(value: 100, color: .mercury, category: "atSecondSv", index: 50)
     ]
     
@@ -34,7 +34,7 @@ class ChartDataViewModel: ObservableObject {
         .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
     ]
     @Published var getAndLostPointStyleScale: KeyValuePairs<String, Color> = [
-        "data1": .ocean, "data2": .cantaloupe, "blank": .white
+        "data1": .blue, "data2": .tangerine, "blank": .white
     ]
     @Published var keepAndBreak: [PieChartDataModel] = [
         .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
@@ -43,7 +43,7 @@ class ChartDataViewModel: ObservableObject {
         .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
     ]
     @Published var keepAndBreakStyleScale: KeyValuePairs<String, Color> = [
-        "data1": .ocean, "data2": .aqua, "blank": .white
+        "data1": .blue, "data2": .aqua, "blank": .white
     ]
     @Published var pointRateBySvOrVoly: [PieChartDataModel] = [
         .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
@@ -66,7 +66,7 @@ class ChartDataViewModel: ObservableObject {
         .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
     ]
     @Published var pointRateStyleScale: KeyValuePairs<String, Color> = [
-        "data1": .ocean, "data2": .aqua, "blank": .white
+        "data1": .blue, "data2": .aqua, "blank": .white
     ]
     
     @Published var keepAndBreakStyleScaleDis: KeyValuePairs<String, Color> = [

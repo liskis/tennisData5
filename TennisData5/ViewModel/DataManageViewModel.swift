@@ -108,7 +108,7 @@ class DataManageViewModel: ObservableObject {
             let firstSvInRate = (Float(firstInPoints.count) / Float(serverPoints.count))*100
             let fiestSvInRateRound = round(firstSvInRate * 10) / 10
             chartDataVM.firstSvIn = []
-            chartDataVM.firstSvIn.append(BarChartDataModel(value: fiestSvInRateRound, color: .ocean, category: "firstSvIn", index: 60))
+            chartDataVM.firstSvIn.append(BarChartDataModel(value: fiestSvInRateRound, color: .blue, category: "firstSvIn", index: 60))
             chartDataVM.firstSvIn.append(BarChartDataModel(value: 100 - fiestSvInRateRound, color: .mercury, category: "firstSvIn", index: 60))
             chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
         }
@@ -132,7 +132,7 @@ class DataManageViewModel: ObservableObject {
             let secondSvInRate = ( Float(secondSvInCount) / Float(secondSvPoints.count) ) * 100
             let secondSvInRateRound = round(secondSvInRate * 10) / 10
             chartDataVM.secondSvIn = []
-            chartDataVM.secondSvIn.append(BarChartDataModel(value: secondSvInRateRound, color: .ocean, category: "secondSvIn", index: 80))
+            chartDataVM.secondSvIn.append(BarChartDataModel(value: secondSvInRateRound, color: .blue, category: "secondSvIn", index: 80))
             chartDataVM.secondSvIn.append(BarChartDataModel(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80))
             chartDataVM.secondSvInCount = "\(secondSvInCount)/\(secondSvPoints.count)"
         }
@@ -147,7 +147,7 @@ class DataManageViewModel: ObservableObject {
             let noDoubleFaultRate = ( Float(noDoubleFaultCount) / Float(serverPoints.count) ) * 100
             let noDoubleFaultRateRound = round(noDoubleFaultRate * 10) / 10
             chartDataVM.noDoubleFault = []
-            chartDataVM.noDoubleFault.append(BarChartDataModel(value: noDoubleFaultRateRound, color: .ocean, category: "noDoubleFault", index: 92))
+            chartDataVM.noDoubleFault.append(BarChartDataModel(value: noDoubleFaultRateRound, color: .blue, category: "noDoubleFault", index: 92))
             chartDataVM.noDoubleFault.append(BarChartDataModel(value: 100 - noDoubleFaultRateRound, color: .mercury, category: "noDoubleFault", index: 92))
             chartDataVM.noDoubleFaultCount = "\(noDoubleFaultCount)/\(serverPoints.count)"
         }
@@ -164,7 +164,7 @@ class DataManageViewModel: ObservableObject {
             let atFirstRate = ( Float(atFirstGet.count) / Float(firstInPoints.count) ) * 100
             let atFirstRateRound = round(atFirstRate * 10) / 10
             chartDataVM.atFirstSv = []
-            chartDataVM.atFirstSv.append(BarChartDataModel(value: atFirstRateRound, color: .ocean, category: "atFirstSv", index: 60))
+            chartDataVM.atFirstSv.append(BarChartDataModel(value: atFirstRateRound, color: .blue, category: "atFirstSv", index: 60))
             chartDataVM.atFirstSv.append(BarChartDataModel(value: 100 - atFirstRateRound, color: .mercury, category: "atFirstSv", index: 60))
             chartDataVM.atFirstSvCount = "\(atFirstGet.count)/\(firstInPoints.count)"
         }
@@ -181,7 +181,7 @@ class DataManageViewModel: ObservableObject {
             let atSecondRate = ( Float(atSecondGet.count) / Float(secondSvPoints.count) ) * 100
             let atSecondRateRound = round(atSecondRate * 10) / 10
             chartDataVM.atSecondSv = []
-            chartDataVM.atSecondSv.append(BarChartDataModel(value: atSecondRateRound, color: .ocean, category: "atSecondSv", index: 50))
+            chartDataVM.atSecondSv.append(BarChartDataModel(value: atSecondRateRound, color: .blue, category: "atSecondSv", index: 50))
             chartDataVM.atSecondSv.append(BarChartDataModel(value: 100 - atSecondRateRound, color: .mercury, category: "atSecondSv", index: 50))
             chartDataVM.atSecondSvCount = "\(atSecondGet.count)/\(secondSvPoints.count)"
         }
@@ -446,7 +446,7 @@ class DataManageViewModel: ObservableObject {
                     value: brankRate,
                     labelType: .twoLabels))
                 chartDataVM.keepAndBreakStyleScale = [
-                    "data1": .ocean, "data2": .aqua, "blank": .white
+                    "data1": .blue, "data2": .aqua, "blank": .white
                 ]
             } else {
                 chartDataVM.keepAndBreak = []
@@ -471,7 +471,7 @@ class DataManageViewModel: ObservableObject {
                     value: 100,
                     labelType: .threeLabels))
                 chartDataVM.keepAndBreakStyleScale = [
-                    "data1": .ocean, "data2": .aqua, "data3": .red, "blank": .white
+                    "data1": .blue, "data2": .aqua, "data3": .red, "blank": .white
                 ]
             }
             
