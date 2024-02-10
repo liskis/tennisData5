@@ -185,37 +185,52 @@ class DataManageViewModel: ObservableObject {
             chartDataVM.atSecondSv.append(BarChartDataModel(value: 100 - atSecondRateRound, color: .mercury, category: "atSecondSv", index: 50))
             chartDataVM.atSecondSvCount = "\(atSecondGet.count)/\(secondSvPoints.count)"
         }
+        // pieChart
         // getAndLostPoint
-        let getPoints = results.filter{
-            $0.whichPoint == "myTeam"
+        if pointVM.allPoint + pointVM.allgameCount == 0 {
+            chartDataVM.getAndLostPoint = [
+                .init(name: "data1", nameString: "とった\nポイント", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "とられた\nポイント", value: 1, labelType: .twoLabels),
+                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+            ]
+        } else {
+            let getPoints = results.filter{
+                $0.whichPoint == "myTeam"
+            }
+            let lostPoints = results.filter{
+                $0.whichPoint == "opponent"
+            }
+            chartDataVM.getAndLostPoint = []
+            chartDataVM.getAndLostPoint.append(PieChartDataModel(
+                name: "data1",
+                nameString: "とった\nポイント",
+                value: Double(getPoints.count),
+                labelType: .twoLabels
+            ))
+            chartDataVM.getAndLostPoint.append(PieChartDataModel(
+                name: "data2",
+                nameString: "とられた\nポイント",
+                value: Double(lostPoints.count),
+                labelType: .twoLabels
+            ))
+            chartDataVM.getAndLostPoint.append(PieChartDataModel(
+                name: "blank",
+                nameString: "",
+                value: Double(getPoints.count + lostPoints.count),
+                labelType: .twoLabels
+            ))
         }
-        let lostPoints = results.filter{
-            $0.whichPoint == "opponent"
-        }
-        chartDataVM.getAndLostPoint = []
-        chartDataVM.getAndLostPoint.append(PieChartDataModel(
-            name: "data1",
-            nameString: "とった\nポイント",
-            value: Double(getPoints.count),
-            labelType: .twoLabels
-        ))
-        chartDataVM.getAndLostPoint.append(PieChartDataModel(
-            name: "data2",
-            nameString: "とられた\nポイント",
-            value: Double(lostPoints.count),
-            labelType: .twoLabels
-        ))
-        chartDataVM.getAndLostPoint.append(PieChartDataModel(
-            name: "blank",
-            nameString: "",
-            value: Double(getPoints.count + lostPoints.count),
-            labelType: .twoLabels
-        ))
         // pointRateBySvOrVoly
         let serviceGamePoints = results.filter{
             $0.servOrRet == "serviceGame"
         }
-        if serviceGamePoints.count != 0 {
+        if serviceGamePoints.count == 0 {
+            chartDataVM.pointRateBySvOrVoly = [
+                .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+            ]
+        } else {
             var serverGetRate: Double = 0
             var volleyerAtSvGetRate: Double = 0
             if serverPoints.count != 0 {
@@ -235,7 +250,6 @@ class DataManageViewModel: ObservableObject {
                 }
                 volleyerAtSvGetRate = round( ( Double(getVolleyerAtSvPoints.count) / Double(volleyerAtSvPoints.count) ) * 1000 ) / 10
             }
-            
             chartDataVM.pointRateBySvOrVoly = []
             chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
                 name: "data1",
@@ -260,7 +274,13 @@ class DataManageViewModel: ObservableObject {
         let returnGamePoints = results.filter{
             $0.servOrRet == "returnGame"
         }
-        if returnGamePoints.count != 0 {
+        if returnGamePoints.count == 0 {
+            chartDataVM.pointRateByRetOrVoly = [
+                .init(name: "data1", nameString: "リターナー", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+            ]
+        } else {
             var returnerGetRate: Double = 0
             var volleyerAtRetGetRate: Double = 0
             let returnerPoints = results.filter{
@@ -306,8 +326,13 @@ class DataManageViewModel: ObservableObject {
         }
         
         // pointRateByServiceSide
-       
-        if serviceGamePoints.count != 0 {
+        if serviceGamePoints.count == 0 {
+            chartDataVM.pointRateByServiceSide = [
+                .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+            ]
+        } else {
             var duceGetRate: Double = 0
             var advGetRate: Double = 0
             
@@ -322,7 +347,7 @@ class DataManageViewModel: ObservableObject {
             }
             
             let advPoints = serviceGamePoints.filter{
-                $0.side == "duceSide"
+                $0.side == "advantageSide"
             }
             if advPoints.count != 0 {
                 let getAdvPoints = advPoints.filter{
@@ -352,7 +377,13 @@ class DataManageViewModel: ObservableObject {
         }
         // pointRateByReturnSide
         
-        if returnGamePoints.count != 0 {
+        if returnGamePoints.count == 0 {
+            chartDataVM.pointRateByReturnSide = [
+                .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+            ]
+        } else {
             var duceGetRate: Double = 0
             var advGetRate: Double = 0
             
@@ -407,7 +438,14 @@ class DataManageViewModel: ObservableObject {
             $0.matchId == matchInfoVM.matchId
             && $0.getPoint != $0.lostPoint
         })
-        if games.count != 0 {
+        if games.count == 0 {
+            chartDataVM.keepAndBreak = [
+                .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
+                
+                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+            ]
+        } else {
             // keepAndBreakPoint
             var keepRate: Double = 0
             var breakRate: Double = 0
@@ -502,7 +540,7 @@ class DataManageViewModel: ObservableObject {
                 positionVM.side = .noSelection
                 pointVM.service = .first
                 pointVM.getGameCount = pointData.last!.getGameCount
-                pointVM.lostGameCount = pointData.last!.getGameCount
+                pointVM.lostGameCount = pointData.last!.lostGameCount
                 pointVM.drowGameCount = pointData.last!.drowGameCount
                 pointVM.getPoint = pointData.last!.getPoint
                 pointVM.lostPoint = pointData.last!.lostPoint

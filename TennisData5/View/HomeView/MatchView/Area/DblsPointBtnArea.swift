@@ -11,23 +11,15 @@ struct DblsPointBtnArea: View {
                 } else {
                     getPointBtn
                 }
-                ZStack{
-                    VStack(spacing:1){
-                        HStack(spacing:1){
-                            myWinnerBtn
-                            partnerWinnerBtn
-                        }
-                        opponentMissBtn
+                VStack(spacing:1){
+                    HStack(spacing:1){
+                        myWinnerBtn
+                        partnerWinnerBtn
                     }
-                    Text("Please wait for update !")
-                        .frame(width: 180,height: 20)
-                        .bold()
-                        .italic()
-                        .font(.custom("Verdana", size: 12))
-                        .foregroundColor(.red)
-                        .background(Color.yellow)
-                        .rotationEffect(.degrees(-10))
+                    opponentMissBtn
                 }
+                    
+                
             }.padding(.leading,10)
             VStack(spacing:1){
                 if positionVM.myPosition == .noSelection {
@@ -35,22 +27,12 @@ struct DblsPointBtnArea: View {
                 } else {
                     lostPointBtn
                 }
-                ZStack{
-                    VStack(spacing:1){
-                        opponentWinerBtn
-                        HStack(spacing:1){
-                            myMissBtn
-                            partnerMissBtn
-                        }
+                VStack(spacing:1){
+                    opponentWinerBtn
+                    HStack(spacing:1){
+                        myMissBtn
+                        partnerMissBtn
                     }
-                    Text("Please wait for update !")
-                        .frame(width: 180,height: 20)
-                        .bold()
-                        .italic()
-                        .font(.custom("Verdana", size: 12))
-                        .foregroundColor(.red)
-                        .background(Color.yellow)
-                        .rotationEffect(.degrees(-10))
                 }
             }.padding(.trailing,10)
         }

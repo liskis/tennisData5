@@ -79,13 +79,13 @@ struct DataAnalysisView: View {
                         .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
                 }
                 Text("Please wait for update !")
+                    .frame(width: 180,height: 20)
                     .bold()
                     .italic()
                     .font(.custom("Verdana", size: 12))
-                    .frame(width: 200, height: 50, alignment: .center)
                     .foregroundColor(.red)
                     .background(Color.yellow)
-                    .rotationEffect(.degrees(-15))
+                    .rotationEffect(.degrees(-10))
             }
             .navigationBarTitle("データ分析", displayMode: .inline)
             .toolbarBackground(.black, for: .navigationBar)

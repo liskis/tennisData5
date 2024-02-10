@@ -13,25 +13,15 @@ struct SnglsPointBtnArea: View {
                 lostPointBtn
             }
         }.padding(.horizontal,10)
-        ZStack{
-            VStack(spacing:1){
-                HStack(spacing:1){
-                    myWinnerBtn
-                    opponentWinerBtn
-                }.padding(.horizontal,10)
-                HStack(spacing:1){
-                    opponentMissBtn
-                    myMissBtn
-                }.padding(.horizontal,10)
-            }
-            Text("Please wait for update !")
-                .frame(width: 180,height: 20)
-                .bold()
-                .italic()
-                .font(.custom("Verdana", size: 12))
-                .foregroundColor(.red)
-                .background(Color.yellow)
-                .rotationEffect(.degrees(-10))
+        VStack(spacing:1){
+            HStack(spacing:1){
+                myWinnerBtn
+                opponentWinerBtn
+            }.padding(.horizontal,10)
+            HStack(spacing:1){
+                opponentMissBtn
+                myMissBtn
+            }.padding(.horizontal,10)
         }
     }
     var getPointBtnDis: some View {

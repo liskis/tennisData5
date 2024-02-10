@@ -93,7 +93,7 @@ struct ChartsLayOutArea: View {
             
             HStack{
                 ZStack{
-                    if chartDataVM.pointRateBySvOrVoly[2].nameString == "init" {
+                    if chartDataVM.pointRateByServiceSide[2].nameString == "init" {
                         PieChartView(
                             pieChartData: $chartDataVM.pointRateByServiceSide,
                             styleScale: $chartDataVM.styleScaleDis
