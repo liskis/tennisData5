@@ -1,0 +1,181 @@
+import Foundation
+import SwiftUI
+import RealmSwift
+class ChartDataViewModel: ObservableObject {
+    @Published var firstSvInCount: String = "No Data"
+    @Published var firstSvIn: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "firstSvIn", index: 60),
+        .init(value: 100, color: .tungsten, category: "firstSvIn", index: 60)
+    ]
+    @Published var secondSvInCount: String = "No Data"
+    @Published var secondSvIn: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
+        .init(value: 100, color: .tungsten, category: "secondSvIn", index: 80)
+    ]
+    @Published var doubleFaultCount: String = "No Data"
+    @Published var doubleFault: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "doubleFault", index: 8),
+        .init(value: 100, color: .tungsten, category: "doubleFault", index: 8)
+    ]
+    @Published var noDoubleFaultCount: String = "No Data"
+    @Published var noDoubleFault: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "noDoubleFault", index: 80),
+        .init(value: 100, color: .tungsten, category: "noDoubleFault", index: 80)
+    ]
+    @Published var atFirstSvCount: String = "No Data"
+    @Published var atFirstSv: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "atFirstSv", index: 60),
+        .init(value: 100, color: .tungsten, category: "atFirstSv", index: 60)
+    ]
+    @Published var atSecondSvCount: String = "No Data"
+    @Published var atSecondSv: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "atSecondSv", index: 50),
+        .init(value: 100, color: .tungsten, category: "atSecondSv", index: 50)
+    ]
+    
+    @Published var getAndLostPoint: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "とった\nポイント", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "とられた\nポイント", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var keepAndBreak: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
+        
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateBySvOrVoly: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateByRetOrVoly: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "リターナー", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateByServiceSide: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var pointRateByReturnSide: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var winnerPoint: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "自分が\n決めた", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "相手が\n決めた", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var missPoint: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "相手の\nミス", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "自分の\nミス", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var getPoint: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "自分が\n決めた", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "相手の\nミス", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    @Published var lostPoint: [PieChartDataModel] = [
+        .init(name: "data1", nameString: "相手が\n決めた", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "自分の\nミス", value: 1, labelType: .twoLabels),
+        .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+    ]
+    
+    @Published var getAndLostPointStyleScale: KeyValuePairs<String, Color> = [
+        "data1": .blue, "data2": .tangerine, "blank": .black
+    ]
+    @Published var keepAndBreakStyleScale: KeyValuePairs<String, Color> = [
+        "data1": .blue, "data2": .aqua, "blank": .black
+    ]
+    @Published var pointRateStyleScale: KeyValuePairs<String, Color> = [
+        "data1": .blue, "data2": .aqua, "blank": .black
+    ]
+    
+    @Published var keepAndBreakStyleScaleDis: KeyValuePairs<String, Color> = [
+        "data1": .silver, "data2": .silver, "data3": .silver, "data4": .silver ,"blank": .black
+    ]
+    @Published var styleScaleDis: KeyValuePairs<String, Color> = [
+        "data1": .silver, "data2": .silver, "blank": .black
+    ]
+    @Published var styleScaleDisDbls: KeyValuePairs<String, Color> = [
+        "data1": .silver, "data2": .silver, "data3": .silver, "blank": .white
+    ]
+    
+    func returnInitialValue(){
+        firstSvInCount = "No Data"
+        firstSvIn = [
+            .init(value: 0, color: .blue, category: "firstSvIn", index: 60),
+            .init(value: 100, color: .mercury, category: "firstSvIn", index: 60)
+        ]
+        secondSvInCount = "No Data"
+        secondSvIn = [
+            .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
+            .init(value: 100, color: .mercury, category: "secondSvIn", index: 80)
+        ]
+        noDoubleFaultCount = "No Data"
+        noDoubleFault = [
+            .init(value: 0, color: .blue, category: "noDoubleFault", index: 92),
+            .init(value: 100, color: .mercury, category: "noDoubleFault", index: 92)
+        ]
+        atFirstSvCount = "No Data"
+        atFirstSv = [
+            .init(value: 0, color: .blue, category: "atFirstSv", index: 60),
+            .init(value: 100, color: .mercury, category: "atFirstSv", index: 60)
+        ]
+        atSecondSvCount = "No Data"
+        atSecondSv = [
+            .init(value: 0, color: .blue, category: "atSecondSv", index: 50),
+            .init(value: 100, color: .mercury, category: "atSecondSv", index: 50)
+        ]
+        
+        getAndLostPoint = [
+            .init(name: "data1", nameString: "とった\nポイント", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "とられた\nポイント", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        getAndLostPointStyleScale = [
+            "data1": .blue, "data2": .tangerine, "blank": .white
+        ]
+        keepAndBreak = [
+            .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
+            
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        keepAndBreakStyleScale = [
+            "data1": .blue, "data2": .aqua, "blank": .white
+        ]
+        pointRateBySvOrVoly = [
+            .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateByRetOrVoly = [
+            .init(name: "data1", nameString: "リターナー", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateByServiceSide = [
+            .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateByReturnSide = [
+            .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateStyleScale = [
+            "data1": .blue, "data2": .aqua, "blank": .white
+        ]
+        
+        keepAndBreakStyleScaleDis = [
+            "data1": .silver, "data2": .silver, "data3": .silver, "data4": .silver ,"blank": .white
+        ]
+    }
+    
+}
