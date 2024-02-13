@@ -16,4 +16,22 @@ class MatchInfoViewModel: ObservableObject {
     @Published var gameStartDate: Date = Date()
     @Published var matchEndDate: Date = Date()
     @Published var naviTitle: String = ""
+    func returnInitialValue(){
+        matchId = UUID().uuidString
+        setId = UUID().uuidString
+        gameId = UUID().uuidString
+        matchFormat = .noSelection
+        gameType = .noSelection
+        inputMode = .beginner
+        teamAplayer1id = ""
+        teamAplayer2id = ""
+        teamBplayer1id = ""
+        teamBplayer2id = ""
+        tactics = ""
+        matchStartDate = Date()
+        setStartDate = Date()
+        gameStartDate = Date()
+        matchEndDate = Date()
+        naviTitle = ""
+    }
 }

@@ -41,123 +41,129 @@ struct SnglsPositionBtnArea: View {
             .frame(height: 30)
     }
     var serverAdvDisBtn: some View {
-        Text("バックサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("バックサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var serverAdvBtn: some View {
-        Text("バックサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .server
-                positionVM.side = .advantageSide
-                positionVM.server = .mySelf
+            .overlay{
+                Text("バックサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        serverAdv()
+                    }
             }
     }
     var serverDuceDisBtn: some View {
-        Text("フォアサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("フォアサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var serverDuceBtn: some View {
-        Text("フォアサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .server
-                positionVM.side = .duceSide
-                positionVM.server = .mySelf
+            .overlay{
+                Text("フォアサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        serverDuce()
+                    }
             }
     }
     var returnerAdvDisBtn: some View {
-        Text("バックサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("バックサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var returnerAdvBtn: some View {
-        Text("バックサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .returner
-                positionVM.side = .advantageSide
-                positionVM.server = .opponent
+            .overlay{
+                Text("バックサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        returnerAdv()
+                    }
             }
     }
     var returnerDuceDisBtn: some View {
-        Text("フォアサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("フォアサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var returnerDuceBtn: some View {
-        Text("フォアサイド")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .returner
-                positionVM.side = .duceSide
-                positionVM.server = .opponent
+            .overlay{
+                Text("フォアサイド")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        returnerDuce()
+                    }
             }
+    }
+}
+extension SnglsPositionBtnArea {
+    func serverAdv(){
+        positionVM.myPosition = .server
+        positionVM.side = .advantageSide
+        positionVM.server = .mySelf
+    }
+    func serverDuce(){
+        positionVM.myPosition = .server
+        positionVM.side = .duceSide
+        positionVM.server = .mySelf
+    }
+    func returnerAdv(){
+        positionVM.myPosition = .returner
+        positionVM.side = .advantageSide
+        positionVM.server = .opponent
+    }
+    func returnerDuce(){
+        positionVM.myPosition = .returner
+        positionVM.side = .duceSide
+        positionVM.server = .opponent
     }
 }

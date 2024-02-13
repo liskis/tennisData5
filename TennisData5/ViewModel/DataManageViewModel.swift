@@ -5,6 +5,12 @@ class DataManageViewModel: ObservableObject {
     @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
+    func resetAllVM(){
+        pointVM.returnInitialValue()
+        matchInfoVM.returnInitialValue()
+        positionVM.returnInitialValue()
+        chartDataVM.returnInitialValue()
+    }
     
     func matchRecoad(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
@@ -58,7 +64,6 @@ class DataManageViewModel: ObservableObject {
             gameData.gameEndDate = Date()
             realm.add(gameData)
         }
-        showGameRealm()
     }
     
     func pointRecoad(){
@@ -88,7 +93,6 @@ class DataManageViewModel: ObservableObject {
             realm.add(pointData)
             setChartData()
         }
-        showPointRealm()
     }
     
     func setChartData(){
@@ -101,15 +105,17 @@ class DataManageViewModel: ObservableObject {
         let firstInPoints = serverPoints.filter{ $0.service == "first"}
         if serverPoints.count == 0 {
             chartDataVM.firstSvIn = [
-                .init(value: 0, color: .ocean, category: "firstSvIn", index: 60),
+                .init(value: 0, color: .blue, category: "firstSvIn", index: 60),
                 .init(value: 100, color: .mercury, category: "firstSvIn", index: 60)
             ]
         } else {
             let firstSvInRate = (Float(firstInPoints.count) / Float(serverPoints.count))*100
             let fiestSvInRateRound = round(firstSvInRate * 10) / 10
-            chartDataVM.firstSvIn = []
-            chartDataVM.firstSvIn.append(BarChartDataModel(value: fiestSvInRateRound, color: .blue, category: "firstSvIn", index: 60))
-            chartDataVM.firstSvIn.append(BarChartDataModel(value: 100 - fiestSvInRateRound, color: .mercury, category: "firstSvIn", index: 60))
+            chartDataVM.firstSvIn = [
+                .init(value: fiestSvInRateRound, color: .blue, category: "firstSvIn", index: 60),
+                .init(value: 100 - fiestSvInRateRound, color: .mercury, category: "firstSvIn", index: 60)
+            ]
+            
             chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
         }
         // secondSvIn
@@ -119,7 +125,7 @@ class DataManageViewModel: ObservableObject {
         var doubleFaultCount: Int = 0
         if secondSvPoints.count == 0 {
             chartDataVM.secondSvIn = [
-                .init(value: 0, color: .ocean, category: "secondSvIn", index: 80),
+                .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
                 .init(value: 100, color: .mercury, category: "secondSvIn", index: 80)
             ]
         } else {
@@ -131,24 +137,41 @@ class DataManageViewModel: ObservableObject {
             let secondSvInCount = secondSvPoints.count - doubleFaultCount
             let secondSvInRate = ( Float(secondSvInCount) / Float(secondSvPoints.count) ) * 100
             let secondSvInRateRound = round(secondSvInRate * 10) / 10
-            chartDataVM.secondSvIn = []
-            chartDataVM.secondSvIn.append(BarChartDataModel(value: secondSvInRateRound, color: .blue, category: "secondSvIn", index: 80))
-            chartDataVM.secondSvIn.append(BarChartDataModel(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80))
+            chartDataVM.secondSvIn = [
+                .init(value: secondSvInRateRound, color: .blue, category: "secondSvIn", index: 80),
+                .init(value: 100 - secondSvInRateRound, color: .mercury, category: "secondSvIn", index: 80)
+            ]
             chartDataVM.secondSvInCount = "\(secondSvInCount)/\(secondSvPoints.count)"
+        }
+        // doubleFault
+        if serverPoints.count == 0 {
+            chartDataVM.doubleFault = [
+                .init(value: 0, color: .blue, category: "doubleFault", index: 8),
+                .init(value: 100, color: .mercury, category: "doubleFault", index: 8)
+            ]
+        } else {
+            let doubleFaultRate = ( Float(doubleFaultCount) / Float(serverPoints.count) ) * 100
+            let doubleFaultRateRound = round(doubleFaultRate * 10) / 10
+            chartDataVM.doubleFault = [
+                .init(value: doubleFaultRateRound, color: .blue, category: "doubleFault", index: 8),
+                .init(value: 100 - doubleFaultRateRound, color: .mercury, category: "doubleFault", index: 8)
+            ]
+            chartDataVM.doubleFaultCount = "\(doubleFaultCount)/\(serverPoints.count)"
         }
         // noDoubleFault
         let noDoubleFaultCount = serverPoints.count - doubleFaultCount
         if serverPoints.count == 0 {
             chartDataVM.noDoubleFault = [
-                .init(value: 0, color: .ocean, category: "noDoubleFault", index: 92),
+                .init(value: 0, color: .blue, category: "noDoubleFault", index: 92),
                 .init(value: 100, color: .mercury, category: "noDoubleFault", index: 92)
             ]
         } else {
             let noDoubleFaultRate = ( Float(noDoubleFaultCount) / Float(serverPoints.count) ) * 100
             let noDoubleFaultRateRound = round(noDoubleFaultRate * 10) / 10
-            chartDataVM.noDoubleFault = []
-            chartDataVM.noDoubleFault.append(BarChartDataModel(value: noDoubleFaultRateRound, color: .blue, category: "noDoubleFault", index: 92))
-            chartDataVM.noDoubleFault.append(BarChartDataModel(value: 100 - noDoubleFaultRateRound, color: .mercury, category: "noDoubleFault", index: 92))
+            chartDataVM.noDoubleFault = [
+                .init(value: noDoubleFaultRateRound, color: .blue, category: "noDoubleFault", index: 92),
+                .init(value: 100 - noDoubleFaultRateRound, color: .mercury, category: "noDoubleFault", index: 92)
+            ]
             chartDataVM.noDoubleFaultCount = "\(noDoubleFaultCount)/\(serverPoints.count)"
         }
         // atFirstSv
@@ -157,15 +180,16 @@ class DataManageViewModel: ObservableObject {
         }
         if firstInPoints.count == 0 {
             chartDataVM.atFirstSv = [
-                .init(value: 0, color: .ocean, category: "atFirstSv", index: 60),
+                .init(value: 0, color: .blue, category: "atFirstSv", index: 60),
                 .init(value: 100, color: .mercury, category: "atFirstSv", index: 60)
             ]
         } else {
             let atFirstRate = ( Float(atFirstGet.count) / Float(firstInPoints.count) ) * 100
             let atFirstRateRound = round(atFirstRate * 10) / 10
-            chartDataVM.atFirstSv = []
-            chartDataVM.atFirstSv.append(BarChartDataModel(value: atFirstRateRound, color: .blue, category: "atFirstSv", index: 60))
-            chartDataVM.atFirstSv.append(BarChartDataModel(value: 100 - atFirstRateRound, color: .mercury, category: "atFirstSv", index: 60))
+            chartDataVM.atFirstSv = [
+                .init(value: atFirstRateRound, color: .blue, category: "atFirstSv", index: 60),
+                .init(value: 100 - atFirstRateRound, color: .mercury, category: "atFirstSv", index: 60)
+            ]
             chartDataVM.atFirstSvCount = "\(atFirstGet.count)/\(firstInPoints.count)"
         }
         // atSecondSv
@@ -174,15 +198,16 @@ class DataManageViewModel: ObservableObject {
         }
         if secondSvPoints.count == 0 {
             chartDataVM.atSecondSv = [
-                .init(value: 0, color: .ocean, category: "atSecondSv", index: 50),
+                .init(value: 0, color: .blue, category: "atSecondSv", index: 50),
                 .init(value: 100, color: .mercury, category: "atSecondSv", index: 50)
             ]
         } else {
             let atSecondRate = ( Float(atSecondGet.count) / Float(secondSvPoints.count) ) * 100
             let atSecondRateRound = round(atSecondRate * 10) / 10
-            chartDataVM.atSecondSv = []
-            chartDataVM.atSecondSv.append(BarChartDataModel(value: atSecondRateRound, color: .blue, category: "atSecondSv", index: 50))
-            chartDataVM.atSecondSv.append(BarChartDataModel(value: 100 - atSecondRateRound, color: .mercury, category: "atSecondSv", index: 50))
+            chartDataVM.atSecondSv = [
+                .init(value: atSecondRateRound, color: .blue, category: "atSecondSv", index: 50),
+                .init(value: 100 - atSecondRateRound, color: .mercury, category: "atSecondSv", index: 50)
+            ]
             chartDataVM.atSecondSvCount = "\(atSecondGet.count)/\(secondSvPoints.count)"
         }
         // pieChart
@@ -200,25 +225,11 @@ class DataManageViewModel: ObservableObject {
             let lostPoints = results.filter{
                 $0.whichPoint == "opponent"
             }
-            chartDataVM.getAndLostPoint = []
-            chartDataVM.getAndLostPoint.append(PieChartDataModel(
-                name: "data1",
-                nameString: "とった\nポイント",
-                value: Double(getPoints.count),
-                labelType: .twoLabels
-            ))
-            chartDataVM.getAndLostPoint.append(PieChartDataModel(
-                name: "data2",
-                nameString: "とられた\nポイント",
-                value: Double(lostPoints.count),
-                labelType: .twoLabels
-            ))
-            chartDataVM.getAndLostPoint.append(PieChartDataModel(
-                name: "blank",
-                nameString: "",
-                value: Double(getPoints.count + lostPoints.count),
-                labelType: .twoLabels
-            ))
+            chartDataVM.getAndLostPoint = [
+                .init(name: "data1", nameString: "とった\nポイント", value: Double(getPoints.count), labelType: .twoLabels),
+                .init(name: "data2", nameString: "とられた\nポイント", value: Double(lostPoints.count), labelType: .twoLabels),
+                .init(name: "blank", nameString: "", value: Double(getPoints.count + lostPoints.count), labelType: .twoLabels)
+            ]
         }
         // pointRateBySvOrVoly
         let serviceGamePoints = results.filter{
@@ -239,7 +250,6 @@ class DataManageViewModel: ObservableObject {
                 }
                 serverGetRate = round( ( Double(getServerPoints.count) / Double(serverPoints.count) ) * 1000 ) / 10
             }
-            
             let volleyerAtSvPoints = results.filter{
                 $0.servOrRet == "serviceGame"
                 && $0.myPosition == "volleyer"
@@ -250,25 +260,11 @@ class DataManageViewModel: ObservableObject {
                 }
                 volleyerAtSvGetRate = round( ( Double(getVolleyerAtSvPoints.count) / Double(volleyerAtSvPoints.count) ) * 1000 ) / 10
             }
-            chartDataVM.pointRateBySvOrVoly = []
-            chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
-                name: "data1",
-                nameString: "サーバー",
-                value: serverGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
-                name: "data2",
-                nameString: "ボレーヤー",
-                value: volleyerAtSvGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateBySvOrVoly.append(PieChartDataModel(
-                name: "blank",
-                nameString: "",
-                value: serverGetRate + volleyerAtSvGetRate,
-                labelType: .twoLabels
-            ))
+            chartDataVM.pointRateBySvOrVoly = [
+                .init(name: "data1", nameString: "サーバー", value: serverGetRate, labelType: .twoLabels),
+                .init(name: "data2", nameString: "ボレーヤー", value: volleyerAtSvGetRate, labelType: .twoLabels),
+                .init(name: "blank", nameString: "", value: serverGetRate + volleyerAtSvGetRate, labelType: .twoLabels)
+            ]
         }
         // pointRateByRetOrVoly
         let returnGamePoints = results.filter{
@@ -292,7 +288,6 @@ class DataManageViewModel: ObservableObject {
                 }
                 returnerGetRate = round( ( Double(getReturnerPoints.count) / Double(returnerPoints.count) ) * 1000 ) / 10
             }
-            
             let volleyerAtRetPoints = results.filter{
                 $0.servOrRet == "returngame"
                 && $0.myPosition == "volleyer"
@@ -303,26 +298,11 @@ class DataManageViewModel: ObservableObject {
                 }
                 volleyerAtRetGetRate = round( ( Double(getVolleyerAtRetPoints.count) / Double(volleyerAtRetPoints.count) ) * 1000 ) / 10
             }
-            
-            chartDataVM.pointRateByRetOrVoly = []
-            chartDataVM.pointRateByRetOrVoly.append(PieChartDataModel(
-                name: "data1",
-                nameString: "リターナー",
-                value: returnerGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateByRetOrVoly.append(PieChartDataModel(
-                name: "data2",
-                nameString: "ボレーヤー",
-                value: volleyerAtRetGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateByRetOrVoly.append(PieChartDataModel(
-                name: "blank",
-                nameString: "",
-                value: returnerGetRate + volleyerAtRetGetRate,
-                labelType: .twoLabels
-            ))
+            chartDataVM.pointRateByRetOrVoly = [
+                .init(name: "data1", nameString: "リターナー", value: returnerGetRate, labelType: .twoLabels),
+                .init(name: "data2", nameString: "ボレーヤー", value: volleyerAtRetGetRate, labelType: .twoLabels),
+                .init(name: "blank", nameString: "", value: returnerGetRate + volleyerAtRetGetRate, labelType: .twoLabels)
+            ]
         }
         
         // pointRateByServiceSide
@@ -355,25 +335,11 @@ class DataManageViewModel: ObservableObject {
                 }
                 advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
             }
-            chartDataVM.pointRateByServiceSide = []
-            chartDataVM.pointRateByServiceSide.append(PieChartDataModel(
-                name: "data1",
-                nameString: "フォア\nサイド",
-                value: duceGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateByServiceSide.append(PieChartDataModel(
-                name: "data2",
-                nameString: "バック\nサイド",
-                value: advGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateByServiceSide.append(PieChartDataModel(
-                name: "blank",
-                nameString: "",
-                value: duceGetRate + advGetRate,
-                labelType: .twoLabels
-            ))
+            chartDataVM.pointRateByServiceSide = [
+                .init(name: "data1", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
+                .init(name: "data2", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
+                .init(name: "blank", nameString: "", value: duceGetRate + advGetRate, labelType: .twoLabels)
+            ]
         }
         // pointRateByReturnSide
         
@@ -408,26 +374,11 @@ class DataManageViewModel: ObservableObject {
                 }
                 advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
             }
-            
-            chartDataVM.pointRateByReturnSide = []
-            chartDataVM.pointRateByReturnSide.append(PieChartDataModel(
-                name: "data1",
-                nameString: "フォア\nサイド",
-                value: duceGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateByReturnSide.append(PieChartDataModel(
-                name: "data2",
-                nameString: "バック\nサイド",
-                value: advGetRate,
-                labelType: .twoLabels
-            ))
-            chartDataVM.pointRateByReturnSide.append(PieChartDataModel(
-                name: "blank",
-                nameString: "",
-                value: duceGetRate + advGetRate,
-                labelType: .twoLabels
-            ))
+            chartDataVM.pointRateByReturnSide = [
+                .init(name: "data1", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
+                .init(name: "data2", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
+                .init(name: "blank", nameString: "", value: duceGetRate + advGetRate, labelType: .twoLabels)
+            ]
         }
     }
     
@@ -442,7 +393,6 @@ class DataManageViewModel: ObservableObject {
             chartDataVM.keepAndBreak = [
                 .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
                 .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
-                
                 .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
             ]
         } else {
@@ -463,51 +413,22 @@ class DataManageViewModel: ObservableObject {
                 let breakGames = returnGames.filter{ $0.getPoint > $0.lostPoint}
                 breakRate = round((Double(breakGames.count)/Double(returnGames.count)) * 1000) / 10
             }
-            var brankRate:Double = 0
             if keepRate + breakRate >= 100 {
-                brankRate = keepRate + breakRate
-                chartDataVM.keepAndBreak = []
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data1",
-                    nameString: "キープ率",
-                    value: keepRate,
-                    labelType: .twoLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data2",
-                    nameString: "ブレーク率",
-                    value: breakRate,
-                    labelType: .twoLabels))
-                
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "blank",
-                    nameString: "",
-                    value: brankRate,
-                    labelType: .twoLabels))
+                chartDataVM.keepAndBreak = [
+                    .init(name: "data1", nameString: "キープ率", value: keepRate, labelType: .twoLabels),
+                    .init(name: "data2", nameString: "ブレーク率", value: breakRate, labelType: .twoLabels),
+                    .init(name: "blank", nameString: "", value: keepRate + breakRate, labelType: .twoLabels)
+                ]
                 chartDataVM.keepAndBreakStyleScale = [
                     "data1": .blue, "data2": .aqua, "blank": .white
                 ]
             } else {
-                chartDataVM.keepAndBreak = []
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data1",
-                    nameString: "キープ率",
-                    value: keepRate,
-                    labelType: .threeLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data2",
-                    nameString: "ブレーク率",
-                    value: breakRate,
-                    labelType: .threeLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data3",
-                    nameString: "あと",
-                    value:  100 - keepRate - breakRate,
-                    labelType: .threeLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "blank",
-                    nameString: "",
-                    value: 100,
-                    labelType: .threeLabels))
+                chartDataVM.keepAndBreak = [
+                    .init(name: "data1", nameString: "キープ率", value: keepRate, labelType: .twoLabels),
+                    .init(name: "data2", nameString: "ブレーク率", value: breakRate, labelType: .twoLabels),
+                    .init(name: "data3", nameString: "あと", value: 100 - keepRate - breakRate, labelType: .twoLabels),
+                    .init(name: "blank", nameString: "", value: 100, labelType: .twoLabels)
+                ]
                 chartDataVM.keepAndBreakStyleScale = [
                     "data1": .blue, "data2": .aqua, "data3": .red, "blank": .white
                 ]
@@ -533,7 +454,6 @@ class DataManageViewModel: ObservableObject {
                         realm.delete(lastPoint)
                     }
                 }
-                showPointRealm()
             } else if pointVM.allPoint == 0 {
                 positionVM.myPosition = .noSelection
                 positionVM.servOrRet = ServOrRet(rawValue: pointData.last!.servOrRet)!
@@ -553,14 +473,12 @@ class DataManageViewModel: ObservableObject {
                         realm.delete(lastGame)
                     }
                 }
-                showGameRealm()
             } else {
                 if let lastPoint = pointData.last {
                     try! realm.write() {
                         realm.delete(lastPoint)
                     }
                 }
-                showPointRealm()
                 let results = realm.objects(PointDataModel.self).where({
                     $0.matchId == matchInfoVM.matchId
                 })
@@ -586,6 +504,18 @@ class DataManageViewModel: ObservableObject {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(GameDataModel.self)
+        print(results)
+    }
+    func showSetRealm(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let results = realm.objects(SetDataModel.self)
+        print(results)
+    }
+    func showMatchRealm(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let results = realm.objects(MatchDataModel.self)
         print(results)
     }
     func deleteRealm(){

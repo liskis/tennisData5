@@ -12,6 +12,11 @@ class ChartDataViewModel: ObservableObject {
         .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
         .init(value: 100, color: .mercury, category: "secondSvIn", index: 80)
     ]
+    @Published var doubleFaultCount: String = "No Data"
+    @Published var doubleFault: [BarChartDataModel] = [
+        .init(value: 0, color: .blue, category: "doubleFault", index: 8),
+        .init(value: 100, color: .mercury, category: "doubleFault", index: 8)
+    ]
     @Published var noDoubleFaultCount: String = "No Data"
     @Published var noDoubleFault: [BarChartDataModel] = [
         .init(value: 0, color: .blue, category: "noDoubleFault", index: 92),
@@ -124,5 +129,76 @@ class ChartDataViewModel: ObservableObject {
     @Published var styleScaleDisDbls: KeyValuePairs<String, Color> = [
         "data1": .silver, "data2": .silver, "data3": .silver, "blank": .white
     ]
-    
+    func returnInitialValue(){
+        firstSvInCount = "No Data"
+        firstSvIn = [
+            .init(value: 0, color: .blue, category: "firstSvIn", index: 60),
+            .init(value: 100, color: .mercury, category: "firstSvIn", index: 60)
+        ]
+        secondSvInCount = "No Data"
+        secondSvIn = [
+            .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
+            .init(value: 100, color: .mercury, category: "secondSvIn", index: 80)
+        ]
+        noDoubleFaultCount = "No Data"
+        noDoubleFault = [
+            .init(value: 0, color: .blue, category: "noDoubleFault", index: 92),
+            .init(value: 100, color: .mercury, category: "noDoubleFault", index: 92)
+        ]
+        atFirstSvCount = "No Data"
+        atFirstSv = [
+            .init(value: 0, color: .blue, category: "atFirstSv", index: 60),
+            .init(value: 100, color: .mercury, category: "atFirstSv", index: 60)
+        ]
+        atSecondSvCount = "No Data"
+        atSecondSv = [
+            .init(value: 0, color: .blue, category: "atSecondSv", index: 50),
+            .init(value: 100, color: .mercury, category: "atSecondSv", index: 50)
+        ]
+        
+        getAndLostPoint = [
+            .init(name: "data1", nameString: "とった\nポイント", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "とられた\nポイント", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        getAndLostPointStyleScale = [
+            "data1": .blue, "data2": .tangerine, "blank": .white
+        ]
+        keepAndBreak = [
+            .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
+            
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        keepAndBreakStyleScale = [
+            "data1": .blue, "data2": .aqua, "blank": .white
+        ]
+        pointRateBySvOrVoly = [
+            .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateByRetOrVoly = [
+            .init(name: "data1", nameString: "リターナー", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateByServiceSide = [
+            .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateByReturnSide = [
+            .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
+        ]
+        pointRateStyleScale = [
+            "data1": .blue, "data2": .aqua, "blank": .white
+        ]
+        
+        keepAndBreakStyleScaleDis = [
+            "data1": .silver, "data2": .silver, "data3": .silver, "data4": .silver ,"blank": .white
+        ]
+    }
 }

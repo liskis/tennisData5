@@ -10,7 +10,7 @@ struct RealTimeDataView: View {
             ScrollView {
                 VStack{
                     Spacer(minLength: 20)
-                    MyNameAndScoreArea(
+                    PointGameScoreArea(
                         matchInfoVM: matchInfoVM,
                         pointVM:pointVM,
                         userVM: userVM

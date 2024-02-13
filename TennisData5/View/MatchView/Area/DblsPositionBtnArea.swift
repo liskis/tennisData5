@@ -93,9 +93,7 @@ struct DblsPositionBtnArea: View {
     }
     var volleyerServDuceBtn: some View {
         Button(action: {
-            positionVM.myPosition = .volleyer
-            positionVM.side = .duceSide
-            positionVM.server = .partner
+            volleyerServDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -136,9 +134,7 @@ struct DblsPositionBtnArea: View {
     }
     var volleyerServAdvBtn: some View {
         Button(action: {
-            positionVM.myPosition = .volleyer
-            positionVM.side = .advantageSide
-            positionVM.server = .partner
+            volleyerServAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -179,9 +175,7 @@ struct DblsPositionBtnArea: View {
     }
     var serverAdvBtn: some View {
         Button(action: {
-            positionVM.myPosition = .server
-            positionVM.side = .advantageSide
-            positionVM.server = .mySelf
+            serverAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -222,9 +216,7 @@ struct DblsPositionBtnArea: View {
     }
     var serverDuceBtn: some View {
         Button(action: {
-            positionVM.myPosition = .server
-            positionVM.side = .duceSide
-            positionVM.server = .mySelf
+            serverDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -265,9 +257,7 @@ struct DblsPositionBtnArea: View {
     }
     var volleyerRetDuceBtn: some View {
         Button(action: {
-            positionVM.myPosition = .volleyer
-            positionVM.side = .duceSide
-            positionVM.server = .opponentTeam
+            volleyerRetDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -308,9 +298,7 @@ struct DblsPositionBtnArea: View {
     }
     var volleyerRetAdvBtn: some View {
         Button(action: {
-            positionVM.myPosition = .volleyer
-            positionVM.side = .advantageSide
-            positionVM.server = .opponentTeam
+            volleyerRetAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -351,9 +339,7 @@ struct DblsPositionBtnArea: View {
     }
     var returnerAdvBtn: some View {
         Button(action: {
-            positionVM.myPosition = .returner
-            positionVM.side = .advantageSide
-            positionVM.server = .opponentTeam
+            returnerAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -394,9 +380,7 @@ struct DblsPositionBtnArea: View {
     }
     var returnerDuceBtn: some View {
         Button(action: {
-            positionVM.myPosition = .returner
-            positionVM.side = .duceSide
-            positionVM.server = .opponentTeam
+            returnerDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -416,6 +400,47 @@ struct DblsPositionBtnArea: View {
         .cornerRadius(4)
     }
 }
-
+extension DblsPositionBtnArea {
+    func volleyerServDuce(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .duceSide
+        positionVM.server = .partner
+    }
+    func volleyerServAdv(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .advantageSide
+        positionVM.server = .partner
+    }
+    func serverAdv(){
+        positionVM.myPosition = .server
+        positionVM.side = .advantageSide
+        positionVM.server = .mySelf
+    }
+    func serverDuce(){
+        positionVM.myPosition = .server
+        positionVM.side = .duceSide
+        positionVM.server = .mySelf
+    }
+    func volleyerRetDuce(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .duceSide
+        positionVM.server = .opponentTeam
+    }
+    func volleyerRetAdv(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .advantageSide
+        positionVM.server = .opponentTeam
+    }
+    func returnerAdv(){
+        positionVM.myPosition = .returner
+        positionVM.side = .advantageSide
+        positionVM.server = .opponentTeam
+    }
+    func returnerDuce(){
+        positionVM.myPosition = .returner
+        positionVM.side = .duceSide
+        positionVM.server = .opponentTeam
+    }
+}
 
 

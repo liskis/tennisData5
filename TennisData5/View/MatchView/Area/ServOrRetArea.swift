@@ -48,8 +48,7 @@ struct ServOrRetArea: View {
     }
     var serviceGameBtn: some View {
         Button(action: {
-            positionVM.servOrRet = .serviceGame
-            positionVM.myPosition = .noSelection
+            serviceGame()
         },label:{
             Text("サービスゲーム")
                 .foregroundColor(Color.white)
@@ -76,8 +75,7 @@ struct ServOrRetArea: View {
     }
     var returnGameBtn: some View {
         Button(action: {
-            positionVM.servOrRet = .returnGame
-            positionVM.myPosition = .noSelection
+            returnGame()
         },label:{
             Text("リターンゲーム")
                 .foregroundColor(Color.white)
@@ -91,4 +89,13 @@ struct ServOrRetArea: View {
         .cornerRadius(4)
     }
 }
-
+extension ServOrRetArea {
+    func serviceGame(){
+        positionVM.servOrRet = .serviceGame
+        positionVM.myPosition = .noSelection
+    }
+    func returnGame(){
+        positionVM.servOrRet = .returnGame
+        positionVM.myPosition = .noSelection
+    }
+}

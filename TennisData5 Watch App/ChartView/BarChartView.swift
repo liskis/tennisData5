@@ -10,12 +10,6 @@ struct BarChartView: View {
                 width:10
             )
             .foregroundStyle(dataRow.color)
-            .annotation(position: .overlay, alignment: .trailing, spacing: 0) {
-                Text(String(dataRow.value) + "%")
-                    .foregroundColor(.tungsten)
-                    .font(.custom("Verdana",size:8))
-                    .bold()
-            }
             RectangleMark(
                 x: .value("index", dataRow.index),
                 y: .value("category", dataRow.category),

@@ -1,32 +1,54 @@
 import SwiftUI
-
 struct HomeView: View {
     let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
     @ObservedObject var dataManageVM = DataManageViewModel()
     @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var homeVM: HomeViewModel
     @State var naviTitle: String = ""
-    @State var isPresented: Bool = false
+    @State var toPointGameView: Bool = false
     var body: some View {
         VStack(spacing: 0){
             headerLogo
             headerBar
             Spacer()
+            if homeVM.latestMatch.matchId != "" {
+                latestMatch
+                Spacer()
+            }
             gameStartBtns
             Spacer()
         }
         .frame(height: watchHeight * 0.9)
-        .fullScreenCover(isPresented: $isPresented, onDismiss: {
-            dataManageVM.resetAllVM()
-        }) {
-            PointGameView(
-                dataManageVM: dataManageVM,
-                pointVM: dataManageVM.pointVM,
-                matchInfoVM: dataManageVM.matchInfoVM,
-                positionVM: dataManageVM.positionVM,
-                chartDataVM: dataManageVM.chartDataVM,
-                userVM: userVM
-            )
-            
+        .overlay {
+            if toPointGameView {
+                PointGameView(
+                    dataManageVM: dataManageVM,
+                    pointVM: dataManageVM.pointVM,
+                    matchInfoVM: dataManageVM.matchInfoVM,
+                    positionVM: dataManageVM.positionVM,
+                    chartDataVM: dataManageVM.chartDataVM,
+                    userVM: userVM,
+                    homeVM: homeVM
+                )
+            }
+        }
+//        .sheet(isPresented: $toPointGameView, onDismiss: {
+//            dataManageVM.resetAllVM()
+//        }) {
+//            PointGameView(
+//                dataManageVM: dataManageVM,
+//                pointVM: dataManageVM.pointVM,
+//                matchInfoVM: dataManageVM.matchInfoVM,
+//                positionVM: dataManageVM.positionVM,
+//                chartDataVM: dataManageVM.chartDataVM,
+//                userVM: userVM,
+//                homeVM: homeVM
+//            )
+//        }
+        .onAppear{
+            dataManageVM.showSetRealm()
+            dataManageVM.showMatchRealm()
+//            dataManageVM.deleteRealm()
         }
     }
     var headerLogo: some View{
@@ -69,8 +91,47 @@ struct HomeView: View {
             .clipped()
         }
         .frame(height: 20)
-            
-        
+    }
+    var latestMatch: some View {
+        HStack{
+            Spacer()
+            if homeVM.latestMatch.matchFormat == .singles {
+                Image(.singles)
+                    .resizable()
+                    .scaledToFit()
+            } else if homeVM.latestMatch.matchFormat == .doubles {
+                Image(.doubles)
+                    .resizable()
+                    .scaledToFit()
+            }
+            Spacer()
+            Text(homeVM.latestMatch.gameType.forString)
+                .font(.custom("Verdana", size: 10))
+                .foregroundColor(Color.white)
+            Spacer()
+            Text(Date.dateToString(date: homeVM.latestMatch.matchStartDate, format: "YY/MM/dd"))
+                .font(.custom("Verdana", size: 10))
+                .foregroundColor(Color.white)
+            Spacer()
+            if homeVM.latestMatch.WinScore > homeVM.latestMatch.LoseScore {
+                Text("Win")
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(Color.red)
+                    .bold()
+            } else if homeVM.latestMatch.WinScore < homeVM.latestMatch.LoseScore {
+                Text("Lose")
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(Color.blue)
+                    .bold()
+            } else {
+                Text("Drow")
+                    .font(.custom("Verdana", size: 10))
+                    .foregroundColor(Color.silver)
+                    .bold()
+            }
+            Spacer()
+        }
+        .frame(height: 12)
     }
     var gameStartBtns: some View {
         VStack(spacing:1){
@@ -89,7 +150,7 @@ struct HomeView: View {
                         dataManageVM.matchInfoVM.matchFormat = .singles
                         dataManageVM.matchInfoVM.gameType = .pointGame
                         naviTitle = "シングルスポイントゲーム"
-                        isPresented = true
+                        toPointGameView = true
                     }
                 Text("ダブルス\nポイントゲーム")
                     .frame(height: 30)
@@ -105,10 +166,9 @@ struct HomeView: View {
                         dataManageVM.matchInfoVM.matchFormat = .doubles
                         dataManageVM.matchInfoVM.gameType = .pointGame
                         naviTitle = "ダブルスポイントゲーム"
-                        isPresented = true
+                        toPointGameView = true
                     }
             }
         }
     }
-    
 }

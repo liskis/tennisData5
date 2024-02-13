@@ -3,7 +3,7 @@ import Charts
 struct PieChartView: View {
     @Binding var pieChartData: [PieChartDataModel]
     @Binding var styleScale: KeyValuePairs<String, Color>
-    let chartWidth = WKInterfaceDevice.current().screenBounds.size.width / 2 - 20
+    let chartWidth = WKInterfaceDevice.current().screenBounds.size.width / 2
     var body: some View {
         ZStack{
             VStack{
@@ -61,6 +61,8 @@ struct PieChartView: View {
                         .foregroundColor(.white)
                 }
             }
+            .padding(2)
+            .background(Color.black.opacity(0.5))
             Spacer()
             VStack(spacing: 0){
                 Text(pieChartData[1].nameString)
@@ -79,6 +81,8 @@ struct PieChartView: View {
                         .foregroundColor(.white)
                 }
             }
+            .padding(2)
+            .background(Color.black.opacity(0.5))
         }
         .offset(y: chartWidth*0.2)
         .padding(.horizontal,10)
@@ -102,6 +106,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(y:chartWidth*0.2)
                 Spacer().frame(height: chartWidth*0.1)
                 VStack(spacing: 0){
@@ -121,6 +127,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(x:-chartWidth*0.2)
                 Spacer()
                 VStack(spacing: 0){
@@ -140,6 +148,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(y:chartWidth*0.1)
                 
         }
@@ -164,6 +174,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(x:-chartWidth*0.1)
                 Spacer().frame(height: chartWidth*0.1)
                 VStack(spacing:0){
@@ -183,6 +195,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(x:-chartWidth*0.1)
                 Spacer()
             }
@@ -204,6 +218,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(x:chartWidth*0.1)
                 VStack(spacing:0){
                     Text(pieChartData[3].nameString)
@@ -222,6 +238,8 @@ struct PieChartView: View {
                             .foregroundColor(.white)
                     }
                 }
+                .padding(2)
+                .background(Color.black.opacity(0.5))
                 .offset(x:chartWidth*0.1)
                 Spacer()
             }

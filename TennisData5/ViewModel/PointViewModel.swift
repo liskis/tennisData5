@@ -20,4 +20,19 @@ class PointViewModel: ObservableObject {
     var allgameCount: Int {
         getGameCount + lostGameCount + drowGameCount
     }
+    func returnInitialValue(){
+        getSetCount = 0
+        lostSetCount = 0
+        drowSetCount = 0
+        getGameCount = 0
+        lostGameCount = 0
+        drowGameCount = 0
+        getPoint = 0
+        lostPoint = 0
+        service = .first
+        whichPoint = .noSelection
+        shot = .noSelection
+        whose = .noSelection
+        tactics = .noSelection
+    }
 }

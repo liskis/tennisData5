@@ -69,243 +69,253 @@ struct DblsPositionBtnArea: View {
             .frame(height: 30)
     }
     var volleyerServDuceDisBtn: some View {
-        Text("左ボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("左ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var volleyerServDuceBtn: some View {
-        Text("左ボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .volleyer
-                positionVM.side = .duceSide
-                positionVM.server = .partner
+            .overlay{
+                Text("左ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        volleyerServDuce()
+                    }
             }
     }
     var volleyerServAdvDisBtn: some View {
-        Text("右ボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("右ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var volleyerServAdvBtn: some View {
-        Text("右ボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .volleyer
-                positionVM.side = .advantageSide
-                positionVM.server = .partner
+            .overlay{
+                Text("右ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        volleyerServAdv()
+                    }
             }
     }
     var serverAdvDisBtn: some View {
-        Text("バックサイド\nサーバー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("バックサイド\nサーバー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var serverAdvBtn: some View {
-        Text("バックサイド\nサーバー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .server
-                positionVM.side = .advantageSide
-                positionVM.server = .mySelf
+            .overlay{
+                Text("バックサイド\nサーバー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        serverAdv()
+                    }
             }
     }
     var serverDuceDisBtn: some View {
-        Text("フォアサイド\nサーバー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("フォアサイド\nサーバー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var serverDuceBtn: some View {
-        Text("フォアサイド\nサーバー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .server
-                positionVM.side = .duceSide
-                positionVM.server = .mySelf
+            .overlay{
+                Text("フォアサイド\nサーバー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        serverDuce()
+                    }
             }
     }
     var volleyerRetDuceDisBtn: some View {
-        Text("左の\nボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("左ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var volleyerRetDuceBtn: some View {
-        Text("左の\nボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .volleyer
-                positionVM.side = .duceSide
-                positionVM.server = .opponentTeam
+            .overlay{
+                Text("左ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        volleyerRetDuce()
+                    }
             }
     }
     var volleyerRetAdvDisBtn: some View {
-        Text("右の\nボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("右ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var volleyerRetAdvBtn: some View {
-        Text("右の\nボレーヤー")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .volleyer
-                positionVM.side = .advantageSide
-                positionVM.server = .opponentTeam
+            .overlay{
+                Text("右ボレーヤー")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        volleyerRetAdv()
+                    }
             }
     }
     var returnerAdvDisBtn: some View {
-        Text("バックサイド\nリターン")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("バックサイド\nリターン")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var returnerAdvBtn: some View {
-        Text("バックサイド\nリターン")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .returner
-                positionVM.side = .advantageSide
-                positionVM.server = .opponentTeam
+            .overlay{
+                Text("バックサイド\nリターン")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        returnerAdv()
+                    }
             }
     }
     var returnerDuceDisBtn: some View {
-        Text("フォアサイド\nリターン")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("フォアサイド\nリターン")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var returnerDuceBtn: some View {
-        Text("フォアサイド\nリターン")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.fern)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.fern)
-            )
-            .onTapGesture {
-                positionVM.myPosition = .returner
-                positionVM.side = .duceSide
-                positionVM.server = .opponentTeam
+            .overlay{
+                Text("フォアサイド\nリターン")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        returnerDuce()
+                    }
             }
+    }
+}
+extension DblsPositionBtnArea {
+    func volleyerServDuce(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .duceSide
+        positionVM.server = .partner
+    }
+    func volleyerServAdv(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .advantageSide
+        positionVM.server = .partner
+    }
+    func serverAdv(){
+        positionVM.myPosition = .server
+        positionVM.side = .advantageSide
+        positionVM.server = .mySelf
+    }
+    func serverDuce(){
+        positionVM.myPosition = .server
+        positionVM.side = .duceSide
+        positionVM.server = .mySelf
+    }
+    func volleyerRetDuce(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .duceSide
+        positionVM.server = .opponentTeam
+    }
+    func volleyerRetAdv(){
+        positionVM.myPosition = .volleyer
+        positionVM.side = .advantageSide
+        positionVM.server = .opponentTeam
+    }
+    func returnerAdv(){
+        positionVM.myPosition = .returner
+        positionVM.side = .advantageSide
+        positionVM.server = .opponentTeam
+    }
+    func returnerDuce(){
+        positionVM.myPosition = .returner
+        positionVM.side = .duceSide
+        positionVM.server = .opponentTeam
     }
 }

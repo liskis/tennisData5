@@ -75,7 +75,7 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.red}
+                .background{Color.blue}
                 .cornerRadius(4)
         })
     }
@@ -117,7 +117,7 @@ struct DblsPointBtnArea: View {
                 .font(.custom("Verdana", size: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)
-                .background{Color.blue}
+                .background{Color.red}
                 .cornerRadius(4)
         })
     }

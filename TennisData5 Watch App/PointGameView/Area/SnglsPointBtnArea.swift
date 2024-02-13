@@ -15,79 +15,83 @@ struct SnglsPointBtnArea: View {
         }
     }
     var getPointBtnDis: some View {
-        Text("ポイントをとった")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.gray)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.gray)
-            )
+            .overlay{
+                Text("ポイントをとった")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var getPointBtn: some View {
-        Text("ポイントをとった")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.blue)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.red)
-            )
-            .onTapGesture {
-                if positionVM.myPosition != .noSelection {
-                    pointVM.whichPoint = .myTeam
-                    pointVM.getPoint += 1
-                    dataManageVM.pointRecoad()
-                    if pointVM.allPoint % 2 == 0 {
-                        positionVM.side = .duceSide
-                    } else {
-                        positionVM.side = .advantageSide
+            .overlay{
+                Text("ポイントをとった")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        getPoint()
                     }
-                    pointVM.service = .first
-                    pointVM.whichPoint = .noSelection
-                }
             }
     }
     var lostPointBtnDis: some View {
-        Text("ポイントをとられた")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.gray)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.gray)
-            )
+            .overlay{
+                Text("ポイントをとられた")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var lostPointBtn: some View {
-        Text("ポイントをとられた")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.red)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.blue)
-            )
-            .onTapGesture {
-                if positionVM.myPosition != .noSelection {
-                    pointVM.whichPoint = .opponent
-                    pointVM.lostPoint += 1
-                    dataManageVM.pointRecoad()
-                    if pointVM.allPoint % 2 == 0 {
-                        positionVM.side = .duceSide
-                    } else {
-                        positionVM.side = .advantageSide
+            .overlay{
+                Text("ポイントをとられた")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        lostPoint()
                     }
-                    pointVM.service = .first
-                    pointVM.whichPoint = .noSelection
-                }
             }
+    }
+}
+extension SnglsPointBtnArea {
+    func getPoint(){
+        if positionVM.myPosition != .noSelection {
+            pointVM.whichPoint = .myTeam
+            pointVM.getPoint += 1
+            dataManageVM.pointRecoad()
+            if pointVM.allPoint % 2 == 0 {
+                positionVM.side = .duceSide
+            } else {
+                positionVM.side = .advantageSide
+            }
+            pointVM.service = .first
+            pointVM.whichPoint = .noSelection
+        }
+    }
+    func lostPoint(){
+        if positionVM.myPosition != .noSelection {
+            pointVM.whichPoint = .opponent
+            pointVM.lostPoint += 1
+            dataManageVM.pointRecoad()
+            if pointVM.allPoint % 2 == 0 {
+                positionVM.side = .duceSide
+            } else {
+                positionVM.side = .advantageSide
+            }
+            pointVM.service = .first
+            pointVM.whichPoint = .noSelection
+        }
     }
 }

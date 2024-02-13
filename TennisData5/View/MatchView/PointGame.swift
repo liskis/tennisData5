@@ -14,7 +14,7 @@ struct PointGame: View {
         NavigationStack {
             VStack(spacing:0){
                 Spacer(minLength: 20)
-                MyNameAndScoreArea(
+                PointGameScoreArea(
                     matchInfoVM: matchInfoVM,
                     pointVM: pointVM,
                     userVM: userVM

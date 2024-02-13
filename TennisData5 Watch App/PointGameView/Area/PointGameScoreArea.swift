@@ -1,5 +1,5 @@
 import SwiftUI
-struct MyNameAndScoreArea: View {
+struct PointGameScoreArea: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var pointVM: PointViewModel
     @ObservedObject var userVM: UserViewModel

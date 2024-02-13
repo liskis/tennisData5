@@ -11,7 +11,6 @@ class DataManageViewModel: ObservableObject {
         positionVM.returnInitialValue()
         chartDataVM.returnInitialValue()
     }
-    
     func matchRecoad(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
@@ -64,9 +63,7 @@ class DataManageViewModel: ObservableObject {
             gameData.gameEndDate = Date()
             realm.add(gameData)
         }
-        showGameRealm()
     }
-    
     func pointRecoad(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
@@ -94,9 +91,7 @@ class DataManageViewModel: ObservableObject {
             realm.add(pointData)
             setChartData()
         }
-        showPointRealm()
     }
-    
     func setChartData(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
@@ -117,7 +112,6 @@ class DataManageViewModel: ObservableObject {
                 .init(value: fiestSvInRateRound, color: .blue, category: "firstSvIn", index: 60),
                 .init(value: 100 - fiestSvInRateRound, color: .tungsten, category: "firstSvIn", index: 60)
             ]
-            
             chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
         }
         // secondSvIn
@@ -431,32 +425,10 @@ class DataManageViewModel: ObservableObject {
                     .init(name: "data3", nameString: "あと", value: 100 - keepRate - breakRate, labelType: .twoLabels),
                     .init(name: "blank", nameString: "", value: 100, labelType: .twoLabels)
                 ]
-                chartDataVM.keepAndBreak = []
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data1",
-                    nameString: "キープ率",
-                    value: keepRate,
-                    labelType: .threeLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data2",
-                    nameString: "ブレーク率",
-                    value: breakRate,
-                    labelType: .threeLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "data3",
-                    nameString: "あと",
-                    value:  100 - keepRate - breakRate,
-                    labelType: .threeLabels))
-                chartDataVM.keepAndBreak.append(PieChartDataModel(
-                    name: "blank",
-                    nameString: "",
-                    value: 100,
-                    labelType: .threeLabels))
                 chartDataVM.keepAndBreakStyleScale = [
                     "data1": .blue, "data2": .aqua, "data3": .red, "blank": .black
                 ]
             }
-            
         }
     }
     
@@ -477,7 +449,6 @@ class DataManageViewModel: ObservableObject {
                         realm.delete(lastPoint)
                     }
                 }
-                showPointRealm()
             } else if pointVM.allPoint == 0 {
                 positionVM.myPosition = .noSelection
                 positionVM.servOrRet = ServOrRet(rawValue: pointData.last!.servOrRet)!
@@ -497,14 +468,12 @@ class DataManageViewModel: ObservableObject {
                         realm.delete(lastGame)
                     }
                 }
-                showGameRealm()
             } else {
                 if let lastPoint = pointData.last {
                     try! realm.write() {
                         realm.delete(lastPoint)
                     }
                 }
-                showPointRealm()
                 let results = realm.objects(PointDataModel.self).where({
                     $0.matchId == matchInfoVM.matchId
                 })
@@ -519,7 +488,6 @@ class DataManageViewModel: ObservableObject {
         setChartData()
         setGameChart()
     }
-    
     func showPointRealm(){
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
@@ -530,6 +498,18 @@ class DataManageViewModel: ObservableObject {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
         let realm = try! Realm()
         let results = realm.objects(GameDataModel.self)
+        print(results)
+    }
+    func showSetRealm(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let results = realm.objects(SetDataModel.self)
+        print(results)
+    }
+    func showMatchRealm(){
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        let results = realm.objects(MatchDataModel.self)
         print(results)
     }
     func deleteRealm(){

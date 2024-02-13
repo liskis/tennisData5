@@ -3,8 +3,8 @@ import SwiftUI
 struct ChartsLayOutArea: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
-    let chartWidth = WKInterfaceDevice.current().screenBounds.size.width / 2 - 20
-    var body: some View {
+    let chartWidth = WKInterfaceDevice.current().screenBounds.size.width / 2
+    var body: some View {       
         VStack{
             Spacer().frame(height: 10)
             HStack{
@@ -14,7 +14,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.white)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.firstSvIn)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.firstSvIn)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.firstSvIn[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:8))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.secondSvInCount)）セカンドサーブの確率")
@@ -23,7 +33,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.white)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.secondSvIn)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.secondSvIn)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.secondSvIn[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:8))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.doubleFaultCount)）ダブルフォルトの確率")
@@ -32,7 +52,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.white)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.doubleFault)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.doubleFault)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.doubleFault[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:8))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.atFirstSvCount)）ファーストサーブ時のポイント取得率")
@@ -41,7 +71,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.white)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.atFirstSv)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.atFirstSv)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.atFirstSv[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:8))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.atSecondSvCount)）セカンドサーブ時のポイント取得率")
@@ -50,8 +90,18 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.white)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.atSecondSv)
-            Spacer().frame(height:50)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.atSecondSv)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.atSecondSv[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:8))
+                        .bold()
+                    Spacer()
+                }
+            }
+            Spacer().frame(height:20)
             ZStack{
                 if chartDataVM.getAndLostPoint[2].nameString == "init" {
                     PieChartView(
@@ -65,12 +115,11 @@ struct ChartsLayOutArea: View {
                     )
                 }
                 Text("とったポイントと取られたポイント")
-                    .font(.custom("Verdana",size:10))
+                    .font(.custom("Verdana",size:8))
                     .bold()
-                    .foregroundColor(.tungsten)
-                    .offset(y:chartWidth*0.03)
+                    .foregroundColor(.white)
+                    .offset(y:chartWidth*0.1)
             }
-            
             ZStack{
                 if chartDataVM.keepAndBreak[2].nameString == "init"{
                     PieChartView(
@@ -84,13 +133,12 @@ struct ChartsLayOutArea: View {
                     )
                 }
                 Text("キープ率とブレーク率")
-                    .font(.custom("Verdana",size:10))
+                    .font(.custom("Verdana",size:8))
                     .bold()
-                    .foregroundColor(.tungsten)
-                    .offset(y:chartWidth*0.03)
+                    .foregroundColor(.white)
+                    .offset(y:chartWidth*0.1)
             }
-            
-            
+            .offset(y:-chartWidth*0.2)
             ZStack{
                 if chartDataVM.pointRateByServiceSide[2].nameString == "init" {
                     PieChartView(
@@ -104,12 +152,12 @@ struct ChartsLayOutArea: View {
                     )
                 }
                 Text("サービスサイドのポイント取得率")
-                    .font(.custom("Verdana",size:9))
+                    .font(.custom("Verdana",size:7))
                     .bold()
-                    .foregroundColor(.tungsten)
-                    .offset(y:chartWidth*0.03)
+                    .foregroundColor(.white)
+                    .offset(y:chartWidth*0.1)
             }
-            
+            .offset(y:-chartWidth*0.4)
             ZStack{
                 if chartDataVM.pointRateByReturnSide[2].nameString == "init"{
                     PieChartView(
@@ -123,14 +171,13 @@ struct ChartsLayOutArea: View {
                     )
                 }
                 Text("リターンサイドのポイント取得率")
-                    .font(.custom("Verdana",size:10))
+                    .font(.custom("Verdana",size:7))
                     .bold()
-                    .foregroundColor(.tungsten)
-                    .offset(y:chartWidth*0.03)
+                    .foregroundColor(.white)
+                    .offset(y:chartWidth*0.1)
             }
-            
+            .offset(y:-chartWidth*0.6)
             if matchInfoVM.matchFormat == .doubles {
-          
                 ZStack{
                     if chartDataVM.pointRateBySvOrVoly[2].nameString == "init" {
                         PieChartView(
@@ -144,11 +191,12 @@ struct ChartsLayOutArea: View {
                         )
                     }
                     Text("サーバーとボレーヤーのポイント取得率")
-                        .font(.custom("Verdana",size:9))
+                        .font(.custom("Verdana",size:7))
                         .bold()
-                        .foregroundColor(.tungsten)
-                        .offset(y:chartWidth*0.03)
+                        .foregroundColor(.white)
+                        .offset(y:chartWidth*0.1)
                 }
+                .offset(y:-chartWidth*0.8)
                 ZStack{
                     if chartDataVM.pointRateByReturnSide[2].nameString == "init"{
                         PieChartView(
@@ -162,15 +210,13 @@ struct ChartsLayOutArea: View {
                         )
                     }
                     Text("リターナーとボレーヤーのポイント取得率")
-                        .font(.custom("Verdana",size:9))
+                        .font(.custom("Verdana",size:7))
                         .bold()
-                        .foregroundColor(.tungsten)
-                        .offset(y:chartWidth*0.03)
+                        .foregroundColor(.white)
+                        .offset(y:chartWidth*0.1)
                 }
-            
-               
+                .offset(y:-chartWidth)
             }
-            Spacer()
         }
         .padding(.horizontal,10)
     }

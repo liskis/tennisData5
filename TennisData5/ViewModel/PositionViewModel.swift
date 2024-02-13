@@ -10,5 +10,17 @@ class PositionViewModel: ObservableObject {
     @Published var teamBplayer2position: Position = .noSelection
     @Published var server: Server = .noSelection
     @Published var tactics: Tactics = .noSelection
+    func returnInitialValue(){
+        servOrRet = .noSelection
+        side = .duceSide
+        myPosition = .noSelection
+        gamePosition = .noSelection
+        teamAplayer1position = .noSelection
+        teamAplayer2position = .noSelection
+        teamBplayer1position = .noSelection
+        teamBplayer2position = .noSelection
+        server = .noSelection
+        tactics = .noSelection
+    }
 }
    

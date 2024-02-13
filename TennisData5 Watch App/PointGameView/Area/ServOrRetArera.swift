@@ -32,61 +32,57 @@ struct ServOrRetArea: View {
             .frame(height: 30)
     }
     var serviceGameDisBtn: some View {
-        Text("サービスゲーム")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("サービスゲーム")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var serviceGameBtn: some View {
-        Text("サービスゲーム")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.moss)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.moss)
-            )
-            .onTapGesture {
-                positionVM.servOrRet = .serviceGame
-                positionVM.myPosition = .noSelection
+            .overlay{
+                Text("サービスゲーム")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        positionVM.servOrRet = .serviceGame
+                        positionVM.myPosition = .noSelection
+                    }
             }
     }
     var returnGameDisBtn: some View {
-        Text("リターンゲーム")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.asparagus)
+            .stroke(.white, lineWidth: 2)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.asparagus)
-                    .stroke(.white, lineWidth: 2)
-            )
+            .overlay{
+                Text("リターンゲーム")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
     var returnGameBtn: some View {
-        Text("リターンゲーム")
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.moss)
             .frame(height: 30)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(Color.white)
-            .bold()
-            .font(.custom("Verdana", size: 8))
-            .background(
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.moss)
-            )
-            .onTapGesture {
-                positionVM.servOrRet = .returnGame
-                positionVM.myPosition = .noSelection
+            .overlay{
+                Text("リターンゲーム")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        positionVM.servOrRet = .returnGame
+                        positionVM.myPosition = .noSelection
+                    }
             }
     }
 }

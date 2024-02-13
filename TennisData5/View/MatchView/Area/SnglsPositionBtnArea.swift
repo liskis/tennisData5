@@ -62,9 +62,7 @@ struct SnglsPositionBtnArea: View {
     }
     var serverAdvBtn: some View {
         Button(action: {
-            positionVM.myPosition = .server
-            positionVM.side = .advantageSide
-            positionVM.server = .mySelf
+            serverAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -104,9 +102,7 @@ struct SnglsPositionBtnArea: View {
     }
     var serverDuceBtn: some View {
         Button(action: {
-            positionVM.myPosition = .server
-            positionVM.side = .duceSide
-            positionVM.server = .mySelf
+            serverDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -146,9 +142,7 @@ struct SnglsPositionBtnArea: View {
     }
     var returnerAdvBtn: some View {
         Button(action: {
-            positionVM.myPosition = .returner
-            positionVM.side = .advantageSide
-            positionVM.server = .opponent
+            returnerAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -188,9 +182,7 @@ struct SnglsPositionBtnArea: View {
     }
     var returnerDuceBtn: some View {
         Button(action: {
-            positionVM.myPosition = .returner
-            positionVM.side = .duceSide
-            positionVM.server = .opponent
+            returnerDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -209,4 +201,25 @@ struct SnglsPositionBtnArea: View {
         .cornerRadius(4)
     }
 }
-
+extension SnglsPositionBtnArea {
+    func serverAdv(){
+        positionVM.myPosition = .server
+        positionVM.side = .advantageSide
+        positionVM.server = .mySelf
+    }
+    func serverDuce(){
+        positionVM.myPosition = .server
+        positionVM.side = .duceSide
+        positionVM.server = .mySelf
+    }
+    func returnerAdv(){
+        positionVM.myPosition = .returner
+        positionVM.side = .advantageSide
+        positionVM.server = .opponent
+    }
+    func returnerDuce(){
+        positionVM.myPosition = .returner
+        positionVM.side = .duceSide
+        positionVM.server = .opponent
+    }
+}
