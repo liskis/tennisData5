@@ -19,32 +19,32 @@ struct HomeView: View {
             Spacer()
         }
         .frame(height: watchHeight * 0.9)
-        .overlay {
-            if toPointGameView {
-                PointGameView(
-                    dataManageVM: dataManageVM,
-                    pointVM: dataManageVM.pointVM,
-                    matchInfoVM: dataManageVM.matchInfoVM,
-                    positionVM: dataManageVM.positionVM,
-                    chartDataVM: dataManageVM.chartDataVM,
-                    userVM: userVM,
-                    homeVM: homeVM
-                )
-            }
-        }
-//        .sheet(isPresented: $toPointGameView, onDismiss: {
-//            dataManageVM.resetAllVM()
-//        }) {
-//            PointGameView(
-//                dataManageVM: dataManageVM,
-//                pointVM: dataManageVM.pointVM,
-//                matchInfoVM: dataManageVM.matchInfoVM,
-//                positionVM: dataManageVM.positionVM,
-//                chartDataVM: dataManageVM.chartDataVM,
-//                userVM: userVM,
-//                homeVM: homeVM
-//            )
+//        .overlay {
+//            if toPointGameView {
+//                PointGameView(
+//                    dataManageVM: dataManageVM,
+//                    pointVM: dataManageVM.pointVM,
+//                    matchInfoVM: dataManageVM.matchInfoVM,
+//                    positionVM: dataManageVM.positionVM,
+//                    chartDataVM: dataManageVM.chartDataVM,
+//                    userVM: userVM,
+//                    homeVM: homeVM
+//                )
+//            }
 //        }
+        .sheet(isPresented: $toPointGameView, onDismiss: {
+            dataManageVM.resetAllVM()
+        }) {
+            PointGameView(
+                dataManageVM: dataManageVM,
+                pointVM: dataManageVM.pointVM,
+                matchInfoVM: dataManageVM.matchInfoVM,
+                positionVM: dataManageVM.positionVM,
+                chartDataVM: dataManageVM.chartDataVM,
+                userVM: userVM,
+                homeVM: homeVM
+            )
+        }
         .onAppear{
             dataManageVM.showSetRealm()
             dataManageVM.showMatchRealm()

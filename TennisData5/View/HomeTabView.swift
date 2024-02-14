@@ -1,6 +1,6 @@
 import SwiftUI
 struct HomeTabView: View {
-//    @ObservedObject var dataManageVM = DataManageViewModel()
+    @ObservedObject var dataManageVM = DataManageViewModel()
     @ObservedObject var homeDataVM = HomeDataViewModel()
     @ObservedObject var userVM = UserViewModel()
     var body: some View {

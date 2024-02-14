@@ -1,10 +1,16 @@
 import RealmSwift
 import SwiftUI
-class DataManageViewModel: ObservableObject {
+import WatchConnectivity
+class DataManageViewModel: NSObject, ObservableObject {
     @ObservedObject var pointVM = PointViewModel()
     @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
+    var realm: Realm {
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        let realm = try! Realm()
+        return realm
+    }
     func resetAllVM(){
         pointVM.returnInitialValue()
         matchInfoVM.returnInitialValue()
@@ -65,8 +71,8 @@ class DataManageViewModel: ObservableObject {
         }
     }
     func pointRecoad(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
+//        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+//        let realm = try! Realm()
         let pointData = PointDataModel()
         try! realm.write{
             pointData.pointId = UUID().uuidString
@@ -535,5 +541,68 @@ class DataManageViewModel: ObservableObject {
         try! realm.write {
             realm.delete(userData)
         }
+    }
+    private let session: WCSession
+    
+    init(session: WCSession = .default) {
+        self.session = session
+        super.init()
+        self.session.delegate = self
+        self.session.activate()
+    }
+}
+extension DataManageViewModel: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        // WCSessionのアクティベーションが完了したときに呼ばれるメソッド
+        // activationStateにはアクティベーションの状態が渡される
+        // エラーがあればerrorに渡される
+        // アクティベーションが完了した後に必要な初期化などを行う場合、このメソッド内で行うことができる
+    }
+    
+    
+    
+    // データを受信したときに呼ばれるメソッド
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            // Watchアプリからデータを受信したときに呼ばれるメソッド
+            // 受信したデータを処理するコードをここに追加
+            if let pointData = message["pointData"] as? Data {
+                print("Received pointData: \(pointData)")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(PointDataModel.self, from: pointData) {
+                    self.realm.add(decodedData)
+                    self.setChartData()
+                    self.pointVM.getPoint = decodedData.getPoint
+                    self.pointVM.lostPoint = decodedData.lostPoint
+                    self.pointVM.getGameCount = decodedData.getGameCount
+                    self.pointVM.drowGameCount = decodedData.drowGameCount
+                    if decodedData.servOrRet == "returnGame" && decodedData.myPosition == "volleyer" {
+                        self.positionVM.myPosition = .returner
+                    } else if decodedData.servOrRet == "returnGame" && decodedData.myPosition == "returner" {
+                        self.positionVM.myPosition = .volleyer
+                    }
+                    if decodedData.side == "duceSide" {
+                        self.positionVM.side = .advantageSide
+                    } else if decodedData.side == "advantageSide" {
+                        self.positionVM.side = .duceSide
+                    }
+                }
+            }
+        }
+    }
+    
+    // 通信を行うメソッド
+    func sendPointData(pointData:PointDataModel){
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        let encodedData = try! JSONEncoder().encode(pointData)
+        let message = ["pointData": encodedData]
+        WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+            print("Error sending message: \(error.localizedDescription)")
+        })
     }
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import WatchConnectivity
 @main
 struct TennisData5App: App {
     var body: some Scene {
