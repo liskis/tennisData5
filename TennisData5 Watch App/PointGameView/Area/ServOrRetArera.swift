@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct ServOrRetArea: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
     var body: some View {
@@ -55,6 +56,9 @@ struct ServOrRetArea: View {
                     .onTapGesture {
                         positionVM.servOrRet = .serviceGame
                         positionVM.myPosition = .noSelection
+                        Task {
+                            await dataManageVM.WCSelectPositionAndService()
+                        }
                     }
             }
     }
@@ -82,6 +86,9 @@ struct ServOrRetArea: View {
                     .onTapGesture {
                         positionVM.servOrRet = .returnGame
                         positionVM.myPosition = .noSelection
+                        Task {
+                            await dataManageVM.WCSelectPositionAndService()
+                        }
                     }
             }
     }

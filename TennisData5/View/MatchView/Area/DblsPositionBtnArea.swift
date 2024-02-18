@@ -1,5 +1,6 @@
 import SwiftUI
 struct DblsPositionBtnArea: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     var body: some View {
         VStack(spacing: 1){
@@ -405,41 +406,65 @@ extension DblsPositionBtnArea {
         positionVM.myPosition = .volleyer
         positionVM.side = .duceSide
         positionVM.server = .partner
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func volleyerServAdv(){
         positionVM.myPosition = .volleyer
         positionVM.side = .advantageSide
         positionVM.server = .partner
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func serverAdv(){
         positionVM.myPosition = .server
         positionVM.side = .advantageSide
         positionVM.server = .mySelf
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func serverDuce(){
         positionVM.myPosition = .server
         positionVM.side = .duceSide
         positionVM.server = .mySelf
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func volleyerRetDuce(){
         positionVM.myPosition = .volleyer
         positionVM.side = .duceSide
         positionVM.server = .opponentTeam
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func volleyerRetAdv(){
         positionVM.myPosition = .volleyer
         positionVM.side = .advantageSide
         positionVM.server = .opponentTeam
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func returnerAdv(){
         positionVM.myPosition = .returner
         positionVM.side = .advantageSide
         positionVM.server = .opponentTeam
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func returnerDuce(){
         positionVM.myPosition = .returner
         positionVM.side = .duceSide
         positionVM.server = .opponentTeam
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
 }
 

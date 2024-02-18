@@ -7,40 +7,35 @@ struct PointGameView: View {
     @ObservedObject var chartDataVM: ChartDataViewModel
     @ObservedObject var userVM: UserViewModel
     @ObservedObject var homeVM: HomeViewModel
-    @Environment(\.dismiss) var dismiss
     let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
     var body: some View {
         ZStack {
             Color.black
             VStack(spacing:1){
-                Spacer().frame(height: 30)
+                Spacer().frame(height: 20)
                 PointGameScoreArea(
+                    dataManageVM: dataManageVM,
                     matchInfoVM: matchInfoVM,
+                    positionVM: positionVM,
                     pointVM: pointVM,
-                    userVM: userVM
+                    chartDataVM: chartDataVM,
+                    homeVM: homeVM
                 )
-                HStack {
-                    goBackBtn
-                    Spacer()
-                    Text("ビギナーモード")
-                        .foregroundColor(.red)
-                        .bold()
-                        .padding(4)
-                        .font(.custom("Verdana",size:6))
-                }
-                Spacer().frame(height: 10)
                 ScrollView {
                     VStack(spacing:1){
                         ServOrRetArea(
+                            dataManageVM: dataManageVM,
                             positionVM: positionVM,
                             pointVM: pointVM
                         )
                         if matchInfoVM.matchFormat == .doubles {
                             DblsPositionBtnArea(
+                                dataManageVM: dataManageVM,
                                 positionVM: positionVM
                             )
                         } else if matchInfoVM.matchFormat == .singles {
                             SnglsPositionBtnArea(
+                                dataManageVM: dataManageVM,
                                 positionVM: positionVM
                             )
                         }
@@ -64,38 +59,35 @@ struct PointGameView: View {
                                 pointVM: pointVM
                             )
                         }
-                        if pointVM.allPoint + pointVM.allgameCount == 0 {
-                            nextGameBtnDis
-                            gameEndBtnDis
-                        } else {
-                            nextGameBtn
+                        Spacer().frame(height: 20)
+                        if pointVM.allPoint == 0 && pointVM.allCount != 0 {
                             gameEndBtn
+                        } else {
+                            gameEndBtnDis
                         }
+                        Spacer().frame(height: 10)
+                        ChartsLayOutArea(
+                            matchInfoVM: matchInfoVM,
+                            chartDataVM: chartDataVM
+                        )
+                        
                     }
-                    ChartsLayOutArea(
-                        matchInfoVM: matchInfoVM,
-                        chartDataVM: chartDataVM
-                    )
-                    Spacer()
                 }
             }
             .frame(height: watchHeight)
+            if homeVM.toOneMatchDataView {
+                OneMatchDataView(
+                    dataManageVM: dataManageVM,
+                    pointVM: pointVM,
+                    matchInfoVM: matchInfoVM,
+                    chartDataVM: chartDataVM,
+                    homeVM: homeVM
+                )
+                .transition(.move(edge: .bottom))
+            }
         }
         .ignoresSafeArea()
-    }
-    var goBackBtn: some View {
-        RoundedRectangle(cornerRadius: 2)
-            .fill(.ocean)
-            .frame(width: 60,height: 30)
-            .overlay{
-                Text("<< 戻る")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 8))
-                    .onTapGesture {
-                        goBack()
-                    }
-            }
+        
     }
     var faultBtnDis: some View {
         RoundedRectangle(cornerRadius: 2)
@@ -117,7 +109,7 @@ struct PointGameView: View {
                     .bold()
                     .font(.custom("Verdana", size: 8))
                     .onTapGesture {
-                        fault()
+                        dataManageVM.fault()
                     }
             }
     }
@@ -131,33 +123,8 @@ struct PointGameView: View {
                     .bold()
                     .font(.custom("Verdana", size: 8))
                     .onTapGesture {
-                        doubleFault()
+                        dataManageVM.doubleFault()
                     }
-            }
-    }
-    var nextGameBtn: some View {
-        RoundedRectangle(cornerRadius: 2)
-            .fill(.ocean)
-            .frame(height: 30)
-            .overlay{
-                Text("次のゲームへ")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 8))
-                    .onTapGesture {
-                        nextGame()
-                    }
-            }
-    }
-    var nextGameBtnDis: some View {
-        RoundedRectangle(cornerRadius: 2)
-            .fill(.gray)
-            .frame(height: 30)
-            .overlay{
-                Text("次のゲームへ")
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .font(.custom("Verdana", size: 8))
             }
     }
     var gameEndBtn: some View {
@@ -165,12 +132,12 @@ struct PointGameView: View {
             .fill(.ocean)
             .frame(height: 30)
             .overlay{
-                Text("試合を保存して終了する")
+                Text("試合終了")
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 8))
                     .onTapGesture {
-                        gameEnd()
+                        dataManageVM.gameEnd()
                     }
             }
     }
@@ -179,94 +146,10 @@ struct PointGameView: View {
             .fill(.gray)
             .frame(height: 30)
             .overlay{
-                Text("試合を保存して終了する")
+                Text("試合終了")
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 8))
             }
-    }
-}
-extension PointGameView {
-    func goBack(){
-        if pointVM.allPoint + pointVM.allgameCount == 0
-            && positionVM.servOrRet == .noSelection {
-            dismiss()
-        } else {
-            if pointVM.service == .second {
-                pointVM.service = .first
-            } else if positionVM.myPosition != .noSelection {
-                positionVM.myPosition = .noSelection
-            } else if positionVM.servOrRet != .noSelection && pointVM.allPoint == 0 {
-                positionVM.servOrRet = .noSelection
-            } else {
-                dataManageVM.goBack()
-            }
-        }
-    }
-    func fault(){
-        if positionVM.myPosition != .noSelection {
-            pointVM.service = .second
-        }
-    }
-    func doubleFault(){
-        if positionVM.servOrRet == .serviceGame {
-            pointVM.whichPoint = .opponent
-            pointVM.lostPoint += 1
-        } else if positionVM.servOrRet == .returnGame {
-            pointVM.whichPoint = .myTeam
-            pointVM.getPoint += 1
-        }
-        pointVM.shot = .serve
-        dataManageVM.pointRecoad()
-        
-        if positionVM.side == .advantageSide {
-            positionVM.side = .duceSide
-        } else if positionVM.side == .duceSide {
-            positionVM.side = .advantageSide
-        }
-        
-        if matchInfoVM.matchFormat == .doubles && positionVM.servOrRet == .returnGame {
-            if positionVM.myPosition == .volleyer {
-                positionVM.myPosition = .returner
-            } else {
-                positionVM.myPosition = .volleyer
-            }
-        }
-        pointVM.service = .first
-        pointVM.whichPoint = .noSelection
-        pointVM.shot = .noSelection
-    }
-    func nextGame(){
-        if pointVM.getPoint > pointVM.lostPoint {
-            pointVM.getGameCount += 1
-        } else if pointVM.getPoint < pointVM.lostPoint {
-            pointVM.lostGameCount += 1
-        } else if pointVM.getPoint == pointVM.lostPoint {
-            pointVM.drowGameCount += 1
-        }
-        dataManageVM.gameRecoad()
-        dataManageVM.setGameChart()
-        pointVM.service = .first
-        positionVM.myPosition = .noSelection
-        positionVM.servOrRet = .noSelection
-        pointVM.getPoint = 0
-        pointVM.lostPoint = 0
-        matchInfoVM.gameId = UUID().uuidString
-    }
-    func gameEnd(){
-        if pointVM.getPoint > pointVM.lostPoint {
-            pointVM.getGameCount += 1
-        } else if pointVM.getPoint < pointVM.lostPoint {
-            pointVM.lostGameCount += 1
-        } else if pointVM.getPoint == pointVM.lostPoint && pointVM.allPoint != 0{
-            pointVM.drowGameCount += 1
-        }
-        if pointVM.allPoint != 0 {
-            dataManageVM.gameRecoad()
-        }
-        dataManageVM.setRecoad()
-        dataManageVM.matchRecoad()
-        homeVM.setLatestMatch()
-        dismiss()
     }
 }

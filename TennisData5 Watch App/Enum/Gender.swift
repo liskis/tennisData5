@@ -1,5 +1,5 @@
 import Foundation
-enum Gender: String ,CaseIterable {
+enum Gender: String ,CaseIterable, Decodable  {
     case noSelection
     case male
     case female

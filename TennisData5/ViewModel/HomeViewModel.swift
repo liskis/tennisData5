@@ -1,6 +1,6 @@
 import Foundation
 import RealmSwift
-class HomeDataViewModel: ObservableObject {
+class HomeViewModel: ObservableObject, Codable {
     @Published var winningRate: String = "0.0"
     @Published var winningCount: String = "(0/0)"
     @Published var firstSvInRate: String = "0.0"
@@ -17,9 +17,34 @@ class HomeDataViewModel: ObservableObject {
     @Published var signPost: [LineChartDataModel] = []
     @Published var winLoseArray: [WinLoseArray] = []
     @Published var dateArray: [DateArray] = []
-    func setHomeData(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+    @Published var toPointGameView: Bool = false
+    @Published var toOneMatchDataView: Bool = false
+    /// Codableに必要なので記載.
+    init() {}
+    /// 変換対象プロパティ指定.
+    enum CodingKeys: String, CodingKey {
+        case toPointGameView
+        case toOneMatchDataView
+    }
+    /// プロパティのdecode（復号化）アクション.
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        toPointGameView = try container.decode(Bool.self, forKey: .toPointGameView)
+        toOneMatchDataView = try container.decode(Bool.self, forKey: .toOneMatchDataView)
+    }
+    /// プロパティのencode（コード化）アクション.
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(toPointGameView, forKey: .toPointGameView)
+        try container.encode(toOneMatchDataView, forKey: .toOneMatchDataView)
+        
+    }
+    var realm: Realm {
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 8)
         let realm = try! Realm()
+        return realm
+    }
+    func setHomeData(){
         let setDataArray = realm.objects(SetDataModel.self)
         if setDataArray.count != 0 {
             var win:Int = 0
@@ -99,20 +124,20 @@ class HomeDataViewModel: ObservableObject {
                 
                 // ファーストサーブ
                 if serverPoints.count != 0 {
-                    let stats = Int(Double(firstInPoints.count)/Double(serverPoints.count))*100
+                    let stats = Int((Double(firstInPoints.count)/Double(serverPoints.count))*100)
                     firstSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "1stサーブin", color: "orange"))
                 }
                 
                 // セカンドサーブ
                 let secondIn = secondPoints.count - doubleFaultPoints.count
                 if secondPoints.count != 0 {
-                    let stats = Int(Double(secondIn) / Double(secondPoints.count))*100
+                    let stats = Int((Double(secondIn) / Double(secondPoints.count))*100)
                     secondSvInChartData.append(LineChartDataModel(num: num, stats: stats, category: "2ndサーブin", color: "red"))
                 }
                 
                 // ダブルフォルト率
                 if serverPoints.count != 0 {
-                    let stats = Int(Double(doubleFaultPoints.count)/Double(serverPoints.count) )*100 
+                    let stats = Int((Double(doubleFaultPoints.count)/Double(serverPoints.count) )*100)
                     doubleFaultRateChartData.append(LineChartDataModel(num: num, stats: stats, category: "ダブルフォルト率", color: "red"))
                 }
                 

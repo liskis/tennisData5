@@ -40,10 +40,14 @@ struct SnglsPointBtnArea: View {
             if positionVM.myPosition != .noSelection {
                 pointVM.whichPoint = .myTeam
                 pointVM.getPoint += 1
-                dataManageVM.pointRecoad()
-                if pointVM.allPoint % 2 == 0 {
+                let pointData = dataManageVM.pointRecoad()
+                
+                Task {
+                    await dataManageVM.WCGetAndLostPoint(pointData:pointData)
+                }
+                if positionVM.side == .advantageSide {
                     positionVM.side = .duceSide
-                } else {
+                } else if positionVM.side == .duceSide {
                     positionVM.side = .advantageSide
                 }
                 pointVM.service = .first
@@ -76,10 +80,13 @@ struct SnglsPointBtnArea: View {
             if positionVM.myPosition != .noSelection {
                 pointVM.whichPoint = .opponent
                 pointVM.lostPoint += 1
-                dataManageVM.pointRecoad()
-                if pointVM.allPoint % 2 == 0 {
+                let pointData = dataManageVM.pointRecoad()
+                Task {
+                    await dataManageVM.WCGetAndLostPoint(pointData:pointData)
+                }
+                if positionVM.side == .advantageSide {
                     positionVM.side = .duceSide
-                } else {
+                } else if positionVM.side == .duceSide {
                     positionVM.side = .advantageSide
                 }
                 pointVM.service = .first

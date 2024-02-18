@@ -18,8 +18,6 @@ struct DblsPointBtnArea: View {
                     }
                     opponentMissBtn
                 }
-                    
-                
             }.padding(.leading,10)
             VStack(spacing:1){
                 if positionVM.myPosition == .noSelection {
@@ -50,24 +48,7 @@ struct DblsPointBtnArea: View {
     }
     var getPointBtn: some View {
         Button(action: {
-            if positionVM.myPosition != .noSelection {
-                pointVM.whichPoint = .myTeam
-                pointVM.getPoint += 1
-                dataManageVM.pointRecoad()
-                if positionVM.side == .advantageSide {
-                    positionVM.side = .duceSide
-                } else if positionVM.side == .duceSide {
-                    positionVM.side = .advantageSide
-                }
-                if positionVM.servOrRet == .returnGame {
-                    if positionVM.myPosition == .volleyer {
-                        positionVM.myPosition = .returner
-                    } else {
-                        positionVM.myPosition = .volleyer
-                    }
-                }
-                pointVM.service = .first
-            }
+            getPoint()
         },label:{
             Text("ポイントをとった")
                 .foregroundColor(Color.white)
@@ -92,24 +73,7 @@ struct DblsPointBtnArea: View {
     }
     var lostPointBtn: some View {
         Button(action: {
-            if positionVM.myPosition != .noSelection {
-                pointVM.whichPoint = .opponent
-                pointVM.lostPoint += 1
-                dataManageVM.pointRecoad()
-                if positionVM.side == .advantageSide {
-                    positionVM.side = .duceSide
-                } else if positionVM.side == .duceSide {
-                    positionVM.side = .advantageSide
-                }
-                if positionVM.servOrRet == .returnGame {
-                    if positionVM.myPosition == .volleyer {
-                        positionVM.myPosition = .returner
-                    } else {
-                        positionVM.myPosition = .volleyer
-                    }
-                }
-                pointVM.service = .first
-            }
+            lostPoint()
         },label:{
             Text("ポイントをとられた")
                 .foregroundColor(Color.white)
@@ -187,4 +151,51 @@ struct DblsPointBtnArea: View {
             )
     }
 }
-
+extension DblsPointBtnArea {
+    func getPoint(){
+        if positionVM.myPosition != .noSelection {
+            pointVM.whichPoint = .myTeam
+            pointVM.getPoint += 1
+            let pointData = dataManageVM.pointRecoad()
+            Task {
+                await dataManageVM.WCGetAndLostPoint(pointData:pointData)
+            }
+            if positionVM.side == .advantageSide {
+                positionVM.side = .duceSide
+            } else if positionVM.side == .duceSide {
+                positionVM.side = .advantageSide
+            }
+            if positionVM.servOrRet == .returnGame {
+                if positionVM.myPosition == .volleyer {
+                    positionVM.myPosition = .returner
+                } else {
+                    positionVM.myPosition = .volleyer
+                }
+            }
+            pointVM.service = .first
+        }
+    }
+    func lostPoint(){
+        if positionVM.myPosition != .noSelection {
+            pointVM.whichPoint = .opponent
+            pointVM.lostPoint += 1
+            let pointData = dataManageVM.pointRecoad()
+            Task {
+                await dataManageVM.WCGetAndLostPoint(pointData:pointData)
+            }
+            if positionVM.side == .advantageSide {
+                positionVM.side = .duceSide
+            } else if positionVM.side == .duceSide {
+                positionVM.side = .advantageSide
+            }
+            if positionVM.servOrRet == .returnGame {
+                if positionVM.myPosition == .volleyer {
+                    positionVM.myPosition = .returner
+                } else {
+                    positionVM.myPosition = .volleyer
+                }
+            }
+            pointVM.service = .first
+        }
+    }
+}

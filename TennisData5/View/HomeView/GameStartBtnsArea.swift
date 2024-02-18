@@ -1,11 +1,8 @@
 import SwiftUI
 struct GameStartBtnsArea: View {
-    @ObservedObject var homeDataVM: HomeDataViewModel
-    @ObservedObject var userVM: UserViewModel
-    @State var matchFormat: MatchFormat = .noSelection
-    @State var gameType: GameType = .noSelection
-    @State var naviTitle: String = ""
-    @State var isPresented: Bool = false
+    @ObservedObject var dataManageVM: DataManageViewModel
+    @ObservedObject var matchInfoVM: MatchInfoViewModel
+    @ObservedObject var homeVM: HomeViewModel
     var body: some View {
         VStack(spacing:1){
             HStack(spacing:1){
@@ -36,32 +33,36 @@ struct GameStartBtnsArea: View {
     }
     var singlesPointGameBtn: some View {
         Button(action: {
-            isPresented = true
-            matchFormat = .singles
-            gameType = .pointGame
-            naviTitle = "シングルスポイントゲーム"
+            matchInfoVM.matchFormat = .singles
+            matchInfoVM.gameType = .pointGame
+            matchInfoVM.matchId = UUID().uuidString
+            matchInfoVM.setId = UUID().uuidString
+            matchInfoVM.gameId = UUID().uuidString
+            matchInfoVM.naviTitle = "シングルスポイントゲーム"
+            Task{
+                await dataManageVM.WCToMatchView()
+            }
+            homeVM.toPointGameView = true
         }) {
             Text("シングルスで\nポイントゲーム")
             .frame(maxWidth: .infinity, minHeight: 30)
         }
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
-        .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(
-                matchFormat: $matchFormat,
-                gameType: $gameType,
-                naviTitle: $naviTitle,
-                homeDataVM: homeDataVM,
-                userVM: userVM
-            )
-        }
+        
     }
     var doublesPointGameBtn: some View {
         Button(action: {
-            isPresented = true
-            matchFormat = .doubles
-            gameType = .pointGame
-            naviTitle = "ダブルスポイントゲーム"
+            matchInfoVM.matchFormat = .doubles
+            matchInfoVM.gameType = .pointGame
+            matchInfoVM.matchId = UUID().uuidString
+            matchInfoVM.setId = UUID().uuidString
+            matchInfoVM.gameId = UUID().uuidString
+            matchInfoVM.naviTitle = "ダブルスポイントゲーム"
+            Task{
+                await dataManageVM.WCToMatchView()
+            }
+            homeVM.toPointGameView = true
         }) {
             Text("ダブルスで\nポイントゲーム")
                 .frame(maxWidth: .infinity, minHeight: 30)
@@ -69,15 +70,7 @@ struct GameStartBtnsArea: View {
         }
         .padding(.trailing, 10)
         .buttonStyle(MatchStartBtnStyle())
-        .fullScreenCover(isPresented: $isPresented) {
-            MatchTabView(
-                matchFormat: $matchFormat,
-                gameType: $gameType,
-                naviTitle: $naviTitle,
-                homeDataVM: homeDataVM,
-                userVM: userVM
-            )
-        }
+        
     }
     var setMatchBtn: some View {
         Button(action: {

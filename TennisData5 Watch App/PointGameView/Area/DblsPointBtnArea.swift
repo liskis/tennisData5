@@ -70,7 +70,10 @@ extension DblsPointBtnArea {
         if positionVM.myPosition != .noSelection {
             pointVM.whichPoint = .myTeam
             pointVM.getPoint += 1
-            dataManageVM.pointRecoad()
+            let pointData = dataManageVM.pointRecoad()
+            Task {
+                await dataManageVM.WCGetAndLostPoint(pointData:pointData)
+            }
             if positionVM.side == .advantageSide {
                 positionVM.side = .duceSide
             } else if positionVM.side == .duceSide {
@@ -90,7 +93,10 @@ extension DblsPointBtnArea {
         if positionVM.myPosition != .noSelection {
             pointVM.whichPoint = .opponent
             pointVM.lostPoint += 1
-            dataManageVM.pointRecoad()
+            let pointData = dataManageVM.pointRecoad()
+            Task {
+                await dataManageVM.WCGetAndLostPoint(pointData:pointData)
+            }
             if positionVM.side == .advantageSide {
                 positionVM.side = .duceSide
             } else if positionVM.side == .duceSide {

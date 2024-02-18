@@ -2,12 +2,19 @@ import SwiftUI
 import WatchConnectivity
 @main
 struct TennisData5_Watch_AppApp: App {
-    @ObservedObject var homeVM = HomeViewModel()
+    @StateObject var dataManageVM = DataManageViewModel()
     var body: some Scene {
         WindowGroup {
-            HomeView(homeVM: homeVM)
-                .onAppear{
-                    homeVM.setLatestMatch()
+            HomeView(
+                dataManageVM: dataManageVM,
+                homeVM: dataManageVM.homeVM
+            )
+                .onAppear {
+//                    dataManageVM.deleteRealm()
+//                    Task{
+//                        await dataManageVM.WCStartApp()
+//                    }
+                    dataManageVM.homeVM.setHomeData()
                 }
         }
     }

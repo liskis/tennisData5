@@ -1,5 +1,6 @@
 import SwiftUI
 struct SnglsPositionBtnArea: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     var body: some View {
         if positionVM.servOrRet == .serviceGame {
@@ -150,20 +151,32 @@ extension SnglsPositionBtnArea {
         positionVM.myPosition = .server
         positionVM.side = .advantageSide
         positionVM.server = .mySelf
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func serverDuce(){
         positionVM.myPosition = .server
         positionVM.side = .duceSide
         positionVM.server = .mySelf
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func returnerAdv(){
         positionVM.myPosition = .returner
         positionVM.side = .advantageSide
         positionVM.server = .opponent
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func returnerDuce(){
         positionVM.myPosition = .returner
         positionVM.side = .duceSide
         positionVM.server = .opponent
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
 }

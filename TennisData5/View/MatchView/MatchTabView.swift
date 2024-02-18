@@ -1,21 +1,19 @@
 import SwiftUI
 struct MatchTabView: View {
-    @Binding var matchFormat: MatchFormat
-    @Binding var gameType: GameType
-    @Binding var naviTitle: String
-    @StateObject var dataManageVM = DataManageViewModel()
-    @ObservedObject var homeDataVM: HomeDataViewModel
+    @ObservedObject var dataManageVM: DataManageViewModel
+    @ObservedObject var matchInfoVM: MatchInfoViewModel
+    @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var userVM: UserViewModel
     var body: some View {
         TabView {
             PointGame(
                 dataManageVM: dataManageVM,
-                pointVM: dataManageVM.pointVM,
-                matchInfoVM: dataManageVM.matchInfoVM,
+                matchInfoVM: matchInfoVM,
+                homeVM: homeVM,
+                userVM: userVM,
                 positionVM: dataManageVM.positionVM,
                 chartDataVM: dataManageVM.chartDataVM,
-                homeDataVM: homeDataVM,
-                userVM: userVM
+                pointVM: dataManageVM.pointVM
             )
             .toolbarBackground(.black, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
@@ -24,7 +22,7 @@ struct MatchTabView: View {
             }
             RealTimeDataView(
                 pointVM: dataManageVM.pointVM,
-                matchInfoVM: dataManageVM.matchInfoVM,
+                matchInfoVM: matchInfoVM,
                 chartDataVM: dataManageVM.chartDataVM,
                 userVM: userVM
             )
@@ -36,11 +34,7 @@ struct MatchTabView: View {
             .tabViewStyle(.automatic)
         }
         .accentColor(.white)
-        .onAppear{
-            dataManageVM.matchInfoVM.matchFormat = matchFormat
-            dataManageVM.matchInfoVM.gameType = gameType
-            dataManageVM.matchInfoVM.naviTitle = naviTitle
-        }
+        
     }
 }
 

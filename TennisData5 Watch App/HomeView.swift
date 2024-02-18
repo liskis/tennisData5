@@ -1,55 +1,36 @@
 import SwiftUI
 struct HomeView: View {
-    let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
-    @ObservedObject var dataManageVM = DataManageViewModel()
-    @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var homeVM: HomeViewModel
-    @State var naviTitle: String = ""
-    @State var toPointGameView: Bool = false
+    let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
     var body: some View {
-        VStack(spacing: 0){
-            headerLogo
-            headerBar
-            Spacer()
-            if homeVM.latestMatch.matchId != "" {
-                latestMatch
+        ZStack{
+            VStack(spacing: 5){
+                headerLogo
+                headerBar
+                Spacer()
+                if homeVM.latestMatch.matchId != "" {
+                    latestMatch
+                    Spacer()
+                }
+                gameStartBtns
                 Spacer()
             }
-            gameStartBtns
-            Spacer()
+            .frame(height: watchHeight * 0.9)
+            if homeVM.toPointGameView {
+                PointGameView(
+                    dataManageVM: dataManageVM,
+                    pointVM: dataManageVM.pointVM,
+                    matchInfoVM: dataManageVM.matchInfoVM,
+                    positionVM: dataManageVM.positionVM,
+                    chartDataVM: dataManageVM.chartDataVM,
+                    userVM: dataManageVM.userVM,
+                    homeVM: dataManageVM.homeVM
+                )
+                .transition(.move(edge: .bottom))
+            }
         }
-        .frame(height: watchHeight * 0.9)
-//        .overlay {
-//            if toPointGameView {
-//                PointGameView(
-//                    dataManageVM: dataManageVM,
-//                    pointVM: dataManageVM.pointVM,
-//                    matchInfoVM: dataManageVM.matchInfoVM,
-//                    positionVM: dataManageVM.positionVM,
-//                    chartDataVM: dataManageVM.chartDataVM,
-//                    userVM: userVM,
-//                    homeVM: homeVM
-//                )
-//            }
-//        }
-        .sheet(isPresented: $toPointGameView, onDismiss: {
-            dataManageVM.resetAllVM()
-        }) {
-            PointGameView(
-                dataManageVM: dataManageVM,
-                pointVM: dataManageVM.pointVM,
-                matchInfoVM: dataManageVM.matchInfoVM,
-                positionVM: dataManageVM.positionVM,
-                chartDataVM: dataManageVM.chartDataVM,
-                userVM: userVM,
-                homeVM: homeVM
-            )
-        }
-        .onAppear{
-            dataManageVM.showSetRealm()
-            dataManageVM.showMatchRealm()
-//            dataManageVM.deleteRealm()
-        }
+        
     }
     var headerLogo: some View{
         HStack{
@@ -67,7 +48,7 @@ struct HomeView: View {
             Image(.angleG)
                 .resizable()
                 .scaledToFit()
-            Text(userVM.myName + " さん")
+            Text(dataManageVM.userVM.myName + " さん")
                 .font(.custom("Verdana",size:8))
                 .bold()
                 .foregroundColor(.white)
@@ -149,8 +130,16 @@ struct HomeView: View {
                     .onTapGesture {
                         dataManageVM.matchInfoVM.matchFormat = .singles
                         dataManageVM.matchInfoVM.gameType = .pointGame
-                        naviTitle = "シングルスポイントゲーム"
-                        toPointGameView = true
+                        dataManageVM.matchInfoVM.matchId = UUID().uuidString
+                        dataManageVM.matchInfoVM.setId = UUID().uuidString
+                        dataManageVM.matchInfoVM.gameId = UUID().uuidString
+                        dataManageVM.matchInfoVM.naviTitle = "シングルスポイントゲーム"
+                        Task{
+                            await dataManageVM.WCToMatchView()
+                        }
+                        withAnimation {
+                            homeVM.toPointGameView = true
+                        }
                     }
                 Text("ダブルス\nポイントゲーム")
                     .frame(height: 30)
@@ -165,8 +154,16 @@ struct HomeView: View {
                     .onTapGesture {
                         dataManageVM.matchInfoVM.matchFormat = .doubles
                         dataManageVM.matchInfoVM.gameType = .pointGame
-                        naviTitle = "ダブルスポイントゲーム"
-                        toPointGameView = true
+                        dataManageVM.matchInfoVM.matchId = UUID().uuidString
+                        dataManageVM.matchInfoVM.setId = UUID().uuidString
+                        dataManageVM.matchInfoVM.gameId = UUID().uuidString
+                        dataManageVM.matchInfoVM.naviTitle = "ダブルスポイントゲーム"
+                        Task{
+                            await dataManageVM.WCToMatchView()
+                        }
+                        withAnimation {
+                            homeVM.toPointGameView = true
+                        }
                     }
             }
         }

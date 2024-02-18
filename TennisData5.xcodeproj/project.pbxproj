@@ -76,6 +76,14 @@
 		0970F4362B7A5371007B4E8A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4352B7A5371007B4E8A /* HomeViewModel.swift */; };
 		0970F43A2B7B90E4007B4E8A /* SnglsPointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4392B7B90E4007B4E8A /* SnglsPointBtnArea.swift */; };
 		0970F43C2B7B9176007B4E8A /* DblsPointBtnArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F43B2B7B9176007B4E8A /* DblsPointBtnArea.swift */; };
+		0970F43E2B7DB5E8007B4E8A /* OneMatchDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F43D2B7DB5E8007B4E8A /* OneMatchDataView.swift */; };
+		0970F4402B7DBD92007B4E8A /* OneMatchDataScoaArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F43F2B7DBD92007B4E8A /* OneMatchDataScoaArea.swift */; };
+		0970F4432B7EFCA7007B4E8A /* PositionAndServiceWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4422B7EFCA7007B4E8A /* PositionAndServiceWCModel.swift */; };
+		0970F4462B7F07D4007B4E8A /* PositionAndServiceWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4452B7F07D4007B4E8A /* PositionAndServiceWCModel.swift */; };
+		0970F44A2B7F17A0007B4E8A /* GameEndWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4492B7F17A0007B4E8A /* GameEndWCModel.swift */; };
+		0970F4502B7F2CE1007B4E8A /* NextGameWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F44F2B7F2CE1007B4E8A /* NextGameWCModel.swift */; };
+		0970F4542B7F5CC1007B4E8A /* GameEndWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4532B7F5CC1007B4E8A /* GameEndWCModel.swift */; };
+		0970F4552B7F5CC1007B4E8A /* NextGameWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F4522B7F5CC1007B4E8A /* NextGameWCModel.swift */; };
 		0972295D2B53FA780046FAF8 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972295C2B53FA780046FAF8 /* LineChartView.swift */; };
 		097229602B54022B0046FAF8 /* RealTimeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */; };
 		097229642B550DB50046FAF8 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229632B550DB50046FAF8 /* PieChartView.swift */; };
@@ -94,7 +102,7 @@
 		097229862B5D2DC70046FAF8 /* MatchRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */; };
 		097229882B5D359D0046FAF8 /* RecoadSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */; };
 		0972298B2B5F87380046FAF8 /* OneMatchDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */; };
-		0972298D2B5F89590046FAF8 /* NameAndScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */; };
+		0972298D2B5F89590046FAF8 /* OneMatchDataScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972298C2B5F89590046FAF8 /* OneMatchDataScoreArea.swift */; };
 		097229912B6122560046FAF8 /* LabelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229902B6122560046FAF8 /* LabelType.swift */; };
 		097229932B61E04C0046FAF8 /* ChartsLayOutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229922B61E04C0046FAF8 /* ChartsLayOutArea.swift */; };
 		097229992B6244930046FAF8 /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097229982B6244930046FAF8 /* DateExtention.swift */; };
@@ -125,14 +133,20 @@
 		09808B972B78CD4800559DDB /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09808B932B78CD2200559DDB /* PieChartView.swift */; };
 		09808B982B78CD4800559DDB /* ChartsLayOutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09808B962B78CD2600559DDB /* ChartsLayOutArea.swift */; };
 		09808B9A2B78CD4800559DDB /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09808B952B78CD2400559DDB /* BarChartView.swift */; };
-		09992D4C2B5132200049B877 /* HomeDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeDataViewModel.swift */; };
+		098A9D992B80CFFA00EA4EE1 /* AllRealmWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CE45D2B80CFD600BBD5D1 /* AllRealmWCModel.swift */; };
+		09992D4C2B5132200049B877 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeViewModel.swift */; };
 		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
+		099CE45A2B7F866F00BBD5D1 /* AllRealmWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099CE4592B7F866F00BBD5D1 /* AllRealmWCModel.swift */; };
+		09B20E782B80D04B003F2AE9 /* AllViewModelWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B20E772B80D04B003F2AE9 /* AllViewModelWCModel.swift */; };
+		09B20E7A2B80E09B003F2AE9 /* AllViewModelWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B20E792B80E09B003F2AE9 /* AllViewModelWCModel.swift */; };
 		09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */; };
 		09BC06FD2B443736008A44FD /* PointGameScoreArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FC2B443736008A44FD /* PointGameScoreArea.swift */; };
 		09BC07002B444657008A44FD /* MatchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06FF2B444657008A44FD /* MatchTabView.swift */; };
 		09BD52992B49871600EC347E /* LineChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD52982B49871600EC347E /* LineChartDataModel.swift */; };
+		885FF053035B46EC73CE0444 /* Pods_TennisData5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073DB5AA7DCAA367816279FE /* Pods_TennisData5.framework */; };
 		AD2800BA270C4A763C0C69DD /* libPods-TennisData5Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CAC7F0C474E8050526C285 /* libPods-TennisData5Tests.a */; };
 		D57DC1F377B4B0654A3F974B /* libPods-TennisData5 Watch AppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3756CD88E7701EABD3371A /* libPods-TennisData5 Watch AppTests.a */; };
+		E7253AEBE4B78CE63D313B5D /* Pods_TennisData5_Watch_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BF333FF7FB11491321927D /* Pods_TennisData5_Watch_App.framework */; };
 		F28925736B3885CF6500BA3D /* libPods-TennisData5 Watch AppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE4683E8398646765FD87DA /* libPods-TennisData5 Watch AppUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +277,16 @@
 		0970F4352B7A5371007B4E8A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0970F4392B7B90E4007B4E8A /* SnglsPointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnglsPointBtnArea.swift; sourceTree = "<group>"; };
 		0970F43B2B7B9176007B4E8A /* DblsPointBtnArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DblsPointBtnArea.swift; sourceTree = "<group>"; };
+		0970F43D2B7DB5E8007B4E8A /* OneMatchDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMatchDataView.swift; sourceTree = "<group>"; };
+		0970F43F2B7DBD92007B4E8A /* OneMatchDataScoaArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMatchDataScoaArea.swift; sourceTree = "<group>"; };
+		0970F4422B7EFCA7007B4E8A /* PositionAndServiceWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionAndServiceWCModel.swift; sourceTree = "<group>"; };
+		0970F4452B7F07D4007B4E8A /* PositionAndServiceWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionAndServiceWCModel.swift; sourceTree = "<group>"; };
+		0970F4472B7F0F10007B4E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0970F4482B7F0F35007B4E8A /* TennisData5-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TennisData5-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0970F4492B7F17A0007B4E8A /* GameEndWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndWCModel.swift; sourceTree = "<group>"; };
+		0970F44F2B7F2CE1007B4E8A /* NextGameWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextGameWCModel.swift; sourceTree = "<group>"; };
+		0970F4522B7F5CC1007B4E8A /* NextGameWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextGameWCModel.swift; sourceTree = "<group>"; };
+		0970F4532B7F5CC1007B4E8A /* GameEndWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndWCModel.swift; sourceTree = "<group>"; };
 		0972295C2B53FA780046FAF8 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDataView.swift; sourceTree = "<group>"; };
 		097229632B550DB50046FAF8 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
@@ -281,7 +305,7 @@
 		097229852B5D2DC70046FAF8 /* MatchRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRecordModel.swift; sourceTree = "<group>"; };
 		097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoadSearchViewModel.swift; sourceTree = "<group>"; };
 		0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMatchDataView.swift; sourceTree = "<group>"; };
-		0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameAndScoreArea.swift; sourceTree = "<group>"; };
+		0972298C2B5F89590046FAF8 /* OneMatchDataScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMatchDataScoreArea.swift; sourceTree = "<group>"; };
 		097229902B6122560046FAF8 /* LabelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelType.swift; sourceTree = "<group>"; };
 		097229922B61E04C0046FAF8 /* ChartsLayOutArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLayOutArea.swift; sourceTree = "<group>"; };
 		097229982B6244930046FAF8 /* DateExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
@@ -312,8 +336,12 @@
 		09808B932B78CD2200559DDB /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		09808B952B78CD2400559DDB /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		09808B962B78CD2600559DDB /* ChartsLayOutArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLayOutArea.swift; sourceTree = "<group>"; };
-		09992D4B2B5132200049B877 /* HomeDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataViewModel.swift; sourceTree = "<group>"; };
+		09992D4B2B5132200049B877 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		099CE4592B7F866F00BBD5D1 /* AllRealmWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRealmWCModel.swift; sourceTree = "<group>"; };
+		099CE45D2B80CFD600BBD5D1 /* AllRealmWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRealmWCModel.swift; sourceTree = "<group>"; };
+		09B20E772B80D04B003F2AE9 /* AllViewModelWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllViewModelWCModel.swift; sourceTree = "<group>"; };
+		09B20E792B80E09B003F2AE9 /* AllViewModelWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllViewModelWCModel.swift; sourceTree = "<group>"; };
 		09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartBtnsArea.swift; sourceTree = "<group>"; };
 		09BC06FC2B443736008A44FD /* PointGameScoreArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointGameScoreArea.swift; sourceTree = "<group>"; };
 		09BC06FF2B444657008A44FD /* MatchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTabView.swift; sourceTree = "<group>"; };
@@ -344,6 +372,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				885FF053035B46EC73CE0444 /* Pods_TennisData5.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +396,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7253AEBE4B78CE63D313B5D /* Pods_TennisData5_Watch_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,11 +475,14 @@
 		0927E0A12B41A6A00069BEF1 /* TennisData5 */ = {
 			isa = PBXGroup;
 			children = (
+				0970F4472B7F0F10007B4E8A /* Info.plist */,
+				0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */,
 				097229982B6244930046FAF8 /* DateExtention.swift */,
 				092B2B3A2B5177370046BDBF /* ViewModel */,
 				091AC3E52B4AE46F007E68F0 /* Enum */,
 				09BC07052B447BD9008A44FD /* Model */,
 				097229FD2B6F766E0046FAF8 /* RealmModel */,
+				0970F4412B7EFC35007B4E8A /* WCModel */,
 				0927E0FE2B41A7390069BEF1 /* View */,
 				0927E0A62B41A6A20069BEF1 /* Assets.xcassets */,
 				0927E0A82B41A6A20069BEF1 /* Preview Content */,
@@ -485,11 +518,13 @@
 		0927E0C92B41A6A20069BEF1 /* TennisData5 Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				0970F4482B7F0F35007B4E8A /* TennisData5-Watch-App-Info.plist */,
 				0970F3E02B78F254007B4E8A /* DateExtention.swift */,
 				0970F3E92B78F25D007B4E8A /* ViewModel */,
 				0970F3F62B78F269007B4E8A /* Enum */,
 				0970F3E12B78F254007B4E8A /* Model */,
 				0970F4132B78F28A007B4E8A /* RealmModel */,
+				0970F4442B7F07D4007B4E8A /* WCModel */,
 				09808B912B78726400559DDB /* PointGameView */,
 				0927E0CA2B41A6A20069BEF1 /* TennisData5App.swift */,
 				09722A122B71231A0046FAF8 /* HomeView.swift */,
@@ -528,14 +563,11 @@
 		0927E0FE2B41A7390069BEF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */,
 				0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */,
 				0927E0FF2B41A7B40069BEF1 /* HomeView */,
 				09BC06FE2B44463D008A44FD /* MatchView */,
 				0927E1002B41A7CE0069BEF1 /* MatchRecordView.swift */,
 				0927E1022B41A7F10069BEF1 /* DataAnalysisView.swift */,
-				0972298C2B5F89590046FAF8 /* NameAndScoreArea.swift */,
-				0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */,
 				0972295E2B53FEA30046FAF8 /* ChartView */,
 			);
 			path = View;
@@ -570,13 +602,13 @@
 		092B2B3A2B5177370046BDBF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				09992D4B2B5132200049B877 /* HomeDataViewModel.swift */,
+				097229F32B66831D0046FAF8 /* DataManageViewModel.swift */,
+				09992D4B2B5132200049B877 /* HomeViewModel.swift */,
 				0972296D2B5A617C0046FAF8 /* MatchInfoViewModel.swift */,
 				0972296F2B5A620B0046FAF8 /* PositionViewModel.swift */,
 				092B2B3B2B5177620046BDBF /* PointViewModel.swift */,
 				097229732B5A63660046FAF8 /* ChartDataViewModel.swift */,
 				097229872B5D359D0046FAF8 /* RecoadSearchViewModel.swift */,
-				097229F32B66831D0046FAF8 /* DataManageViewModel.swift */,
 				09722A062B6F9B6B0046FAF8 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
@@ -598,13 +630,13 @@
 		0970F3E92B78F25D007B4E8A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0970F3F02B78F262007B4E8A /* DataManageViewModel.swift */,
+				0970F4352B7A5371007B4E8A /* HomeViewModel.swift */,
 				0970F3EA2B78F25F007B4E8A /* MatchInfoViewModel.swift */,
 				0970F3F42B78F267007B4E8A /* PositionViewModel.swift */,
 				0970F3EF2B78F260007B4E8A /* PointViewModel.swift */,
 				0970F3F22B78F265007B4E8A /* ChartDataViewModel.swift */,
-				0970F3F02B78F262007B4E8A /* DataManageViewModel.swift */,
 				0970F3F32B78F266007B4E8A /* UserViewModel.swift */,
-				0970F4352B7A5371007B4E8A /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -646,6 +678,30 @@
 			path = RealmModel;
 			sourceTree = "<group>";
 		};
+		0970F4412B7EFC35007B4E8A /* WCModel */ = {
+			isa = PBXGroup;
+			children = (
+				0970F4422B7EFCA7007B4E8A /* PositionAndServiceWCModel.swift */,
+				0970F4492B7F17A0007B4E8A /* GameEndWCModel.swift */,
+				0970F44F2B7F2CE1007B4E8A /* NextGameWCModel.swift */,
+				099CE4592B7F866F00BBD5D1 /* AllRealmWCModel.swift */,
+				09B20E792B80E09B003F2AE9 /* AllViewModelWCModel.swift */,
+			);
+			path = WCModel;
+			sourceTree = "<group>";
+		};
+		0970F4442B7F07D4007B4E8A /* WCModel */ = {
+			isa = PBXGroup;
+			children = (
+				0970F4452B7F07D4007B4E8A /* PositionAndServiceWCModel.swift */,
+				0970F4532B7F5CC1007B4E8A /* GameEndWCModel.swift */,
+				0970F4522B7F5CC1007B4E8A /* NextGameWCModel.swift */,
+				099CE45D2B80CFD600BBD5D1 /* AllRealmWCModel.swift */,
+				09B20E772B80D04B003F2AE9 /* AllViewModelWCModel.swift */,
+			);
+			path = WCModel;
+			sourceTree = "<group>";
+		};
 		0972295E2B53FEA30046FAF8 /* ChartView */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +729,7 @@
 			isa = PBXGroup;
 			children = (
 				09722A212B71AE420046FAF8 /* PointGameScoreArea.swift */,
+				0970F43F2B7DBD92007B4E8A /* OneMatchDataScoaArea.swift */,
 				09722A1B2B71AD3E0046FAF8 /* ServOrRetArera.swift */,
 				09722A1F2B71AD7B0046FAF8 /* SnglsPositionBtnArea.swift */,
 				09722A192B71AD210046FAF8 /* DblsPositionBtnArea.swift */,
@@ -687,6 +744,7 @@
 			children = (
 				09722A162B71ACB50046FAF8 /* Area */,
 				09722A142B71AC5E0046FAF8 /* PointGameView.swift */,
+				0970F43D2B7DB5E8007B4E8A /* OneMatchDataView.swift */,
 			);
 			path = PointGameView;
 			sourceTree = "<group>";
@@ -704,10 +762,12 @@
 		09BC06FE2B44463D008A44FD /* MatchView */ = {
 			isa = PBXGroup;
 			children = (
-				092B2B392B516A270046BDBF /* Area */,
-				0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */,
-				09806D262B4F692B007638B7 /* PointGame.swift */,
 				09BC06FF2B444657008A44FD /* MatchTabView.swift */,
+				09806D262B4F692B007638B7 /* PointGame.swift */,
+				0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */,
+				0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */,
+				0972298C2B5F89590046FAF8 /* OneMatchDataScoreArea.swift */,
+				092B2B392B516A270046BDBF /* Area */,
 			);
 			path = MatchView;
 			sourceTree = "<group>";
@@ -1163,8 +1223,9 @@
 				0972296A2B564ACF0046FAF8 /* BarChartDataModel.swift in Sources */,
 				09992D4E2B5134BE0049B877 /* Issue.swift in Sources */,
 				09722A0D2B70B8980046FAF8 /* SetDataModel.swift in Sources */,
-				09992D4C2B5132200049B877 /* HomeDataViewModel.swift in Sources */,
+				09992D4C2B5132200049B877 /* HomeViewModel.swift in Sources */,
 				097229F62B69EEDE0046FAF8 /* Side.swift in Sources */,
+				09B20E7A2B80E09B003F2AE9 /* AllViewModelWCModel.swift in Sources */,
 				0972297A2B5A7CDD0046FAF8 /* ServOrRetArea.swift in Sources */,
 				097229742B5A63660046FAF8 /* ChartDataViewModel.swift in Sources */,
 				09BC07002B444657008A44FD /* MatchTabView.swift in Sources */,
@@ -1172,10 +1233,12 @@
 				091AC3DE2B4A95B8007E68F0 /* WhichPoint.swift in Sources */,
 				092B2B3C2B5177620046BDBF /* PointViewModel.swift in Sources */,
 				09722A0B2B70B86B0046FAF8 /* MatchDataModel.swift in Sources */,
+				099CE45A2B7F866F00BBD5D1 /* AllRealmWCModel.swift in Sources */,
 				097229702B5A620B0046FAF8 /* PositionViewModel.swift in Sources */,
 				09722A072B6F9B6B0046FAF8 /* UserViewModel.swift in Sources */,
 				09BD52992B49871600EC347E /* LineChartDataModel.swift in Sources */,
 				097229FA2B6E45F50046FAF8 /* WinLoseArray.swift in Sources */,
+				0970F4432B7EFCA7007B4E8A /* PositionAndServiceWCModel.swift in Sources */,
 				097229992B6244930046FAF8 /* DateExtention.swift in Sources */,
 				09806D272B4F692B007638B7 /* PointGame.swift in Sources */,
 				097229862B5D2DC70046FAF8 /* MatchRecordModel.swift in Sources */,
@@ -1208,10 +1271,11 @@
 				09BC06FD2B443736008A44FD /* PointGameScoreArea.swift in Sources */,
 				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
 				097229762B5A70850046FAF8 /* SnglsPositionBtnArea.swift in Sources */,
-				0972298D2B5F89590046FAF8 /* NameAndScoreArea.swift in Sources */,
+				0972298D2B5F89590046FAF8 /* OneMatchDataScoreArea.swift in Sources */,
 				097229FC2B6E46640046FAF8 /* DateArray.swift in Sources */,
 				09722A262B74B78E0046FAF8 /* LevelAndModePopUp.swift in Sources */,
 				0972295D2B53FA780046FAF8 /* LineChartView.swift in Sources */,
+				0970F4502B7F2CE1007B4E8A /* NextGameWCModel.swift in Sources */,
 				0972299B2B6366410046FAF8 /* InputMode.swift in Sources */,
 				097229912B6122560046FAF8 /* LabelType.swift in Sources */,
 				091AC3D22B4A57D9007E68F0 /* GameType.swift in Sources */,
@@ -1221,6 +1285,7 @@
 				09722A0F2B70B8B60046FAF8 /* GameDataModel.swift in Sources */,
 				0972296E2B5A617C0046FAF8 /* MatchInfoViewModel.swift in Sources */,
 				097229FF2B6F968A0046FAF8 /* UserModel.swift in Sources */,
+				0970F44A2B7F17A0007B4E8A /* GameEndWCModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1255,9 +1320,12 @@
 				0970F41F2B78F292007B4E8A /* Dominant.swift in Sources */,
 				0970F42B2B78F293007B4E8A /* UserModel.swift in Sources */,
 				0970F4252B78F292007B4E8A /* Gender.swift in Sources */,
+				0970F4552B7F5CC1007B4E8A /* NextGameWCModel.swift in Sources */,
 				0970F3FC2B78F271007B4E8A /* PositionViewModel.swift in Sources */,
 				0970F4192B78F292007B4E8A /* Issue.swift in Sources */,
+				0970F4402B7DBD92007B4E8A /* OneMatchDataScoaArea.swift in Sources */,
 				0927E0CB2B41A6A20069BEF1 /* TennisData5App.swift in Sources */,
+				09B20E782B80D04B003F2AE9 /* AllViewModelWCModel.swift in Sources */,
 				09722A1A2B71AD210046FAF8 /* DblsPositionBtnArea.swift in Sources */,
 				09808B972B78CD4800559DDB /* PieChartView.swift in Sources */,
 				0970F4242B78F292007B4E8A /* Whose.swift in Sources */,
@@ -1268,6 +1336,7 @@
 				0970F3FE2B78F271007B4E8A /* MatchInfoViewModel.swift in Sources */,
 				0970F4022B78F271007B4E8A /* ChartDataViewModel.swift in Sources */,
 				0970F41E2B78F292007B4E8A /* Side.swift in Sources */,
+				0970F4542B7F5CC1007B4E8A /* GameEndWCModel.swift in Sources */,
 				0970F43C2B7B9176007B4E8A /* DblsPointBtnArea.swift in Sources */,
 				0970F4102B78F287007B4E8A /* WinLoseArray.swift in Sources */,
 				0970F3EC2B78F260007B4E8A /* LineChartDataModel.swift in Sources */,
@@ -1276,12 +1345,15 @@
 				0970F42E2B78F293007B4E8A /* SetDataModel.swift in Sources */,
 				0970F4182B78F292007B4E8A /* Tactics.swift in Sources */,
 				0970F41A2B78F292007B4E8A /* Service.swift in Sources */,
+				098A9D992B80CFFA00EA4EE1 /* AllRealmWCModel.swift in Sources */,
 				0970F41D2B78F292007B4E8A /* Shot.swift in Sources */,
 				0970F4292B78F292007B4E8A /* InputMode.swift in Sources */,
+				0970F4462B7F07D4007B4E8A /* PositionAndServiceWCModel.swift in Sources */,
 				09722A152B71AC5E0046FAF8 /* PointGameView.swift in Sources */,
 				09722A1C2B71AD3E0046FAF8 /* ServOrRetArera.swift in Sources */,
 				0970F40F2B78F287007B4E8A /* DateArray.swift in Sources */,
 				09808B9A2B78CD4800559DDB /* BarChartView.swift in Sources */,
+				0970F43E2B7DB5E8007B4E8A /* OneMatchDataView.swift in Sources */,
 				0970F3FD2B78F271007B4E8A /* UserViewModel.swift in Sources */,
 				0970F41B2B78F292007B4E8A /* ServOrRet.swift in Sources */,
 				0970F42D2B78F293007B4E8A /* MatchDataModel.swift in Sources */,
@@ -1403,7 +1475,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WATCHOS_DEPLOYMENT_TARGET = 10.2;
@@ -1476,9 +1548,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = TennisData5;
+				INFOPLIST_FILE = "TennisData5-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "テニスデータ";
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ios-academia.TennisData5";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1506,9 +1581,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5 Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = TennisData5;
+				INFOPLIST_FILE = "TennisData5-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "テニスデータ";
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ios-academia.TennisData5";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1538,9 +1616,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5/Preview Content\"";
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = TennisData5;
+				INFOPLIST_FILE = TennisData5/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "テニスデータ";
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1572,9 +1653,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5/Preview Content\"";
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = TennisData5;
+				INFOPLIST_FILE = TennisData5/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "テニスデータ";
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1605,6 +1689,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
@@ -1626,6 +1711,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
@@ -1647,6 +1733,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
@@ -1667,6 +1754,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
@@ -1689,6 +1777,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppTests";
@@ -1710,6 +1799,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppTests";
@@ -1730,6 +1820,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppUITests";
@@ -1749,6 +1840,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99FM8972D4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppUITests";

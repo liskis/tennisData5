@@ -1,5 +1,5 @@
 import Foundation
-enum LabelType {
+enum LabelType{
     case twoLabels
     case threeLabels
     case twoAndOneLabels

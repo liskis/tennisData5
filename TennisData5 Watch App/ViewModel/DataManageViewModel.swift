@@ -6,8 +6,10 @@ class DataManageViewModel: NSObject, ObservableObject {
     @ObservedObject var matchInfoVM = MatchInfoViewModel()
     @ObservedObject var positionVM = PositionViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
+    @ObservedObject var userVM = UserViewModel()
+    @ObservedObject var homeVM = HomeViewModel()
     var realm: Realm {
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 8)
         let realm = try! Realm()
         return realm
     }
@@ -17,9 +19,7 @@ class DataManageViewModel: NSObject, ObservableObject {
         positionVM.returnInitialValue()
         chartDataVM.returnInitialValue()
     }
-    func matchRecoad(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
+    func matchRecoad() -> MatchDataModel{
         let matchData = MatchDataModel()
         try! realm.write{
             matchData.matchId = matchInfoVM.matchId
@@ -37,10 +37,9 @@ class DataManageViewModel: NSObject, ObservableObject {
             matchData.matchEndDate = Date()
             realm.add(matchData)
         }
+        return matchData
     }
-    func setRecoad(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
+    func setRecoad() -> SetDataModel{
         let setData = SetDataModel()
         try! realm.write{
             setData.setId = matchInfoVM.setId
@@ -52,10 +51,9 @@ class DataManageViewModel: NSObject, ObservableObject {
             setData.setEndDate = Date()
             realm.add(setData)
         }
+        return setData
     }
-    func gameRecoad(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
+    func gameRecoad() -> GameDataModel{
         let gameData = GameDataModel()
         try! realm.write{
             gameData.gameId = matchInfoVM.gameId
@@ -69,10 +67,9 @@ class DataManageViewModel: NSObject, ObservableObject {
             gameData.gameEndDate = Date()
             realm.add(gameData)
         }
+        return gameData
     }
-    func pointRecoad(){
-//        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-//        let realm = try! Realm()
+    func pointRecoad() -> PointDataModel{
         let pointData = PointDataModel()
         try! realm.write{
             pointData.pointId = UUID().uuidString
@@ -95,432 +92,167 @@ class DataManageViewModel: NSObject, ObservableObject {
             pointData.tactics = pointVM.tactics.rawValue
             pointData.dateTime = Date()
             realm.add(pointData)
-            setChartData()
+            chartDataVM.setChartData(matchId: matchInfoVM.matchId, allCount: pointVM.allCount)
         }
+        return pointData
     }
-    func setChartData(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
-        let results = realm.objects(PointDataModel.self).where({ $0.matchId == matchInfoVM.matchId })
-        
-        // firstServeIn
-        let serverPoints = results.filter{ $0.myPosition == "server"}
-        let firstInPoints = serverPoints.filter{ $0.service == "first"}
-        if serverPoints.count == 0 {
-            chartDataVM.firstSvIn = [
-                .init(value: 0, color: .blue, category: "firstSvIn", index: 60),
-                .init(value: 100, color: .tungsten, category: "firstSvIn", index: 60)
-            ]
-        } else {
-            let firstSvInRate = (Float(firstInPoints.count) / Float(serverPoints.count))*100
-            let fiestSvInRateRound = round(firstSvInRate * 10) / 10
-            chartDataVM.firstSvIn = [
-                .init(value: fiestSvInRateRound, color: .blue, category: "firstSvIn", index: 60),
-                .init(value: 100 - fiestSvInRateRound, color: .tungsten, category: "firstSvIn", index: 60)
-            ]
-            chartDataVM.firstSvInCount = "\(firstInPoints.count)/\(serverPoints.count)"
-        }
-        // secondSvIn
-        let secondSvPoints = serverPoints.filter{
-            $0.service == "second"
-        }
-        var doubleFaultCount: Int = 0
-        if secondSvPoints.count == 0 {
-            chartDataVM.secondSvIn = [
-                .init(value: 0, color: .blue, category: "secondSvIn", index: 80),
-                .init(value: 100, color: .tungsten, category: "secondSvIn", index: 80)
-            ]
-        } else {
-            let doubleFaultPoints = secondSvPoints.filter{
-                $0.whichPoint == "opponent"
-                && $0.shot == "serve"
-            }
-            doubleFaultCount = doubleFaultPoints.count
-            let secondSvInCount = secondSvPoints.count - doubleFaultCount
-            let secondSvInRate = ( Float(secondSvInCount) / Float(secondSvPoints.count) ) * 100
-            let secondSvInRateRound = round(secondSvInRate * 10) / 10
-            chartDataVM.secondSvIn = [
-                .init(value: secondSvInRateRound, color: .blue, category: "secondSvIn", index: 80),
-                .init(value: 100 - secondSvInRateRound, color: .tungsten, category: "secondSvIn", index: 80)
-            ]
-            chartDataVM.secondSvInCount = "\(secondSvInCount)/\(secondSvPoints.count)"
-        }
-        // doubleFault
-        if serverPoints.count == 0 {
-            chartDataVM.doubleFault = [
-                .init(value: 0, color: .blue, category: "doubleFault", index: 8),
-                .init(value: 100, color: .tungsten, category: "doubleFault", index: 8)
-            ]
-        } else {
-            let doubleFaultRate = ( Float(doubleFaultCount) / Float(serverPoints.count) ) * 100
-            let doubleFaultRateRound = round(doubleFaultRate * 10) / 10
-            chartDataVM.doubleFault = [
-                .init(value: doubleFaultRateRound, color: .blue, category: "doubleFault", index: 8),
-                .init(value: 100 - doubleFaultRateRound, color: .tungsten, category: "doubleFault", index: 8)
-            ]
-            chartDataVM.doubleFaultCount = "\(doubleFaultCount)/\(serverPoints.count)"
-        }
-        // noDoubleFault
-        let noDoubleFaultCount = serverPoints.count - doubleFaultCount
-        if serverPoints.count == 0 {
-            chartDataVM.noDoubleFault = [
-                .init(value: 0, color: .blue, category: "noDoubleFault", index: 92),
-                .init(value: 100, color: .tungsten, category: "noDoubleFault", index: 92)
-            ]
-        } else {
-            let noDoubleFaultRate = ( Float(noDoubleFaultCount) / Float(serverPoints.count) ) * 100
-            let noDoubleFaultRateRound = round(noDoubleFaultRate * 10) / 10
-            chartDataVM.noDoubleFault = [
-                .init(value: noDoubleFaultRateRound, color: .blue, category: "noDoubleFault", index: 92),
-                .init(value: 100 - noDoubleFaultRateRound, color: .tungsten, category: "noDoubleFault", index: 92)
-            ]
-            chartDataVM.noDoubleFaultCount = "\(noDoubleFaultCount)/\(serverPoints.count)"
-        }
-        // atFirstSv
-        let atFirstGet = firstInPoints.filter{
-            $0.whichPoint == "myTeam"
-        }
-        if firstInPoints.count == 0 {
-            chartDataVM.atFirstSv = [
-                .init(value: 0, color: .blue, category: "atFirstSv", index: 60),
-                .init(value: 100, color: .tungsten, category: "atFirstSv", index: 60)
-            ]
-        } else {
-            let atFirstRate = ( Float(atFirstGet.count) / Float(firstInPoints.count) ) * 100
-            let atFirstRateRound = round(atFirstRate * 10) / 10
-            chartDataVM.atFirstSv = [
-                .init(value: atFirstRateRound, color: .blue, category: "atFirstSv", index: 60),
-                .init(value: 100 - atFirstRateRound, color: .tungsten, category: "atFirstSv", index: 60)
-            ]
-            chartDataVM.atFirstSvCount = "\(atFirstGet.count)/\(firstInPoints.count)"
-        }
-        // atSecondSv
-        let atSecondGet = secondSvPoints.filter{
-            $0.whichPoint == "myTeam"
-        }
-        if secondSvPoints.count == 0 {
-            chartDataVM.atSecondSv = [
-                .init(value: 0, color: .blue, category: "atSecondSv", index: 50),
-                .init(value: 100, color: .tungsten, category: "atSecondSv", index: 50)
-            ]
-        } else {
-            let atSecondRate = ( Float(atSecondGet.count) / Float(secondSvPoints.count) ) * 100
-            let atSecondRateRound = round(atSecondRate * 10) / 10
-            chartDataVM.atSecondSv = [
-                .init(value: atSecondRateRound, color: .blue, category: "atSecondSv", index: 50),
-                .init(value: 100 - atSecondRateRound, color: .tungsten, category: "atSecondSv", index: 50)
-            ]
-            chartDataVM.atSecondSvCount = "\(atSecondGet.count)/\(secondSvPoints.count)"
-        }
-        // pieChart
-        // getAndLostPoint
-        if pointVM.allPoint + pointVM.allgameCount == 0 {
-            chartDataVM.getAndLostPoint = [
-                .init(name: "data1", nameString: "とった\nポイント", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "とられた\nポイント", value: 1, labelType: .twoLabels),
-                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
-            ]
-        } else {
-            let getPoints = results.filter{
-                $0.whichPoint == "myTeam"
-            }
-            let lostPoints = results.filter{
-                $0.whichPoint == "opponent"
-            }
-            chartDataVM.getAndLostPoint = [
-                .init(name: "data1", nameString: "とった\nポイント", value: Double(getPoints.count), labelType: .twoLabels),
-                .init(name: "data2", nameString: "とられた\nポイント", value: Double(lostPoints.count), labelType: .twoLabels),
-                .init(name: "blank", nameString: "", value: Double(getPoints.count + lostPoints.count), labelType: .twoLabels)
-            ]
-        }
-        // pointRateBySvOrVoly
-        let serviceGamePoints = results.filter{
-            $0.servOrRet == "serviceGame"
-        }
-        if serviceGamePoints.count == 0 {
-            chartDataVM.pointRateBySvOrVoly = [
-                .init(name: "data1", nameString: "サーバー", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
-                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
-            ]
-        } else {
-            var serverGetRate: Double = 0
-            var volleyerAtSvGetRate: Double = 0
-            if serverPoints.count != 0 {
-                let getServerPoints = serverPoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                serverGetRate = round( ( Double(getServerPoints.count) / Double(serverPoints.count) ) * 1000 ) / 10
-            }
-            let volleyerAtSvPoints = results.filter{
-                $0.servOrRet == "serviceGame"
-                && $0.myPosition == "volleyer"
-            }
-            if volleyerAtSvPoints.count != 0 {
-                let getVolleyerAtSvPoints = volleyerAtSvPoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                volleyerAtSvGetRate = round( ( Double(getVolleyerAtSvPoints.count) / Double(volleyerAtSvPoints.count) ) * 1000 ) / 10
-            }
-            chartDataVM.pointRateBySvOrVoly = [
-                .init(name: "data1", nameString: "サーバー", value: serverGetRate, labelType: .twoLabels),
-                .init(name: "data2", nameString: "ボレーヤー", value: volleyerAtSvGetRate, labelType: .twoLabels),
-                .init(name: "blank", nameString: "", value: serverGetRate + volleyerAtSvGetRate, labelType: .twoLabels)
-            ]
-        }
-        // pointRateByRetOrVoly
-        let returnGamePoints = results.filter{
-            $0.servOrRet == "returnGame"
-        }
-        if returnGamePoints.count == 0 {
-            chartDataVM.pointRateByRetOrVoly = [
-                .init(name: "data1", nameString: "リターナー", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "ボレーヤー", value: 1, labelType: .twoLabels),
-                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
-            ]
-        } else {
-            var returnerGetRate: Double = 0
-            var volleyerAtRetGetRate: Double = 0
-            let returnerPoints = results.filter{
-                $0.myPosition == "returner"
-            }
-            if returnerPoints.count != 0 {
-                let getReturnerPoints = returnerPoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                returnerGetRate = round( ( Double(getReturnerPoints.count) / Double(returnerPoints.count) ) * 1000 ) / 10
-            }
-            let volleyerAtRetPoints = results.filter{
-                $0.servOrRet == "returngame"
-                && $0.myPosition == "volleyer"
-            }
-            if volleyerAtRetPoints.count != 0 {
-                let getVolleyerAtRetPoints = volleyerAtRetPoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                volleyerAtRetGetRate = round( ( Double(getVolleyerAtRetPoints.count) / Double(volleyerAtRetPoints.count) ) * 1000 ) / 10
-            }
-            chartDataVM.pointRateByRetOrVoly = [
-                .init(name: "data1", nameString: "リターナー", value: returnerGetRate, labelType: .twoLabels),
-                .init(name: "data2", nameString: "ボレーヤー", value: volleyerAtRetGetRate, labelType: .twoLabels),
-                .init(name: "blank", nameString: "", value: returnerGetRate + volleyerAtRetGetRate, labelType: .twoLabels)
-            ]
-        }
-        
-        // pointRateByServiceSide
-        if serviceGamePoints.count == 0 {
-            chartDataVM.pointRateByServiceSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
-                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
-            ]
-        } else {
-            var duceGetRate: Double = 0
-            var advGetRate: Double = 0
-            
-            let ducePoints = serviceGamePoints.filter{
-                $0.side == "duceSide"
-            }
-            if ducePoints.count != 0 {
-                let getDucePoints = ducePoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                duceGetRate = round( ( Double(getDucePoints.count) / Double(ducePoints.count) ) * 1000 ) / 10
-            }
-            
-            let advPoints = serviceGamePoints.filter{
-                $0.side == "advantageSide"
-            }
-            if advPoints.count != 0 {
-                let getAdvPoints = advPoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
-            }
-            chartDataVM.pointRateByServiceSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
-                .init(name: "blank", nameString: "", value: duceGetRate + advGetRate, labelType: .twoLabels)
-            ]
-        }
-        // pointRateByReturnSide
-        
-        if returnGamePoints.count == 0 {
-            chartDataVM.pointRateByReturnSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
-                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
-            ]
-        } else {
-            var duceGetRate: Double = 0
-            var advGetRate: Double = 0
-            
-            let ducePoints = returnGamePoints.filter{
-                ( $0.side == "duceSide" && $0.myPosition == "returner" )
-                || ( $0.side == "advantageSide" && $0.myPosition == "volleyer")
-            }
-            if ducePoints.count != 0 {
-                let getDucePoints = ducePoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                duceGetRate = round( ( Double(getDucePoints.count) / Double(ducePoints.count) ) * 1000 ) / 10
-            }
-            
-            let advPoints = returnGamePoints.filter{
-                ( $0.side == "duceSide" && $0.myPosition == "volleyer" )
-                || ( $0.side == "advantageSide" && $0.myPosition == "returner")
-            }
-            if advPoints.count != 0 {
-                let getAdvPoints = advPoints.filter{
-                    $0.whichPoint == "myTeam"
-                }
-                advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
-            }
-            chartDataVM.pointRateByReturnSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
-                .init(name: "blank", nameString: "", value: duceGetRate + advGetRate, labelType: .twoLabels)
-            ]
-        }
-    }
-    
-    func setGameChart(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
-        let games = realm.objects(GameDataModel.self).where({
-            $0.matchId == matchInfoVM.matchId
-            && $0.getPoint != $0.lostPoint
-        })
-        if games.count == 0 {
-            chartDataVM.keepAndBreak = [
-                .init(name: "data1", nameString: "キープ率", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "ブレーク率", value: 1, labelType: .twoLabels),
-                .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
-            ]
-        } else {
-            // keepAndBreakPoint
-            var keepRate: Double = 0
-            var breakRate: Double = 0
-            let serviceGames = games.filter{
-                $0.servOrRet == "serviceGame"
-            }
-            if serviceGames.count != 0 {
-                let keepGames = serviceGames.filter{ $0.getPoint > $0.lostPoint}
-                keepRate = round((Double(keepGames.count)/Double(serviceGames.count)) * 1000) / 10
-            }
-            let returnGames = games.filter{
-                $0.servOrRet == "returnGame"
-            }
-            if returnGames.count != 0 {
-                let breakGames = returnGames.filter{ $0.getPoint > $0.lostPoint}
-                breakRate = round((Double(breakGames.count)/Double(returnGames.count)) * 1000) / 10
-            }
-            if keepRate + breakRate >= 100 {
-                chartDataVM.keepAndBreak = [
-                    .init(name: "data1", nameString: "キープ率", value: keepRate, labelType: .twoLabels),
-                    .init(name: "data2", nameString: "ブレーク率", value: breakRate, labelType: .twoLabels),
-                    .init(name: "blank", nameString: "", value: keepRate + breakRate, labelType: .twoLabels)
-                ]
-                chartDataVM.keepAndBreakStyleScale = [
-                    "data1": .blue, "data2": .aqua, "blank": .black
-                ]
-            } else {
-                chartDataVM.keepAndBreak = [
-                    .init(name: "data1", nameString: "キープ率", value: keepRate, labelType: .twoLabels),
-                    .init(name: "data2", nameString: "ブレーク率", value: breakRate, labelType: .twoLabels),
-                    .init(name: "data3", nameString: "あと", value: 100 - keepRate - breakRate, labelType: .twoLabels),
-                    .init(name: "blank", nameString: "", value: 100, labelType: .twoLabels)
-                ]
-                chartDataVM.keepAndBreakStyleScale = [
-                    "data1": .blue, "data2": .aqua, "data3": .red, "blank": .black
-                ]
-            }
-        }
-    }
-    
     func goBack(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
-        let pointData = realm.objects(PointDataModel.self).where({ $0.matchId == matchInfoVM.matchId })
-        if pointData.count != 0 && pointVM.allPoint + pointVM.allgameCount != 0 {
-            positionVM.myPosition = Position(rawValue: pointData.last!.myPosition)!
-            positionVM.servOrRet = ServOrRet(rawValue: pointData.last!.servOrRet)!
-            positionVM.side = Side(rawValue: pointData.last!.side)!
-            pointVM.service = Service(rawValue: pointData.last!.service)!
-            if pointVM.allPoint == 1 {
-                pointVM.getPoint = 0
-                pointVM.lostPoint = 0
-                if let lastPoint = pointData.last {
-                    try! realm.write() {
-                        realm.delete(lastPoint)
-                    }
-                }
-            } else if pointVM.allPoint == 0 {
-                positionVM.myPosition = .noSelection
-                positionVM.servOrRet = ServOrRet(rawValue: pointData.last!.servOrRet)!
-                positionVM.side = .noSelection
+        if pointVM.allCount == 0 && positionVM.servOrRet == .noSelection {
+            homeVM.toPointGameView = false
+        } else {
+            if pointVM.service == .second {
                 pointVM.service = .first
-                pointVM.getGameCount = pointData.last!.getGameCount
-                pointVM.lostGameCount = pointData.last!.lostGameCount
-                pointVM.drowGameCount = pointData.last!.drowGameCount
-                pointVM.getPoint = pointData.last!.getPoint
-                pointVM.lostPoint = pointData.last!.lostPoint
-                matchInfoVM.gameId = pointData.last!.gameId
-                let games = realm.objects(GameDataModel.self).where({
-                    $0.matchId == matchInfoVM.matchId
-                })
-                if let lastGame = games.last {
-                    try! realm.write() {
-                        realm.delete(lastGame)
-                    }
-                }
+            } else if positionVM.myPosition != .noSelection {
+                positionVM.myPosition = .noSelection
+            } else if positionVM.servOrRet != .noSelection && pointVM.allPoint == 0 {
+                positionVM.servOrRet = .noSelection
             } else {
-                if let lastPoint = pointData.last {
-                    try! realm.write() {
-                        realm.delete(lastPoint)
+                
+                let pointData = realm.objects(PointDataModel.self).where({ $0.matchId == matchInfoVM.matchId })
+                if pointData.count != 0 && pointVM.allPoint + pointVM.allgameCount != 0 {
+                    positionVM.myPosition = Position(rawValue: pointData.last!.myPosition)!
+                    positionVM.servOrRet = ServOrRet(rawValue: pointData.last!.servOrRet)!
+                    positionVM.side = Side(rawValue: pointData.last!.side)!
+                    pointVM.service = Service(rawValue: pointData.last!.service)!
+                    if pointVM.allPoint == 1 {
+                        pointVM.getPoint = 0
+                        pointVM.lostPoint = 0
+                        if let lastPoint = pointData.last {
+                            try! realm.write() {
+                                realm.delete(lastPoint)
+                            }
+                        }
+                    } else if pointVM.allPoint == 0 {
+                        positionVM.myPosition = .noSelection
+                        positionVM.servOrRet = ServOrRet(rawValue: pointData.last!.servOrRet)!
+                        positionVM.side = .noSelection
+                        pointVM.service = .first
+                        pointVM.getGameCount = pointData.last!.getGameCount
+                        pointVM.lostGameCount = pointData.last!.lostGameCount
+                        pointVM.drowGameCount = pointData.last!.drowGameCount
+                        pointVM.getPoint = pointData.last!.getPoint
+                        pointVM.lostPoint = pointData.last!.lostPoint
+                        matchInfoVM.gameId = pointData.last!.gameId
+                        let games = realm.objects(GameDataModel.self).where({
+                            $0.matchId == matchInfoVM.matchId
+                        })
+                        if let lastGame = games.last {
+                            try! realm.write() {
+                                realm.delete(lastGame)
+                            }
+                        }
+                    } else {
+                        if let lastPoint = pointData.last {
+                            try! realm.write() {
+                                realm.delete(lastPoint)
+                            }
+                        }
+                        let results = realm.objects(PointDataModel.self).where({
+                            $0.matchId == matchInfoVM.matchId
+                        })
+                        pointVM.getGameCount = results.last!.getGameCount
+                        pointVM.lostGameCount = results.last!.lostGameCount
+                        pointVM.drowGameCount = results.last!.drowGameCount
+                        pointVM.getPoint = results.last!.getPoint
+                        pointVM.lostPoint = results.last!.lostPoint
+                        matchInfoVM.gameId = results.last!.gameId
                     }
                 }
-                let results = realm.objects(PointDataModel.self).where({
-                    $0.matchId == matchInfoVM.matchId
-                })
-                pointVM.getGameCount = results.last!.getGameCount
-                pointVM.lostGameCount = results.last!.lostGameCount
-                pointVM.drowGameCount = results.last!.drowGameCount
-                pointVM.getPoint = results.last!.getPoint
-                pointVM.lostPoint = results.last!.lostPoint
-                matchInfoVM.gameId = results.last!.gameId
+                chartDataVM.setChartData(matchId: matchInfoVM.matchId, allCount: pointVM.allCount)
+                chartDataVM.setGameChart(matchId: matchInfoVM.matchId)
             }
         }
-        setChartData()
-        setGameChart()
+    }
+    func nextGame(){
+        if pointVM.getPoint > pointVM.lostPoint {
+            pointVM.getGameCount += 1
+        } else if pointVM.getPoint < pointVM.lostPoint {
+            pointVM.lostGameCount += 1
+        } else if pointVM.getPoint == pointVM.lostPoint {
+            pointVM.drowGameCount += 1
+        }
+        let gameData = gameRecoad()
+        let newGameId = UUID().uuidString
+        Task{
+            await WCNextGame(
+                gameData: gameData,
+                newGameId: newGameId
+            )
+        }
+        chartDataVM.setGameChart(matchId: matchInfoVM.matchId)
+        pointVM.service = .first
+        positionVM.myPosition = .noSelection
+        positionVM.servOrRet = .noSelection
+        pointVM.getPoint = 0
+        pointVM.lostPoint = 0
+        matchInfoVM.gameId = newGameId
+    }
+    func gameEnd(){
+        let setData = setRecoad()
+        let matchData = matchRecoad()
+        Task{
+            await WCGameEnd(matchData: matchData, setData: setData)
+        }
+        homeVM.setHomeData()
+        withAnimation {
+            homeVM.toOneMatchDataView = true
+        }
+    }
+    func fault(){
+        if positionVM.myPosition != .noSelection {
+            pointVM.service = .second
+            Task {
+                await WCSelectPositionAndService()
+            }
+        }
+    }
+    func doubleFault(){
+        if positionVM.servOrRet == .serviceGame {
+            pointVM.whichPoint = .opponent
+            pointVM.lostPoint += 1
+        } else if positionVM.servOrRet == .returnGame {
+            pointVM.whichPoint = .myTeam
+            pointVM.getPoint += 1
+        }
+        pointVM.shot = .serve
+        let pointData = pointRecoad()
+        Task {
+            await WCGetAndLostPoint(pointData:pointData)
+        }
+        if positionVM.side == .advantageSide {
+            positionVM.side = .duceSide
+        } else if positionVM.side == .duceSide {
+            positionVM.side = .advantageSide
+        }
+        
+        if matchInfoVM.matchFormat == .doubles && positionVM.servOrRet == .returnGame {
+            if positionVM.myPosition == .volleyer {
+                positionVM.myPosition = .returner
+            } else {
+                positionVM.myPosition = .volleyer
+            }
+        }
+        pointVM.service = .first
+        pointVM.whichPoint = .noSelection
+        pointVM.shot = .noSelection
     }
     func showPointRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
         let results = realm.objects(PointDataModel.self)
         print(results)
     }
     func showGameRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
         let results = realm.objects(GameDataModel.self)
         print(results)
     }
     func showSetRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
         let results = realm.objects(SetDataModel.self)
         print(results)
     }
     func showMatchRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
         let results = realm.objects(MatchDataModel.self)
         print(results)
     }
     func deleteRealm(){
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 6)
-        let realm = try! Realm()
         let pointData = realm.objects(PointDataModel.self)
         try! realm.write {
             realm.delete(pointData)
@@ -543,7 +275,6 @@ class DataManageViewModel: NSObject, ObservableObject {
         }
     }
     private let session: WCSession
-    
     init(session: WCSession = .default) {
         self.session = session
         super.init()
@@ -560,26 +291,102 @@ extension DataManageViewModel: WCSessionDelegate {
         // アクティベーションが完了した後に必要な初期化などを行う場合、このメソッド内で行うことができる
     }
     
-    
-    
     // データを受信したときに呼ばれるメソッド
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
             // Watchアプリからデータを受信したときに呼ばれるメソッド
             // 受信したデータを処理するコードをここに追加
+            
+            if let closeOneMatchData = message["closeOneMatchData"] as? Bool {
+                print("Received closeOneMatchData")
+                if closeOneMatchData {
+                    self.resetAllVM()
+                    self.homeVM.toPointGameView = false
+                }
+            }
+            if let goBack = message["goBack"] as? Bool {
+                print("Received goBack")
+                if goBack {
+                    self.goBack()
+                }
+            }
+            if let gameEnd = message["gameEnd"] as? Data {
+                print("Received gameEnd")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(GameEndWCModel.self, from: gameEnd) {
+                    try! self.realm.write{
+                        self.realm.add(decodedData.matchData)
+                        self.realm.add(decodedData.setData)
+                    }
+                    self.homeVM.setHomeData()
+                    self.homeVM.toOneMatchDataView = true
+                }
+            }
+            if let matchInfo = message["toMatchView"] as? Data {
+                print("Received toMatchView")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(MatchInfoViewModel.self, from: matchInfo) {
+                    self.matchInfoVM = decodedData
+                    withAnimation {
+                        self.homeVM.toPointGameView = true
+                    }
+                }
+            }
+            if let selectPAS = message["selectPositionAndService"] as? Data {
+                print("Received gameData: \(selectPAS)")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(PositionAndServiceWCModel.self, from: selectPAS) {
+                    self.positionVM = decodedData.positionVM
+                    self.pointVM.service = Service(rawValue: decodedData.service)!
+                }
+            }
+            if let nextGame = message["nextGame"] as? Data {
+                print("Received gameData: \(nextGame)")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(NextGameWCModel.self, from: nextGame) {
+                    try! self.realm.write {
+                        self.realm.add(decodedData.gameData)
+                    }
+                    self.matchInfoVM.gameId = decodedData.newGameId
+                    self.pointVM.getPoint = 0
+                    self.pointVM.lostPoint = 0
+                    if decodedData.gameData.getPoint > decodedData.gameData.lostPoint {
+                        self.pointVM.getGameCount += 1
+                    } else if decodedData.gameData.getPoint < decodedData.gameData.lostPoint {
+                        self.pointVM.lostGameCount += 1
+                    } else if decodedData.gameData.getPoint == decodedData.gameData.lostPoint {
+                        self.pointVM.drowGameCount += 1
+                    }
+                    self.pointVM.service = .first
+                    self.positionVM.servOrRet = .noSelection
+                    self.positionVM.myPosition = .noSelection
+                    self.positionVM.server = .noSelection
+                    self.positionVM.gamePosition = .noSelection
+                    self.chartDataVM.setChartData(matchId: self.matchInfoVM.matchId, allCount: self.pointVM.allCount)
+                    self.chartDataVM.setGameChart(matchId: self.matchInfoVM.matchId)
+                }
+            }
             if let pointData = message["pointData"] as? Data {
                 print("Received pointData: \(pointData)")
                 // デコード処理
                 if let decodedData = try? JSONDecoder().decode(PointDataModel.self, from: pointData) {
-                    self.realm.add(decodedData)
-                    self.setChartData()
+                    try! self.realm.write {
+                        self.realm.add(decodedData)
+                    }
+                    self.matchInfoVM.matchId = decodedData.matchId
+                    self.matchInfoVM.setId = decodedData.setId
+                    self.matchInfoVM.gameId = decodedData.gameId
                     self.pointVM.getPoint = decodedData.getPoint
                     self.pointVM.lostPoint = decodedData.lostPoint
                     self.pointVM.getGameCount = decodedData.getGameCount
                     self.pointVM.drowGameCount = decodedData.drowGameCount
                     if decodedData.servOrRet == "returnGame" && decodedData.myPosition == "volleyer" {
                         self.positionVM.myPosition = .returner
-                    } else if decodedData.servOrRet == "returnGame" && decodedData.myPosition == "returner" {
+                    } else if decodedData.myPosition == "returner" {
+                        self.positionVM.myPosition = .volleyer
+                    } else if decodedData.myPosition == "server" {
+                        self.positionVM.myPosition = .server
+                    } else if decodedData.servOrRet == "serviceGame" && decodedData.myPosition == "volleyer" {
                         self.positionVM.myPosition = .volleyer
                     }
                     if decodedData.side == "duceSide" {
@@ -587,22 +394,262 @@ extension DataManageViewModel: WCSessionDelegate {
                     } else if decodedData.side == "advantageSide" {
                         self.positionVM.side = .duceSide
                     }
+                    self.positionVM.servOrRet = ServOrRet(rawValue: decodedData.servOrRet)!
+                    self.positionVM.server = Server(rawValue: decodedData.server)!
+                    self.chartDataVM.setChartData(matchId: self.matchInfoVM.matchId, allCount: self.pointVM.allCount)
+                }
+            }
+            if let allRealmData = message["startApp"] as? Data {
+                print("Received allRealmData")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(AllRealmWCModel.self, from: allRealmData) {
+                    self.realmOverwrite(
+                        matchDataArray: decodedData.matchData,
+                        setDataArray: decodedData.setData,
+                        gamedataArray: decodedData.gameData,
+                        pointdataArray: decodedData.pointData,
+                        userDataArray: decodedData.userData
+                    )
+                    Task{
+                        await self.WCStartAppReturn()
+                    }
+                }
+            }
+            if let allRealmData = message["WCStartAppReturn-allRealm"] as? Data {
+                print("Received WCStartAppReturn-allRealm")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(AllRealmWCModel.self, from: allRealmData) {
+                    self.realmOverwrite(
+                        matchDataArray: decodedData.matchData,
+                        setDataArray: decodedData.setData,
+                        gamedataArray: decodedData.gameData,
+                        pointdataArray: decodedData.pointData,
+                        userDataArray: decodedData.userData
+                    )
+                }
+            }
+            if let allViewModel = message["WCStartAppReturn-allViewModel"] as? Data {
+                print("Received WCStartAppReturn-allViewModel")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(AllViewModelWCModel.self, from: allViewModel) {
+                    self.homeVM = decodedData.homeVM
+                    self.matchInfoVM = decodedData.matchInfoVM
+                    self.positionVM = decodedData.positionVM
+                    self.pointVM = decodedData.pointVM
+                    self.userVM = decodedData.userVM
                 }
             }
         }
     }
     
     // 通信を行うメソッド
-    func sendPointData(pointData:PointDataModel){
+    
+    func WCCloseOneMatchData() async{
         // watchと接続ができていない場合は早期リターン
         guard session.activationState == .activated else {
             print("セッションがアクティブではないので送信できません")
             return
         }
-        let encodedData = try! JSONEncoder().encode(pointData)
-        let message = ["pointData": encodedData]
-        WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-            print("Error sending message: \(error.localizedDescription)")
-        })
+        Task{
+            let message = ["closeOneMatchData": true]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    func WCGoBack() async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task{
+            let message = ["goBack": true]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    
+    func WCToMatchView() async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task {
+            let encodedData = try! JSONEncoder().encode(matchInfoVM)
+            let message = ["toMatchView": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    func WCGameEnd(matchData: MatchDataModel, setData: SetDataModel) async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task {
+            let gameEnd = GameEndWCModel()
+            gameEnd.matchData = matchData
+            gameEnd.setData = setData
+            let encodedData = try! JSONEncoder().encode(gameEnd)
+            let message = ["gameEnd": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    
+    func WCSelectPositionAndService() async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task {
+            let selectPAS = PositionAndServiceWCModel()
+            selectPAS.positionVM = positionVM
+            selectPAS.service = pointVM.service.rawValue
+            let encodedData = try! JSONEncoder().encode(selectPAS)
+            let message = ["selectPositionAndService": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    func WCNextGame(gameData:GameDataModel,newGameId:String) async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task {
+            let nextGame = NextGameWCModel()
+            nextGame.gameData = gameData
+            nextGame.newGameId = newGameId
+            let encodedData = try! JSONEncoder().encode(nextGame)
+            let message = ["nextGame": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    func WCGetAndLostPoint(pointData:PointDataModel) async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task {
+            let encodedData = try! JSONEncoder().encode(pointData)
+            let message = ["pointData": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    func WCStartApp() async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task{
+            let allRealmData = AllRealmWCModel()
+            allRealmData.matchData = Array(self.realm.objects(MatchDataModel.self))
+            allRealmData.setData = Array(self.realm.objects(SetDataModel.self))
+            allRealmData.gameData = Array(self.realm.objects(GameDataModel.self))
+            allRealmData.pointData = Array(self.realm.objects(PointDataModel.self))
+            allRealmData.userData = Array(self.realm.objects(UserModel.self))
+            let encodedData = try! JSONEncoder().encode(allRealmData)
+            let message = ["startApp": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
+    }
+    func WCStartAppReturn() async {
+        // watchと接続ができていない場合は早期リターン
+        guard session.activationState == .activated else {
+            print("セッションがアクティブではないので送信できません")
+            return
+        }
+        Task{
+            let allRealmData = AllRealmWCModel()
+            allRealmData.matchData = Array(self.realm.objects(MatchDataModel.self))
+            allRealmData.setData = Array(self.realm.objects(SetDataModel.self))
+            allRealmData.gameData = Array(self.realm.objects(GameDataModel.self))
+            allRealmData.pointData = Array(self.realm.objects(PointDataModel.self))
+            allRealmData.userData = Array(self.realm.objects(UserModel.self))
+            var encodedData = try! JSONEncoder().encode(allRealmData)
+            var message = ["WCStartAppReturn-allRealm": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+            
+            let allViewModel = AllViewModelWCModel()
+            allViewModel.homeVM = homeVM
+            allViewModel.matchInfoVM = matchInfoVM
+            allViewModel.positionVM = positionVM
+            allViewModel.pointVM = pointVM
+            allViewModel.userVM = userVM
+            encodedData = try! JSONEncoder().encode(allViewModel)
+            message = ["WCStartAppReturn-allViewModel": encodedData]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        
+        }
+    }
+    func realmOverwrite(
+        matchDataArray: [MatchDataModel],
+        setDataArray: [SetDataModel],
+        gamedataArray: [GameDataModel],
+        pointdataArray: [PointDataModel],
+        userDataArray: [UserModel]
+    ){
+        let allMatchData = self.realm.objects(MatchDataModel.self)
+        for matchData in matchDataArray {
+            if !allMatchData.contains(matchData) {
+                try! self.realm.write {
+                    self.realm.add(matchData)
+                }
+            }
+        }
+        let allSetData = self.realm.objects(SetDataModel.self)
+        for setData in setDataArray {
+            if !allSetData.contains(setData) {
+                try! self.realm.write {
+                    self.realm.add(setData)
+                }
+            }
+        }
+        let allGameData = self.realm.objects(GameDataModel.self)
+        for gameData in gamedataArray {
+            if !allGameData.contains(gameData) {
+                try! self.realm.write {
+                    self.realm.add(gameData)
+                }
+            }
+        }
+        let allPointData = self.realm.objects(PointDataModel.self)
+        for pointData in pointdataArray {
+            if !allPointData.contains(pointData) {
+                try! self.realm.write {
+                    self.realm.add(pointData)
+                }
+            }
+        }
+        let allUserData = self.realm.objects(UserModel.self)
+        for userData in userDataArray {
+            if !allUserData.contains(userData) {
+                try! self.realm.write {
+                    self.realm.add(userData)
+                }
+            }
+        }
     }
 }

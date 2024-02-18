@@ -1,15 +1,15 @@
 import Foundation
-enum InputMode: String ,CaseIterable {
+enum InputMode: String ,CaseIterable, Decodable {
     case beginner
     case advance
     case highLebel
     case expert
     var forString: String {
         switch self {
-            case .beginner : return "ビギナー"
-            case .advance: return "アドバンス"
-            case .highLebel : return "ハイレベル"
-            case .expert : return "エキスパート"
+            case .beginner : return "ビギナーモード"
+            case .advance: return "アドバンスモード"
+            case .highLebel : return "ハイレベルモード"
+            case .expert : return "エキスパートモード"
         }
     }
 }

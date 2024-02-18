@@ -1,5 +1,5 @@
 import Foundation
-enum Whose: String {
+enum Whose: String, Decodable  {
     case noSelection
     case myTeam
     case opponentTeam

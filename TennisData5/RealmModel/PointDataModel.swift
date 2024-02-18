@@ -59,7 +59,7 @@ class PointDataModel: Object,ObjectKeyIdentifiable, Codable {
         lostGameCount = try container.decode(Int.self, forKey: .lostGameCount)
         drowGameCount = try container.decode(Int.self, forKey: .drowGameCount)
         getPoint = try container.decode(Int.self, forKey: .getPoint)
-        lostPoint = try container.decode(Int.self, forKey: .getPoint)
+        lostPoint = try container.decode(Int.self, forKey: .lostPoint)
         service = try container.decode(String.self, forKey: .service)
         whichPoint = try container.decode(String.self, forKey: .whichPoint)
         shot = try container.decode(String.self, forKey: .shot)

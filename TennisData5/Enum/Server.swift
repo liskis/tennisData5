@@ -1,5 +1,5 @@
 import Foundation
-enum Server: String {
+enum Server: String, Decodable  {
     case noSelection
     case myTeam
     case opponentTeam

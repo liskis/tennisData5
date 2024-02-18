@@ -45,113 +45,117 @@ struct MatchRecordView: View {
                         .textFieldStyle(.roundedBorder)
                         .focused($partnerFocus)
                         .padding(.horizontal,10)
+                        .disabled(true)
                     TextField("対戦相手で検索", text: $recoadSearchVM.opponent)
                         .textFieldStyle(.roundedBorder)
                         .focused($opponentFocus)
                         .padding(.horizontal,10)
-                    List(recoadSearchVM.matchRecoad){ recoad in
-                        if checkPeriod(recoad: recoad) && checkMatchFormat(recoad: recoad) && checkGameType(recoad: recoad) {
-                            NavigationLink(
-                                destination: OneMatchDataView(
-                                    pointVM: recoadSearchVM.pointVM, 
-                                    matchInfoVM: recoadSearchVM.matchInfoVM,
-                                    chartDataVM: recoadSearchVM.chartDataVM
-                                )
-                                .onAppear{
-                                    recoadSearchVM.matchInfoVM.matchId = recoad.matchId
-                                    recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
-                                    recoadSearchVM.matchInfoVM.gameType = recoad.gameType
-                                    recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
-                                    recoadSearchVM.pointVM.getGameCount = recoad.WinScore
-                                    recoadSearchVM.pointVM.lostGameCount = recoad.LoseScore
-                                    recoadSearchVM.pointVM.drowGameCount = recoad.DrawScore
-                                }
-                            ) {
-                                HStack {
-                                    if recoad.matchFormat == .singles {
-                                        VStack{
-                                            Image(.singles)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 20)
-                                            Text("シングルス")
-                                                .foregroundColor(Color.tungsten)
-                                                .font(.custom("Verdana", size: 8))
-                                                .bold()
-                                        }
-                                    } else {
-                                        VStack{
-                                            Image(.doubles)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 20)
-                                            Text("ダブルス　")
-                                                .foregroundColor(Color.tungsten)
-                                                .font(.custom("Verdana", size: 8))
-                                                .bold()
-                                        }
-                                    }
-                                    Text(Date.DateToString(date:recoad.matchStartDate))
-                                        .foregroundColor(Color.tungsten)
-                                        .font(.custom("Verdana", size: 10))
-                                        .frame(width:60)
-                                    Spacer()
-                                    Text(recoad.gameType.forString)
-                                        .foregroundColor(Color.tungsten)
-                                        .font(.custom("Verdana", size: 10))
-                                    Spacer()
-                                    Text("\(recoad.WinScore)勝\(recoad.LoseScore)敗\(recoad.DrawScore)分" )
-                                        .foregroundColor(Color.tungsten)
-                                        .font(.custom("Verdana", size: 10))
-                                    Spacer()
-                                    if recoad.WinScore > recoad.LoseScore {
-                                        Text("Win")
-                                            .foregroundColor(Color.red)
-                                            .font(.custom("Verdana", size: 12))
-                                            .bold()
-                                            .frame(width:40)
-                                    } else if recoad.WinScore < recoad.LoseScore {
-                                        Text("Lose")
-                                            .foregroundColor(Color.blue)
-                                            .font(.custom("Verdana", size: 12))
-                                            .bold()
-                                            .frame(width:40)
-                                    } else {
-                                        Text("Draw")
-                                            .foregroundColor(Color.gray)
-                                            .font(.custom("Verdana", size: 12))
-                                            .bold()
-                                            .frame(width:40)
-                                    }
-                                }
-                            }
-                            .listStyle(.plain)
-                        }
-                    }.background{Color.white}
-                }
-                VStack{
-                    Spacer()
-                    searchStartDatePicker
-                        .animation(.linear,value:10)
-                        .offset(y: self.searchStartDatePickerFocus ? 0 : UIScreen.main.bounds.height)
-                }
-                VStack{
-                    Spacer()
-                    searchEndDatePicker
-                        .animation(.linear,value:10)
-                        .offset(y: self.searchEndDatePickerFocus ? 0 : UIScreen.main.bounds.height)
-                }
-                VStack{
-                    Spacer()
-                    partnerPickerView
-                        .animation(.linear,value:10)
-                        .offset(y: self.partnerFocus ? 0 : UIScreen.main.bounds.height)
-                }
-                VStack{
-                    Spacer()
-                    opponentPickerView
-                        .animation(.linear,value:10)
-                        .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
+                        .disabled(true)
+                    //                    List(recoadSearchVM.matchRecoad){ recoad in
+                    //                        if checkPeriod(recoad: recoad) && checkMatchFormat(recoad: recoad) && checkGameType(recoad: recoad) {
+                    //                            NavigationLink(
+                    //                                destination: OneMatchDataView(
+                    //                                    homeVM: recoadSearchVM.homeVM,
+                    //                                    pointVM: recoadSearchVM.pointVM,
+                    //                                    matchInfoVM: recoadSearchVM.matchInfoVM,
+                    //                                    chartDataVM: recoadSearchVM.chartDataVM
+                    //                                )
+                    //                                .onAppear{
+                    //                                    recoadSearchVM.matchInfoVM.matchId = recoad.matchId
+                    //                                    recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
+                    //                                    recoadSearchVM.matchInfoVM.gameType = recoad.gameType
+                    //                                    recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
+                    //                                    recoadSearchVM.pointVM.getGameCount = recoad.WinScore
+                    //                                    recoadSearchVM.pointVM.lostGameCount = recoad.LoseScore
+                    //                                    recoadSearchVM.pointVM.drowGameCount = recoad.DrawScore
+                    //                                }
+                    //                            ) {
+                    //                                HStack {
+                    //                                    if recoad.matchFormat == .singles {
+                    //                                        VStack{
+                    //                                            Image(.singles)
+                    //                                                .resizable()
+                    //                                                .scaledToFit()
+                    //                                                .frame(height: 20)
+                    //                                            Text("シングルス")
+                    //                                                .foregroundColor(Color.tungsten)
+                    //                                                .font(.custom("Verdana", size: 8))
+                    //                                                .bold()
+                    //                                        }
+                    //                                    } else {
+                    //                                        VStack{
+                    //                                            Image(.doubles)
+                    //                                                .resizable()
+                    //                                                .scaledToFit()
+                    //                                                .frame(height: 20)
+                    //                                            Text("ダブルス　")
+                    //                                                .foregroundColor(Color.tungsten)
+                    //                                                .font(.custom("Verdana", size: 8))
+                    //                                                .bold()
+                    //                                        }
+                    //                                    }
+                    //                                    Text(Date.DateToString(date:recoad.matchStartDate))
+                    //                                        .foregroundColor(Color.tungsten)
+                    //                                        .font(.custom("Verdana", size: 10))
+                    //                                        .frame(width:60)
+                    //                                    Spacer()
+                    //                                    Text(recoad.gameType.forString)
+                    //                                        .foregroundColor(Color.tungsten)
+                    //                                        .font(.custom("Verdana", size: 10))
+                    //                                    Spacer()
+                    //                                    Text("\(recoad.WinScore)勝\(recoad.LoseScore)敗\(recoad.DrawScore)分" )
+                    //                                        .foregroundColor(Color.tungsten)
+                    //                                        .font(.custom("Verdana", size: 10))
+                    //                                    Spacer()
+                    //                                    if recoad.WinScore > recoad.LoseScore {
+                    //                                        Text("Win")
+                    //                                            .foregroundColor(Color.red)
+                    //                                            .font(.custom("Verdana", size: 12))
+                    //                                            .bold()
+                    //                                            .frame(width:40)
+                    //                                    } else if recoad.WinScore < recoad.LoseScore {
+                    //                                        Text("Lose")
+                    //                                            .foregroundColor(Color.blue)
+                    //                                            .font(.custom("Verdana", size: 12))
+                    //                                            .bold()
+                    //                                            .frame(width:40)
+                    //                                    } else {
+                    //                                        Text("Draw")
+                    //                                            .foregroundColor(Color.gray)
+                    //                                            .font(.custom("Verdana", size: 12))
+                    //                                            .bold()
+                    //                                            .frame(width:40)
+                    //                                    }
+                    //                                }
+                    //                            }
+                    //                            .listStyle(.plain)
+                    //                        }
+                    //                    }.background{Color.white}
+                    //                }
+                    VStack{
+                        Spacer()
+                        searchStartDatePicker
+                            .animation(.linear,value:10)
+                            .offset(y: self.searchStartDatePickerFocus ? 0 : UIScreen.main.bounds.height)
+                    }
+                    VStack{
+                        Spacer()
+                        searchEndDatePicker
+                            .animation(.linear,value:10)
+                            .offset(y: self.searchEndDatePickerFocus ? 0 : UIScreen.main.bounds.height)
+                    }
+                    VStack{
+                        Spacer()
+                        partnerPickerView
+                            .animation(.linear,value:10)
+                            .offset(y: self.partnerFocus ? 0 : UIScreen.main.bounds.height)
+                    }
+                    VStack{
+                        Spacer()
+                        opponentPickerView
+                            .animation(.linear,value:10)
+                            .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
+                    }
                 }
                 Text("Please wait for update !")
                     .frame(width: 180,height: 20)

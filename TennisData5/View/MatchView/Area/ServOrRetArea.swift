@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct ServOrRetArea: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
     var body: some View {
@@ -93,9 +94,15 @@ extension ServOrRetArea {
     func serviceGame(){
         positionVM.servOrRet = .serviceGame
         positionVM.myPosition = .noSelection
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
     func returnGame(){
         positionVM.servOrRet = .returnGame
         positionVM.myPosition = .noSelection
+        Task {
+            await dataManageVM.WCSelectPositionAndService()
+        }
     }
 }

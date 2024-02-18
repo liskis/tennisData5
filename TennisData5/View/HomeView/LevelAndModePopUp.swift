@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LevelAndModePopUp: View {
     @ObservedObject var userVM: UserViewModel
+    @ObservedObject var matchInfoVM: MatchInfoViewModel
     var body: some View {
         VStack{
             ZStack{
@@ -15,7 +16,7 @@ struct LevelAndModePopUp: View {
                         .bold()
                         .font(.custom("Verdana", size: 12))
                     Spacer().frame(height: 16)
-                    Picker("inputMode", selection: $userVM.inputMode){
+                    Picker("inputMode", selection: $matchInfoVM.inputMode){
                         ForEach(InputMode.allCases, id: \.self) { format in
                             Text(format.forString)
                         }

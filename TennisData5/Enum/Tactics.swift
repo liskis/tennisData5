@@ -1,5 +1,5 @@
 import Foundation
-enum Tactics: String {
+enum Tactics: String, Decodable  {
     case noSelection
     case serveAndVolley
     case serveAndStay

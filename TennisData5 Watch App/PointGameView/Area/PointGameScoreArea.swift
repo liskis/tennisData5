@@ -1,11 +1,15 @@
 import SwiftUI
 struct PointGameScoreArea: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
+    @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
-    @ObservedObject var userVM: UserViewModel
+    @ObservedObject var chartDataVM: ChartDataViewModel
+    @ObservedObject var homeVM: HomeViewModel
     var body: some View {
         VStack(spacing:1){
             HStack{
+                Spacer().frame(width: 40)
                 Text(String(pointVM.getGameCount))
                     .font(.custom("Verdana",size:10))
                     .bold()
@@ -24,18 +28,10 @@ struct PointGameScoreArea: View {
                 Text("分")
                     .font(.custom("Verdana",size:6))
                     .bold()
+                Spacer()
             }
             HStack{
-                Spacer()
-                if matchInfoVM.matchFormat == .singles {
-                    Text(userVM.myName)
-                        .font(.custom("Verdana",size:6))
-                        .bold()
-                } else {
-                    Text(userVM.myName + "\nチーム")
-                        .font(.custom("Verdana",size:6))
-                        .bold()
-                }
+                goBackBtn
                 Spacer()
                 VStack{
                     HStack{
@@ -51,18 +47,63 @@ struct PointGameScoreArea: View {
                     }
                 }
                 Spacer()
-                if matchInfoVM.matchFormat == .singles {
-                    Text("対戦相手")
-                        .font(.custom("Verdana",size:6))
-                        .bold()
+                if pointVM.allPoint == 0 {
+                    nextGameBtnDis
                 } else {
-                    Text("相手\nチーム")
-                        .font(.custom("Verdana",size:6))
-                        .bold()
+                    nextGameBtn
                 }
+            }
+            HStack{
                 Spacer()
+                Text(matchInfoVM.inputMode.forString)
+                    .foregroundColor(.red)
+                    .bold()
+                    .padding(4)
+                    .font(.custom("Verdana",size:6))
             }
         }
-        .frame(height: 28)
+        
+    }
+    var goBackBtn: some View {
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.ocean)
+            .frame(width: 50,height: 20)
+            .overlay{
+                Text("<< 戻る")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        dataManageVM.goBack()
+                        Task{
+                            await dataManageVM.WCGoBack()
+                        }
+                    }
+            }
+    }
+    var nextGameBtn: some View {
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.ocean)
+            .frame(width: 50, height: 20)
+            .overlay{
+                Text("次のゲーム")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+                    .onTapGesture {
+                        dataManageVM.nextGame()
+                    }
+            }
+    }
+    var nextGameBtnDis: some View {
+        RoundedRectangle(cornerRadius: 2)
+            .fill(.gray)
+            .frame(width: 50, height: 20)
+            .overlay{
+                Text("次のゲーム")
+                    .foregroundColor(Color.white)
+                    .bold()
+                    .font(.custom("Verdana", size: 8))
+            }
     }
 }

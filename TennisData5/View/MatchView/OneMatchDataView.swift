@@ -1,9 +1,10 @@
 import SwiftUI
 struct OneMatchDataView: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
+    @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var pointVM: PointViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
-    @Environment(\.dismiss) var dismiss
     let chartWidth = UIScreen.main.bounds.width/2 - 20
     var body: some View {
         NavigationStack {
@@ -15,14 +16,14 @@ struct OneMatchDataView: View {
                         .bold()
                         .foregroundColor(.tungsten)
                     Spacer(minLength: 10)
-                    NameAndScoreArea(matchInfoVM: matchInfoVM, pointVM:pointVM)
+                    OneMatchDataScoreArea(matchInfoVM: matchInfoVM, pointVM:pointVM)
                     Button(action: {
-                        pointVM.getPoint = 0
-                        pointVM.lostPoint = 0
-                        matchInfoVM.gameId = ""
-                        matchInfoVM.setId = ""
-                        matchInfoVM.matchId = ""
-                        dismiss()
+                        Task{
+                            await dataManageVM.WCCloseOneMatchData()
+                        }
+                        dataManageVM.resetAllVM()
+                        homeVM.toPointGameView = false
+                        
                     }, label: {
                         Text("閉じる")
                             .foregroundColor(Color.white)

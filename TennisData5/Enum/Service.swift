@@ -1,5 +1,5 @@
 import Foundation
-enum Service: String {
+enum Service: String, Decodable {
     case first
     case second
 }

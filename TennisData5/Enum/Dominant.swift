@@ -1,5 +1,5 @@
 import Foundation
-enum Dominant: String ,CaseIterable {
+enum Dominant: String ,CaseIterable, Decodable  {
     case noSelection
     case right
     case left

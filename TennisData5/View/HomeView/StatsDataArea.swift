@@ -1,15 +1,13 @@
 import SwiftUI
 struct StatsDataArea: View {
-    @ObservedObject var homeDataVM: HomeDataViewModel
+    @ObservedObject var homeVM: HomeViewModel
     var body: some View {
         HStack(alignment: .bottom){
             Spacer()
             winningRate
             Spacer()
-//            firstServeRate
             keepRate
             Spacer()
-//            secondServeRate
             breakRate
             Spacer()
         }
@@ -17,14 +15,14 @@ struct StatsDataArea: View {
     var winningRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                if homeDataVM.winningRate == "100.0" {
-                    Text(homeDataVM.winningRate)
+                if homeVM.winningRate == "100.0" {
+                    Text(homeVM.winningRate)
                         .font(.custom("Verdana",size:30))
                         .bold()
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 2)
                 } else {
-                    Text(homeDataVM.winningRate)
+                    Text(homeVM.winningRate)
                         .font(.custom("Verdana",size:35))
                         .bold()
                         .foregroundColor(.white)
@@ -36,7 +34,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text(homeDataVM.winningCount)
+            Text(homeVM.winningCount)
                 .font(.custom("Verdana",size:16))
                 .bold()
                 .foregroundColor(.white)
@@ -51,7 +49,7 @@ struct StatsDataArea: View {
     var firstServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text(homeDataVM.firstSvInRate)
+                Text(homeVM.firstSvInRate)
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(.white)
@@ -62,7 +60,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text(homeDataVM.firstSvInCount)
+            Text(homeVM.firstSvInCount)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)
@@ -84,7 +82,7 @@ struct StatsDataArea: View {
     var secondServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text(homeDataVM.secondSvInRate)
+                Text(homeVM.secondSvInRate)
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(.white)
@@ -95,7 +93,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text(homeDataVM.secondSvInCount)
+            Text(homeVM.secondSvInCount)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)
@@ -117,7 +115,7 @@ struct StatsDataArea: View {
     var keepRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text(homeDataVM.keepRate)
+                Text(homeVM.keepRate)
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(.white)
@@ -128,7 +126,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text(homeDataVM.keepCount)
+            Text(homeVM.keepCount)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)
@@ -144,7 +142,7 @@ struct StatsDataArea: View {
     var breakRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
-                Text(homeDataVM.breakRate)
+                Text(homeVM.breakRate)
                     .font(.custom("Verdana",size:30))
                     .bold()
                     .foregroundColor(.white)
@@ -155,7 +153,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text(homeDataVM.breakRate)
+            Text(homeVM.breakRate)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)

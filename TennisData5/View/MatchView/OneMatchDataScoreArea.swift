@@ -1,6 +1,6 @@
 
 import SwiftUI
-struct NameAndScoreArea: View {
+struct OneMatchDataScoreArea: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var pointVM: PointViewModel
     var body: some View {

@@ -1,18 +1,21 @@
 import SwiftUI
 struct HomeTabView: View {
-    @ObservedObject var dataManageVM = DataManageViewModel()
-    @ObservedObject var homeDataVM = HomeDataViewModel()
-    @ObservedObject var userVM = UserViewModel()
+    @StateObject var dataManageVM = DataManageViewModel()
     var body: some View {
         TabView {
             HomeView(
-                homeDataVM: homeDataVM,
-                userVM: userVM
+                dataManageVM: dataManageVM,
+                homeVM: dataManageVM.homeVM,
+                userVM: dataManageVM.userVM
             )
                 .onAppear{
 //                    dataManageVM.deleteRealm()
-                    homeDataVM.setHomeData()
-                    userVM.setUserInfo()
+//                    Task{
+//                        await dataManageVM.WCStartApp()
+//                    }
+                    dataManageVM.homeVM.setHomeData()
+                    dataManageVM.userVM.setUserInfo()
+                    
                 }
                 .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
@@ -31,6 +34,7 @@ struct HomeTabView: View {
                 .tabItem {
                     Label("データ分析", systemImage: "chart.pie.fill")
                 }
-        } .accentColor(.white)
+        }
+        .accentColor(.white)
     }
 }

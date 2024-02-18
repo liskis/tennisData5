@@ -1,6 +1,7 @@
 import SwiftUI
 struct HomeHeaderBar: View {
     @ObservedObject var userVM: UserViewModel
+    @ObservedObject var matchInfoVM: MatchInfoViewModel
     var body: some View {
         HStack {
             Image(.logo)
@@ -37,7 +38,7 @@ struct HomeHeaderBar: View {
                         Text("初心者")
                             .font(.custom("Verdana", size: 8))
                             .foregroundColor(Color.tungsten)
-                        Text("ビギナーモード")
+                        Text(matchInfoVM.inputMode.forString)
                             .font(.custom("Verdana", size: 8))
                             .foregroundColor(Color.red)
                             .bold()
