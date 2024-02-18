@@ -9,10 +9,9 @@ struct HomeTabView: View {
                 userVM: dataManageVM.userVM
             )
                 .onAppear{
-//                    dataManageVM.deleteRealm()
-//                    Task{
-//                        await dataManageVM.WCStartApp()
-//                    }
+                    dataManageVM.deleteRealm()
+//                    dataManageVM.WCStartApp()
+                    
                     dataManageVM.homeVM.setHomeData()
                     dataManageVM.userVM.setUserInfo()
                     
