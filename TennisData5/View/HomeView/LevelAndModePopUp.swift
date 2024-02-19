@@ -6,25 +6,36 @@ struct LevelAndModePopUp: View {
     var body: some View {
         VStack{
             ZStack{
-                VStack(spacing:8){
+                VStack(){
+                    Text("まずは試合をしながらポイントを入力することに慣れていきましょう。\n戻るをタップすれば入力したボタンをキャンセルできますが、最初のうちは間違えることも多いはず。\n多少のミスは気にせず、どんどん入力してみてください。\n「習うより慣れろ」です！")
+                        .foregroundColor(Color.tungsten)
+                        .font(.custom("Verdana", size: 14))
+                    
+                    Spacer().frame(height: 20)
                     Text("初心者から初級への進級条件：")
                         .foregroundColor(Color.tungsten)
                         .bold()
                         .font(.custom("Verdana", size: 12))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     Text("ポイントゲームで１００ポイント以上を達成")
                         .foregroundColor(Color.red)
                         .bold()
                         .font(.custom("Verdana", size: 12))
-                    Spacer().frame(height: 16)
-                    Picker("inputMode", selection: $matchInfoVM.inputMode){
-                        ForEach(InputMode.allCases, id: \.self) { format in
-                            Text(format.forString)
+                    Form{
+                        Picker("inputMode", selection: $matchInfoVM.inputMode){
+                            ForEach(InputMode.allCases, id: \.self) { format in
+                                Text(format.forString)
+                                    .foregroundColor(Color.tungsten)
+                                    .font(.custom("Verdana", size: 10))
+                            }
                         }
+                        .pickerStyle(.inline)
+                        .cornerRadius(10)
+                        .padding(.horizontal,10)
+                        .disabled(true)
+                        .frame(height: 12)
                     }
-                    .pickerStyle(.segmented)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
-                    .disabled(true)
+                    .frame(height: 220)
                 }
                 Text("Please wait for update !")
                     .frame(width: 180,height: 20)
@@ -35,6 +46,7 @@ struct LevelAndModePopUp: View {
                     .background(Color.yellow)
                     .rotationEffect(.degrees(-10))
             }
+            Spacer().frame(height: 20)
             Button(action: {
                 withAnimation {
                     userVM.levelAndModePopUp = false

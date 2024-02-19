@@ -16,7 +16,6 @@ struct HomeView: View {
                     StatsDataArea(
                         homeVM: homeVM
                     )
-                    .clipped()
                     Spacer().frame(height: 10)
                     LineChartView(
                         valueData: $homeVM.firstSvInChartData,
@@ -30,11 +29,7 @@ struct HomeView: View {
                     dateArrayArea
                     Spacer().frame(height: 10)
                 }
-                .background{
-                    Image(.tennisCourt)
-                        .resizable()
-                        .scaledToFill()
-                }
+                
                 .clipped()
                 VStack{
                     Spacer().frame(height: 10)
@@ -47,14 +42,21 @@ struct HomeView: View {
                 }
                 .background(Color.white)
             }
+            .background{
+                Image(.tennisCourt)
+                    .resizable()
+                    .scaledToFill()
+            }
             if userVM.showingPopUp {
                 UserInfoPopup(userVM: userVM)
+                    .transition(.move(edge: .top))
             }
             if userVM.levelAndModePopUp {
                 LevelAndModePopUp(
                     userVM: userVM,
                     matchInfoVM: dataManageVM.matchInfoVM
                 )
+                .transition(.move(edge: .top))
             }
         }
         .fullScreenCover(isPresented: $homeVM.toPointGameView) {

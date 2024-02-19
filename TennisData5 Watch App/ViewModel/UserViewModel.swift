@@ -34,10 +34,10 @@ class UserViewModel: ObservableObject, Codable {
     }
     func setUserInfo(){
         let userInfo = realm.objects(UserModel.self).where({ $0.relation == "me" })
-        if  userInfo.count == 1 {
-            myName = userInfo[0].myName
-            dominant = Dominant(rawValue: userInfo[0].dominant)!
-            gender = Gender(rawValue: userInfo[0].gender)!
+        if  userInfo.isEmpty == false {
+            myName = userInfo.first!.myName
+            dominant = Dominant(rawValue: userInfo.first!.dominant)!
+            gender = Gender(rawValue: userInfo.first!.gender)!
         }
     }
     func showRealm(){

@@ -290,7 +290,6 @@ extension DataManageViewModel: WCSessionDelegate {
         // エラーがあればerrorに渡される
         // アクティベーションが完了した後に必要な初期化などを行う場合、このメソッド内で行うことができる
     }
-    
     // データを受信したときに呼ばれるメソッド
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         DispatchQueue.main.async {
@@ -406,114 +405,30 @@ extension DataManageViewModel: WCSessionDelegate {
                     self.chartDataVM.setChartData(matchId: self.matchInfoVM.matchId, allCount: self.pointVM.allCount)
                 }
             }
-//            if let matchData = message["startApp-matchData"] as? Data {
-//                print("Received startApp-matchData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([MatchDataModel].self, from: matchData) {
-//                    self.overWriteMatchData(matchDataArray: decodedData)
-//                }
-//            }
-//            if let setData = message["startApp-setData"] as? Data {
-//                print("Received startApp-setData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([SetDataModel].self, from: setData) {
-//                    self.overWriteSetData(setDataArray: decodedData)
-//                }
-//            }
-//            if let gameData = message["startApp-gameData"] as? Data {
-//                print("Received startApp-gameData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([GameDataModel].self, from: gameData) {
-//                    self.overWriteGameData(gamedataArray: decodedData)
-//                }
-//            }
-//            if let pointData = message["startApp-pointData"] as? Data {
-//                print("Received startApp-pointData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([PointDataModel].self, from: pointData) {
-//                    self.overWritePointData(pointdataArray: decodedData)
-//                }
-//            }
-            if let userData = message["startApp-userData"] as? Data {
-                print("Received startApp-userData")
-                // デコード処理
-                if let decodedData = try? JSONDecoder().decode([UserModel].self, from: userData) {
-                    self.overWriteUserData(userDataArray: decodedData)
-                }
-                Task{
-                    await self.WCStartAppReturn()
+            if let noMyData = message["startApp-noMyData"] as? Bool {
+                print("Received startApp-noMyData")
+                if noMyData {
+                    self.WCStartAppReturn()
                 }
             }
-//            if let matchData = message["WCStartAppReturn-matchData"] as? Data {
-//                print("Received WCStartAppReturn-matchData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([MatchDataModel].self, from: matchData) {
-//                    self.overWriteMatchData(matchDataArray: decodedData)
-//                }
-//            }
-//            if let setData = message["WCStartAppReturn-setData"] as? Data {
-//                print("Received WCStartAppReturn-matchData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([SetDataModel].self, from: setData) {
-//                    self.overWriteSetData(setDataArray: decodedData)
-//                }
-//            }
-//            if let gameData = message["WCStartAppReturn-gameData"] as? Data {
-//                print("Received WCStartAppReturn-matchData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([GameDataModel].self, from: gameData) {
-//                    self.overWriteGameData(gamedataArray: decodedData)
-//                }
-//            }
-//            if let pointData = message["WCStartAppReturn-pointData"] as? Data {
-//                print("Received WCStartAppReturn-pointData")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode([PointDataModel].self, from: pointData) {
-//                    self.overWritePointData(pointdataArray: decodedData)
-//                }
-//            }
-            if let userData = message["WCStartAppReturn-userData"] as? Data {
-                print("Received WCStartAppReturn-userData")
+            if let myData = message["startApp-myData"] as? Data {
+                print("Received startApp-myData")
                 // デコード処理
-                if let decodedData = try? JSONDecoder().decode([UserModel].self, from: userData) {
-                    self.overWriteUserData(userDataArray: decodedData)
+                if let decodedData = try? JSONDecoder().decode(UserModel.self, from: myData) {
+                    self.overWriteMyData(myData: decodedData)
                 }
+                self.WCStartAppReturn()
+                
             }
-//            if let homeVM = message["WCStartAppReturn-homeVM"] as? Data {
-//                print("Received WCStartAppReturn-homeVM")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode(HomeViewModel.self, from: homeVM) {
-//                    self.homeVM = decodedData
-//                }
-//            }
-//            if let matchInfoVM = message["WCStartAppReturn-matchInfoVM"] as? Data {
-//                print("Received WCStartAppReturn-matchInfoVM")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode(MatchInfoViewModel.self, from: matchInfoVM) {
-//                    self.matchInfoVM = decodedData
-//                }
-//            }
-//            if let positionVM = message["WCStartAppReturn-positionVM"] as? Data {
-//                print("Received WCStartAppReturn-positionVM")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode(PositionViewModel.self, from: positionVM) {
-//                    self.positionVM = decodedData
-//                }
-//            }
-//            if let pointVM = message["WCStartAppReturn-pointVM"] as? Data {
-//                print("Received WCStartAppReturn-pointVM")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode(PointViewModel.self, from: pointVM) {
-//                    self.pointVM = decodedData
-//                }
-//            }
-//            if let userVM = message["WCStartAppReturn-userVM"] as? Data {
-//                print("Received WCStartAppReturn-userVM")
-//                // デコード処理
-//                if let decodedData = try? JSONDecoder().decode(UserViewModel.self, from: userVM) {
-//                    self.userVM = decodedData
-//                }
-//            }
+            if let myData = message["WCStartAppReturn-myData"] as? Data {
+                print("Received WCStartAppReturn-myData")
+                // デコード処理
+                if let decodedData = try? JSONDecoder().decode(UserModel.self, from: myData) {
+                    self.overWriteMyData(myData: decodedData)
+                }
+                self.userVM.setUserInfo()
+                self.userVM.showRealm()
+            }
         }
     }
     
@@ -632,150 +547,52 @@ extension DataManageViewModel: WCSessionDelegate {
             print("セッションがアクティブではないので送信できません")
             return
         }
-//            let matchData = self.realm.objects(MatchDataModel.self)
-//            let setData = self.realm.objects(SetDataModel.self)
-//            let gameData = self.realm.objects(GameDataModel.self)
-//            let pointData = self.realm.objects(PointDataModel.self)
-            let userData = self.realm.objects(UserModel.self)
-//            var encodedData = try! JSONEncoder().encode(matchData)
-//            var message = ["startApp-matchData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(setData)
-//            message = ["startApp-setData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(gameData)
-//            message = ["startApp-gameData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(pointData)
-//            message = ["startApp-pointData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-            let encodedData = try! JSONEncoder().encode(userData)
-            let message = ["startApp-userData": encodedData]
+        let myData = self.realm.objects(UserModel.self).where({ $0.relation == "me" })
+        if myData.isEmpty == false {
+            let encodedData = try! JSONEncoder().encode(myData.first)
+            let message = ["startApp-myData": encodedData]
             WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                 print("Error sending message: \(error.localizedDescription)")
             })
+        } else {
+            let message = ["startApp-noMyData": true]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
+        }
         
     }
-    func WCStartAppReturn() async {
+    func WCStartAppReturn() {
         // watchと接続ができていない場合は早期リターン
         guard session.activationState == .activated else {
             print("セッションがアクティブではないので送信できません")
             return
         }
-        Task{
-//            let matchData = self.realm.objects(MatchDataModel.self)
-//            let setData = self.realm.objects(SetDataModel.self)
-//            let gameData = self.realm.objects(GameDataModel.self)
-//            let pointData = self.realm.objects(PointDataModel.self)
-            let userData = self.realm.objects(UserModel.self)
-//            var encodedData = try! JSONEncoder().encode(matchData)
-//            var message = ["WCStartAppReturn-matchData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(setData)
-//            message = ["WCStartAppReturn-setData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(gameData)
-//            message = ["WCStartAppReturn-gameData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(pointData)
-//            message = ["WCStartAppReturn-pointData": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-            let encodedData = try! JSONEncoder().encode(userData)
-            let message = ["WCStartAppReturn-userData": encodedData]
+        let myData = self.realm.objects(UserModel.self).where({ $0.relation == "me" })
+        if myData.isEmpty == false {
+            let encodedData = try! JSONEncoder().encode(myData.first)
+            let message = ["WCStartAppReturn-myData": encodedData]
             WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                 print("Error sending message: \(error.localizedDescription)")
             })
-//            encodedData = try! JSONEncoder().encode(self.homeVM)
-//            message = ["WCStartAppReturn-homeVM": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(self.matchInfoVM)
-//            message = ["WCStartAppReturn-matchInfoVM": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(self.positionVM)
-//            message = ["WCStartAppReturn-positionVM": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(self.pointVM)
-//            message = ["WCStartAppReturn-pointVM": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
-//            encodedData = try! JSONEncoder().encode(self.userVM)
-//            message = ["WCStartAppReturn-userVM": encodedData]
-//            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-//                print("Error sending message: \(error.localizedDescription)")
-//            })
         }
+        
     }
-    func overWriteMatchData(matchDataArray: [MatchDataModel]){
-        let allMatchData = self.realm.objects(MatchDataModel.self)
-        for matchData in matchDataArray {
-            if !allMatchData.contains(matchData) {
-                try! self.realm.write {
-                    self.realm.add(matchData)
-                }
+    func overWriteMyData(myData: UserModel){
+        let thisMyData = self.realm.objects(UserModel.self).where({ $0.relation == "me" })
+        if thisMyData.isEmpty {
+            try! self.realm.write {
+                self.realm.add(myData)
+            }
+        } else if thisMyData.first!.modified < myData.modified {
+            try! realm.write{
+                thisMyData.first!.myName = myData.myName
+                thisMyData.first!.dominant = myData.dominant
+                thisMyData.first!.gender = myData.gender
+                thisMyData.first!.created = myData.created
+                thisMyData.first!.modified = myData.modified
             }
         }
-    }
-    func overWriteSetData(setDataArray: [SetDataModel]){
-        let allSetData = self.realm.objects(SetDataModel.self)
-        for setData in setDataArray {
-            if !allSetData.contains(setData) {
-                try! self.realm.write {
-                    self.realm.add(setData)
-                }
-            }
-        }
-    }
-    func overWriteGameData(gamedataArray: [GameDataModel]){
-        let allGameData = self.realm.objects(GameDataModel.self)
-        for gameData in gamedataArray {
-            if !allGameData.contains(gameData) {
-                try! self.realm.write {
-                    self.realm.add(gameData)
-                }
-            }
-        }
-    }
-    func overWritePointData(pointdataArray: [PointDataModel]){
-        let allPointData = self.realm.objects(PointDataModel.self)
-        for pointData in pointdataArray {
-            if !allPointData.contains(pointData) {
-                try! self.realm.write {
-                    self.realm.add(pointData)
-                }
-            }
-        }
-    }
-    func overWriteUserData(userDataArray: [UserModel]){
-        let allUserData = self.realm.objects(UserModel.self)
-        for userData in userDataArray {
-            if !allUserData.contains(userData) {
-                try! self.realm.write {
-                    self.realm.add(userData)
-                }
-            }
-        }
+        
     }
 }

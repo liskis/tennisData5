@@ -30,7 +30,6 @@ struct HomeView: View {
                 .transition(.move(edge: .bottom))
             }
         }
-        
     }
     var headerLogo: some View{
         HStack{
