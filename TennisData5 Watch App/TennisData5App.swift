@@ -10,11 +10,11 @@ struct TennisData5_Watch_AppApp: App {
                 homeVM: dataManageVM.homeVM
             )
                 .onAppear {
-                    dataManageVM.deleteRealm()
-//                    dataManageVM.WCStartApp()
+//                    dataManageVM.deleteRealm()
+                    dataManageVM.WCStartApp()
                     
-                    dataManageVM.homeVM.setHomeData()
                     dataManageVM.userVM.setUserInfo()
+                    dataManageVM.homeVM.setHomeData()
                 }
         }
     }

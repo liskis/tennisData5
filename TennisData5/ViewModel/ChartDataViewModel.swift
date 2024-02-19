@@ -377,7 +377,7 @@ class ChartDataViewModel: ObservableObject {
                 returnerGetRate = round( ( Double(getReturnerPoints.count) / Double(returnerPoints.count) ) * 1000 ) / 10
             }
             let volleyerAtRetPoints = results.filter{
-                $0.servOrRet == "returngame"
+                $0.servOrRet == "returnGame"
                 && $0.myPosition == "volleyer"
             }
             if volleyerAtRetPoints.count != 0 {

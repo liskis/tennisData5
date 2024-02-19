@@ -14,10 +14,11 @@ struct HomeHeaderBar: View {
                     .scaledToFill()
                     .frame(width: 15,height: 30)
                 Button(action: {
-                    withAnimation {
+//                    withAnimation {
+//                        print("ok")
                         userVM.showingPopUp = true
                         userVM.showRealm()
-                    }
+//                    }
                 },label:  {
                     Text(userVM.myName + " さん")
                         .font(.custom("Verdana",size:10))
