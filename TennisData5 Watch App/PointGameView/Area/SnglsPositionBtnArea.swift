@@ -154,6 +154,7 @@ extension SnglsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func serverDuce(){
         positionVM.myPosition = .server
@@ -162,6 +163,7 @@ extension SnglsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func returnerAdv(){
         positionVM.myPosition = .returner
@@ -170,6 +172,7 @@ extension SnglsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func returnerDuce(){
         positionVM.myPosition = .returner
@@ -178,5 +181,6 @@ extension SnglsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
 }

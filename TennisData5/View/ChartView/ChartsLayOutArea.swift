@@ -14,7 +14,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.firstSvIn)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.firstSvIn)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.firstSvIn[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:12))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.secondSvInCount)）セカンドサーブの確率")
@@ -23,7 +33,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.secondSvIn)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.secondSvIn)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.secondSvIn[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:12))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.doubleFaultCount)）ダブルフォルトの確率")
@@ -32,7 +52,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.doubleFault)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.doubleFault)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.doubleFault[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:12))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.atFirstSvCount)）ファーストサーブ時のポイント取得率")
@@ -41,7 +71,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.atFirstSv)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.atFirstSv)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.atFirstSv[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:12))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height: 20)
             HStack{
                 Text("（\(chartDataVM.atSecondSvCount)）セカンドサーブ時のポイント取得率")
@@ -50,7 +90,17 @@ struct ChartsLayOutArea: View {
                     .foregroundColor(.tungsten)
                 Spacer()
             }
-            BarChartView(barChartData: $chartDataVM.atSecondSv)
+            ZStack{
+                BarChartView(barChartData: $chartDataVM.atSecondSv)
+                HStack{
+                    Spacer().frame(width: 3)
+                    Text(String(chartDataVM.atSecondSv[0].value) + "%")
+                        .foregroundColor(.white)
+                        .font(.custom("Verdana",size:12))
+                        .bold()
+                    Spacer()
+                }
+            }
             Spacer().frame(height:50)
             HStack{
                 ZStack{

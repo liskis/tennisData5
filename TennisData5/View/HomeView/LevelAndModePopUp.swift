@@ -8,19 +8,21 @@ struct LevelAndModePopUp: View {
             ZStack{
                 VStack(){
                     Text("まずは試合をしながらポイントを入力することに慣れていきましょう。\n戻るをタップすれば入力したボタンをキャンセルできますが、最初のうちは間違えることも多いはず。\n多少のミスは気にせず、どんどん入力してみてください。\n「習うより慣れろ」です！")
-                        .foregroundColor(Color.tungsten)
+                        .foregroundColor(Color.gray)
                         .font(.custom("Verdana", size: 14))
                     
                     Spacer().frame(height: 20)
                     Text("初心者から初級への進級条件：")
-                        .foregroundColor(Color.tungsten)
+                        .foregroundColor(Color.gray)
                         .bold()
                         .font(.custom("Verdana", size: 12))
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer().frame(height: 10)
                     Text("ポイントゲームで１００ポイント以上を達成")
-                        .foregroundColor(Color.red)
+                        .foregroundColor(Color.gray)
                         .bold()
                         .font(.custom("Verdana", size: 12))
+                    Spacer().frame(height: 10)
                     Form{
                         Picker("inputMode", selection: $matchInfoVM.inputMode){
                             ForEach(InputMode.allCases, id: \.self) { format in

@@ -1,6 +1,7 @@
 import SwiftUI
 struct HomeView: View {
     @ObservedObject var dataManageVM: DataManageViewModel
+    @ObservedObject var userVM: UserViewModel
     @ObservedObject var homeVM: HomeViewModel
     let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
     var body: some View {
@@ -24,8 +25,8 @@ struct HomeView: View {
                     matchInfoVM: dataManageVM.matchInfoVM,
                     positionVM: dataManageVM.positionVM,
                     chartDataVM: dataManageVM.chartDataVM,
-                    userVM: dataManageVM.userVM,
-                    homeVM: dataManageVM.homeVM
+                    userVM: userVM,
+                    homeVM: homeVM
                 )
                 .transition(.move(edge: .bottom))
             }
@@ -47,11 +48,11 @@ struct HomeView: View {
             Image(.angleG)
                 .resizable()
                 .scaledToFit()
-            Text(dataManageVM.userVM.myName + " さん")
+            Text(userVM.myName + " さん")
                 .font(.custom("Verdana",size:8))
                 .bold()
                 .foregroundColor(.white)
-                .frame(height:20)
+                .frame(height:24)
                 .background(.nameBtn)
                 .clipped()
             Image(.angleGW)
@@ -66,11 +67,11 @@ struct HomeView: View {
                     .foregroundColor(Color.red)
                     .bold()
             }
-            .frame(height:20)
+            .frame(height:24)
             .background(.white)
             .clipped()
         }
-        .frame(height: 20)
+        .frame(height: 24)
     }
     var latestMatch: some View {
         HStack{
@@ -139,6 +140,7 @@ struct HomeView: View {
                         withAnimation {
                             homeVM.toPointGameView = true
                         }
+                        WKInterfaceDevice.current().play(.start)
                     }
                 Text("ダブルス\nポイントゲーム")
                     .frame(height: 30)
@@ -163,6 +165,7 @@ struct HomeView: View {
                         withAnimation {
                             homeVM.toPointGameView = true
                         }
+                        WKInterfaceDevice.current().play(.start)
                     }
             }
         }

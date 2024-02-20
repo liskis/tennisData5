@@ -420,24 +420,42 @@ extension DataManageViewModel: WCSessionDelegate {
             if let noMyData = message["startApp-noMyData"] as? Bool {
                 print("Received startApp-noMyData")
                 if noMyData {
-                    self.WCStartAppReturn()
+                    Task{
+                        await self.WCStartAppReturn()
+                    }
                 }
             }
             if let myData = message["startApp-myData"] as? Data {
                 print("Received startApp-myData")
                 // デコード処理
                 if let decodedData = try? JSONDecoder().decode(UserModel.self, from: myData) {
-                    self.overWriteMyData(myData: decodedData)
+                    Task{
+                        await self.overWriteMyData(myData: decodedData)
+                    }
                 }
-                self.WCStartAppReturn()
+                Task{
+                    await self.WCStartAppReturn()
+                }
                 
+            }
+            if let noMyData = message["WCStartAppReturn-noMyData"] as? Bool {
+                print("Received WCStartAppReturn-noMyData")
+                if noMyData {
+                    Task{
+                        self.userVM.setUserInfo()
+                    }
+                }
             }
             if let myData = message["WCStartAppReturn-myData"] as? Data {
                 print("Received WCStartAppReturn-myData")
                 // デコード処理
                 if let decodedData = try? JSONDecoder().decode(UserModel.self, from: myData) {
-                    self.overWriteMyData(myData: decodedData)
+                    Task{
+                        await self.overWriteMyData(myData: decodedData)
+                        self.userVM.setUserInfo()
+                    }
                 }
+                
             }
         }
     }
@@ -551,7 +569,7 @@ extension DataManageViewModel: WCSessionDelegate {
             })
         }
     }
-    func WCStartApp() {
+    func WCStartApp() async {
         // watchと接続ができていない場合は早期リターン
         guard session.activationState == .activated else {
             print("セッションがアクティブではないので送信できません")
@@ -572,7 +590,7 @@ extension DataManageViewModel: WCSessionDelegate {
         }
         
     }
-    func WCStartAppReturn() {
+    func WCStartAppReturn() async {
         // watchと接続ができていない場合は早期リターン
         guard session.activationState == .activated else {
             print("セッションがアクティブではないので送信できません")
@@ -585,10 +603,23 @@ extension DataManageViewModel: WCSessionDelegate {
             WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
                 print("Error sending message: \(error.localizedDescription)")
             })
+        } else {
+            let message = ["WCStartAppReturn-noMyData": true]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Error sending message: \(error.localizedDescription)")
+            })
         }
         
     }
-    func overWriteMyData(myData: UserModel){
+    func WCUpdateUserInfo() async {
+        let myData = self.realm.objects(UserModel.self).where({ $0.relation == "me" }).first
+        let encodedData = try! JSONEncoder().encode(myData)
+        let message = ["updateUserInfo": encodedData]
+        WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+            print("Error sending message: \(error.localizedDescription)")
+        })
+    }
+    func overWriteMyData(myData: UserModel) async {
         let thisMyData = self.realm.objects(UserModel.self).where({ $0.relation == "me" })
         if thisMyData.isEmpty {
             try! self.realm.write {

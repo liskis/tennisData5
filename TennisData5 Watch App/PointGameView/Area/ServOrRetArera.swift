@@ -59,6 +59,7 @@ struct ServOrRetArea: View {
                         Task {
                             await dataManageVM.WCSelectPositionAndService()
                         }
+                        WKInterfaceDevice.current().play(.start)
                     }
             }
     }
@@ -89,6 +90,7 @@ struct ServOrRetArea: View {
                         Task {
                             await dataManageVM.WCSelectPositionAndService()
                         }
+                        WKInterfaceDevice.current().play(.start)
                     }
             }
     }

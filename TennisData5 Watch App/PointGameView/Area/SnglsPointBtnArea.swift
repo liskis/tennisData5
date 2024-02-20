@@ -81,6 +81,8 @@ extension SnglsPointBtnArea {
             }
             pointVM.service = .first
             pointVM.whichPoint = .noSelection
+            
+            WKInterfaceDevice.current().play(.directionUp)
         }
     }
     func lostPoint(){
@@ -98,6 +100,8 @@ extension SnglsPointBtnArea {
             }
             pointVM.service = .first
             pointVM.whichPoint = .noSelection
+            
+            WKInterfaceDevice.current().play(.directionDown)
         }
     }
 }

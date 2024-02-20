@@ -42,7 +42,6 @@ class UserViewModel: ObservableObject, Codable {
         } else {
             registration()
         }
-        showRealm()
     }
     
     func change(userInfo: UserModel){

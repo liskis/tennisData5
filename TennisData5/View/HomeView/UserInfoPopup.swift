@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct UserInfoPopup: View {
+    @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var userVM: UserViewModel
     var body: some View {
         VStack(spacing: 8) {
@@ -47,6 +48,9 @@ struct UserInfoPopup: View {
                 withAnimation {
                     userVM.updateUserInfo()
                     userVM.showingPopUp = false
+                    Task{
+                        await dataManageVM.WCUpdateUserInfo()
+                    }
                 }
             }, label: {
                 Text("OK")

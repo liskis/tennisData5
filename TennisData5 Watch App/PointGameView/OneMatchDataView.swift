@@ -40,6 +40,7 @@ struct OneMatchDataView: View {
                                     dataManageVM.resetAllVM()
                                     homeVM.toOneMatchDataView = false
                                     homeVM.toPointGameView = false
+                                    WKInterfaceDevice.current().play(.stop)
                                 }
                         }
                     

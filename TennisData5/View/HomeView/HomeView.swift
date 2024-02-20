@@ -6,13 +6,9 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-            VStack(spacing:0) {
-                HomeHeaderBar(
-                    userVM: userVM,
-                    matchInfoVM: dataManageVM.matchInfoVM
-                )
+            VStack{
                 VStack(spacing:0){
-                    Spacer().frame(height: 10)
+                    Spacer().frame(height: 40)
                     StatsDataArea(
                         homeVM: homeVM
                     )
@@ -29,7 +25,11 @@ struct HomeView: View {
                     dateArrayArea
                     Spacer().frame(height: 10)
                 }
-                
+                .background{
+                    Image(.tennisCourt)
+                        .resizable()
+                        .scaledToFill()
+                }
                 .clipped()
                 VStack{
                     Spacer().frame(height: 10)
@@ -42,13 +42,19 @@ struct HomeView: View {
                 }
                 .background(Color.white)
             }
-            .background{
-                Image(.tennisCourt)
-                    .resizable()
-                    .scaledToFill()
+            VStack(spacing:0) {
+                HomeHeaderBar(
+                    userVM: userVM,
+                    matchInfoVM: dataManageVM.matchInfoVM
+                )
+                Spacer()
             }
+            
             if userVM.showingPopUp {
-                UserInfoPopup(userVM: userVM)
+                UserInfoPopup(
+                    dataManageVM: dataManageVM,
+                    userVM: userVM
+                )
                     .transition(.move(edge: .top))
             }
             if userVM.levelAndModePopUp {

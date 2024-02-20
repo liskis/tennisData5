@@ -286,6 +286,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func volleyerServAdv(){
         positionVM.myPosition = .volleyer
@@ -294,6 +295,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func serverAdv(){
         positionVM.myPosition = .server
@@ -302,6 +304,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func serverDuce(){
         positionVM.myPosition = .server
@@ -310,6 +313,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func volleyerRetDuce(){
         positionVM.myPosition = .volleyer
@@ -318,6 +322,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func volleyerRetAdv(){
         positionVM.myPosition = .volleyer
@@ -326,6 +331,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func returnerAdv(){
         positionVM.myPosition = .returner
@@ -334,6 +340,7 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
     func returnerDuce(){
         positionVM.myPosition = .returner
@@ -342,5 +349,6 @@ extension DblsPositionBtnArea {
         Task {
             await dataManageVM.WCSelectPositionAndService()
         }
+        WKInterfaceDevice.current().play(.start)
     }
 }

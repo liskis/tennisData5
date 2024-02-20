@@ -87,6 +87,8 @@ extension DblsPointBtnArea {
                 }
             }
             pointVM.service = .first
+            
+            WKInterfaceDevice.current().play(.directionUp)
         }
     }
     func lostPoint(){
@@ -110,6 +112,8 @@ extension DblsPointBtnArea {
                 }
             }
             pointVM.service = .first
+            
+            WKInterfaceDevice.current().play(.directionDown)
         }
     }
 }
