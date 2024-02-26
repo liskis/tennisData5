@@ -4,6 +4,7 @@ import SwiftUI
 struct MatchRecordView: View {
     
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
+    @ObservedObject var homeVM: HomeViewModel
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
     @FocusState private var partnerFocus: Bool
@@ -55,6 +56,9 @@ struct MatchRecordView: View {
                     .foregroundColor(.red)
                     .background(Color.yellow)
                     .rotationEffect(.degrees(-10))
+                if homeVM.adMobPopUp {
+                    AdMobPopUp(homeVM: homeVM)
+                }
             }
         .navigationBarTitle("試合履歴", displayMode: .inline)
         .toolbarBackground(.black, for: .navigationBar)

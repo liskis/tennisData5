@@ -26,9 +26,9 @@ struct HomeTabView: View {
                 Task {
                     await dataManageVM.WCStartApp()
                 }
-                
                 dataManageVM.homeVM.setHomeData()
                 dataManageVM.userVM.setUserInfo()
+                dataManageVM.homeVM.adMobPopUp = true
                 
             }
             .toolbarBackground(.black, for: .tabBar)
@@ -40,21 +40,27 @@ struct HomeTabView: View {
     
     // 試合履歴画面
     private var matchRecordView: some View {
-        MatchRecordView()
+        MatchRecordView(homeVM: dataManageVM.homeVM)
             .toolbarBackground(.black, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
             .tabItem {
                 Label("試合履歴", systemImage: "list.bullet")
             }
+            .onAppear{
+                dataManageVM.homeVM.adMobPopUp = true
+            }
     }
     
     // データ分析画面
     private var dataAnalysisView: some View {
-        DataAnalysisView()
+        DataAnalysisView(homeVM: dataManageVM.homeVM)
             .toolbarBackground(.black, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
             .tabItem {
                 Label("データ分析", systemImage: "chart.pie.fill")
+            }
+            .onAppear{
+                dataManageVM.homeVM.adMobPopUp = true
             }
     }
 }

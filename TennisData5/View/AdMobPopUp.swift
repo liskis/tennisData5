@@ -15,7 +15,7 @@ struct AdMobPopUp: View {
     
     var body: some View {
         ZStack {
-            AdMobBannerView()
+            AdMobinterstitialView()
             VStack {
                 HStack {
                     Spacer()

@@ -3,6 +3,7 @@ import SwiftUI
 
 struct DataAnalysisView: View {
     
+    @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
@@ -56,6 +57,9 @@ struct DataAnalysisView: View {
                     .foregroundColor(.red)
                     .background(Color.yellow)
                     .rotationEffect(.degrees(-10))
+                if homeVM.adMobPopUp {
+                    AdMobPopUp(homeVM: homeVM)
+                }
             }
             .navigationBarTitle("データ分析", displayMode: .inline)
             .toolbarBackground(.black, for: .navigationBar)

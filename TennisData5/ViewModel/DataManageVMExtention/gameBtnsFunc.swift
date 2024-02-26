@@ -38,6 +38,7 @@ extension DataManageViewModel {
         /// 試合をスタートして何も入力していない状態
         if pointVM.allCount == 0 && positionVM.servOrRet == .noSelection {
             homeVM.toPointGameView = false
+            homeVM.adMobPopUp = true
         } else {
             /// フォルトの時はフォルトをキャンセル
             if pointVM.service == .second {
@@ -178,5 +179,6 @@ extension DataManageViewModel {
         }
         self.resetAllVM()
         homeVM.toPointGameView = false
+        self.homeVM.adMobPopUp = true
     }
 }
