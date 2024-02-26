@@ -12,7 +12,7 @@ struct OneMatchDataView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ZStack {
                 VStack{
                     Spacer(minLength: 20)
                     Text(Date.DateTimeToString(date:matchInfoVM.matchStartDate))
@@ -35,11 +35,16 @@ struct OneMatchDataView: View {
                             .padding(.horizontal,10)
                     })
                     Spacer(minLength: 20)
-                    ChartsLayOutArea(matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
-                    
+                    ScrollView {
+                        ChartsLayOutArea(matchInfoVM: matchInfoVM, chartDataVM: chartDataVM)
+                    }
                 }
                 .background{ Color.mercury }
+                if homeVM.adMobPopUp {
+                    AdMobPopUp(homeVM: homeVM)
+                }
             }
+            
             .navigationBarTitle("マッチデータ", displayMode: .inline)
             .toolbarBackground(.black, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)

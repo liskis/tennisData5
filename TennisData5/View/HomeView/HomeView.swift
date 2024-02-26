@@ -44,6 +44,9 @@ struct HomeView: View {
                 )
                 .transition(.move(edge: .top))
             }
+            if homeVM.adMobPopUp {
+                AdMobPopUp(homeVM: homeVM)
+            }
         }
         .fullScreenCover(isPresented: $homeVM.toPointGameView) {
             MatchTabView(

@@ -143,6 +143,8 @@
 		09870B952B89B1A00033DF3E /* positionBtnsFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870B922B89AFD60033DF3E /* positionBtnsFunc.swift */; };
 		09870B962B89B1A00033DF3E /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870B902B89AFD60033DF3E /* WCSessionDelegate.swift */; };
 		09870B972B89B1A00033DF3E /* gameBtnsFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870B932B89AFD60033DF3E /* gameBtnsFunc.swift */; };
+		09870BB42B8C70720033DF3E /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870BB32B8C70720033DF3E /* AdMobBannerView.swift */; };
+		09870BB62B8CB0F40033DF3E /* AdMobPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870BB52B8CB0F40033DF3E /* AdMobPopUp.swift */; };
 		09992D4C2B5132200049B877 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4B2B5132200049B877 /* HomeViewModel.swift */; };
 		09992D4E2B5134BE0049B877 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09992D4D2B5134BE0049B877 /* Issue.swift */; };
 		09BC06F62B42FECA008A44FD /* GameStartBtnsArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */; };
@@ -364,6 +366,8 @@
 		09870B932B89AFD60033DF3E /* gameBtnsFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameBtnsFunc.swift; sourceTree = "<group>"; };
 		09870B9E2B8B356D0033DF3E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		09870BA02B8B356D0033DF3E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		09870BB32B8C70720033DF3E /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
+		09870BB52B8CB0F40033DF3E /* AdMobPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobPopUp.swift; sourceTree = "<group>"; };
 		09992D4B2B5132200049B877 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		09992D4D2B5134BE0049B877 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		09BC06F52B42FEC9008A44FD /* GameStartBtnsArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartBtnsArea.swift; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 		0927E0A12B41A6A00069BEF1 /* TennisData5 */ = {
 			isa = PBXGroup;
 			children = (
+				09870BB32B8C70720033DF3E /* AdMobBannerView.swift */,
 				0927E0A22B41A6A00069BEF1 /* TennisData5App.swift */,
 				0927E0FE2B41A7390069BEF1 /* View */,
 				092B2B3A2B5177370046BDBF /* ViewModel */,
@@ -585,6 +590,7 @@
 		0927E0FE2B41A7390069BEF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09870BB52B8CB0F40033DF3E /* AdMobPopUp.swift */,
 				0927E0A42B41A6A00069BEF1 /* HomeTabView.swift */,
 				0927E0FF2B41A7B40069BEF1 /* HomeView */,
 				09BC06FE2B44463D008A44FD /* MatchView */,
@@ -1321,10 +1327,12 @@
 				09722A112B70C1AD0046FAF8 /* GamePosition.swift in Sources */,
 				092B2B752B53C0B40046BDBF /* ServOrRet.swift in Sources */,
 				0972297C2B5AA7810046FAF8 /* SnglsPointBtnArea.swift in Sources */,
+				09870BB62B8CB0F40033DF3E /* AdMobPopUp.swift in Sources */,
 				097229882B5D359D0046FAF8 /* RecoadSearchViewModel.swift in Sources */,
 				09870B8E2B8737F80033DF3E /* InputArea.swift in Sources */,
 				097229642B550DB50046FAF8 /* PieChartView.swift in Sources */,
 				0972296C2B564BF60046FAF8 /* BarChartView.swift in Sources */,
+				09870BB42B8C70720033DF3E /* AdMobBannerView.swift in Sources */,
 				091AC3D42B4A8AAE007E68F0 /* PointDataModel.swift in Sources */,
 				0972298B2B5F87380046FAF8 /* OneMatchDataView.swift in Sources */,
 				091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */,

@@ -159,6 +159,7 @@ extension DataManageViewModel {
     
     /// 試合終了
     func gameEnd(){
+        self.homeVM.adMobPopUp = true
         /// セットデータとマッチデータを保存し、watchに送る
         let setData = setRecoad()
         let matchData = matchRecoad()

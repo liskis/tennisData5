@@ -22,6 +22,7 @@ class HomeViewModel: ObservableObject, Codable {
     @Published var dateArray: [DateArray] = []
     @Published var toPointGameView: Bool = false
     @Published var toOneMatchDataView: Bool = false
+    @Published var adMobPopUp: Bool = true
     
     /// データを算出するためのパラメータ
     private var win:Int = 0
