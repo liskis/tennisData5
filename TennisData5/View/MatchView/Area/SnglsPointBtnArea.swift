@@ -1,8 +1,12 @@
+
 import SwiftUI
+
 struct SnglsPointBtnArea: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
+    
     var body: some View {
         HStack(spacing:1){
             if positionVM.myPosition == .noSelection {
@@ -24,7 +28,8 @@ struct SnglsPointBtnArea: View {
             }.padding(.horizontal,10)
         }
     }
-    var getPointBtnDis: some View {
+    
+    private var getPointBtnDis: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -35,24 +40,10 @@ struct SnglsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var getPointBtn: some View {
+    
+    private var getPointBtn: some View {
         Button(action: {
-            if positionVM.myPosition != .noSelection {
-                pointVM.whichPoint = .myTeam
-                pointVM.getPoint += 1
-                let pointData = dataManageVM.pointRecoad()
-                
-                Task {
-                    await dataManageVM.WCGetAndLostPoint(pointData:pointData)
-                }
-                if positionVM.side == .advantageSide {
-                    positionVM.side = .duceSide
-                } else if positionVM.side == .duceSide {
-                    positionVM.side = .advantageSide
-                }
-                pointVM.service = .first
-                pointVM.whichPoint = .noSelection
-            }
+            dataManageVM.getPointSngls()
         },label:{
             Text("ポイントをとった")
                 .foregroundColor(Color.white)
@@ -64,7 +55,8 @@ struct SnglsPointBtnArea: View {
                 .cornerRadius(4)
         })
     }
-    var lostPointBtnDis: some View {
+    
+    private var lostPointBtnDis: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -75,23 +67,10 @@ struct SnglsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var lostPointBtn: some View {
+    
+    private var lostPointBtn: some View {
         Button(action: {
-            if positionVM.myPosition != .noSelection {
-                pointVM.whichPoint = .opponent
-                pointVM.lostPoint += 1
-                let pointData = dataManageVM.pointRecoad()
-                Task {
-                    await dataManageVM.WCGetAndLostPoint(pointData:pointData)
-                }
-                if positionVM.side == .advantageSide {
-                    positionVM.side = .duceSide
-                } else if positionVM.side == .duceSide {
-                    positionVM.side = .advantageSide
-                }
-                pointVM.service = .first
-                pointVM.whichPoint = .noSelection
-            }
+            dataManageVM.lostPointSngls()
         },label:{
             Text("ポイントをとられた")
                 .foregroundColor(Color.white)
@@ -103,7 +82,8 @@ struct SnglsPointBtnArea: View {
                 .cornerRadius(4)
         })
     }
-    var myWinnerBtn: some View {
+    
+    private var myWinnerBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -112,8 +92,10 @@ struct SnglsPointBtnArea: View {
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 12))
-            )    }
-    var opponentMissBtn: some View {
+            )
+    }
+    
+    private var opponentMissBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -124,7 +106,8 @@ struct SnglsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var opponentWinerBtn: some View {
+    
+    private var opponentWinerBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -135,7 +118,8 @@ struct SnglsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var myMissBtn: some View {
+    
+    private var myMissBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)

@@ -1,5 +1,8 @@
+
 import Foundation
-enum Shot: String, Decodable  {
+
+enum Shot: String, Decodable {
+    
     case noSelection
     case serve
     case foreStroke

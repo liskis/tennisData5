@@ -1,36 +1,17 @@
+
 import SwiftUI
+
 struct HomeView: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var userVM: UserViewModel
+    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             VStack{
-                VStack(spacing:0){
-                    Spacer().frame(height: 40)
-                    StatsDataArea(
-                        homeVM: homeVM
-                    )
-                    Spacer().frame(height: 10)
-                    LineChartView(
-                        valueData: $homeVM.firstSvInChartData,
-                        signPost: $homeVM.signPost
-                    )
-                    LineChartView(
-                        valueData: $homeVM.doubleFaultRateChartData,
-                        signPost: $homeVM.signPost
-                    )
-                    winLoseArrayArea
-                    dateArrayArea
-                    Spacer().frame(height: 10)
-                }
-                .background{
-                    Image(.tennisCourt)
-                        .resizable()
-                        .scaledToFill()
-                }
-                .clipped()
+                homeDataArea
                 VStack{
                     Spacer().frame(height: 10)
                     GameStartBtnsArea(
@@ -49,13 +30,12 @@ struct HomeView: View {
                 )
                 Spacer()
             }
-            
             if userVM.showingPopUp {
                 UserInfoPopup(
                     dataManageVM: dataManageVM,
                     userVM: userVM
                 )
-                    .transition(.move(edge: .top))
+                .transition(.move(edge: .top))
             }
             if userVM.levelAndModePopUp {
                 LevelAndModePopUp(
@@ -74,7 +54,37 @@ struct HomeView: View {
             )
         }
     }
-    var winLoseArrayArea: some View {
+    
+    // 過去５試合分のデータ
+    private var homeDataArea: some View {
+        VStack(spacing:0){
+            Spacer().frame(height: 40)
+            StatsDataArea(
+                homeVM: homeVM
+            )
+            Spacer().frame(height: 10)
+            LineChartView(
+                valueData: $homeVM.firstSvInChartData,
+                signPost: $homeVM.signPost
+            )
+            LineChartView(
+                valueData: $homeVM.doubleFaultRateChartData,
+                signPost: $homeVM.signPost
+            )
+            winLoseArrayArea
+            dateArrayArea
+            Spacer().frame(height: 10)
+        }
+        .background{
+            Image(.tennisCourt)
+                .resizable()
+                .scaledToFill()
+        }
+        .clipped()
+    }
+    
+    // 勝ち負けの配列
+    private var winLoseArrayArea: some View {
         HStack{
             Spacer().frame(width: 20)
             ForEach(homeVM.winLoseArray){ dataRow in
@@ -104,7 +114,9 @@ struct HomeView: View {
             Spacer().frame(width: 20)
         }
     }
-    var dateArrayArea: some View {
+    
+    // 日付の配列
+    private var dateArrayArea: some View {
         HStack{
             Spacer().frame(width: 20)
             ForEach(homeVM.dateArray){ dataRow in

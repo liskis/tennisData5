@@ -1,5 +1,8 @@
+
 import Foundation
+
 class MatchInfoViewModel: ObservableObject, Codable {
+    
     @Published var matchId:String = ""
     @Published var setId: String = ""
     @Published var gameId: String = ""
@@ -15,8 +18,10 @@ class MatchInfoViewModel: ObservableObject, Codable {
     @Published var gameStartDate: Date = Date()
     @Published var matchEndDate: Date = Date()
     @Published var naviTitle: String = ""
+    
     /// Codableに必要なので記載.
     init() {}
+    
     /// 変換対象プロパティ指定.
     enum CodingKeys: String, CodingKey {
         case matchId
@@ -33,6 +38,7 @@ class MatchInfoViewModel: ObservableObject, Codable {
         case matchEndDate
         case naviTitle
     }
+    
     /// プロパティのdecode（復号化）アクション.
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -50,6 +56,7 @@ class MatchInfoViewModel: ObservableObject, Codable {
         matchEndDate = try container.decode(Date.self, forKey: .matchEndDate)
         naviTitle = try container.decode(String.self, forKey: .naviTitle)
     }
+    
     /// プロパティのencode（コード化）アクション.
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -66,8 +73,9 @@ class MatchInfoViewModel: ObservableObject, Codable {
         try container.encode(matchStartDate, forKey: .matchStartDate)
         try container.encode(matchEndDate, forKey: .matchEndDate)
         try container.encode(naviTitle, forKey: .naviTitle)
-        
     }
+    
+    /// 全ての値を初期値に戻す
     func returnInitialValue(){
         matchId = ""
         setId = ""

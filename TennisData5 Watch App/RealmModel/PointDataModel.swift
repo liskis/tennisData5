@@ -1,5 +1,8 @@
+
 import RealmSwift
+
 class PointDataModel: Object,ObjectKeyIdentifiable, Codable {
+
     @Persisted var pointId: String
     @Persisted var gameId: String
     @Persisted var setId: String
@@ -22,6 +25,7 @@ class PointDataModel: Object,ObjectKeyIdentifiable, Codable {
     
     /// Codableに必要なので記載.
     override init() {}
+    
     /// 変換対象プロパティ指定.
     enum CodingKeys: String, CodingKey {
         case pointId

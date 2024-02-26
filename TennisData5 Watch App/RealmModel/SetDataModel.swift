@@ -1,6 +1,9 @@
+
 import Foundation
 import RealmSwift
+
 class SetDataModel: Object,ObjectKeyIdentifiable, Codable {
+
     @Persisted var setId: String
     @Persisted var matchId: String
     @Persisted var getGameCount:Int
@@ -8,8 +11,10 @@ class SetDataModel: Object,ObjectKeyIdentifiable, Codable {
     @Persisted var drowGameCount:Int
     @Persisted var setStartDate: Date
     @Persisted var setEndDate: Date
+    
     /// Codableに必要なので記載.
     override init() {}
+    
     /// 変換対象プロパティ指定.
     enum CodingKeys: String, CodingKey {
         case setId

@@ -1,8 +1,10 @@
+
 import Foundation
+
 enum Server: String, Decodable {
+
     case noSelection
     case myTeam
-    case opponentTeam
     case mySelf
     case opponent
     case partner

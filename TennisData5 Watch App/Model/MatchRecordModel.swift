@@ -1,5 +1,8 @@
+
 import Foundation
+
 struct MatchRecordModel: Identifiable {
+
     var id: String = UUID().uuidString
     var matchId: String
     var matchStartDate: Date

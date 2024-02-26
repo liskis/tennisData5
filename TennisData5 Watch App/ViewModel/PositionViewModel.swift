@@ -1,5 +1,8 @@
+
 import Foundation
+
 class PositionViewModel: ObservableObject, Codable {
+
     @Published var servOrRet: ServOrRet = .noSelection
     @Published var side: Side = .duceSide
     @Published var myPosition: Position = .noSelection
@@ -9,8 +12,10 @@ class PositionViewModel: ObservableObject, Codable {
     @Published var teamBplayer1position: Position = .noSelection
     @Published var teamBplayer2position: Position = .noSelection
     @Published var server: Server = .noSelection
+    
     /// Codableに必要なので記載.
     init() {}
+    
     /// 変換対象プロパティ指定.
     enum CodingKeys: String, CodingKey {
         case servOrRet
@@ -23,6 +28,7 @@ class PositionViewModel: ObservableObject, Codable {
         case teamBplayer2position
         case server
     }
+    
     /// プロパティのdecode（復号化）アクション.
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -36,6 +42,7 @@ class PositionViewModel: ObservableObject, Codable {
         teamBplayer2position = try container.decode(Position.self, forKey: .teamBplayer2position)
         server = try container.decode(Server.self, forKey: .server)
     }
+    
     /// プロパティのencode（コード化）アクション.
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -50,6 +57,8 @@ class PositionViewModel: ObservableObject, Codable {
         try container.encode(server.rawValue, forKey: .server)
         
     }
+    
+    /// 全ての値を初期値に戻す
     func returnInitialValue(){
         servOrRet = .noSelection
         side = .duceSide

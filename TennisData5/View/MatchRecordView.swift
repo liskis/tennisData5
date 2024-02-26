@@ -1,137 +1,27 @@
+
 import SwiftUI
+
 struct MatchRecordView: View {
+    
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
     @FocusState private var partnerFocus: Bool
     @FocusState private var opponentFocus: Bool
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack{
                     Spacer().frame(height:10)
-                    HStack{
-                        Spacer().frame(width:10)
-                        Text("期間")
-                        TextField(recoadSearchVM.searchStartDateString, text: $recoadSearchVM.searchStartDateString)
-                            .focused($searchStartDatePickerFocus)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .multilineTextAlignment(TextAlignment.trailing)
-                        Text("〜")
-                        TextField(recoadSearchVM.searchEndDateString, text: $recoadSearchVM.searchEndDateString)
-                            .focused($searchEndDatePickerFocus)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .multilineTextAlignment(TextAlignment.trailing)
-                        Spacer().frame(width:10)
-                    }
+                    searchPeriod
                     Spacer().frame(height:10)
-                    Picker("matchFormat", selection: $recoadSearchVM.matchInfoVM.matchFormat){
-                        ForEach(MatchFormat.allCases, id: \.self) { format in
-                            Text(format.forString)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
-                    Picker("gameType", selection: $recoadSearchVM.matchInfoVM.gameType){
-                        ForEach(GameType.allCases, id: \.self) { format in
-                            Text(format.forString)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
-                    TextField("パートナーで検索", text: $recoadSearchVM.partner)
-                        .textFieldStyle(.roundedBorder)
-                        .focused($partnerFocus)
-                        .padding(.horizontal,10)
-                        .disabled(true)
-                    TextField("対戦相手で検索", text: $recoadSearchVM.opponent)
-                        .textFieldStyle(.roundedBorder)
-                        .focused($opponentFocus)
-                        .padding(.horizontal,10)
-                        .disabled(true)
-                    //                    List(recoadSearchVM.matchRecoad){ recoad in
-                    //                        if checkPeriod(recoad: recoad) && checkMatchFormat(recoad: recoad) && checkGameType(recoad: recoad) {
-                    //                            NavigationLink(
-                    //                                destination: OneMatchDataView(
-                    //                                    homeVM: recoadSearchVM.homeVM,
-                    //                                    pointVM: recoadSearchVM.pointVM,
-                    //                                    matchInfoVM: recoadSearchVM.matchInfoVM,
-                    //                                    chartDataVM: recoadSearchVM.chartDataVM
-                    //                                )
-                    //                                .onAppear{
-                    //                                    recoadSearchVM.matchInfoVM.matchId = recoad.matchId
-                    //                                    recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
-                    //                                    recoadSearchVM.matchInfoVM.gameType = recoad.gameType
-                    //                                    recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
-                    //                                    recoadSearchVM.pointVM.getGameCount = recoad.WinScore
-                    //                                    recoadSearchVM.pointVM.lostGameCount = recoad.LoseScore
-                    //                                    recoadSearchVM.pointVM.drowGameCount = recoad.DrawScore
-                    //                                }
-                    //                            ) {
-                    //                                HStack {
-                    //                                    if recoad.matchFormat == .singles {
-                    //                                        VStack{
-                    //                                            Image(.singles)
-                    //                                                .resizable()
-                    //                                                .scaledToFit()
-                    //                                                .frame(height: 20)
-                    //                                            Text("シングルス")
-                    //                                                .foregroundColor(Color.tungsten)
-                    //                                                .font(.custom("Verdana", size: 8))
-                    //                                                .bold()
-                    //                                        }
-                    //                                    } else {
-                    //                                        VStack{
-                    //                                            Image(.doubles)
-                    //                                                .resizable()
-                    //                                                .scaledToFit()
-                    //                                                .frame(height: 20)
-                    //                                            Text("ダブルス　")
-                    //                                                .foregroundColor(Color.tungsten)
-                    //                                                .font(.custom("Verdana", size: 8))
-                    //                                                .bold()
-                    //                                        }
-                    //                                    }
-                    //                                    Text(Date.DateToString(date:recoad.matchStartDate))
-                    //                                        .foregroundColor(Color.tungsten)
-                    //                                        .font(.custom("Verdana", size: 10))
-                    //                                        .frame(width:60)
-                    //                                    Spacer()
-                    //                                    Text(recoad.gameType.forString)
-                    //                                        .foregroundColor(Color.tungsten)
-                    //                                        .font(.custom("Verdana", size: 10))
-                    //                                    Spacer()
-                    //                                    Text("\(recoad.WinScore)勝\(recoad.LoseScore)敗\(recoad.DrawScore)分" )
-                    //                                        .foregroundColor(Color.tungsten)
-                    //                                        .font(.custom("Verdana", size: 10))
-                    //                                    Spacer()
-                    //                                    if recoad.WinScore > recoad.LoseScore {
-                    //                                        Text("Win")
-                    //                                            .foregroundColor(Color.red)
-                    //                                            .font(.custom("Verdana", size: 12))
-                    //                                            .bold()
-                    //                                            .frame(width:40)
-                    //                                    } else if recoad.WinScore < recoad.LoseScore {
-                    //                                        Text("Lose")
-                    //                                            .foregroundColor(Color.blue)
-                    //                                            .font(.custom("Verdana", size: 12))
-                    //                                            .bold()
-                    //                                            .frame(width:40)
-                    //                                    } else {
-                    //                                        Text("Draw")
-                    //                                            .foregroundColor(Color.gray)
-                    //                                            .font(.custom("Verdana", size: 12))
-                    //                                            .bold()
-                    //                                            .frame(width:40)
-                    //                                    }
-                    //                                }
-                    //                            }
-                    //                            .listStyle(.plain)
-                    //                        }
-                    //                    }.background{Color.white}
-                    //                }
+                    selectMatchFormat
+                    selectGameType
+                    selectPartner
+                    selectOpponent
+//                    listView
+                    
                     VStack{
                         Spacer()
                         searchStartDatePicker
@@ -172,7 +62,147 @@ struct MatchRecordView: View {
         .toolbarColorScheme(.dark)
         }
     }
-    var searchStartDatePicker: some View {
+    
+    private var searchPeriod: some View {
+        HStack{
+            Spacer().frame(width:10)
+            Text("期間")
+            TextField(recoadSearchVM.searchStartDateString, text: $recoadSearchVM.searchStartDateString)
+                .focused($searchStartDatePickerFocus)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .multilineTextAlignment(TextAlignment.trailing)
+            Text("〜")
+            TextField(recoadSearchVM.searchEndDateString, text: $recoadSearchVM.searchEndDateString)
+                .focused($searchEndDatePickerFocus)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .multilineTextAlignment(TextAlignment.trailing)
+            Spacer().frame(width:10)
+        }
+    }
+    
+    private var selectMatchFormat: some View {
+        Picker("matchFormat", selection: $recoadSearchVM.matchInfoVM.matchFormat){
+            ForEach(MatchFormat.allCases, id: \.self) { format in
+                Text(format.forString)
+            }
+        }
+        .pickerStyle(.segmented)
+        .cornerRadius(10)
+        .padding(.horizontal,10)
+    }
+    
+    private var selectGameType: some View {
+        Picker("gameType", selection: $recoadSearchVM.matchInfoVM.gameType){
+            ForEach(GameType.allCases, id: \.self) { format in
+                Text(format.forString)
+            }
+        }
+        .pickerStyle(.segmented)
+        .cornerRadius(10)
+        .padding(.horizontal,10)
+    }
+    
+    private var selectPartner: some View {
+        TextField("パートナーで検索", text: $recoadSearchVM.partner)
+            .textFieldStyle(.roundedBorder)
+            .focused($partnerFocus)
+            .padding(.horizontal,10)
+            .disabled(true)
+    }
+    
+    private var selectOpponent: some View {
+        TextField("対戦相手で検索", text: $recoadSearchVM.opponent)
+            .textFieldStyle(.roundedBorder)
+            .focused($opponentFocus)
+            .padding(.horizontal,10)
+            .disabled(true)
+    }
+    
+//    private var listView: some View {
+//        List(recoadSearchVM.matchRecoad){ recoad in
+//            if checkPeriod(recoad: recoad) && checkMatchFormat(recoad: recoad) && checkGameType(recoad: recoad) {
+//                NavigationLink(
+//                    destination: OneMatchDataView(
+//                        homeVM: recoadSearchVM.homeVM,
+//                        pointVM: recoadSearchVM.pointVM,
+//                        matchInfoVM: recoadSearchVM.matchInfoVM,
+//                        chartDataVM: recoadSearchVM.chartDataVM
+//                    )
+//                    .onAppear{
+//                        recoadSearchVM.matchInfoVM.matchId = recoad.matchId
+//                        recoadSearchVM.matchInfoVM.matchFormat = recoad.matchFormat
+//                        recoadSearchVM.matchInfoVM.gameType = recoad.gameType
+//                        recoadSearchVM.matchInfoVM.matchStartDate = recoad.matchStartDate
+//                        recoadSearchVM.pointVM.getGameCount = recoad.WinScore
+//                        recoadSearchVM.pointVM.lostGameCount = recoad.LoseScore
+//                        recoadSearchVM.pointVM.drowGameCount = recoad.DrawScore
+//                    }
+//                ) {
+//                    HStack {
+//                        if recoad.matchFormat == .singles {
+//                            VStack{
+//                                Image(.singles)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(height: 20)
+//                                Text("シングルス")
+//                                    .foregroundColor(Color.tungsten)
+//                                    .font(.custom("Verdana", size: 8))
+//                                    .bold()
+//                            }
+//                        } else {
+//                            VStack{
+//                                Image(.doubles)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(height: 20)
+//                                Text("ダブルス　")
+//                                    .foregroundColor(Color.tungsten)
+//                                    .font(.custom("Verdana", size: 8))
+//                                    .bold()
+//                            }
+//                        }
+//                        Text(Date.DateToString(date:recoad.matchStartDate))
+//                            .foregroundColor(Color.tungsten)
+//                            .font(.custom("Verdana", size: 10))
+//                            .frame(width:60)
+//                        Spacer()
+//                        Text(recoad.gameType.forString)
+//                            .foregroundColor(Color.tungsten)
+//                            .font(.custom("Verdana", size: 10))
+//                        Spacer()
+//                        Text("\(recoad.WinScore)勝\(recoad.LoseScore)敗\(recoad.DrawScore)分" )
+//                            .foregroundColor(Color.tungsten)
+//                            .font(.custom("Verdana", size: 10))
+//                        Spacer()
+//                        if recoad.WinScore > recoad.LoseScore {
+//                            Text("Win")
+//                                .foregroundColor(Color.red)
+//                                .font(.custom("Verdana", size: 12))
+//                                .bold()
+//                                .frame(width:40)
+//                        } else if recoad.WinScore < recoad.LoseScore {
+//                            Text("Lose")
+//                                .foregroundColor(Color.blue)
+//                                .font(.custom("Verdana", size: 12))
+//                                .bold()
+//                                .frame(width:40)
+//                        } else {
+//                            Text("Draw")
+//                                .foregroundColor(Color.gray)
+//                                .font(.custom("Verdana", size: 12))
+//                                .bold()
+//                                .frame(width:40)
+//                        }
+//                    }
+//                }
+//                .listStyle(.plain)
+//            }
+//        }.background{Color.white}
+//    
+//    }
+    
+    private var searchStartDatePicker: some View {
         VStack{
             Spacer().frame(height: 10)
             HStack{
@@ -194,7 +224,8 @@ struct MatchRecordView: View {
                 .datePickerStyle(WheelDatePickerStyle())
         }.background(Color.silver)
     }
-    var searchEndDatePicker: some View {
+    
+    private var searchEndDatePicker: some View {
         VStack{
             HStack{
                 Spacer()
@@ -215,7 +246,8 @@ struct MatchRecordView: View {
                 .datePickerStyle(WheelDatePickerStyle())
         }.background(Color.silver)
     }
-    var partnerPickerView: some View {
+    
+    private var partnerPickerView: some View {
         VStack{
             HStack{
                 Spacer()
@@ -246,7 +278,8 @@ struct MatchRecordView: View {
             .foregroundColor(.tungsten)
         }.background(Color.silver)
     }
-    var opponentPickerView: some View {
+    
+    private var opponentPickerView: some View {
         VStack{
             HStack{
                 Spacer()
@@ -278,6 +311,7 @@ struct MatchRecordView: View {
         }.background(Color.silver)
     }
 }
+
 extension MatchRecordView{
     func checkPeriod(recoad:MatchRecordModel) -> Bool {
         return recoad.matchStartDate > recoadSearchVM.searchStartDate.zeroClock &&

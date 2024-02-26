@@ -1,8 +1,12 @@
+
 import SwiftUI
+
 struct DblsPointBtnArea: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
+    
     var body: some View {
         HStack(spacing:1){
             VStack(spacing:1){
@@ -35,7 +39,8 @@ struct DblsPointBtnArea: View {
             }.padding(.trailing,10)
         }
     }
-    var getPointBtnDis: some View {
+    
+    private var getPointBtnDis: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -46,9 +51,10 @@ struct DblsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var getPointBtn: some View {
+    
+    private var getPointBtn: some View {
         Button(action: {
-            getPoint()
+            dataManageVM.getPointDbls()
         },label:{
             Text("ポイントをとった")
                 .foregroundColor(Color.white)
@@ -60,7 +66,8 @@ struct DblsPointBtnArea: View {
                 .cornerRadius(4)
         })
     }
-    var lostPointBtnDis: some View {
+    
+    private var lostPointBtnDis: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -71,9 +78,10 @@ struct DblsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var lostPointBtn: some View {
+    
+    private var lostPointBtn: some View {
         Button(action: {
-            lostPoint()
+            dataManageVM.lostPointDbls()
         },label:{
             Text("ポイントをとられた")
                 .foregroundColor(Color.white)
@@ -85,7 +93,8 @@ struct DblsPointBtnArea: View {
                 .cornerRadius(4)
         })
     }
-    var myWinnerBtn: some View {
+    
+    private var myWinnerBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -94,8 +103,10 @@ struct DblsPointBtnArea: View {
                     .foregroundColor(Color.white)
                     .bold()
                     .font(.custom("Verdana", size: 12))
-            )    }
-    var partnerWinnerBtn: some View {
+            )
+    }
+    
+    private var partnerWinnerBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -106,7 +117,8 @@ struct DblsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var opponentMissBtn: some View {
+    
+    private var opponentMissBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -117,7 +129,8 @@ struct DblsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var opponentWinerBtn: some View {
+    
+    private var opponentWinerBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -128,7 +141,8 @@ struct DblsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var myMissBtn: some View {
+    
+    private var myMissBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -139,7 +153,8 @@ struct DblsPointBtnArea: View {
                     .font(.custom("Verdana", size: 12))
             )
     }
-    var partnerMissBtn: some View {
+    
+    private var partnerMissBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
@@ -149,53 +164,5 @@ struct DblsPointBtnArea: View {
                     .bold()
                     .font(.custom("Verdana", size: 12))
             )
-    }
-}
-extension DblsPointBtnArea {
-    func getPoint(){
-        if positionVM.myPosition != .noSelection {
-            pointVM.whichPoint = .myTeam
-            pointVM.getPoint += 1
-            let pointData = dataManageVM.pointRecoad()
-            Task {
-                await dataManageVM.WCGetAndLostPoint(pointData:pointData)
-            }
-            if positionVM.side == .advantageSide {
-                positionVM.side = .duceSide
-            } else if positionVM.side == .duceSide {
-                positionVM.side = .advantageSide
-            }
-            if positionVM.servOrRet == .returnGame {
-                if positionVM.myPosition == .volleyer {
-                    positionVM.myPosition = .returner
-                } else {
-                    positionVM.myPosition = .volleyer
-                }
-            }
-            pointVM.service = .first
-        }
-    }
-    func lostPoint(){
-        if positionVM.myPosition != .noSelection {
-            pointVM.whichPoint = .opponent
-            pointVM.lostPoint += 1
-            let pointData = dataManageVM.pointRecoad()
-            Task {
-                await dataManageVM.WCGetAndLostPoint(pointData:pointData)
-            }
-            if positionVM.side == .advantageSide {
-                positionVM.side = .duceSide
-            } else if positionVM.side == .duceSide {
-                positionVM.side = .advantageSide
-            }
-            if positionVM.servOrRet == .returnGame {
-                if positionVM.myPosition == .volleyer {
-                    positionVM.myPosition = .returner
-                } else {
-                    positionVM.myPosition = .volleyer
-                }
-            }
-            pointVM.service = .first
-        }
     }
 }

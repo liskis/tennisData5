@@ -1,6 +1,10 @@
+
 import SwiftUI
+
 struct StatsDataArea: View {
+    
     @ObservedObject var homeVM: HomeViewModel
+    
     var body: some View {
         HStack(alignment: .bottom){
             Spacer()
@@ -12,7 +16,9 @@ struct StatsDataArea: View {
             Spacer()
         }
     }
-    var winningRate: some View {
+    
+    // 勝率
+    private var winningRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 if homeVM.winningRate == "100.0" {
@@ -46,7 +52,9 @@ struct StatsDataArea: View {
                 .shadow(color: .black, radius: 2)
         }
     }
-    var firstServeRate: some View {
+    
+    // ファーストサーブの確率
+    private var firstServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text(homeVM.firstSvInRate)
@@ -79,7 +87,9 @@ struct StatsDataArea: View {
             }
         }
     }
-    var secondServeRate: some View {
+    
+    // セカンドサーブの確率
+    private var secondServeRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text(homeVM.secondSvInRate)
@@ -112,7 +122,9 @@ struct StatsDataArea: View {
             }
         }
     }
-    var keepRate: some View {
+    
+    // キープ率
+    private var keepRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text(homeVM.keepRate)
@@ -139,7 +151,9 @@ struct StatsDataArea: View {
             
         }
     }
-    var breakRate: some View {
+    
+    // ブレーク率
+    private var breakRate: some View {
         VStack{
             HStack(alignment: .bottom,spacing:0){
                 Text(homeVM.breakRate)
@@ -153,7 +167,7 @@ struct StatsDataArea: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 2)
             }
-            Text(homeVM.breakRate)
+            Text(homeVM.breakCount)
                 .font(.custom("Verdana",size:14))
                 .bold()
                 .foregroundColor(.white)

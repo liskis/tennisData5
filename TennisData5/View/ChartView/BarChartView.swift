@@ -1,7 +1,11 @@
+
 import SwiftUI
 import Charts
+
 struct BarChartView: View {
+    
     @Binding var barChartData: [BarChartDataModel]
+    
     var body: some View {
         Chart(barChartData) { dataRow in
             BarMark(

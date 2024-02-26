@@ -1,6 +1,9 @@
+
 import Foundation
 import RealmSwift
+
 class MatchDataModel: Object,ObjectKeyIdentifiable, Codable {
+    
     @Persisted var matchId: String
     @Persisted var matchFormat: String
     @Persisted var gemeType: String
@@ -14,8 +17,10 @@ class MatchDataModel: Object,ObjectKeyIdentifiable, Codable {
     @Persisted var drowSetCount: Int
     @Persisted var matchStartDate: Date
     @Persisted var matchEndDate: Date
+    
     /// Codableに必要なので記載.
     override init() {}
+    
     /// 変換対象プロパティ指定.
     enum CodingKeys: String, CodingKey {
         case matchId

@@ -1,9 +1,13 @@
+
 import SwiftUI
+
 struct HomeView: View {
+
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var userVM: UserViewModel
     @ObservedObject var homeVM: HomeViewModel
     let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
+    
     var body: some View {
         ZStack{
             VStack(spacing: 5){
@@ -32,7 +36,8 @@ struct HomeView: View {
             }
         }
     }
-    var headerLogo: some View{
+    
+    private var headerLogo: some View{
         HStack{
             Spacer().frame(width: 10)
             Image(.logo)
@@ -42,7 +47,8 @@ struct HomeView: View {
         }
         .frame(height: 20)
     }
-    var headerBar: some View {
+    
+    private var headerBar: some View {
         HStack(spacing:0) {
             Spacer()
             Image(.angleG)
@@ -73,9 +79,9 @@ struct HomeView: View {
         }
         .frame(height: 24)
     }
-    var latestMatch: some View {
+    
+    private var latestMatch: some View {
         HStack{
-            Spacer()
             if homeVM.latestMatch.matchFormat == .singles {
                 Image(.singles)
                     .resizable()
@@ -86,7 +92,7 @@ struct HomeView: View {
                     .scaledToFit()
             }
             Spacer()
-            Text(homeVM.latestMatch.gameType.forString)
+            Text(homeVM.latestMatch.matchFormat.forString)
                 .font(.custom("Verdana", size: 10))
                 .foregroundColor(Color.white)
             Spacer()
@@ -96,78 +102,59 @@ struct HomeView: View {
             Spacer()
             if homeVM.latestMatch.WinScore > homeVM.latestMatch.LoseScore {
                 Text("Win")
-                    .font(.custom("Verdana", size: 10))
+                    .font(.custom("Verdana", size: 12))
                     .foregroundColor(Color.red)
                     .bold()
             } else if homeVM.latestMatch.WinScore < homeVM.latestMatch.LoseScore {
                 Text("Lose")
-                    .font(.custom("Verdana", size: 10))
+                    .font(.custom("Verdana", size: 12))
                     .foregroundColor(Color.blue)
                     .bold()
             } else {
                 Text("Drow")
-                    .font(.custom("Verdana", size: 10))
+                    .font(.custom("Verdana", size: 12))
                     .foregroundColor(Color.silver)
                     .bold()
             }
-            Spacer()
         }
-        .frame(height: 12)
+        .frame(height: 14)
     }
-    var gameStartBtns: some View {
+    
+    private var gameStartBtns: some View {
         VStack(spacing:1){
-            HStack(spacing:1){
-                Text("シングルス\nポイントゲーム")
-                    .frame(height: 30)
-                    .frame(maxWidth: .infinity)
+            RoundedRectangle(cornerRadius: 2)
+                .fill(.ocean)
+                .frame(height: 50)
+                .overlay{
+                    VStack {
+                        Text("シングルス")
+                        Text("ポイントゲーム")
+                    }
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
-                    .background(
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(.ocean)
-                    )
+                    .font(.custom("Verdana", size: 12))
                     .onTapGesture {
-                        dataManageVM.matchInfoVM.matchFormat = .singles
-                        dataManageVM.matchInfoVM.gameType = .pointGame
-                        dataManageVM.matchInfoVM.matchId = UUID().uuidString
-                        dataManageVM.matchInfoVM.setId = UUID().uuidString
-                        dataManageVM.matchInfoVM.gameId = UUID().uuidString
-                        dataManageVM.matchInfoVM.naviTitle = "シングルスポイントゲーム"
-                        Task{
-                            await dataManageVM.WCToMatchView()
-                        }
-                        withAnimation {
-                            homeVM.toPointGameView = true
-                        }
-                        WKInterfaceDevice.current().play(.start)
+                        dataManageVM.toSinglesPointGame()
+                        
                     }
-                Text("ダブルス\nポイントゲーム")
-                    .frame(height: 30)
-                    .frame(maxWidth: .infinity)
+                }
+            RoundedRectangle(cornerRadius: 2)
+                .fill(.ocean)
+                .frame(height: 50)
+                .overlay{
+                    VStack {
+                        Text("ダブルス")
+                        Text("ポイントゲーム")
+                    }
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
-                    .background(
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(.ocean)
-                    )
+                    .font(.custom("Verdana", size: 12))
                     .onTapGesture {
-                        dataManageVM.matchInfoVM.matchFormat = .doubles
-                        dataManageVM.matchInfoVM.gameType = .pointGame
-                        dataManageVM.matchInfoVM.matchId = UUID().uuidString
-                        dataManageVM.matchInfoVM.setId = UUID().uuidString
-                        dataManageVM.matchInfoVM.gameId = UUID().uuidString
-                        dataManageVM.matchInfoVM.naviTitle = "ダブルスポイントゲーム"
-                        Task{
-                            await dataManageVM.WCToMatchView()
-                        }
-                        withAnimation {
-                            homeVM.toPointGameView = true
-                        }
-                        WKInterfaceDevice.current().play(.start)
+                        dataManageVM.toDoublesPointGame()
+                        
                     }
-            }
+                }
         }
+        .padding(.horizontal,10)
     }
 }

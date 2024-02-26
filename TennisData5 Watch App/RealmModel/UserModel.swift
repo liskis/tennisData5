@@ -1,5 +1,8 @@
+
 import RealmSwift
+
 class UserModel: Object,ObjectKeyIdentifiable, Codable {
+
     @Persisted var id: String
     @Persisted var myName: String
     @Persisted var dominant: String
@@ -7,8 +10,10 @@ class UserModel: Object,ObjectKeyIdentifiable, Codable {
     @Persisted var relation: String
     @Persisted var created: Date
     @Persisted var modified: Date
+    
     /// Codableに必要なので記載.
     override init() {}
+    
     /// 変換対象プロパティ指定.
     enum CodingKeys: String, CodingKey {
         case id

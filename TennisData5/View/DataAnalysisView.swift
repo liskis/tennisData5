@@ -1,55 +1,25 @@
+
 import SwiftUI
+
 struct DataAnalysisView: View {
+    
     @ObservedObject var recoadSearchVM = RecordSearchViewModel()
     @FocusState private var searchStartDatePickerFocus: Bool
     @FocusState private var searchEndDatePickerFocus: Bool
     @FocusState private var partnerFocus: Bool
     @FocusState var opponentFocus: Bool
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack{
                     Spacer().frame(height:10)
-                    HStack{
-                        Spacer().frame(width:10)
-                        Text("期間")
-                        TextField(recoadSearchVM.searchStartDateString, text: $recoadSearchVM.searchStartDateString)
-                            .focused($searchStartDatePickerFocus)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .multilineTextAlignment(TextAlignment.trailing)
-                        Text("〜")
-                        TextField(recoadSearchVM.searchEndDateString, text: $recoadSearchVM.searchEndDateString)
-                            .focused($searchEndDatePickerFocus)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .multilineTextAlignment(TextAlignment.trailing)
-                        Spacer().frame(width:10)
-                    }
+                    searchPeriod
                     Spacer().frame(height:10)
-                    Picker("matchFormat", selection: $recoadSearchVM.matchInfoVM.matchFormat){
-                        ForEach(MatchFormat.allCases, id: \.self) { format in
-                            Text(format.forString)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
-                    Picker("gameType", selection: $recoadSearchVM.matchInfoVM.gameType){
-                        ForEach(GameType.allCases, id: \.self) { format in
-                            Text(format.forString)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
-                    .disabled(true)
-                    TextField("パートナーで検索", text: $recoadSearchVM.partner)
-                        .textFieldStyle(.roundedBorder)
-                        .focused($partnerFocus)
-                        .padding(.horizontal,10)
-                    TextField("対戦相手で検索", text: $recoadSearchVM.opponent)
-                        .textFieldStyle(.roundedBorder)
-                        .focused($opponentFocus)
-                        .padding(.horizontal,10)
+                    selectMatchFormat
+                    selectGameType
+                    selectPartner
+                    selectOpponent
                     ScrollView {
                         ChartsLayOutArea(matchInfoVM: recoadSearchVM.matchInfoVM, chartDataVM: recoadSearchVM.chartDataVM)
                     }
@@ -93,7 +63,63 @@ struct DataAnalysisView: View {
             .toolbarColorScheme(.dark)
         }
     }
-    var searchStartDatePicker: some View {
+    
+    private var searchPeriod: some View {
+        HStack{
+            Spacer().frame(width:10)
+            Text("期間")
+            TextField(recoadSearchVM.searchStartDateString, text: $recoadSearchVM.searchStartDateString)
+                .focused($searchStartDatePickerFocus)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .multilineTextAlignment(TextAlignment.trailing)
+            Text("〜")
+            TextField(recoadSearchVM.searchEndDateString, text: $recoadSearchVM.searchEndDateString)
+                .focused($searchEndDatePickerFocus)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .multilineTextAlignment(TextAlignment.trailing)
+            Spacer().frame(width:10)
+        }
+    }
+    
+    private var selectMatchFormat: some View {
+        Picker("matchFormat", selection: $recoadSearchVM.matchInfoVM.matchFormat){
+            ForEach(MatchFormat.allCases, id: \.self) { format in
+                Text(format.forString)
+            }
+        }
+        .pickerStyle(.segmented)
+        .cornerRadius(10)
+        .padding(.horizontal,10)
+    }
+    
+    private var selectGameType: some View {
+        Picker("gameType", selection: $recoadSearchVM.matchInfoVM.gameType){
+            ForEach(GameType.allCases, id: \.self) { format in
+                Text(format.forString)
+            }
+        }
+        .pickerStyle(.segmented)
+        .cornerRadius(10)
+        .padding(.horizontal,10)
+    }
+    
+    private var selectPartner: some View {
+        TextField("パートナーで検索", text: $recoadSearchVM.partner)
+            .textFieldStyle(.roundedBorder)
+            .focused($partnerFocus)
+            .padding(.horizontal,10)
+            .disabled(true)
+    }
+    
+    private var selectOpponent: some View {
+        TextField("対戦相手で検索", text: $recoadSearchVM.opponent)
+            .textFieldStyle(.roundedBorder)
+            .focused($opponentFocus)
+            .padding(.horizontal,10)
+            .disabled(true)
+    }
+    
+    private var searchStartDatePicker: some View {
         VStack{
             Spacer().frame(height: 10)
             HStack{
@@ -115,7 +141,8 @@ struct DataAnalysisView: View {
                 .datePickerStyle(WheelDatePickerStyle())
         }.background(Color.silver)
     }
-    var searchEndDatePicker: some View {
+    
+    private var searchEndDatePicker: some View {
         VStack{
             HStack{
                 Spacer()
@@ -136,7 +163,8 @@ struct DataAnalysisView: View {
                 .datePickerStyle(WheelDatePickerStyle())
         }.background(Color.silver)
     }
-    var partnerPickerView: some View {
+    
+    private var partnerPickerView: some View {
         VStack{
             HStack{
                 Spacer()
@@ -167,7 +195,8 @@ struct DataAnalysisView: View {
             .foregroundColor(.tungsten)
         }.background(Color.silver)
     }
-    var opponentPickerView: some View {
+    
+    private var opponentPickerView: some View {
         VStack{
             HStack{
                 Spacer()
@@ -199,6 +228,7 @@ struct DataAnalysisView: View {
         }.background(Color.silver)
     }
 }
+
 extension DataAnalysisView{
     func checkPeriod(recoad:MatchRecordModel) -> Bool {
         return recoad.matchStartDate > recoadSearchVM.searchStartDate &&

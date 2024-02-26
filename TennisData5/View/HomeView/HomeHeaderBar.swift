@@ -1,7 +1,11 @@
+
 import SwiftUI
+
 struct HomeHeaderBar: View {
+    
     @ObservedObject var userVM: UserViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
+    
     var body: some View {
         HStack(spacing:0) {
             Image(.logo)

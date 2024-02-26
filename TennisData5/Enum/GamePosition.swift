@@ -1,5 +1,8 @@
+
 import Foundation
+
 enum GamePosition: String, Decodable {
+    
     case noSelection
     case serviceGameServer
     case serviseGameVolleyer

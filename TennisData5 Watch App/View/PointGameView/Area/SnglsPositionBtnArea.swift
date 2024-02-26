@@ -1,7 +1,11 @@
+
 import SwiftUI
+
 struct SnglsPositionBtnArea: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
+    
     var body: some View {
         if positionVM.servOrRet == .serviceGame {
             HStack(spacing:1){
@@ -36,151 +40,122 @@ struct SnglsPositionBtnArea: View {
             }
         }
     }
-    var posisionDisBtn: some View {
+    
+    private var posisionDisBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.gray)
-            .frame(height: 30)
+            .frame(height: 35)
     }
-    var serverAdvDisBtn: some View {
+    
+    private var serverAdvDisBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.asparagus)
             .stroke(.white, lineWidth: 2)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("バックサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
             }
     }
-    var serverAdvBtn: some View {
+    
+    private var serverAdvBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.fern)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("バックサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
                     .onTapGesture {
-                        serverAdv()
+                        dataManageVM.serverAdv()
                     }
             }
     }
-    var serverDuceDisBtn: some View {
+    
+    private var serverDuceDisBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.asparagus)
             .stroke(.white, lineWidth: 2)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("フォアサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
             }
     }
-    var serverDuceBtn: some View {
+    
+    private var serverDuceBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.fern)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("フォアサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
                     .onTapGesture {
-                        serverDuce()
+                        dataManageVM.serverDuce()
                     }
             }
     }
-    var returnerAdvDisBtn: some View {
+    
+    private var returnerAdvDisBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.asparagus)
             .stroke(.white, lineWidth: 2)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("バックサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
             }
     }
-    var returnerAdvBtn: some View {
+    
+    private var returnerAdvBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.fern)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("バックサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
                     .onTapGesture {
-                        returnerAdv()
+                        dataManageVM.returnerAdv()
                     }
             }
     }
-    var returnerDuceDisBtn: some View {
+    
+    private var returnerDuceDisBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.asparagus)
             .stroke(.white, lineWidth: 2)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("フォアサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
             }
     }
-    var returnerDuceBtn: some View {
+    
+    private var returnerDuceBtn: some View {
         RoundedRectangle(cornerRadius: 2)
             .fill(.fern)
-            .frame(height: 30)
+            .frame(height: 35)
             .overlay{
                 Text("フォアサイド")
                     .foregroundColor(Color.white)
                     .bold()
-                    .font(.custom("Verdana", size: 8))
+                    .font(.custom("Verdana", size: 10))
                     .onTapGesture {
-                        returnerDuce()
+                        dataManageVM.returnerDuce()
                     }
             }
-    }
-}
-extension SnglsPositionBtnArea {
-    func serverAdv(){
-        positionVM.myPosition = .server
-        positionVM.side = .advantageSide
-        positionVM.server = .mySelf
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-        WKInterfaceDevice.current().play(.start)
-    }
-    func serverDuce(){
-        positionVM.myPosition = .server
-        positionVM.side = .duceSide
-        positionVM.server = .mySelf
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-        WKInterfaceDevice.current().play(.start)
-    }
-    func returnerAdv(){
-        positionVM.myPosition = .returner
-        positionVM.side = .advantageSide
-        positionVM.server = .opponent
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-        WKInterfaceDevice.current().play(.start)
-    }
-    func returnerDuce(){
-        positionVM.myPosition = .returner
-        positionVM.side = .duceSide
-        positionVM.server = .opponent
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-        WKInterfaceDevice.current().play(.start)
     }
 }

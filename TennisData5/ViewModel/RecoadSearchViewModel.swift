@@ -1,6 +1,9 @@
+
 import Foundation
 import SwiftUI
+
 class RecordSearchViewModel: ObservableObject {
+    
     @ObservedObject var homeVM = HomeViewModel()
     @ObservedObject var chartDataVM = ChartDataViewModel()
     @ObservedObject var matchInfoVM = MatchInfoViewModel()

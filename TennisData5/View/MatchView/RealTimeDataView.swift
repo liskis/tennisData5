@@ -1,10 +1,14 @@
+
 import SwiftUI
 import Charts
+
 struct RealTimeDataView: View {
+    
     @ObservedObject var pointVM: PointViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
     @ObservedObject var userVM: UserViewModel
+    
     var body: some View {
         NavigationStack {
             ScrollView {

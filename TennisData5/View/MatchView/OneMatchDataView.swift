@@ -1,11 +1,15 @@
+
 import SwiftUI
+
 struct OneMatchDataView: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var pointVM: PointViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
     let chartWidth = UIScreen.main.bounds.width/2 - 20
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -18,12 +22,7 @@ struct OneMatchDataView: View {
                     Spacer(minLength: 10)
                     OneMatchDataScoreArea(matchInfoVM: matchInfoVM, pointVM:pointVM)
                     Button(action: {
-                        Task{
-                            await dataManageVM.WCCloseOneMatchData()
-                        }
-                        dataManageVM.resetAllVM()
-                        homeVM.toPointGameView = false
-                        
+                        dataManageVM.closeOneMatchDataView()
                     }, label: {
                         Text("閉じる")
                             .foregroundColor(Color.white)

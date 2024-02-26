@@ -1,47 +1,65 @@
+
 import SwiftUI
+
 struct SnglsPositionBtnArea: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
+    
     var body: some View {
+        
         if positionVM.servOrRet == .serviceGame {
-            HStack(spacing:1){
-                if positionVM.myPosition == .server && positionVM.side == .advantageSide {
-                    serverAdvDisBtn
-                } else {
-                    serverAdvBtn
-                }
-                if positionVM.myPosition == .server && positionVM.side == .duceSide {
-                    serverDuceDisBtn
-                } else {
-                    serverDuceBtn
-                }
-            } .padding(.horizontal,10)
+            
+            serviceGamePositionBtn
         } else if positionVM.servOrRet == .returnGame {
-            HStack(spacing:1){
-                if positionVM.myPosition == .returner && positionVM.side == .advantageSide {
-                    returnerAdvDisBtn
-                } else {
-                    returnerAdvBtn
-                }
-                if positionVM.myPosition == .returner && positionVM.side == .duceSide {
-                    returnerDuceDisBtn
-                } else {
-                    returnerDuceBtn
-                }
-            }.padding(.horizontal,10)
+            
+            returnGamePositionBtn
         } else if positionVM.servOrRet == .noSelection {
+            
             HStack(spacing:1){
                 posisionDisBtn
                 posisionDisBtn
             }.padding(.horizontal,10)
         }
     }
-    var posisionDisBtn: some View {
+    
+    private var serviceGamePositionBtn: some View {
+        HStack(spacing:1){
+            if positionVM.myPosition == .server && positionVM.side == .advantageSide {
+                serverAdvDisBtn
+            } else {
+                serverAdvBtn
+            }
+            if positionVM.myPosition == .server && positionVM.side == .duceSide {
+                serverDuceDisBtn
+            } else {
+                serverDuceBtn
+            }
+        } .padding(.horizontal,10)
+    }
+    
+    private var returnGamePositionBtn: some View {
+        HStack(spacing:1){
+            if positionVM.myPosition == .returner && positionVM.side == .advantageSide {
+                returnerAdvDisBtn
+            } else {
+                returnerAdvBtn
+            }
+            if positionVM.myPosition == .returner && positionVM.side == .duceSide {
+                returnerDuceDisBtn
+            } else {
+                returnerDuceBtn
+            }
+        }.padding(.horizontal,10)
+    }
+    
+    private var posisionDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .frame(height: 40)
     }
-    var serverAdvDisBtn: some View {
+    
+    private var serverAdvDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.asparagus)
             .stroke(.red, lineWidth: 2)
@@ -61,9 +79,10 @@ struct SnglsPositionBtnArea: View {
                 }
             )
     }
-    var serverAdvBtn: some View {
+    
+    private var serverAdvBtn: some View {
         Button(action: {
-            serverAdv()
+            dataManageVM.serverAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -81,7 +100,8 @@ struct SnglsPositionBtnArea: View {
             .cornerRadius(4)
         })
     }
-    var serverDuceDisBtn: some View {
+    
+    private var serverDuceDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.asparagus)
             .stroke(.red, lineWidth: 2)
@@ -101,9 +121,10 @@ struct SnglsPositionBtnArea: View {
                 }
             )
     }
-    var serverDuceBtn: some View {
+    
+    private var serverDuceBtn: some View {
         Button(action: {
-            serverDuce()
+            dataManageVM.serverDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -121,7 +142,8 @@ struct SnglsPositionBtnArea: View {
         .background{Color.fern}
         .cornerRadius(4)
     }
-    var returnerAdvDisBtn: some View {
+    
+    private var returnerAdvDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.asparagus)
             .stroke(.red, lineWidth: 2)
@@ -141,9 +163,10 @@ struct SnglsPositionBtnArea: View {
                 }
             )
     }
-    var returnerAdvBtn: some View {
+    
+    private var returnerAdvBtn: some View {
         Button(action: {
-            returnerAdv()
+            dataManageVM.returnerAdv()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -161,7 +184,8 @@ struct SnglsPositionBtnArea: View {
         .background{Color.fern}
         .cornerRadius(4)
     }
-    var returnerDuceDisBtn: some View {
+    
+    private var returnerDuceDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.asparagus)
             .stroke(.red, lineWidth: 2)
@@ -181,9 +205,10 @@ struct SnglsPositionBtnArea: View {
                 }
             )
     }
-    var returnerDuceBtn: some View {
+    
+    private var returnerDuceBtn: some View {
         Button(action: {
-            returnerDuce()
+            dataManageVM.returnerDuce()
         },label:{
             HStack(spacing:5){
                 Spacer().frame(width: 5)
@@ -200,39 +225,5 @@ struct SnglsPositionBtnArea: View {
         })
         .background{Color.fern}
         .cornerRadius(4)
-    }
-}
-extension SnglsPositionBtnArea {
-    func serverAdv(){
-        positionVM.myPosition = .server
-        positionVM.side = .advantageSide
-        positionVM.server = .mySelf
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-    }
-    func serverDuce(){
-        positionVM.myPosition = .server
-        positionVM.side = .duceSide
-        positionVM.server = .mySelf
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-    }
-    func returnerAdv(){
-        positionVM.myPosition = .returner
-        positionVM.side = .advantageSide
-        positionVM.server = .opponent
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-    }
-    func returnerDuce(){
-        positionVM.myPosition = .returner
-        positionVM.side = .duceSide
-        positionVM.server = .opponent
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
     }
 }

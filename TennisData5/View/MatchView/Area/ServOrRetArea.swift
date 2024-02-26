@@ -2,9 +2,11 @@
 import SwiftUI
 
 struct ServOrRetArea: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var pointVM: PointViewModel
+    
     var body: some View {
         HStack(spacing:1){
             if positionVM.servOrRet == .serviceGame {
@@ -27,14 +29,16 @@ struct ServOrRetArea: View {
             }
         } .padding(.horizontal,10)
     }
-    var posisionDisBtn: some View {
+    
+    private var posisionDisBtn: some View {
         RoundedRectangle(cornerRadius: 4)
             .fill(.silver)
             .stroke(.silver, lineWidth: 2)
             .frame(height: 40)
             
     }
-    var serviceGameDisBtn: some View {
+    
+    private var serviceGameDisBtn: some View {
         Text("サービスゲーム")
             .frame(height: 40)
             .frame(maxWidth: .infinity)
@@ -47,9 +51,10 @@ struct ServOrRetArea: View {
                     .stroke(.red, lineWidth: 2)
             )
     }
-    var serviceGameBtn: some View {
+    
+    private var serviceGameBtn: some View {
         Button(action: {
-            serviceGame()
+            dataManageVM.serviceGame()
         },label:{
             Text("サービスゲーム")
                 .foregroundColor(Color.white)
@@ -61,7 +66,8 @@ struct ServOrRetArea: View {
         .background{Color.fern}
         .cornerRadius(4)
     }
-    var returnGameDisBtn: some View {
+    
+    private var returnGameDisBtn: some View {
         Text("リターンゲーム")
             .frame(height: 40)
             .frame(maxWidth: .infinity)
@@ -74,9 +80,10 @@ struct ServOrRetArea: View {
                     .stroke(.red, lineWidth: 2)
             )
     }
-    var returnGameBtn: some View {
+    
+    private var returnGameBtn: some View {
         Button(action: {
-            returnGame()
+            dataManageVM.returnGame()
         },label:{
             Text("リターンゲーム")
                 .foregroundColor(Color.white)
@@ -88,21 +95,5 @@ struct ServOrRetArea: View {
         })
         .background{Color.fern}
         .cornerRadius(4)
-    }
-}
-extension ServOrRetArea {
-    func serviceGame(){
-        positionVM.servOrRet = .serviceGame
-        positionVM.myPosition = .noSelection
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
-    }
-    func returnGame(){
-        positionVM.servOrRet = .returnGame
-        positionVM.myPosition = .noSelection
-        Task {
-            await dataManageVM.WCSelectPositionAndService()
-        }
     }
 }

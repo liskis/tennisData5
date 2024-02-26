@@ -1,5 +1,8 @@
+
 import Foundation
+
 enum InputMode: String ,CaseIterable, Decodable {
+    
     case beginner
     case advance
     case highLebel

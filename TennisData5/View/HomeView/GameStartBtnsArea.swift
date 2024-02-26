@@ -1,8 +1,12 @@
+
 import SwiftUI
+
 struct GameStartBtnsArea: View {
+    
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var homeVM: HomeViewModel
+    
     var body: some View {
         VStack(spacing:1){
             HStack(spacing:1){
@@ -31,18 +35,12 @@ struct GameStartBtnsArea: View {
             }
         }
     }
-    var singlesPointGameBtn: some View {
+    
+    // シングルスポイントゲーム
+    private var singlesPointGameBtn: some View {
         Button(action: {
-            matchInfoVM.matchFormat = .singles
-            matchInfoVM.gameType = .pointGame
-            matchInfoVM.matchId = UUID().uuidString
-            matchInfoVM.setId = UUID().uuidString
-            matchInfoVM.gameId = UUID().uuidString
-            matchInfoVM.naviTitle = "シングルスポイントゲーム"
-            Task{
-                await dataManageVM.WCToMatchView()
-            }
-            homeVM.toPointGameView = true
+            dataManageVM.toSinglesPointGame()
+            
         }) {
             Text("シングルスで\nポイントゲーム")
             .frame(maxWidth: .infinity, minHeight: 30)
@@ -51,18 +49,12 @@ struct GameStartBtnsArea: View {
         .buttonStyle(MatchStartBtnStyle())
         
     }
-    var doublesPointGameBtn: some View {
+    
+    // ダブルスポイントゲーム
+    private var doublesPointGameBtn: some View {
         Button(action: {
-            matchInfoVM.matchFormat = .doubles
-            matchInfoVM.gameType = .pointGame
-            matchInfoVM.matchId = UUID().uuidString
-            matchInfoVM.setId = UUID().uuidString
-            matchInfoVM.gameId = UUID().uuidString
-            matchInfoVM.naviTitle = "ダブルスポイントゲーム"
-            Task{
-                await dataManageVM.WCToMatchView()
-            }
-            homeVM.toPointGameView = true
+            dataManageVM.toDoublesPointGame()
+            
         }) {
             Text("ダブルスで\nポイントゲーム")
                 .frame(maxWidth: .infinity, minHeight: 30)
@@ -72,7 +64,9 @@ struct GameStartBtnsArea: View {
         .buttonStyle(MatchStartBtnStyle())
         
     }
-    var setMatchBtn: some View {
+    
+    // セットマッチ
+    private var setMatchBtn: some View {
         Button(action: {
             // action
         }) {
@@ -83,7 +77,9 @@ struct GameStartBtnsArea: View {
         .buttonStyle(DisabledBtnStyle())
         .disabled(true)
     }
-    var tieBreakBtn: some View {
+    
+    // タイブレーク
+    private var tieBreakBtn: some View {
         Button(action: {
             // action
         }) {
@@ -94,7 +90,9 @@ struct GameStartBtnsArea: View {
         .buttonStyle(DisabledBtnStyle())
         .disabled(true)
     }
-    var pointGameFromCoach: some View {
+    
+    // コーチ目線でポイントゲーム
+    private var pointGameFromCoach: some View {
         Button(action: {
                 // action
         }) {
@@ -105,7 +103,9 @@ struct GameStartBtnsArea: View {
         .buttonStyle(DisabledBtnStyle())
         .disabled(true)
     }
-    var setMatchFromCoach: some View {
+    
+    //コーチ目線でセットマッチ
+    private var setMatchFromCoach: some View {
         Button(action: {
                 // action
         }) {
@@ -118,6 +118,7 @@ struct GameStartBtnsArea: View {
     }
 }
 
+// ボタンのスタイル
 struct MatchStartBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label
@@ -127,6 +128,8 @@ struct MatchStartBtnStyle: ButtonStyle {
         .cornerRadius(5)
     }
 }
+
+// 選択できないボタンのスタイル
 struct DisabledBtnStyle: ButtonStyle {
   func makeBody(configuration: Self.Configuration) -> some View {
     configuration.label

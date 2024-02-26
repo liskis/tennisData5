@@ -1,5 +1,8 @@
+
 import Foundation
+
 enum Relation: String ,CaseIterable, Decodable  {
+
     case friend
     case other
     var forString: String {
