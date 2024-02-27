@@ -2,7 +2,7 @@ import SwiftUI
 import UIKit // こちらも必要
 import GoogleMobileAds // 忘れずに
 
-struct AdMobinterstitialView: UIViewRepresentable {
+struct AdMobInterStitialView: UIViewRepresentable {
     func makeUIView(context: Context) -> GADBannerView {
         let banner = GADBannerView(adSize: GADAdSizeBanner) // インスタンスを生成
         // 諸々の設定をしていく

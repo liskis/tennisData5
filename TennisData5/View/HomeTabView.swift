@@ -22,14 +22,12 @@ struct HomeTabView: View {
             userVM: dataManageVM.userVM
         )
             .onAppear{
-//                    dataManageVM.deleteRealm()
                 Task {
                     await dataManageVM.WCStartApp()
                 }
                 dataManageVM.homeVM.setHomeData()
                 dataManageVM.userVM.setUserInfo()
-                dataManageVM.homeVM.adMobPopUp = true
-                
+                dataManageVM.homeVM.adMobPopUp = false
             }
             .toolbarBackground(.black, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
