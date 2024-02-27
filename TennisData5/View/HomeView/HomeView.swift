@@ -10,7 +10,6 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-            ScrollView {
                 VStack{
                     homeDataArea
                     VStack{
@@ -20,11 +19,11 @@ struct HomeView: View {
                             matchInfoVM: dataManageVM.matchInfoVM,
                             homeVM: homeVM
                         )
-                        Spacer().frame(height: 10)
+                        Spacer()
                     }
                     .background(Color.white)
                 }
-            }
+            
             VStack(spacing:0) {
                 HomeHeaderBar(
                     userVM: userVM,

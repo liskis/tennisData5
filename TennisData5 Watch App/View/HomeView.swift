@@ -92,7 +92,7 @@ struct HomeView: View {
                     .scaledToFit()
             }
             Spacer()
-            Text(homeVM.latestMatch.matchFormat.forString)
+            Text(homeVM.latestMatch.gameType.forString)
                 .font(.custom("Verdana", size: 10))
                 .foregroundColor(Color.white)
             Spacer()

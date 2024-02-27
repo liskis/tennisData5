@@ -70,15 +70,15 @@ class ChartDataViewModel: ObservableObject {
     
     /// サービスサイド別ポイント取得率
     @Published var pointRateByServiceSide: [PieChartDataModel] = [
-        .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-        .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data1", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
         .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
     ]
     
     /// リターンサイド別ポイント取得率
     @Published var pointRateByReturnSide: [PieChartDataModel] = [
-        .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-        .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data1", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+        .init(name: "data2", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
         .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
     ]
     
@@ -235,13 +235,13 @@ class ChartDataViewModel: ObservableObject {
             .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
         ]
         pointRateByServiceSide = [
-            .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-            .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data1", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
             .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
         ]
         pointRateByReturnSide = [
-            .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-            .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data1", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+            .init(name: "data2", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
             .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
         ]
         pointRateStyleScale = [
@@ -501,8 +501,8 @@ class ChartDataViewModel: ObservableObject {
         if serviceGamePoints.count == 0 {
             
             pointRateByServiceSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "data1", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
                 .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
             ]
         } else {
@@ -530,8 +530,8 @@ class ChartDataViewModel: ObservableObject {
                 advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
             }
             pointRateByServiceSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
+                .init(name: "data1", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
+                .init(name: "data2", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
                 .init(name: "blank", nameString: "", value: duceGetRate + advGetRate, labelType: .twoLabels)
             ]
         }
@@ -544,8 +544,8 @@ class ChartDataViewModel: ObservableObject {
         if returnGamePoints.count == 0 {
             
             pointRateByReturnSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "data1", nameString: "バック\nサイド", value: 1, labelType: .twoLabels),
+                .init(name: "data2", nameString: "フォア\nサイド", value: 1, labelType: .twoLabels),
                 .init(name: "blank", nameString: "init", value: 2, labelType: .twoLabels)
             ]
         } else {
@@ -576,8 +576,8 @@ class ChartDataViewModel: ObservableObject {
                 advGetRate = round( ( Double(getAdvPoints.count) / Double(advPoints.count) ) * 1000 ) / 10
             }
             pointRateByReturnSide = [
-                .init(name: "data1", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
-                .init(name: "data2", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
+                .init(name: "data1", nameString: "バック\nサイド", value: advGetRate, labelType: .twoLabels),
+                .init(name: "data2", nameString: "フォア\nサイド", value: duceGetRate, labelType: .twoLabels),
                 .init(name: "blank", nameString: "", value: duceGetRate + advGetRate, labelType: .twoLabels)
             ]
         }
