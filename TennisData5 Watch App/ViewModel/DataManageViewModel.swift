@@ -2,6 +2,7 @@
 import RealmSwift
 import SwiftUI
 import WatchConnectivity
+import CoreMotion
 
 class DataManageViewModel: NSObject, ObservableObject {
     
@@ -11,6 +12,7 @@ class DataManageViewModel: NSObject, ObservableObject {
     @ObservedObject var chartDataVM = ChartDataViewModel()
     @ObservedObject var userVM = UserViewModel()
     @ObservedObject var homeVM = HomeViewModel()
+    @ObservedObject var coreMotionVM = CoreMotionViewModel()
     
    /// realmのインスタンス
     var realm: Realm {
@@ -18,6 +20,7 @@ class DataManageViewModel: NSObject, ObservableObject {
         let realm = try! Realm()
         return realm
     }
+    
     
     /// 全ての値を初期値に戻す
     func resetAllVM(){
@@ -80,6 +83,8 @@ class DataManageViewModel: NSObject, ObservableObject {
             gameData.gameEndDate = Date()
             realm.add(gameData)
         }
+        
+        coreMotionVM.getNumberOfStep(gameStartDate: matchInfoVM.gameStartDate)
         return gameData
     }
     

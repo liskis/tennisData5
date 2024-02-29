@@ -2,6 +2,7 @@
 import RealmSwift
 import SwiftUI
 import WatchConnectivity
+import CoreMotion
 
 class DataManageViewModel: NSObject, ObservableObject {
     
@@ -11,6 +12,7 @@ class DataManageViewModel: NSObject, ObservableObject {
     @ObservedObject var chartDataVM = ChartDataViewModel()
     @ObservedObject var userVM = UserViewModel()
     @ObservedObject var homeVM = HomeViewModel()
+    
     
    /// realmのインスタンス
     var realm: Realm {

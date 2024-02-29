@@ -30,7 +30,8 @@ struct HomeView: View {
                     positionVM: dataManageVM.positionVM,
                     chartDataVM: dataManageVM.chartDataVM,
                     userVM: userVM,
-                    homeVM: homeVM
+                    homeVM: homeVM,
+                    coreMotionVM: dataManageVM.coreMotionVM
                 )
                 .transition(.move(edge: .bottom))
             }
@@ -134,8 +135,8 @@ struct HomeView: View {
                     .bold()
                     .font(.custom("Verdana", size: 12))
                     .onTapGesture {
-                        dataManageVM.toSinglesPointGame()
                         
+                        dataManageVM.toSinglesPointGame()
                     }
                 }
             RoundedRectangle(cornerRadius: 2)
@@ -150,8 +151,8 @@ struct HomeView: View {
                     .bold()
                     .font(.custom("Verdana", size: 12))
                     .onTapGesture {
-                        dataManageVM.toDoublesPointGame()
                         
+                        dataManageVM.toDoublesPointGame()
                     }
                 }
         }
