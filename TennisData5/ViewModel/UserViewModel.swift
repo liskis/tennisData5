@@ -80,11 +80,11 @@ class UserViewModel: ObservableObject, Codable {
     
     ///　自分の情報をセットする
     func setUserInfo(){
-        let userInfo = realm.objects(UserModel.self).where({ $0.relation == "me" })
-        if  userInfo.count == 1 {
-            myName = userInfo[0].myName
-            dominant = Dominant(rawValue: userInfo[0].dominant)!
-            gender = Gender(rawValue: userInfo[0].gender)!
+        let userInfo = realm.objects(UserModel.self).where({ $0.relation == "me" }).first
+        if  userInfo != nil {
+            myName = userInfo!.myName
+            dominant = Dominant(rawValue: userInfo!.dominant)!
+            gender = Gender(rawValue: userInfo!.gender)!
         }
     }
     

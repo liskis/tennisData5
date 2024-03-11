@@ -23,30 +23,31 @@ struct MatchRecordView: View {
                     selectOpponent
 //                    listView
                     
-                    VStack{
-                        Spacer()
-                        searchStartDatePicker
-                            .animation(.linear,value:10)
-                            .offset(y: self.searchStartDatePickerFocus ? 0 : UIScreen.main.bounds.height)
-                    }
-                    VStack{
-                        Spacer()
-                        searchEndDatePicker
-                            .animation(.linear,value:10)
-                            .offset(y: self.searchEndDatePickerFocus ? 0 : UIScreen.main.bounds.height)
-                    }
-                    VStack{
-                        Spacer()
-                        partnerPickerView
-                            .animation(.linear,value:10)
-                            .offset(y: self.partnerFocus ? 0 : UIScreen.main.bounds.height)
-                    }
-                    VStack{
-                        Spacer()
-                        opponentPickerView
-                            .animation(.linear,value:10)
-                            .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
-                    }
+//                    VStack{
+//                        Spacer()
+//                        searchStartDatePicker
+//                            .animation(.linear,value:10)
+//                            .offset(y: self.searchStartDatePickerFocus ? 0 : UIScreen.main.bounds.height)
+//                    }
+//                    VStack{
+//                        Spacer()
+//                        searchEndDatePicker
+//                            .animation(.linear,value:10)
+//                            .offset(y: self.searchEndDatePickerFocus ? 0 : UIScreen.main.bounds.height)
+//                    }
+//                    VStack{
+//                        Spacer()
+//                        partnerPickerView
+//                            .animation(.linear,value:10)
+//                            .offset(y: self.partnerFocus ? 0 : UIScreen.main.bounds.height)
+//                    }
+//                    VStack{
+//                        Spacer()
+//                        opponentPickerView
+//                            .animation(.linear,value:10)
+//                            .offset(y: self.opponentFocus ? 0 : UIScreen.main.bounds.height)
+//                    }
+                    Spacer()
                 }
                 Text("Please wait for update !")
                     .frame(width: 180,height: 20)

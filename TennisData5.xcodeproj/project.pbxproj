@@ -659,6 +659,7 @@
 				0972297D2B5AA79C0046FAF8 /* DblsPointBtnArea.swift */,
 				09870B8B2B87365D0033DF3E /* GameProgressArea.swift */,
 				09870B8D2B8737F80033DF3E /* InputArea.swift */,
+				0972298C2B5F89590046FAF8 /* OneMatchDataScoreArea.swift */,
 			);
 			path = Area;
 			sourceTree = "<group>";
@@ -881,7 +882,6 @@
 				09806D262B4F692B007638B7 /* PointGame.swift */,
 				0972295F2B54022B0046FAF8 /* RealTimeDataView.swift */,
 				0972298A2B5F87380046FAF8 /* OneMatchDataView.swift */,
-				0972298C2B5F89590046FAF8 /* OneMatchDataScoreArea.swift */,
 				092B2B392B516A270046BDBF /* Area */,
 			);
 			path = MatchView;
