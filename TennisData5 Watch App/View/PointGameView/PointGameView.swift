@@ -10,7 +10,7 @@ struct PointGameView: View {
     @ObservedObject var chartDataVM: ChartDataViewModel
     @ObservedObject var userVM: UserViewModel
     @ObservedObject var homeVM: HomeViewModel
-    @ObservedObject var coreMotionVM: CoreMotionViewModel
+//    @ObservedObject var coreMotionVM: CoreMotionViewModel
     
     let watchHeight = WKInterfaceDevice.current().screenBounds.size.height
     
@@ -27,9 +27,9 @@ struct PointGameView: View {
                     chartDataVM: chartDataVM,
                     homeVM: homeVM
                 )
-                .onAppear{
-                    coreMotionVM.getNumberOfStep(gameStartDate: matchInfoVM.gameStartDate)
-                }
+//                .onAppear{
+//                    coreMotionVM.getNumberOfStep(gameStartDate: matchInfoVM.gameStartDate)
+//                }
                 ScrollViewReader { proxy in
                     if homeVM.scrollToTop {
                         Text("")

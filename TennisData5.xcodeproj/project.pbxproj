@@ -36,6 +36,7 @@
 		0927E10D2B41A8AB0069BEF1 /* StatsDataArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */; };
 		092B2B3C2B5177620046BDBF /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B3B2B5177620046BDBF /* PointViewModel.swift */; };
 		092B2B752B53C0B40046BDBF /* ServOrRet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B2B742B53C0B40046BDBF /* ServOrRet.swift */; };
+		092EC7082BA6974B006DD620 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EC7072BA6974A006DD620 /* Interstitial.swift */; };
 		0970F3E52B78F259007B4E8A /* DateExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F3E02B78F254007B4E8A /* DateExtention.swift */; };
 		0970F3EB2B78F260007B4E8A /* BarChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F3E22B78F255007B4E8A /* BarChartDataModel.swift */; };
 		0970F3EC2B78F260007B4E8A /* LineChartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970F3E32B78F256007B4E8A /* LineChartDataModel.swift */; };
@@ -143,9 +144,6 @@
 		09870B952B89B1A00033DF3E /* positionBtnsFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870B922B89AFD60033DF3E /* positionBtnsFunc.swift */; };
 		09870B962B89B1A00033DF3E /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870B902B89AFD60033DF3E /* WCSessionDelegate.swift */; };
 		09870B972B89B1A00033DF3E /* gameBtnsFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870B932B89AFD60033DF3E /* gameBtnsFunc.swift */; };
-		09870BB42B8C70720033DF3E /* AdMobInterStitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870BB32B8C70720033DF3E /* AdMobInterStitialView.swift */; };
-		09870BB62B8CB0F40033DF3E /* AdMobPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870BB52B8CB0F40033DF3E /* AdMobPopUp.swift */; };
-		09870BB82B8CDC930033DF3E /* AdMobBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870BB72B8CDC930033DF3E /* AdMobBannerView.swift */; };
 		09870C4D2B9014260033DF3E /* CoreMotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09870C4C2B9014260033DF3E /* CoreMotionViewModel.swift */; };
 		09870C4F2B901CCD0033DF3E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09870C4E2B901CCD0033DF3E /* CoreMotion.framework */; };
 		09870C552B9069310033DF3E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09870B9E2B8B356D0033DF3E /* WidgetKit.framework */; };
@@ -272,6 +270,7 @@
 		0927E10C2B41A8AB0069BEF1 /* StatsDataArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDataArea.swift; sourceTree = "<group>"; };
 		092B2B3B2B5177620046BDBF /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
 		092B2B742B53C0B40046BDBF /* ServOrRet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServOrRet.swift; sourceTree = "<group>"; };
+		092EC7072BA6974A006DD620 /* Interstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
 		0970F3E02B78F254007B4E8A /* DateExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtention.swift; sourceTree = "<group>"; };
 		0970F3E22B78F255007B4E8A /* BarChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartDataModel.swift; sourceTree = "<group>"; };
 		0970F3E32B78F256007B4E8A /* LineChartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDataModel.swift; sourceTree = "<group>"; };
@@ -382,9 +381,6 @@
 		09870B932B89AFD60033DF3E /* gameBtnsFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameBtnsFunc.swift; sourceTree = "<group>"; };
 		09870B9E2B8B356D0033DF3E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		09870BA02B8B356D0033DF3E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		09870BB32B8C70720033DF3E /* AdMobInterStitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobInterStitialView.swift; sourceTree = "<group>"; };
-		09870BB52B8CB0F40033DF3E /* AdMobPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobPopUp.swift; sourceTree = "<group>"; };
-		09870BB72B8CDC930033DF3E /* AdMobBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerView.swift; sourceTree = "<group>"; };
 		09870C4C2B9014260033DF3E /* CoreMotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotionViewModel.swift; sourceTree = "<group>"; };
 		09870C4E2B901CCD0033DF3E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS10.2.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		09870C542B9069310033DF3E /* TennisData5ComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TennisData5ComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -858,9 +854,7 @@
 		09870BB92B8DB64C0033DF3E /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
-				09870BB52B8CB0F40033DF3E /* AdMobPopUp.swift */,
-				09870BB32B8C70720033DF3E /* AdMobInterStitialView.swift */,
-				09870BB72B8CDC930033DF3E /* AdMobBannerView.swift */,
+				092EC7072BA6974A006DD620 /* Interstitial.swift */,
 			);
 			path = AdMob;
 			sourceTree = "<group>";
@@ -1384,6 +1378,7 @@
 				091AC3DE2B4A95B8007E68F0 /* WhichPoint.swift in Sources */,
 				092B2B3C2B5177620046BDBF /* PointViewModel.swift in Sources */,
 				09722A0B2B70B86B0046FAF8 /* MatchDataModel.swift in Sources */,
+				092EC7082BA6974B006DD620 /* Interstitial.swift in Sources */,
 				097229702B5A620B0046FAF8 /* PositionViewModel.swift in Sources */,
 				09722A072B6F9B6B0046FAF8 /* UserViewModel.swift in Sources */,
 				09BD52992B49871600EC347E /* LineChartDataModel.swift in Sources */,
@@ -1413,12 +1408,10 @@
 				09722A112B70C1AD0046FAF8 /* GamePosition.swift in Sources */,
 				092B2B752B53C0B40046BDBF /* ServOrRet.swift in Sources */,
 				0972297C2B5AA7810046FAF8 /* SnglsPointBtnArea.swift in Sources */,
-				09870BB62B8CB0F40033DF3E /* AdMobPopUp.swift in Sources */,
 				097229882B5D359D0046FAF8 /* RecoadSearchViewModel.swift in Sources */,
 				09870B8E2B8737F80033DF3E /* InputArea.swift in Sources */,
 				097229642B550DB50046FAF8 /* PieChartView.swift in Sources */,
 				0972296C2B564BF60046FAF8 /* BarChartView.swift in Sources */,
-				09870BB42B8C70720033DF3E /* AdMobInterStitialView.swift in Sources */,
 				091AC3D42B4A8AAE007E68F0 /* PointDataModel.swift in Sources */,
 				0972298B2B5F87380046FAF8 /* OneMatchDataView.swift in Sources */,
 				091AC3E22B4A96B1007E68F0 /* Whose.swift in Sources */,
@@ -1426,7 +1419,6 @@
 				091AC3DA2B4A9443007E68F0 /* Server.swift in Sources */,
 				097229762B5A70850046FAF8 /* SnglsPositionBtnArea.swift in Sources */,
 				0972298D2B5F89590046FAF8 /* OneMatchDataScoreArea.swift in Sources */,
-				09870BB82B8CDC930033DF3E /* AdMobBannerView.swift in Sources */,
 				097229FC2B6E46640046FAF8 /* DateArray.swift in Sources */,
 				09722A262B74B78E0046FAF8 /* LevelAndModePopUp.swift in Sources */,
 				0972295D2B53FA780046FAF8 /* LineChartView.swift in Sources */,
@@ -1643,14 +1635,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Debug;
 		};
@@ -1702,12 +1694,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Release;
 		};
@@ -1719,23 +1711,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TennisData5-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "テニスデータ";
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
-				INFOPLIST_KEY_NSMotionUsageDescription = "use your number of steps";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ios-academia.TennisData5";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = liskis.inc.TennisData;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5.watchkitapp";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1754,23 +1745,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5 Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TennisData5-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "テニスデータ";
 				INFOPLIST_KEY_MetalCaptureEnabled = YES;
-				INFOPLIST_KEY_NSMotionUsageDescription = "use your number of steps";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ios-academia.TennisData5";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = liskis.inc.TennisData;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5.watchkitapp";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1790,9 +1780,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5/Preview Content\"";
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TennisData5/Info.plist;
@@ -1809,13 +1799,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1827,9 +1821,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TennisData5/Preview Content\"";
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TennisData5/Info.plist;
@@ -1846,13 +1840,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1865,16 +1863,21 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TennisData5.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TennisData5";
 			};
 			name = Debug;
@@ -1887,16 +1890,21 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TennisData5.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TennisData5";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1909,16 +1917,21 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = TennisData5;
 			};
 			name = Debug;
@@ -1930,16 +1943,21 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = liskis.inc.TennisData.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = TennisData5;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1953,10 +1971,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "liskis.inc.TennisData-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1975,10 +1994,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "liskis.inc.TennisData-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1996,10 +2016,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "liskis.inc.TennisData-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -2016,10 +2037,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "liskis.inc.TennisData-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -2038,11 +2060,12 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TennisData5Complication/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TennisData5Complication;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2051,7 +2074,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5.watchkitapp.TennisData5Complication";
+				PRODUCT_BUNDLE_IDENTIFIER = "liskis.inc.TennisData.watchkitapp.-watchkitextension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2068,11 +2091,12 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99FM8972D4;
+				DEVELOPMENT_TEAM = 89QTX9B7MJ;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TennisData5Complication/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TennisData5Complication;
+				INFOPLIST_KEY_MetalCaptureEnabled = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2081,7 +2105,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ios-academia.TennisData5.watchkitapp.TennisData5Complication";
+				PRODUCT_BUNDLE_IDENTIFIER = "liskis.inc.TennisData.watchkitapp.-watchkitextension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

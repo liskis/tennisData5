@@ -4,6 +4,7 @@ import SwiftUI
 struct HomeTabView: View {
     
     @StateObject var dataManageVM = DataManageViewModel()
+    @StateObject var interstitial = Interstitial()
     
     var body: some View {
         TabView {
@@ -12,6 +13,7 @@ struct HomeTabView: View {
             dataAnalysisView
         }
         .accentColor(.white)
+        
     }
     
     // トップ画面
@@ -19,21 +21,23 @@ struct HomeTabView: View {
         HomeView(
             dataManageVM: dataManageVM,
             homeVM: dataManageVM.homeVM,
-            userVM: dataManageVM.userVM
+            userVM: dataManageVM.userVM,
+            interstitial: interstitial
         )
-            .onAppear{
-                Task {
-                    await dataManageVM.WCStartApp()
-                }
-                dataManageVM.homeVM.setHomeData()
-                dataManageVM.userVM.setUserInfo()
-                dataManageVM.homeVM.adMobPopUp = false
+        .onAppear{
+            Task {
+                await dataManageVM.WCStartApp()
             }
-            .toolbarBackground(.black, for: .tabBar)
-            .toolbarBackground(.visible, for: .tabBar)
-            .tabItem {
-                Label("HOME", systemImage: "house.fill")
-            }
+            dataManageVM.homeVM.setHomeData()
+            dataManageVM.userVM.setUserInfo()
+            interstitial.loadInterstitial()
+        }
+        .toolbarBackground(.black, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
+        .tabItem {
+            Label("HOME", systemImage: "house.fill")
+        }
+            
     }
     
     // 試合履歴画面
@@ -44,9 +48,10 @@ struct HomeTabView: View {
             .tabItem {
                 Label("試合履歴", systemImage: "list.bullet")
             }
-            .onAppear{
-                dataManageVM.homeVM.adMobPopUp = true
+            .onDisappear(){
+                interstitial.presentInterstitial()
             }
+            
     }
     
     // データ分析画面
@@ -57,8 +62,8 @@ struct HomeTabView: View {
             .tabItem {
                 Label("データ分析", systemImage: "chart.pie.fill")
             }
-            .onAppear{
-                dataManageVM.homeVM.adMobPopUp = true
+            .onDisappear(){
+                interstitial.presentInterstitial()
             }
     }
 }

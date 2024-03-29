@@ -5,6 +5,7 @@ struct GameProgressArea: View {
     
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var pointVM: PointViewModel
+    @ObservedObject var interstitial: Interstitial
     
     var body: some View {
         HStack(spacing:1) {

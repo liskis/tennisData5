@@ -15,7 +15,6 @@ struct TennisData5_Watch_AppApp: App {
                 homeVM: dataManageVM.homeVM
             )
                 .onAppear {
-//                    dataManageVM.deleteRealm()
                     Task {
                         await dataManageVM.WCStartApp()
                     }

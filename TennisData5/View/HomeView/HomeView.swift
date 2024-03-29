@@ -6,6 +6,7 @@ struct HomeView: View {
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var userVM: UserViewModel
+    @ObservedObject var interstitial: Interstitial
     
     var body: some View {
         ZStack {
@@ -17,7 +18,8 @@ struct HomeView: View {
                         GameStartBtnsArea(
                             dataManageVM: dataManageVM,
                             matchInfoVM: dataManageVM.matchInfoVM,
-                            homeVM: homeVM
+                            homeVM: homeVM,
+                            interstitial: interstitial
                         )
                         Spacer()
                     }
@@ -45,16 +47,14 @@ struct HomeView: View {
                 )
                 .transition(.move(edge: .top))
             }
-            if homeVM.adMobPopUp {
-                AdMobPopUp(homeVM: homeVM)
-            }
         }
         .fullScreenCover(isPresented: $homeVM.toPointGameView) {
             MatchTabView(
                 dataManageVM: dataManageVM,
                 matchInfoVM: dataManageVM.matchInfoVM,
                 homeVM: homeVM,
-                userVM: userVM
+                userVM: userVM,
+                interstitial: interstitial
             )
         }
     }

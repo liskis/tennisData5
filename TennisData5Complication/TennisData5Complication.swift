@@ -94,8 +94,7 @@ struct CornerComplication : View {
 
 struct RectangularComplication : View {
     var body: some View {
-        Text("RectangularComp")
-            .font(.system(size: 12.0))
+        Image(.compIcon)
     }
 }
 

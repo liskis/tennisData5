@@ -40,9 +40,9 @@ struct OneMatchDataView: View {
                     }
                 }
                 .background{ Color.mercury }
-                if homeVM.adMobPopUp {
-                    AdMobPopUp(homeVM: homeVM)
-                }
+//                if homeVM.adMobPopUp {
+//                    AdMobPopUp(homeVM: homeVM)
+//                }
             }
             
             .navigationBarTitle("マッチデータ", displayMode: .inline)

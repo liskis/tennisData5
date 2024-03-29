@@ -54,6 +54,7 @@ struct HomeHeaderBar: View {
                 .background(.white)
             })
             .clipped()
+            .disabled(true)
         }
         .background(.black)
     }

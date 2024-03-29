@@ -34,143 +34,6 @@
             endingLineNumber = "17"
             landmarkName = "PointViewModel"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - c83986f98df64327"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of TennisData5.PointViewModel.shot : TennisData5.Shot"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - c8a594a2d7017f1"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.shot.getter : TennisData5.Shot"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - 6571ddd12a013942"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.shot.setter : TennisData5.Shot"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - 4c536eab09a34153"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.shot.modify : TennisData5.Shot"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - 8a84cdb4bbe7c44"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.shot.modify : TennisData5.Shot with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - daac1e3f8958463d"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$shot.getter : Combine.Published&lt;TennisData5.Shot&gt;.Publisher"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - f6c42005efce5727"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$shot.setter : Combine.Published&lt;TennisData5.Shot&gt;.Publisher"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - 2fd56f8778d45c38"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$shot.modify : Combine.Published&lt;TennisData5.Shot&gt;.Publisher"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "F687543A-EFFA-41AD-8621-DF895822DA3A - 3cd8e8b5f5ff7ab4"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$shot.modify : Combine.Published&lt;TennisData5.Shot&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -187,143 +50,6 @@
             endingLineNumber = "16"
             landmarkName = "PointViewModel"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - 4a5477ec00f17cb4"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of TennisData5.PointViewModel.getPoint : TennisData5.GetPoint"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - c50207581034f201"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.getPoint.getter : TennisData5.GetPoint"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - e52e67990d08cceb"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.getPoint.setter : TennisData5.GetPoint"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "10"
-                  endingLineNumber = "10"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - ee418cdf91e88d8"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.getPoint.modify : TennisData5.GetPoint"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "10"
-                  endingLineNumber = "10"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - 87f94d5e34120684"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.getPoint.modify : TennisData5.GetPoint with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - 86550a867caff37c"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$getPoint.getter : Combine.Published&lt;TennisData5.GetPoint&gt;.Publisher"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/TennisData5/ViewModel/PointViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "10"
-                  endingLineNumber = "10"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - 2a8e1cb641ac8a07"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$getPoint.setter : Combine.Published&lt;TennisData5.GetPoint&gt;.Publisher"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - 5ca4cb7fc1b8d318"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$getPoint.modify : Combine.Published&lt;TennisData5.GetPoint&gt;.Publisher"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "3D4E30B5-2F19-4AB5-B41A-1E28A978F8D1 - fd53b9b489f59120"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TennisData5.PointViewModel.$getPoint.modify : Combine.Published&lt;TennisData5.GetPoint&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "TennisData5"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/watanabekensuke/iosAcademia/TennisData5/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -338,8 +64,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "getNumberOfStep(gameStartDate:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -354,8 +80,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "getNumberOfStep(gameStartDate:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -370,8 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "getNumberOfStep(gameStartDate:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

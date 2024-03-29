@@ -7,6 +7,7 @@ struct MatchTabView: View {
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var homeVM: HomeViewModel
     @ObservedObject var userVM: UserViewModel
+    @ObservedObject var interstitial: Interstitial
     
     var body: some View {
         TabView {
@@ -14,7 +15,6 @@ struct MatchTabView: View {
             realTimeDataView
         }
         .accentColor(.white)
-        
     }
     
     private var pointGame: some View {
@@ -25,7 +25,8 @@ struct MatchTabView: View {
             userVM: userVM,
             positionVM: dataManageVM.positionVM,
             chartDataVM: dataManageVM.chartDataVM,
-            pointVM: dataManageVM.pointVM
+            pointVM: dataManageVM.pointVM,
+            interstitial: interstitial
         )
         .toolbarBackground(.black, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)

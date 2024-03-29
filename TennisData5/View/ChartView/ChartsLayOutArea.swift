@@ -30,44 +30,44 @@ struct ChartsLayOutArea: View {
             }
             .offset(y:-chartWidth*0.4)
             if matchInfoVM.matchFormat == .singles {
-                ZStack{
-                    HStack{
-                        winnerPointArea
-                        missPointArea
-                    }
-                    waitForUpdate
-                }
-                .offset(y:-chartWidth*0.8)
-                ZStack{
-                    HStack{
-                        getPointArea
-                        lostPointArea
-                    }
-                    waitForUpdate
-                }
-                .offset(y:-chartWidth*1.2)
+//                ZStack{
+//                    HStack{
+//                        winnerPointArea
+//                        missPointArea
+//                    }
+//                    waitForUpdate
+//                }
+//                .offset(y:-chartWidth*0.8)
+//                ZStack{
+//                    HStack{
+//                        getPointArea
+//                        lostPointArea
+//                    }
+//                    waitForUpdate
+//                }
+//                .offset(y:-chartWidth*1.2)
             } else {
                 HStack{
                     pointRateBySvOrVolyArea
                     pointRateByRetOrVolyArea
                 }
                 .offset(y:-chartWidth*0.8)
-                ZStack{
-                    HStack{
-                        winnerPointDblsArea
-                        missPointDblsArea
-                    }
-                    waitForUpdate
-                }
-                .offset(y:-chartWidth*1.2)
-                ZStack{
-                    HStack{
-                        getPointDblsArea
-                        lostPointDblsArea
-                    }
-                    waitForUpdate
-                }
-                .offset(y:-chartWidth*1.6)
+//                ZStack{
+//                    HStack{
+//                        winnerPointDblsArea
+//                        missPointDblsArea
+//                    }
+//                    waitForUpdate
+//                }
+//                .offset(y:-chartWidth*1.2)
+//                ZStack{
+//                    HStack{
+//                        getPointDblsArea
+//                        lostPointDblsArea
+//                    }
+//                    waitForUpdate
+//                }
+//                .offset(y:-chartWidth*1.6)
             }
             Spacer()
         }

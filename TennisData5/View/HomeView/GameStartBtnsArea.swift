@@ -6,6 +6,7 @@ struct GameStartBtnsArea: View {
     @ObservedObject var dataManageVM: DataManageViewModel
     @ObservedObject var matchInfoVM: MatchInfoViewModel
     @ObservedObject var homeVM: HomeViewModel
+    @ObservedObject var interstitial: Interstitial
     
     var body: some View {
         VStack(spacing:1){
@@ -34,13 +35,15 @@ struct GameStartBtnsArea: View {
                     .rotationEffect(.degrees(-10))
             }
         }
+        .onAppear{
+            interstitial.loadInterstitial()
+        }
     }
     
     // シングルスポイントゲーム
     private var singlesPointGameBtn: some View {
         Button(action: {
             dataManageVM.toSinglesPointGame()
-            
         }) {
             Text("シングルスで\nポイントゲーム")
             .frame(maxWidth: .infinity, minHeight: 30)
@@ -48,13 +51,13 @@ struct GameStartBtnsArea: View {
         .padding(.leading, 10)
         .buttonStyle(MatchStartBtnStyle())
         
+        
     }
     
     // ダブルスポイントゲーム
     private var doublesPointGameBtn: some View {
         Button(action: {
             dataManageVM.toDoublesPointGame()
-            
         }) {
             Text("ダブルスで\nポイントゲーム")
                 .frame(maxWidth: .infinity, minHeight: 30)
@@ -83,7 +86,7 @@ struct GameStartBtnsArea: View {
         Button(action: {
             // action
         }) {
-            Text("タイブレーク\n始める")
+            Text("タイブレークを\n始める")
             .frame(maxWidth: .infinity, minHeight: 30)
         }
         .padding(.trailing, 10)

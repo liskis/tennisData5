@@ -30,8 +30,8 @@ struct HomeView: View {
                     positionVM: dataManageVM.positionVM,
                     chartDataVM: dataManageVM.chartDataVM,
                     userVM: userVM,
-                    homeVM: homeVM,
-                    coreMotionVM: dataManageVM.coreMotionVM
+                    homeVM: homeVM
+//                    coreMotionVM: dataManageVM.coreMotionVM
                 )
                 .transition(.move(edge: .bottom))
             }

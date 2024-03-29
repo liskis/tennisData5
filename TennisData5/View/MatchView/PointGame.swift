@@ -11,6 +11,7 @@ struct PointGame: View {
     @ObservedObject var positionVM: PositionViewModel
     @ObservedObject var chartDataVM: ChartDataViewModel
     @ObservedObject var pointVM: PointViewModel
+    @ObservedObject var interstitial: Interstitial
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -25,7 +26,8 @@ struct PointGame: View {
                 Spacer().frame(height: 10)
                 GameProgressArea(
                     dataManageVM: dataManageVM,
-                    pointVM: pointVM
+                    pointVM: pointVM,
+                    interstitial: interstitial
                 )
                 Spacer().frame(height: 10)
                 HStack{
@@ -58,6 +60,12 @@ struct PointGame: View {
                 matchInfoVM: matchInfoVM,
                 chartDataVM: chartDataVM
             )
+            .onAppear(){
+                interstitial.loadInterstitial()
+            }
+            .onDisappear(){
+                interstitial.presentInterstitial()
+            }
         }
     }
     

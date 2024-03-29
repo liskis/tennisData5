@@ -12,7 +12,7 @@ class DataManageViewModel: NSObject, ObservableObject {
     @ObservedObject var chartDataVM = ChartDataViewModel()
     @ObservedObject var userVM = UserViewModel()
     @ObservedObject var homeVM = HomeViewModel()
-    @ObservedObject var coreMotionVM = CoreMotionViewModel()
+//    @ObservedObject var coreMotionVM = CoreMotionViewModel()
     
    /// realmのインスタンス
     var realm: Realm {
@@ -84,7 +84,7 @@ class DataManageViewModel: NSObject, ObservableObject {
             realm.add(gameData)
         }
         
-        coreMotionVM.getNumberOfStep(gameStartDate: matchInfoVM.gameStartDate)
+//        coreMotionVM.getNumberOfStep(gameStartDate: matchInfoVM.gameStartDate)
         return gameData
     }
     
